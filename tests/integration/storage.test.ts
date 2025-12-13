@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument, @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-unsafe-argument, @typescript-eslint/require-await, @typescript-eslint/strict-boolean-expressions */
 /**
  * Storage integration tests
  */

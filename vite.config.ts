@@ -5,7 +5,11 @@ import { resolve } from 'path';
 import { existsSync, readFileSync } from 'fs';
 
 // Determine target browser from environment
-const browser = (process.env.BROWSER || 'chrome') as 'chrome' | 'firefox';
+const browser = (
+  process.env.BROWSER !== undefined && process.env.BROWSER !== ''
+    ? process.env.BROWSER
+    : 'chrome'
+) as 'chrome' | 'firefox';
 
 /**
  * Manifest type for crx plugin

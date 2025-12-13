@@ -117,7 +117,8 @@ export function blurElement(element: HTMLElement): void {
 
   // Store original styles
   element.dataset.shortshieldOriginalFilter = element.style.filter;
-  element.dataset.shortshieldOriginalPointerEvents = element.style.pointerEvents;
+  element.dataset.shortshieldOriginalPointerEvents =
+    element.style.pointerEvents;
 
   // Apply blur styles
   element.classList.add(BLUR_CLASS);
@@ -156,7 +157,7 @@ export function restoreElement(element: HTMLElement): void {
   if (element.classList.contains(HIDDEN_CLASS)) {
     element.classList.remove(HIDDEN_CLASS);
     const originalDisplay = element.dataset.shortshieldOriginalDisplay;
-    if (originalDisplay) {
+    if (originalDisplay !== undefined && originalDisplay !== '') {
       element.style.display = originalDisplay;
       delete element.dataset.shortshieldOriginalDisplay;
     } else {
@@ -168,7 +169,8 @@ export function restoreElement(element: HTMLElement): void {
   if (element.classList.contains(BLUR_CLASS)) {
     element.classList.remove(BLUR_CLASS);
     const originalFilter = element.dataset.shortshieldOriginalFilter;
-    const originalPointerEvents = element.dataset.shortshieldOriginalPointerEvents;
+    const originalPointerEvents =
+      element.dataset.shortshieldOriginalPointerEvents;
 
     element.style.filter = originalFilter ?? '';
     element.style.pointerEvents = originalPointerEvents ?? '';

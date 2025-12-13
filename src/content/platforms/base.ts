@@ -66,7 +66,7 @@ export abstract class BasePlatformDetector {
 
     // Get relevant URL from element
     const url = this.extractUrl(element);
-    if (!url) {
+    if (url === null || url === '') {
       return false;
     }
 

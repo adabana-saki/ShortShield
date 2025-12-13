@@ -227,9 +227,9 @@ export async function addLogEntry(
     const retentionMs =
       settings.preferences.logRetentionDays * 24 * 60 * 60 * 1000;
     const cutoffTime = Date.now() - retentionMs;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     const filteredLogs = trimmedLogs.filter(
-      (log) => log.timestamp > cutoffTime
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      (log: LogEntry) => log.timestamp > cutoffTime
     );
 
     await browser.storage.local.set({

@@ -89,7 +89,11 @@ export class YouTubeDetector extends BasePlatformDetector {
     const pathname = window.location.pathname;
     const videoId = pathname.split('/shorts/')[1]?.split('?')[0];
 
-    if (videoId && isValidYouTubeVideoId(videoId)) {
+    if (
+      videoId !== undefined &&
+      videoId !== '' &&
+      isValidYouTubeVideoId(videoId)
+    ) {
       const newUrl = `https://www.youtube.com/watch?v=${videoId}`;
       logger.info('Redirecting shorts to regular video', { videoId });
 
@@ -200,7 +204,8 @@ export class YouTubeDetector extends BasePlatformDetector {
     for (let i = 0; i < 5 && current; i++) {
       current = current.parentElement;
       if (
-        current?.tagName.startsWith('YTD-') &&
+        current !== null &&
+        current.tagName.startsWith('YTD-') &&
         current.tagName.includes('RENDERER')
       ) {
         return current;
@@ -219,7 +224,7 @@ export class YouTubeDetector extends BasePlatformDetector {
       'a[href*="/shorts/"], a[href*="/watch"]'
     );
 
-    if (link?.href) {
+    if (link !== null && link.href !== '') {
       return link.href;
     }
 
@@ -243,7 +248,7 @@ export class YouTubeDetector extends BasePlatformDetector {
       'a[href*="/channel/"], a[href*="/@"]'
     );
 
-    if (!channelLink?.href) {
+    if (channelLink === null || channelLink.href === '') {
       return false;
     }
 

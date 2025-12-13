@@ -101,8 +101,8 @@ export class TikTokDetector extends BasePlatformDetector {
     // Find main content area and hide it
     const mainContent = document.querySelector<HTMLElement>(
       '[id="main-content-homepage_hot"],' +
-      '[class*="DivMainContainer"],' +
-      '[class*="DivBodyContainer"]'
+        '[class*="DivMainContainer"],' +
+        '[class*="DivBodyContainer"]'
     );
 
     if (mainContent) {
@@ -178,9 +178,8 @@ export class TikTokDetector extends BasePlatformDetector {
    */
   private scanVideoLinks(root: HTMLElement): void {
     // Find links to video pages
-    const videoLinks = root.querySelectorAll<HTMLAnchorElement>(
-      'a[href*="/video/"]'
-    );
+    const videoLinks =
+      root.querySelectorAll<HTMLAnchorElement>('a[href*="/video/"]');
 
     for (const link of videoLinks) {
       const parent = this.findParentContainer(link);
@@ -203,10 +202,10 @@ export class TikTokDetector extends BasePlatformDetector {
     // Try to find a suitable parent container
     let current: HTMLElement | null = link;
 
-    for (let i = 0; i < 10 && current; i++) {
+    for (let i = 0; i < 10 && current !== null; i++) {
       current = current.parentElement;
 
-      if (!current) {
+      if (current === null) {
         break;
       }
 
@@ -223,8 +222,10 @@ export class TikTokDetector extends BasePlatformDetector {
 
       // Check for data attributes
       if (
-        current.dataset.e2e?.includes('item') ||
-        current.dataset.e2e?.includes('card')
+        (current.dataset.e2e !== undefined &&
+          current.dataset.e2e.includes('item')) ||
+        (current.dataset.e2e !== undefined &&
+          current.dataset.e2e.includes('card'))
       ) {
         return current;
       }
@@ -241,7 +242,7 @@ export class TikTokDetector extends BasePlatformDetector {
       'a[href*="/video/"], a[href*="/@"]'
     );
 
-    if (link?.href) {
+    if (link !== null && link.href !== '') {
       return link.href;
     }
 
@@ -262,7 +263,7 @@ export class TikTokDetector extends BasePlatformDetector {
     // Try to find user link
     const userLink = element.querySelector<HTMLAnchorElement>('a[href*="/@"]');
 
-    if (!userLink?.href) {
+    if (userLink === null || userLink.href === '') {
       return false;
     }
 

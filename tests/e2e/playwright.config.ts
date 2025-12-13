@@ -6,13 +6,15 @@ const extensionPath = resolve(__dirname, '../../dist/chrome');
 export default defineConfig({
   testDir: './specs',
   fullyParallel: false,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
+  forbidOnly: process.env.CI !== undefined && process.env.CI !== '',
+  retries: process.env.CI !== undefined && process.env.CI !== '' ? 2 : 0,
   workers: 1,
   reporter: [
     ['html', { outputFolder: 'playwright-report' }],
     ['json', { outputFile: 'test-results.json' }],
-    process.env.CI ? ['github'] : ['list'],
+    process.env.CI !== undefined && process.env.CI !== ''
+      ? ['github']
+      : ['list'],
   ],
   use: {
     baseURL: 'https://www.youtube.com',

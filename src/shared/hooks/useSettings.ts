@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-object-injection */
 /**
  * React hook for settings management
  */
@@ -47,13 +48,21 @@ export function useSettings(): UseSettingsResult {
         createMessage({ type: 'GET_SETTINGS' })
       );
 
-      if (response && typeof response === 'object' && 'success' in response) {
+      if (
+        response !== null &&
+        response !== undefined &&
+        typeof response === 'object' &&
+        'success' in response
+      ) {
         const typedResponse = response as {
           success: boolean;
           data?: Settings;
           error?: string;
         };
-        if (typedResponse.success && typedResponse.data) {
+        if (
+          typedResponse.success === true &&
+          typedResponse.data !== undefined
+        ) {
           setSettings(typedResponse.data);
         } else {
           setError(typedResponse.error ?? 'Failed to load settings');
@@ -81,13 +90,21 @@ export function useSettings(): UseSettingsResult {
           })
         );
 
-        if (response && typeof response === 'object' && 'success' in response) {
+        if (
+          response !== null &&
+          response !== undefined &&
+          typeof response === 'object' &&
+          'success' in response
+        ) {
           const typedResponse = response as {
             success: boolean;
             data?: Settings;
             error?: string;
           };
-          if (typedResponse.success && typedResponse.data) {
+          if (
+            typedResponse.success === true &&
+            typedResponse.data !== undefined
+          ) {
             setSettings(typedResponse.data);
           } else {
             setError(typedResponse.error ?? 'Failed to update settings');
@@ -143,13 +160,21 @@ export function useSettings(): UseSettingsResult {
           })
         );
 
-        if (response && typeof response === 'object' && 'success' in response) {
+        if (
+          response !== null &&
+          response !== undefined &&
+          typeof response === 'object' &&
+          'success' in response
+        ) {
           const typedResponse = response as {
             success: boolean;
             data?: Settings;
             error?: string;
           };
-          if (typedResponse.success && typedResponse.data) {
+          if (
+            typedResponse.success === true &&
+            typedResponse.data !== undefined
+          ) {
             setSettings(typedResponse.data);
           } else {
             throw new Error(
@@ -179,13 +204,21 @@ export function useSettings(): UseSettingsResult {
         })
       );
 
-      if (response && typeof response === 'object' && 'success' in response) {
+      if (
+        response !== null &&
+        response !== undefined &&
+        typeof response === 'object' &&
+        'success' in response
+      ) {
         const typedResponse = response as {
           success: boolean;
           data?: Settings;
           error?: string;
         };
-        if (typedResponse.success && typedResponse.data) {
+        if (
+          typedResponse.success === true &&
+          typedResponse.data !== undefined
+        ) {
           setSettings(typedResponse.data);
         } else {
           throw new Error(
@@ -226,13 +259,21 @@ export function useSettings(): UseSettingsResult {
           })
         );
 
-        if (response && typeof response === 'object' && 'success' in response) {
+        if (
+          response !== null &&
+          response !== undefined &&
+          typeof response === 'object' &&
+          'success' in response
+        ) {
           const typedResponse = response as {
             success: boolean;
             data?: Settings;
             error?: string;
           };
-          if (typedResponse.success && typedResponse.data) {
+          if (
+            typedResponse.success === true &&
+            typedResponse.data !== undefined
+          ) {
             setSettings(typedResponse.data);
           } else {
             throw new Error(typedResponse.error ?? 'Failed to import settings');

@@ -210,7 +210,9 @@ export function Whitelist() {
           </button>
         </div>
 
-        {error && <p className="whitelist-error">{error}</p>}
+        {error !== null && error !== '' && (
+          <p className="whitelist-error">{error}</p>
+        )}
       </div>
 
       {/* Whitelist entries */}

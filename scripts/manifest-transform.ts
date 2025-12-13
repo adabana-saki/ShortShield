@@ -167,9 +167,11 @@ function firefoxToChrome(firefox: FirefoxManifest): ChromeManifest {
     options_ui: firefox.options_ui,
     icons: firefox.icons,
     // Convert CSP string to object
-    content_security_policy: firefox.content_security_policy
-      ? { extension_pages: firefox.content_security_policy }
-      : undefined,
+    content_security_policy:
+      firefox.content_security_policy !== undefined &&
+      firefox.content_security_policy !== ''
+        ? { extension_pages: firefox.content_security_policy }
+        : undefined,
   };
 
   // Remove undefined properties

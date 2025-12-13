@@ -28,7 +28,7 @@ export function App() {
     );
   }
 
-  if (error) {
+  if (error !== null && error !== '') {
     return (
       <div className="options-container">
         <div className="error">
@@ -71,7 +71,9 @@ export function App() {
           <>
             <section className="options-section">
               <h2>{t('optionsPlatformsTitle')}</h2>
-              <p className="section-description">{t('optionsPlatformsDescription')}</p>
+              <p className="section-description">
+                {t('optionsPlatformsDescription')}
+              </p>
 
               <div className="platform-list">
                 <label className="platform-toggle">
