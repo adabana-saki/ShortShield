@@ -2,11 +2,13 @@
 
 > 屏蔽短视频，重获专注力
 
-[![CI](https://github.com/adalab/shortshield/actions/workflows/ci.yml/badge.svg)](https://github.com/adalab/shortshield/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/adalab/shortshield/actions/workflows/codeql.yml/badge.svg)](https://github.com/adalab/shortshield/actions/workflows/codeql.yml)
+[![CI](https://github.com/adabana-saki/ShortShield/actions/workflows/ci.yml/badge.svg)](https://github.com/adabana-saki/ShortShield/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/adabana-saki/ShortShield/actions/workflows/codeql.yml/badge.svg)](https://github.com/adabana-saki/ShortShield/actions/workflows/codeql.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ShortShield 是一个浏览器扩展，通过屏蔽 YouTube Shorts、TikTok 和 Instagram Reels 上的短视频内容，帮助您保持专注。
+
+**开发者：[ADALAB](https://adalab.pages.dev/)**
 
 [English](README.md) | [日本語](README.ja.md) | [한국어](README.ko.md)
 
@@ -17,7 +19,7 @@ ShortShield 是一个浏览器扩展，通过屏蔽 YouTube Shorts、TikTok 和 
 - **白名单**: 允许特定频道、URL 或域名
 - **自定义规则**: 添加自定义 CSS 选择器进行高级屏蔽
 - **隐私优先**: 所有数据保存在本地，无外部追踪
-- **跨浏览器**: 支持 Chrome 和 Firefox
+- **跨浏览器**: 支持 Chrome、Firefox 和 Edge
 
 ## 安装
 
@@ -29,13 +31,17 @@ ShortShield 是一个浏览器扩展，通过屏蔽 YouTube Shorts、TikTok 和 
 
 即将上线！
 
+### Edge 加载项
+
+即将上线！
+
 ### 手动安装（开发版）
 
 1. 克隆仓库：
 
    ```bash
-   git clone https://github.com/adalab/shortshield.git
-   cd shortshield
+   git clone https://github.com/adabana-saki/ShortShield.git
+   cd ShortShield
    ```
 
 2. 安装依赖：
@@ -52,11 +58,18 @@ ShortShield 是一个浏览器扩展，通过屏蔽 YouTube Shorts、TikTok 和 
 
    # Firefox 版本
    pnpm build:firefox
+
+   # Edge 版本
+   pnpm build:edge
+
+   # 构建所有浏览器版本
+   pnpm build:all
    ```
 
 4. 加载扩展：
    - **Chrome**: 前往 `chrome://extensions/`，启用"开发者模式"，点击"加载已解压的扩展"，选择 `dist/chrome` 文件夹
    - **Firefox**: 前往 `about:debugging#/runtime/this-firefox`，点击"临时加载附加组件"，选择 `dist/firefox` 文件夹中的任意文件
+   - **Edge**: 前往 `edge://extensions/`，启用"开发者模式"，点击"加载解压缩的扩展"，选择 `dist/edge` 文件夹
 
 ## 使用方法
 
@@ -99,6 +112,9 @@ pnpm build:chrome
 
 # 构建 Firefox 版本
 pnpm build:firefox
+
+# 构建 Edge 版本
+pnpm build:edge
 
 # 构建所有浏览器版本
 pnpm build:all
@@ -173,3 +189,9 @@ ShortShield 以隐私为设计核心：
 - 使用 [React](https://react.dev/) 构建
 - 使用 [Vite](https://vitejs.dev/) 打包
 - 扩展框架来自 [@crxjs/vite-plugin](https://crxjs.dev/)
+
+---
+
+**ShortShield** 由 [ADALAB](https://adalab.pages.dev/) 开发和维护
+
+项目负责人：Adabana Saki

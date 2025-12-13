@@ -2,11 +2,13 @@
 
 > Block short-form videos and reclaim your focus
 
-[![CI](https://github.com/adalab/shortshield/actions/workflows/ci.yml/badge.svg)](https://github.com/adalab/shortshield/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/adalab/shortshield/actions/workflows/codeql.yml/badge.svg)](https://github.com/adalab/shortshield/actions/workflows/codeql.yml)
+[![CI](https://github.com/adabana-saki/ShortShield/actions/workflows/ci.yml/badge.svg)](https://github.com/adabana-saki/ShortShield/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/adabana-saki/ShortShield/actions/workflows/codeql.yml/badge.svg)](https://github.com/adabana-saki/ShortShield/actions/workflows/codeql.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ShortShield is a browser extension that helps you stay focused by blocking short-form video content on YouTube Shorts, TikTok, and Instagram Reels.
+
+**Developed by [ADALAB](https://adalab.pages.dev/)**
 
 [日本語](README.ja.md) | [简体中文](README.zh-CN.md) | [한국어](README.ko.md)
 
@@ -17,7 +19,7 @@ ShortShield is a browser extension that helps you stay focused by blocking short
 - **Whitelist**: Allow specific channels, URLs, or domains
 - **Custom Rules**: Add your own CSS selectors for advanced blocking
 - **Privacy-First**: All data stays local, no external tracking
-- **Cross-Browser**: Works on Chrome and Firefox
+- **Cross-Browser**: Works on Chrome, Firefox, and Edge
 
 ## Installation
 
@@ -29,13 +31,17 @@ Coming soon!
 
 Coming soon!
 
+### Edge Add-ons
+
+Coming soon!
+
 ### Manual Installation (Development)
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/adalab/shortshield.git
-   cd shortshield
+   git clone https://github.com/adabana-saki/ShortShield.git
+   cd ShortShield
    ```
 
 2. Install dependencies:
@@ -52,11 +58,18 @@ Coming soon!
 
    # For Firefox
    pnpm build:firefox
+
+   # For Edge
+   pnpm build:edge
+
+   # Build all browsers
+   pnpm build:all
    ```
 
 4. Load the extension:
    - **Chrome**: Go to `chrome://extensions/`, enable "Developer mode", click "Load unpacked", and select the `dist/chrome` folder
    - **Firefox**: Go to `about:debugging#/runtime/this-firefox`, click "Load Temporary Add-on", and select any file in the `dist/firefox` folder
+   - **Edge**: Go to `edge://extensions/`, enable "Developer mode", click "Load unpacked", and select the `dist/edge` folder
 
 ## Usage
 
@@ -99,6 +112,9 @@ pnpm build:chrome
 
 # Build for Firefox
 pnpm build:firefox
+
+# Build for Edge
+pnpm build:edge
 
 # Build for all browsers
 pnpm build:all
@@ -173,3 +189,9 @@ For security issues, please see our [Security Policy](SECURITY.md).
 - Built with [React](https://react.dev/)
 - Bundled with [Vite](https://vitejs.dev/)
 - Extension framework by [@crxjs/vite-plugin](https://crxjs.dev/)
+
+---
+
+**ShortShield** is developed and maintained by [ADALAB](https://adalab.pages.dev/)
+
+Project Lead: Adabana Saki

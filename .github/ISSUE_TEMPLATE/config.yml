@@ -1,11 +1,11 @@
 blank_issues_enabled: false
 contact_links:
   - name: Documentation / ドキュメント
-    url: https://github.com/adalab/shortshield#readme
+    url: https://github.com/adabana-saki/ShortShield#readme
     about: Check the documentation before opening an issue / Issue作成前にドキュメントを確認してください
   - name: Discussions
-    url: https://github.com/adalab/shortshield/discussions
+    url: https://github.com/adabana-saki/ShortShield/discussions
     about: Ask questions and discuss ideas / 質問やアイデアの議論
   - name: Security Issues / セキュリティ問題
-    url: https://github.com/adalab/shortshield/security/advisories/new
+    url: https://github.com/adabana-saki/ShortShield/security/advisories/new
     about: Report security vulnerabilities privately / セキュリティ脆弱性は非公開で報告してください

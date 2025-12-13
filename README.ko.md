@@ -2,11 +2,13 @@
 
 > 숏폼 동영상을 차단하고 집중력을 되찾으세요
 
-[![CI](https://github.com/adalab/shortshield/actions/workflows/ci.yml/badge.svg)](https://github.com/adalab/shortshield/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/adalab/shortshield/actions/workflows/codeql.yml/badge.svg)](https://github.com/adalab/shortshield/actions/workflows/codeql.yml)
+[![CI](https://github.com/adabana-saki/ShortShield/actions/workflows/ci.yml/badge.svg)](https://github.com/adabana-saki/ShortShield/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/adabana-saki/ShortShield/actions/workflows/codeql.yml/badge.svg)](https://github.com/adabana-saki/ShortShield/actions/workflows/codeql.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ShortShield는 YouTube Shorts, TikTok, Instagram Reels의 숏폼 동영상 콘텐츠를 차단하여 집중력을 유지하도록 도와주는 브라우저 확장 프로그램입니다.
+
+**개발: [ADALAB](https://adalab.pages.dev/)**
 
 [English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)
 
@@ -17,7 +19,7 @@ ShortShield는 YouTube Shorts, TikTok, Instagram Reels의 숏폼 동영상 콘�
 - **화이트리스트**: 특정 채널, URL 또는 도메인 허용
 - **사용자 정의 규칙**: 고급 차단을 위한 CSS 선택자 추가
 - **프라이버시 우선**: 모든 데이터는 로컬에 저장, 외부 추적 없음
-- **크로스 브라우저**: Chrome 및 Firefox 지원
+- **크로스 브라우저**: Chrome, Firefox, Edge 지원
 
 ## 설치
 
@@ -29,13 +31,17 @@ ShortShield는 YouTube Shorts, TikTok, Instagram Reels의 숏폼 동영상 콘�
 
 곧 출시 예정!
 
+### Edge 추가 기능
+
+곧 출시 예정!
+
 ### 수동 설치 (개발용)
 
 1. 저장소 클론:
 
    ```bash
-   git clone https://github.com/adalab/shortshield.git
-   cd shortshield
+   git clone https://github.com/adabana-saki/ShortShield.git
+   cd ShortShield
    ```
 
 2. 의존성 설치:
@@ -52,11 +58,18 @@ ShortShield는 YouTube Shorts, TikTok, Instagram Reels의 숏폼 동영상 콘�
 
    # Firefox용
    pnpm build:firefox
+
+   # Edge용
+   pnpm build:edge
+
+   # 모든 브라우저용 빌드
+   pnpm build:all
    ```
 
 4. 확장 프로그램 로드:
    - **Chrome**: `chrome://extensions/`로 이동, "개발자 모드" 활성화, "압축해제된 확장 프로그램을 로드합니다" 클릭 후 `dist/chrome` 폴더 선택
    - **Firefox**: `about:debugging#/runtime/this-firefox`로 이동, "임시 부가 기능 로드" 클릭 후 `dist/firefox` 폴더의 아무 파일 선택
+   - **Edge**: `edge://extensions/`로 이동, "개발자 모드" 활성화, "압축 해제된 항목 로드" 클릭 후 `dist/edge` 폴더 선택
 
 ## 사용법
 
@@ -99,6 +112,9 @@ pnpm build:chrome
 
 # Firefox용 빌드
 pnpm build:firefox
+
+# Edge용 빌드
+pnpm build:edge
 
 # 모든 브라우저용 빌드
 pnpm build:all
@@ -173,3 +189,9 @@ ShortShield를 더 많은 언어로 번역하는 것을 도와주세요. 자세�
 - [React](https://react.dev/)로 빌드
 - [Vite](https://vitejs.dev/)로 번들링
 - [@crxjs/vite-plugin](https://crxjs.dev/)의 확장 프레임워크
+
+---
+
+**ShortShield**는 [ADALAB](https://adalab.pages.dev/)에서 개발 및 유지 관리합니다
+
+프로젝트 리드: Adabana Saki

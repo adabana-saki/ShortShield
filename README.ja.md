@@ -2,13 +2,15 @@
 
 > 短尺動画をブロックして集中力を取り戻す
 
-[![CI](https://github.com/adalab/shortshield/actions/workflows/ci.yml/badge.svg)](https://github.com/adalab/shortshield/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/adalab/shortshield/actions/workflows/codeql.yml/badge.svg)](https://github.com/adalab/shortshield/actions/workflows/codeql.yml)
+[![CI](https://github.com/adabana-saki/ShortShield/actions/workflows/ci.yml/badge.svg)](https://github.com/adabana-saki/ShortShield/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/adabana-saki/ShortShield/actions/workflows/codeql.yml/badge.svg)](https://github.com/adabana-saki/ShortShield/actions/workflows/codeql.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ShortShieldは、YouTube Shorts、TikTok、Instagram Reelsなどの短尺動画コンテンツをブロックし、集中力を維持するためのブラウザ拡張機能です。
 
-[English](README.md)
+**開発: [ADALAB](https://adalab.pages.dev/)**
+
+[English](README.md) | [简体中文](README.zh-CN.md) | [한국어](README.ko.md)
 
 ## 機能
 
@@ -17,7 +19,7 @@ ShortShieldは、YouTube Shorts、TikTok、Instagram Reelsなどの短尺動画�
 - **ホワイトリスト**: 特定のチャンネル、URL、ドメインを許可
 - **カスタムルール**: 高度なブロックのためのCSSセレクタを追加
 - **プライバシー優先**: すべてのデータはローカルに保存、外部トラッキングなし
-- **クロスブラウザ**: ChromeとFirefoxに対応
+- **クロスブラウザ**: Chrome、Firefox、Edgeに対応
 
 ## インストール
 
@@ -29,31 +31,45 @@ ShortShieldは、YouTube Shorts、TikTok、Instagram Reelsなどの短尺動画�
 
 近日公開予定！
 
+### Edge アドオン
+
+近日公開予定！
+
 ### 手動インストール（開発用）
 
 1. リポジトリをクローン:
+
    ```bash
-   git clone https://github.com/adalab/shortshield.git
-   cd shortshield
+   git clone https://github.com/adabana-saki/ShortShield.git
+   cd ShortShield
    ```
 
 2. 依存関係をインストール:
+
    ```bash
    pnpm install
    ```
 
 3. 拡張機能をビルド:
+
    ```bash
    # Chrome用
    pnpm build:chrome
 
    # Firefox用
    pnpm build:firefox
+
+   # Edge用
+   pnpm build:edge
+
+   # 全ブラウザ用
+   pnpm build:all
    ```
 
 4. 拡張機能を読み込み:
    - **Chrome**: `chrome://extensions/` を開き、「デベロッパーモード」を有効にし、「パッケージ化されていない拡張機能を読み込む」をクリックして `dist/chrome` フォルダを選択
    - **Firefox**: `about:debugging#/runtime/this-firefox` を開き、「一時的なアドオンを読み込む」をクリックして `dist/firefox` フォルダ内の任意のファイルを選択
+   - **Edge**: `edge://extensions/` を開き、「開発者モード」を有効にし、「展開して読み込み」をクリックして `dist/edge` フォルダを選択
 
 ## 使い方
 
@@ -96,6 +112,9 @@ pnpm build:chrome
 
 # Firefox用ビルド
 pnpm build:firefox
+
+# Edge用ビルド
+pnpm build:edge
 
 # 全ブラウザ用ビルド
 pnpm build:all
@@ -170,3 +189,9 @@ ShortShieldをより多くの言語に翻訳するお手伝いをしてくださ
 - [React](https://react.dev/)で構築
 - [Vite](https://vitejs.dev/)でバンドル
 - [@crxjs/vite-plugin](https://crxjs.dev/)による拡張機能フレームワーク
+
+---
+
+**ShortShield** は [ADALAB](https://adalab.pages.dev/) によって開発・メンテナンスされています
+
+プロジェクトリード: Adabana Saki

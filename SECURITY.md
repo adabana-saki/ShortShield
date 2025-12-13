@@ -13,7 +13,7 @@ We take security vulnerabilities seriously. If you discover a security issue, pl
 ### How to Report
 
 1. **Do NOT** create a public GitHub issue for security vulnerabilities
-2. Email your findings to: [security contact to be added]
+2. Report via [GitHub Security Advisories](https://github.com/adabana-saki/ShortShield/security/advisories/new)
 3. Include the following information:
    - Description of the vulnerability
    - Steps to reproduce
@@ -30,11 +30,13 @@ We take security vulnerabilities seriously. If you discover a security issue, pl
 ### Scope
 
 The following are in scope:
+
 - The browser extension code (Chrome, Firefox, Edge)
 - Build and deployment scripts
 - Dependencies with known vulnerabilities
 
 The following are out of scope:
+
 - Social engineering attacks
 - Physical attacks
 - Issues in third-party services
@@ -52,6 +54,7 @@ This extension follows these security principles:
 ## Dependencies
 
 We regularly audit our dependencies using:
+
 - `pnpm audit` for vulnerability scanning
 - Dependabot for automated security updates
 - CodeQL for static analysis

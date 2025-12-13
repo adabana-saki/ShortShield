@@ -2,6 +2,9 @@
 node_modules/
 .pnpm-store/
 
+# Claude Code local settings
+.claude/
+
 # Build outputs
 dist/
 build/
@@ -70,3 +73,6 @@ web-ext-artifacts/
 # Package manager lock files (keep only pnpm)
 package-lock.json
 yarn.lock
+
+# Development guides (internal use only)
+shortblocker-global-guide*.md

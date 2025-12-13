@@ -1,24 +1,24 @@
 # Default owners for everything
-* @adalab/shortshield-maintainers
+* @adabana-saki
 
 # Documentation
-*.md @adalab/shortshield-docs
-docs/ @adalab/shortshield-docs
+*.md @adabana-saki
+docs/ @adabana-saki
 
 # Translations
-public/_locales/ @adalab/shortshield-i18n
+public/_locales/ @adabana-saki
 
 # CI/CD
-.github/ @adalab/shortshield-maintainers
+.github/ @adabana-saki
 
 # Core extension code
-src/background/ @adalab/shortshield-core
-src/content/ @adalab/shortshield-core
-src/shared/ @adalab/shortshield-core
+src/background/ @adabana-saki
+src/content/ @adabana-saki
+src/shared/ @adabana-saki
 
 # UI components
-src/popup/ @adalab/shortshield-ui
-src/options/ @adalab/shortshield-ui
+src/popup/ @adabana-saki
+src/options/ @adabana-saki
 
 # Tests
-tests/ @adalab/shortshield-qa
+tests/ @adabana-saki

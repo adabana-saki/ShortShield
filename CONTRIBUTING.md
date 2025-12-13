@@ -12,7 +12,7 @@ Please read and follow our Code of Conduct. We expect all contributors to be res
 
 ### Reporting Bugs
 
-1. Check if the bug has already been reported in [Issues](https://github.com/adalab/shortshield/issues)
+1. Check if the bug has already been reported in [Issues](https://github.com/adabana-saki/ShortShield/issues)
 2. If not, create a new issue using the Bug Report template
 3. Include:
    - Browser and version
@@ -23,7 +23,7 @@ Please read and follow our Code of Conduct. We expect all contributors to be res
 
 ### Suggesting Features
 
-1. Check existing [Issues](https://github.com/adalab/shortshield/issues) for similar suggestions
+1. Check existing [Issues](https://github.com/adabana-saki/ShortShield/issues) for similar suggestions
 2. Create a new issue using the Feature Request template
 3. Describe:
    - The problem you're trying to solve
@@ -37,8 +37,8 @@ Please read and follow our Code of Conduct. We expect all contributors to be res
 1. Fork the repository
 2. Clone your fork:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/shortshield.git
-   cd shortshield
+   git clone https://github.com/YOUR_USERNAME/ShortShield.git
+   cd ShortShield
    ```
 3. Install dependencies:
    ```bash
@@ -76,6 +76,7 @@ type(scope): description
 ```
 
 Types:
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -85,6 +86,7 @@ Types:
 - `chore`: Maintenance tasks
 
 Examples:
+
 ```
 feat(content): add TikTok blocking support
 fix(popup): resolve toggle state not persisting

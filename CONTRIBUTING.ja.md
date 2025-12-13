@@ -12,7 +12,7 @@ ShortShieldへのコントリビューションに興味を持っていただき
 
 ### バグの報告
 
-1. [Issues](https://github.com/adalab/shortshield/issues)でバグがすでに報告されていないか確認
+1. [Issues](https://github.com/adabana-saki/ShortShield/issues)でバグがすでに報告されていないか確認
 2. 報告されていない場合、バグレポートテンプレートを使用して新しいIssueを作成
 3. 以下を含めてください：
    - ブラウザとバージョン
@@ -23,7 +23,7 @@ ShortShieldへのコントリビューションに興味を持っていただき
 
 ### 機能の提案
 
-1. 既存の[Issues](https://github.com/adalab/shortshield/issues)で類似の提案がないか確認
+1. 既存の[Issues](https://github.com/adabana-saki/ShortShield/issues)で類似の提案がないか確認
 2. 機能リクエストテンプレートを使用して新しいIssueを作成
 3. 以下を記述：
    - 解決しようとしている問題
@@ -37,8 +37,8 @@ ShortShieldへのコントリビューションに興味を持っていただき
 1. リポジトリをフォーク
 2. フォークをクローン：
    ```bash
-   git clone https://github.com/YOUR_USERNAME/shortshield.git
-   cd shortshield
+   git clone https://github.com/YOUR_USERNAME/ShortShield.git
+   cd ShortShield
    ```
 3. 依存関係をインストール：
    ```bash
@@ -76,6 +76,7 @@ type(scope): description
 ```
 
 タイプ：
+
 - `feat`: 新機能
 - `fix`: バグ修正
 - `docs`: ドキュメントの変更
@@ -85,6 +86,7 @@ type(scope): description
 - `chore`: メンテナンスタスク
 
 例：
+
 ```
 feat(content): TikTokブロック機能を追加
 fix(popup): トグル状態が保持されない問題を修正

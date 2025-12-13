@@ -29,7 +29,7 @@ updates:
       - dependency-name: "react-dom"
         update-types: ["version-update:semver-major"]
     reviewers:
-      - "adalab/shortshield-maintainers"
+      - "adabana-saki"
 
   # GitHub Actions
   - package-ecosystem: "github-actions"
