@@ -4,7 +4,12 @@
  */
 
 import browser from 'webextension-polyfill';
-import type { Platform, Settings, BlockingAction } from '@/shared/types';
+import type {
+  Platform,
+  Settings,
+  BlockingAction,
+  LogBlockMessage,
+} from '@/shared/types';
 import { createMessage } from '@/shared/types';
 import { createLogger } from '@/shared/utils/logger';
 
@@ -186,7 +191,7 @@ export abstract class BasePlatformDetector {
 
     try {
       await browser.runtime.sendMessage(
-        createMessage({
+        createMessage<LogBlockMessage>({
           type: 'LOG_BLOCK',
           payload: {
             platform: this.platform,

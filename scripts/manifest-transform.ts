@@ -152,7 +152,8 @@ function firefoxToChrome(firefox: FirefoxManifest): ChromeManifest {
     host_permissions: hostPermissions.length > 0 ? hostPermissions : undefined,
     // Convert background scripts to service_worker
     background: {
-      service_worker: firefox.background.scripts[0],
+      service_worker:
+        firefox.background.scripts[0] ?? 'src/background/index.ts',
       type: 'module',
     },
     content_scripts: firefox.content_scripts,

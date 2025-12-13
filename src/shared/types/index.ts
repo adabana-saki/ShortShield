@@ -37,6 +37,7 @@ export { isValidBlockingRule } from './rules';
 export type {
   LogLevel,
   BlockLogEntry,
+  BlockLogEntry as LogEntry, // Alias for backward compatibility
   ElementInfo,
   AppLogEntry,
   LogStorage,

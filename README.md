@@ -1,56 +1,129 @@
+<div align="center">
+
 # ShortShield
 
-> Block short-form videos and reclaim your focus
+**Block short-form videos. Reclaim your focus.**
+
+_The average person spends 2.5 hours daily on short-form videos. Take back your time._
 
 [![CI](https://github.com/adabana-saki/ShortShield/actions/workflows/ci.yml/badge.svg)](https://github.com/adabana-saki/ShortShield/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/adabana-saki/ShortShield/actions/workflows/codeql.yml/badge.svg)](https://github.com/adabana-saki/ShortShield/actions/workflows/codeql.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Chrome](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=googlechrome&logoColor=white)](https://github.com/adabana-saki/ShortShield)
+[![Firefox](https://img.shields.io/badge/Firefox-Add--on-FF7139?logo=firefox&logoColor=white)](https://github.com/adabana-saki/ShortShield)
+[![Edge](https://img.shields.io/badge/Edge-Add--on-0078D7?logo=microsoftedge&logoColor=white)](https://github.com/adabana-saki/ShortShield)
 
-ShortShield is a browser extension that helps you stay focused by blocking short-form video content on YouTube Shorts, TikTok, and Instagram Reels.
-
-**Developed by [ADALAB](https://adalab.pages.dev/)**
+[**Install**](#installation) · [**Features**](#features) · [**Demo**](#demo) · [**Contributing**](CONTRIBUTING.md)
 
 [日本語](README.ja.md) | [简体中文](README.zh-CN.md) | [한국어](README.ko.md)
 
+</div>
+
+---
+
+## The Problem
+
+> "I opened TikTok for 5 minutes... and 2 hours disappeared."
+
+Sound familiar? Short-form videos are engineered to hijack your attention:
+
+- **Dopamine loops**: Each 15-second video triggers a reward response
+- **Infinite scroll**: No natural stopping point
+- **Algorithm optimization**: Content gets more addictive over time
+
+The result? Fragmented attention, reduced productivity, and hours lost daily.
+
+## The Solution
+
+**ShortShield blocks short-form video content at the source** — before willpower even enters the equation.
+
+```text
+YouTube Shorts  → Blocked
+TikTok Feed     → Blocked
+Instagram Reels → Blocked
+```
+
+No more "just one more video." No more doom scrolling. Just focus.
+
+---
+
+## Demo
+
+<div align="center">
+
+<!-- TODO: Add actual demo GIF -->
+
+![ShortShield Demo](docs/assets/demo-placeholder.png)
+
+_One click to block. One click to unblock. Full control._
+
+</div>
+
+|  Without ShortShield  |    With ShortShield     |
+| :-------------------: | :---------------------: |
+|  Endless scroll trap  | Clean, focused browsing |
+|  2+ hours lost daily  |     Time reclaimed      |
+| Constant distractions |    Deep work enabled    |
+
+---
+
 ## Features
 
-- **Multi-Platform Support**: Block content on YouTube Shorts, TikTok, and Instagram Reels
-- **Granular Control**: Enable/disable blocking per platform
-- **Whitelist**: Allow specific channels, URLs, or domains
-- **Custom Rules**: Add your own CSS selectors for advanced blocking
-- **Privacy-First**: All data stays local, no external tracking
-- **Cross-Browser**: Works on Chrome, Firefox, and Edge
+| Feature                     | Description                                           |
+| --------------------------- | ----------------------------------------------------- |
+| **Multi-Platform Blocking** | YouTube Shorts, TikTok, Instagram Reels — all covered |
+| **Per-Platform Control**    | Block TikTok but allow Shorts? You decide             |
+| **Whitelist System**        | Allow specific creators, channels, or URLs            |
+| **Custom Rules**            | Add your own CSS selectors for advanced blocking      |
+| **Privacy-First**           | Zero data collection. Everything stays local          |
+| **Cross-Browser**           | Chrome, Firefox, Edge supported                       |
+
+---
+
+## Comparison
+
+| Feature         | ShortShield |  BlockSite  | uBlock Origin | Screen Time |
+| --------------- | :---------: | :---------: | :-----------: | :---------: |
+| YouTube Shorts  |     ✅      | ⚠️ Partial  |      ❌       |     ❌      |
+| TikTok          |     ✅      |     ✅      |      ❌       |     ✅      |
+| Instagram Reels |     ✅      | ⚠️ Partial  |      ❌       |     ❌      |
+| Whitelist       |   ✅ Free   |   💰 Paid   |      N/A      |     ❌      |
+| Custom Rules    |     ✅      |     ❌      |      ✅       |     ❌      |
+| Privacy         | ✅ No data  | ❌ Collects |  ✅ No data   | ❌ Collects |
+| Open Source     |     ✅      |     ❌      |      ✅       |     ❌      |
+| Price           |  **Free**   |  Freemium   |     Free      |    Paid     |
+
+---
 
 ## Installation
 
-### Chrome Web Store
+### Browser Stores
 
-Coming soon!
-
-### Firefox Add-ons
-
-Coming soon!
-
-### Edge Add-ons
-
-Coming soon!
+| Browser | Status      | Link             |
+| ------- | ----------- | ---------------- |
+| Chrome  | Coming Soon | Chrome Web Store |
+| Firefox | Coming Soon | Firefox Add-ons  |
+| Edge    | Coming Soon | Edge Add-ons     |
 
 ### Manual Installation (Development)
 
-1. Clone the repository:
+<details>
+<summary><strong>Click to expand installation steps</strong></summary>
+
+1. **Clone the repository**
 
    ```bash
    git clone https://github.com/adabana-saki/ShortShield.git
    cd ShortShield
    ```
 
-2. Install dependencies:
+2. **Install dependencies**
 
    ```bash
    pnpm install
    ```
 
-3. Build the extension:
+3. **Build the extension**
 
    ```bash
    # For Chrome
@@ -66,30 +139,122 @@ Coming soon!
    pnpm build:all
    ```
 
-4. Load the extension:
-   - **Chrome**: Go to `chrome://extensions/`, enable "Developer mode", click "Load unpacked", and select the `dist/chrome` folder
-   - **Firefox**: Go to `about:debugging#/runtime/this-firefox`, click "Load Temporary Add-on", and select any file in the `dist/firefox` folder
-   - **Edge**: Go to `edge://extensions/`, enable "Developer mode", click "Load unpacked", and select the `dist/edge` folder
+4. **Load the extension**
+   - **Chrome**: Go to `chrome://extensions/`, enable "Developer mode", click "Load unpacked", select `dist/chrome`
+   - **Firefox**: Go to `about:debugging#/runtime/this-firefox`, click "Load Temporary Add-on", select any file in `dist/firefox`
+   - **Edge**: Go to `edge://extensions/`, enable "Developer mode", click "Load unpacked", select `dist/edge`
+
+</details>
+
+---
 
 ## Usage
 
-### Basic Controls
+### Quick Start
 
-1. Click the ShortShield icon in your browser toolbar
-2. Use the main toggle to enable/disable blocking
-3. Toggle individual platforms as needed
+1. Click the **ShortShield icon** in your browser toolbar
+2. Toggle the **main switch** to enable/disable blocking
+3. Use **platform toggles** to control individual sites
 
-### Whitelist
+### Whitelist (Allow Specific Content)
 
-1. Open the extension options (click the gear icon)
-2. Go to the Whitelist section
+1. Open extension **Options** (gear icon)
+2. Navigate to **Whitelist** section
 3. Add channels, URLs, or domains you want to allow
 
-### Custom Rules
+### Custom Blocking Rules
 
-1. Open the extension options
-2. Go to Custom Rules section
-3. Add CSS selectors for elements you want to block
+1. Open extension **Options**
+2. Navigate to **Custom Rules** section
+3. Add CSS selectors for elements to block
+
+---
+
+## Why ShortShield Exists
+
+I built ShortShield after realizing I was spending 3+ hours daily on short-form videos. I tried:
+
+- ❌ **Willpower** — Failed after 2 days
+- ❌ **App timers** — Just tapped "ignore"
+- ❌ **Uninstalling apps** — Reinstalled within hours
+- ❌ **Website blockers** — Too aggressive, blocked everything
+
+What I needed was **surgical precision**: block the addictive content, but keep the platforms usable for legitimate purposes (search, specific creators, etc.).
+
+ShortShield is that tool.
+
+---
+
+## The Science
+
+Short-form video platforms use psychological techniques to maximize engagement:
+
+| Technique            | How It Works                              | ShortShield's Response      |
+| -------------------- | ----------------------------------------- | --------------------------- |
+| **Variable Rewards** | Unpredictable content keeps you scrolling | Block the feed entirely     |
+| **Infinite Scroll**  | No natural stopping point                 | Remove the scroll mechanism |
+| **Autoplay**         | Next video starts without consent         | Prevent video loading       |
+| **FOMO Design**      | "Trending" and "For You" create urgency   | Hide recommendation UI      |
+
+---
+
+## FAQ
+
+<details>
+<summary><strong>Does this completely block YouTube/TikTok/Instagram?</strong></summary>
+
+No. ShortShield only blocks the **short-form video sections** (Shorts, For You page, Reels). You can still use YouTube search, watch regular videos, browse Instagram posts, etc.
+
+</details>
+
+<details>
+<summary><strong>Can I temporarily disable blocking?</strong></summary>
+
+Yes! One click on the extension icon toggles blocking on/off. You can also disable specific platforms while keeping others blocked.
+
+</details>
+
+<details>
+<summary><strong>Does ShortShield collect my data?</strong></summary>
+
+**No.** ShortShield is 100% local. No analytics, no tracking, no external requests. Your browsing data never leaves your device.
+
+</details>
+
+<details>
+<summary><strong>Why not just use uBlock Origin?</strong></summary>
+
+uBlock Origin is great for ads, but blocking short-form videos requires platform-specific rules that update frequently. ShortShield maintains these rules and provides a user-friendly interface.
+
+</details>
+
+<details>
+<summary><strong>Will this work on mobile?</strong></summary>
+
+Currently, ShortShield is desktop-only (browser extension). Mobile support is on the roadmap.
+
+</details>
+
+---
+
+## Roadmap
+
+- [x] Core blocking engine
+- [x] YouTube Shorts support
+- [x] TikTok support
+- [x] Instagram Reels support
+- [x] Whitelist system
+- [x] Custom rules
+- [x] Multi-browser support
+- [ ] Browser store release
+- [ ] Usage statistics dashboard
+- [ ] Scheduled blocking (focus hours)
+- [ ] Mobile browser support (Firefox Android)
+- [ ] Safari extension
+
+[View full roadmap →](https://github.com/adabana-saki/ShortShield/projects)
+
+---
 
 ## Development
 
@@ -101,38 +266,13 @@ Coming soon!
 ### Commands
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Start development server
-pnpm dev
-
-# Build for Chrome
-pnpm build:chrome
-
-# Build for Firefox
-pnpm build:firefox
-
-# Build for Edge
-pnpm build:edge
-
-# Build for all browsers
-pnpm build:all
-
-# Run unit tests
-pnpm test:unit
-
-# Run E2E tests
-pnpm test:e2e
-
-# Run linting
-pnpm lint
-
-# Run type checking
-pnpm typecheck
-
-# Check translations
-pnpm i18n:check
+pnpm install        # Install dependencies
+pnpm dev            # Start development server
+pnpm build:all      # Build for all browsers
+pnpm test:unit      # Run unit tests
+pnpm test:e2e       # Run E2E tests
+pnpm lint           # Run linting
+pnpm typecheck      # Run type checking
 ```
 
 ### Project Structure
@@ -150,39 +290,56 @@ shortshield/
 ├── public/
 │   ├── icons/          # Extension icons
 │   └── _locales/       # i18n messages
-├── tests/
-│   ├── unit/           # Unit tests
-│   ├── integration/    # Integration tests
-│   └── e2e/            # E2E tests
-└── docs/               # Documentation
+└── tests/              # Test suites
 ```
 
-## Privacy
-
-ShortShield is designed with privacy in mind:
-
-- **No data collection**: We don't collect any user data
-- **No external requests**: All functionality works offline
-- **Local storage only**: Settings are stored locally in your browser
-- **Open source**: Full transparency of what the code does
-
-See our [Privacy Policy](docs/PRIVACY_POLICY.md) for more details.
+---
 
 ## Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions! ShortShield is designed to be contributor-friendly.
+
+### Quick Start
+
+```bash
+git clone https://github.com/adabana-saki/ShortShield.git
+cd ShortShield
+pnpm install
+pnpm dev
+```
+
+### Good First Issues
+
+Looking to contribute? Check out issues labeled [`good first issue`](https://github.com/adabana-saki/ShortShield/labels/good%20first%20issue).
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ### Translations
 
-Help us translate ShortShield into more languages. See [TRANSLATING.md](TRANSLATING.md) for instructions.
+Help translate ShortShield! See [TRANSLATING.md](TRANSLATING.md) for instructions.
+
+---
+
+## Privacy
+
+ShortShield is built with privacy as a core principle:
+
+- **No data collection** — We don't collect any user data
+- **No external requests** — All functionality works offline
+- **Local storage only** — Settings stored in your browser
+- **Open source** — Full code transparency
+
+See our [Privacy Policy](docs/PRIVACY_POLICY.md) for details.
 
 ## Security
 
-For security issues, please see our [Security Policy](SECURITY.md).
+Found a vulnerability? Please see our [Security Policy](SECURITY.md).
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) — Use it, modify it, share it.
+
+---
 
 ## Acknowledgments
 
@@ -192,6 +349,16 @@ For security issues, please see our [Security Policy](SECURITY.md).
 
 ---
 
-**ShortShield** is developed and maintained by [ADALAB](https://adalab.pages.dev/)
+<div align="center">
+
+**Developed by [ADALAB](https://adalab.pages.dev/)**
 
 Project Lead: Adabana Saki
+
+---
+
+If ShortShield helped you reclaim your focus, consider giving it a ⭐
+
+[⭐ Star this project](https://github.com/adabana-saki/ShortShield)
+
+</div>

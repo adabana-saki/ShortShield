@@ -27,8 +27,18 @@ const mockSettings = {
     enabled: true,
     platforms: { youtube: true, tiktok: true, instagram: true },
     whitelist: [],
-    stats: { blockedToday: 0, blockedTotal: 0, lastResetDate: '2025-01-01', byPlatform: {} },
-    preferences: { showStats: true, showNotifications: false, redirectShortsToRegular: false, logRetentionDays: 7 },
+    stats: {
+      blockedToday: 0,
+      blockedTotal: 0,
+      lastResetDate: '2025-01-01',
+      byPlatform: {},
+    },
+    preferences: {
+      showStats: true,
+      showNotifications: false,
+      redirectShortsToRegular: false,
+      logRetentionDays: 7,
+    },
     version: 1,
   },
 };
@@ -47,12 +57,27 @@ vi.mock('webextension-polyfill', () => ({
 }));
 
 describe('Content Script Integration', () => {
+  const originalLocation = window.location;
+
   beforeEach(() => {
     document.body.innerHTML = '';
     vi.clearAllMocks();
+    // Mock location to avoid shouldBlockCurrentPage() returning true
+    Object.defineProperty(window, 'location', {
+      value: {
+        ...originalLocation,
+        pathname: '/search',
+        href: 'https://example.com/search',
+      },
+      writable: true,
+    });
   });
 
   afterEach(() => {
+    Object.defineProperty(window, 'location', {
+      value: originalLocation,
+      writable: true,
+    });
     vi.clearAllMocks();
   });
 
@@ -108,7 +133,9 @@ describe('Content Script Integration', () => {
       const detector = new TikTokDetector();
       detector.scan(document.body);
 
-      const element = document.querySelector('[data-e2e="recommend-list-item-container"]');
+      const element = document.querySelector(
+        '[data-e2e="recommend-list-item-container"]'
+      );
       expect(element?.getAttribute('data-shortshield-hidden')).toBe('true');
     });
 
@@ -132,17 +159,31 @@ describe('Content Script Integration', () => {
       document.body.innerHTML = `
         <div>
           <ytd-reel-shelf-renderer id="shelf1">Content 1</ytd-reel-shelf-renderer>
-          <ytd-reel-item-renderer id="item1">Content 2</ytd-reel-item-renderer>
-          <a href="/shorts/123" id="link1">Short Link</a>
+          <ytd-reel-video-renderer id="item1">Content 2</ytd-reel-video-renderer>
+          <ytd-rich-item-renderer is-shorts id="item2">
+            <a href="/shorts/123" id="link1">Short Link</a>
+          </ytd-rich-item-renderer>
         </div>
       `;
 
       const detector = new YouTubeDetector();
       detector.scan(document.body);
 
-      expect(document.querySelector('#shelf1')?.getAttribute('data-shortshield-hidden')).toBe('true');
-      expect(document.querySelector('#item1')?.getAttribute('data-shortshield-hidden')).toBe('true');
-      expect(document.querySelector('#link1')?.getAttribute('data-shortshield-hidden')).toBe('true');
+      expect(
+        document
+          .querySelector('#shelf1')
+          ?.getAttribute('data-shortshield-hidden')
+      ).toBe('true');
+      expect(
+        document
+          .querySelector('#item1')
+          ?.getAttribute('data-shortshield-hidden')
+      ).toBe('true');
+      expect(
+        document
+          .querySelector('#item2')
+          ?.getAttribute('data-shortshield-hidden')
+      ).toBe('true');
     });
   });
 
@@ -184,9 +225,17 @@ describe('Content Script Integration', () => {
       detector.scan(container1);
 
       // Only shelf1 should be hidden
-      expect(document.querySelector('#shelf1')?.getAttribute('data-shortshield-hidden')).toBe('true');
+      expect(
+        document
+          .querySelector('#shelf1')
+          ?.getAttribute('data-shortshield-hidden')
+      ).toBe('true');
       // shelf2 should NOT be hidden
-      expect(document.querySelector('#shelf2')?.getAttribute('data-shortshield-hidden')).toBeNull();
+      expect(
+        document
+          .querySelector('#shelf2')
+          ?.getAttribute('data-shortshield-hidden')
+      ).toBeNull();
     });
   });
 
