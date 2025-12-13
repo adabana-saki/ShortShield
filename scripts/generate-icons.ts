@@ -35,6 +35,7 @@ async function generateIcons(): Promise<void> {
       }
     | undefined;
   try {
+    // @ts-expect-error - sharp is optional and types may not be installed
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     sharpModule = await import('sharp');
   } catch {
@@ -55,6 +56,10 @@ async function generateIcons(): Promise<void> {
   }
 
   const svgBuffer = readFileSync(SVG_SOURCE);
+  if (!sharpModule) {
+    console.error('Sharp module not loaded');
+    process.exit(1);
+  }
   const sharp = sharpModule.default;
 
   // Generate each size

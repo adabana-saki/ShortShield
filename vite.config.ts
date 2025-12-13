@@ -46,6 +46,7 @@ export default defineConfig({
   plugins: [
     react(),
     crx({
+      // @ts-expect-error - CRXJS types are more permissive than Chrome types
       manifest,
       // Firefox-specific options
       ...(browser === 'firefox' && {
@@ -69,8 +70,8 @@ export default defineConfig({
     sourcemap: process.env.NODE_ENV === 'development',
     rollupOptions: {
       output: {
-        // Prevent inline scripts for CSP compliance
-        inlineDynamicImport: false,
+        // Use chunking for better CSP compliance
+        manualChunks: undefined,
       },
     },
     // Minimize for production

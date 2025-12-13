@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars, no-console */
+/* eslint-disable no-console */
 /**
  * Translation completeness tests
  */
@@ -77,13 +77,13 @@ describe('Translation Files', () => {
     });
 
     it('should have valid message structure for all entries', () => {
-      for (const [key, entry] of Object.entries(baseMessages)) {
+      for (const [_key, entry] of Object.entries(baseMessages)) {
         expect(typeof entry.message).toBe('string');
         expect(entry.message.trim()).not.toBe('');
 
         // Check placeholders if present
         if (entry.placeholders) {
-          for (const [phKey, ph] of Object.entries(entry.placeholders)) {
+          for (const [_phKey, ph] of Object.entries(entry.placeholders)) {
             expect(typeof ph.content).toBe('string');
           }
         }
@@ -91,7 +91,7 @@ describe('Translation Files', () => {
     });
 
     it('should not have empty messages', () => {
-      for (const [key, entry] of Object.entries(baseMessages)) {
+      for (const [_key, entry] of Object.entries(baseMessages)) {
         expect(entry.message.trim().length).toBeGreaterThan(0);
       }
     });
@@ -126,12 +126,12 @@ describe('Translation Files', () => {
       });
 
       it('should have valid message structure for all entries', () => {
-        for (const [key, entry] of Object.entries(messages)) {
+        for (const [_key, entry] of Object.entries(messages)) {
           expect(typeof entry.message).toBe('string');
 
           // Check placeholders if present
           if (entry.placeholders) {
-            for (const [phKey, ph] of Object.entries(entry.placeholders)) {
+            for (const [_phKey, ph] of Object.entries(entry.placeholders)) {
               expect(typeof ph.content).toBe('string');
             }
           }
@@ -139,7 +139,7 @@ describe('Translation Files', () => {
       });
 
       it('should not have empty messages', () => {
-        for (const [key, entry] of Object.entries(messages)) {
+        for (const [_key, entry] of Object.entries(messages)) {
           expect(entry.message.trim().length).toBeGreaterThan(0);
         }
       });

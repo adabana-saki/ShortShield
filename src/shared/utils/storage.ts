@@ -5,7 +5,12 @@
 
 import browser from 'webextension-polyfill';
 import { STORAGE_KEYS, DEFAULT_SETTINGS, LIMITS } from '@/shared/constants';
-import type { Settings, BlockLogEntry, CustomRule } from '@/shared/types';
+import type {
+  Settings,
+  SettingsUpdate,
+  BlockLogEntry,
+  CustomRule,
+} from '@/shared/types';
 import { isValidSettings, isValidBlockLogEntry } from '@/shared/types';
 import { createLogger } from './logger';
 
@@ -70,12 +75,12 @@ export async function saveSettings(settings: Settings): Promise<void> {
  * Update partial settings
  */
 export async function updateSettings(
-  update: Partial<Settings>
+  update: SettingsUpdate
 ): Promise<Settings> {
   const current = await getSettings();
   const updated: Settings = {
     ...current,
-    ...update,
+    enabled: update.enabled ?? current.enabled,
     platforms: {
       ...current.platforms,
       ...(update.platforms ?? {}),
@@ -84,6 +89,11 @@ export async function updateSettings(
       ...current.preferences,
       ...(update.preferences ?? {}),
     },
+    stats: {
+      ...current.stats,
+      ...(update.stats ?? {}),
+    },
+    whitelist: update.whitelist ?? current.whitelist,
   };
 
   await saveSettings(updated);

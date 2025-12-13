@@ -202,19 +202,19 @@ export function getRedirectPatterns(): readonly RedirectPattern[] {
 export function extractVideoId(url: string): string | null {
   // YouTube Shorts
   const shortsMatch = url.match(/\/shorts\/([a-zA-Z0-9_-]+)/);
-  if (shortsMatch) {
+  if (shortsMatch?.[1] !== undefined) {
     return shortsMatch[1];
   }
 
   // YouTube regular video
   const watchMatch = url.match(/[?&]v=([a-zA-Z0-9_-]+)/);
-  if (watchMatch) {
+  if (watchMatch?.[1] !== undefined) {
     return watchMatch[1];
   }
 
   // YouTube embed
   const embedMatch = url.match(/\/embed\/([a-zA-Z0-9_-]+)/);
-  if (embedMatch) {
+  if (embedMatch?.[1] !== undefined) {
     return embedMatch[1];
   }
 

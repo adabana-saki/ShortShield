@@ -1,0 +1,124 @@
+name: Good First Issue (Maintainers Only)
+description: Create a beginner-friendly issue for new contributors
+labels: ["good first issue", "help wanted"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **For maintainers only.** Use this template to create beginner-friendly issues.
+
+        ---
+
+  - type: input
+    id: title
+    attributes:
+      label: Task Title
+      description: A clear, concise title for the task
+      placeholder: "Add Spanish translation for popup UI"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Task Type
+      description: What kind of contribution is this?
+      options:
+        - Translation
+        - Documentation
+        - UI/UX
+        - Bug Fix
+        - Testing
+        - Feature (Simple)
+        - Refactoring
+    validations:
+      required: true
+
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty Level
+      description: How difficult is this task?
+      options:
+        - Beginner (No prior experience needed)
+        - Easy (Basic knowledge required)
+        - Medium (Some experience helpful)
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Detailed description of what needs to be done
+      placeholder: |
+        **What:**
+        Add Spanish (es) translation for the popup UI.
+
+        **Why:**
+        To make ShortShield accessible to Spanish-speaking users.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Implementation Steps
+      description: Clear, numbered steps to complete the task
+      placeholder: |
+        1. Create `public/_locales/es/messages.json`
+        2. Copy content from `public/_locales/en/messages.json`
+        3. Translate each message to Spanish
+        4. Run `pnpm i18n:check` to verify
+        5. Submit PR with translations
+    validations:
+      required: true
+
+  - type: textarea
+    id: files
+    attributes:
+      label: Files to Modify
+      description: List the specific files that need to be changed
+      placeholder: |
+        - `public/_locales/es/messages.json` (create new)
+        - `README.md` (add Spanish to language list)
+    validations:
+      required: true
+
+  - type: textarea
+    id: resources
+    attributes:
+      label: Helpful Resources
+      description: Links to documentation, examples, or related code
+      placeholder: |
+        - [Existing English translations](./public/_locales/en/messages.json)
+        - [Chrome i18n Documentation](https://developer.chrome.com/docs/extensions/reference/i18n/)
+
+  - type: input
+    id: time
+    attributes:
+      label: Estimated Time
+      description: Approximate time to complete
+      placeholder: "30-60 minutes"
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: How do we know the task is complete?
+      placeholder: |
+        - [ ] All UI strings are translated
+        - [ ] No placeholder text remains
+        - [ ] `pnpm i18n:check` passes
+        - [ ] Screenshots provided showing translated UI
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: mentorship
+    attributes:
+      label: Mentorship Available
+      description: Will a maintainer help guide the contributor?
+      options:
+        - label: A maintainer is available to help with this issue
+          required: false

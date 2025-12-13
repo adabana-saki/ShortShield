@@ -227,27 +227,6 @@ export class InstagramDetector extends BasePlatformDetector {
   }
 
   /**
-   * Check if article has Reels indicator
-   */
-  private hasReelsIndicator(article: HTMLElement): boolean {
-    // Check for clip/reels icon SVG
-    const svgs = article.querySelectorAll('svg');
-
-    for (const svg of svgs) {
-      const ariaLabel = svg.getAttribute('aria-label')?.toLowerCase() ?? '';
-
-      if (ariaLabel.includes('reel') || ariaLabel.includes('clip')) {
-        return true;
-      }
-    }
-
-    // Check for "Reels" text
-    const text = article.textContent?.toLowerCase() ?? '';
-
-    return text.includes('reels');
-  }
-
-  /**
    * Hide Reels navigation elements
    */
   private hideReelsNavigation(root: HTMLElement): void {
@@ -263,11 +242,14 @@ export class InstagramDetector extends BasePlatformDetector {
         link.getAttribute('role') === 'link' ||
         link.closest('[role="navigation"]') !== null;
 
-      if (isNavLink && link.dataset.shortshieldHidden !== 'true') {
+      if (isNavLink) {
         // Hide the parent nav item
         const navItem = link.closest('div, li');
 
-        if (navItem instanceof HTMLElement) {
+        if (
+          navItem instanceof HTMLElement &&
+          navItem.dataset.shortshieldHidden !== 'true'
+        ) {
           this.applyAction(navItem, 'hide');
         }
       }

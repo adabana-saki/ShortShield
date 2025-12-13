@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/no-unsafe-argument, @typescript-eslint/strict-boolean-expressions */
+/* eslint-disable @typescript-eslint/no-unsafe-argument, @typescript-eslint/strict-boolean-expressions */
 /**
  * i18n utilities tests
  */
 
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 // Mock webextension-polyfill before importing i18n
 vi.mock('webextension-polyfill', () => ({

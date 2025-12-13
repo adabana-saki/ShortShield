@@ -37,13 +37,23 @@ vi.mock('webextension-polyfill', () => ({
 
 describe('TikTokDetector', () => {
   let detector: TikTokDetector;
+  const originalLocation = window.location;
 
   beforeEach(() => {
     detector = new TikTokDetector();
     document.body.innerHTML = '';
+    // Mock location to avoid shouldBlockCurrentPage() returning true
+    Object.defineProperty(window, 'location', {
+      value: { ...originalLocation, pathname: '/search' },
+      writable: true,
+    });
   });
 
   afterEach(() => {
+    Object.defineProperty(window, 'location', {
+      value: originalLocation,
+      writable: true,
+    });
     vi.clearAllMocks();
   });
 
@@ -84,7 +94,9 @@ describe('TikTokDetector', () => {
       const root = document.body;
       detector.scan(root);
 
-      const element = document.querySelector('[data-e2e="recommend-list-item-container"]');
+      const element = document.querySelector(
+        '[data-e2e="recommend-list-item-container"]'
+      );
       expect(element?.getAttribute('data-shortshield-hidden')).toBe('true');
     });
 
@@ -100,7 +112,9 @@ describe('TikTokDetector', () => {
       const root = document.body;
       detector.scan(root);
 
-      const element = document.querySelector('[data-e2e="search-card-container"]');
+      const element = document.querySelector(
+        '[data-e2e="search-card-container"]'
+      );
       expect(element?.getAttribute('data-shortshield-hidden')).toBe('true');
     });
 
@@ -162,7 +176,9 @@ describe('TikTokDetector', () => {
       const root = document.body;
       detector.scan(root);
 
-      const element = document.querySelector('[data-e2e="recommend-list-item-container"]') as HTMLElement;
+      const element = document.querySelector(
+        '[data-e2e="recommend-list-item-container"]'
+      ) as HTMLElement;
       expect(element?.style.display).toBe('none');
     });
   });

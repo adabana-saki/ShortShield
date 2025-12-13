@@ -6,6 +6,7 @@
 import browser from 'webextension-polyfill';
 import type {
   Settings,
+  SettingsUpdate,
   LogEntry,
   WhitelistEntry,
   WhitelistId,
@@ -38,7 +39,7 @@ export async function getSettings(): Promise<Settings> {
     const validSettings = settings;
 
     // Check if daily stats need reset
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toISOString().split('T')[0] ?? '';
     if (validSettings.stats.lastResetDate !== today) {
       const resetSettings: Settings = {
         ...validSettings,
@@ -83,13 +84,13 @@ export async function saveSettings(settings: Settings): Promise<void> {
  * Update settings partially
  */
 export async function updateSettings(
-  update: Partial<Settings>
+  update: SettingsUpdate
 ): Promise<Settings> {
   const current = await getSettings();
 
   const updated: Settings = {
     ...current,
-    ...update,
+    enabled: update.enabled ?? current.enabled,
     platforms: {
       ...current.platforms,
       ...(update.platforms ?? {}),
@@ -103,6 +104,7 @@ export async function updateSettings(
       ...(update.stats ?? {}),
     },
     whitelist: update.whitelist ?? current.whitelist,
+    version: current.version,
   };
 
   await saveSettings(updated);
@@ -217,7 +219,6 @@ export async function addLogEntry(
     };
 
     // Add to beginning (most recent first)
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const updatedLogs = [newEntry, ...logs];
 
     // Trim to max size
@@ -228,7 +229,6 @@ export async function addLogEntry(
       settings.preferences.logRetentionDays * 24 * 60 * 60 * 1000;
     const cutoffTime = Date.now() - retentionMs;
     const filteredLogs = trimmedLogs.filter(
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       (log: LogEntry) => log.timestamp > cutoffTime
     );
 
@@ -282,13 +282,16 @@ export async function getStorageInfo(): Promise<{
   quota: number;
 }> {
   try {
+    // Save reference before type narrowing
+    const localStorage = browser.storage.local;
+
     // Chrome provides getBytesInUse, Firefox doesn't
-    type StorageWithBytesInUse = typeof browser.storage.local & {
+    type StorageWithBytesInUse = typeof localStorage & {
       getBytesInUse: (keys: string | string[] | null) => Promise<number>;
     };
-    if ('getBytesInUse' in browser.storage.local) {
+    if ('getBytesInUse' in localStorage) {
       const bytesInUse = await (
-        browser.storage.local as StorageWithBytesInUse
+        localStorage as StorageWithBytesInUse
       ).getBytesInUse(null);
       return {
         bytesInUse,
@@ -297,7 +300,6 @@ export async function getStorageInfo(): Promise<{
     }
 
     // Fallback: estimate from stringified data
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
     const data = await browser.storage.local.get(null);
     const bytesInUse = new Blob([JSON.stringify(data)]).size;
     return {

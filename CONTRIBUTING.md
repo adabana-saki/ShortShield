@@ -1,71 +1,199 @@
 # Contributing to ShortShield
 
-Thank you for your interest in contributing to ShortShield! This document provides guidelines and information for contributors.
+First off, **thank you** for considering contributing to ShortShield! Every contribution helps make the web a less distracting place.
 
 [日本語](CONTRIBUTING.ja.md)
 
-## Code of Conduct
+---
 
-Please read and follow our Code of Conduct. We expect all contributors to be respectful and constructive.
+## Table of Contents
 
-## How to Contribute
+- [Ways to Contribute](#ways-to-contribute)
+- [Getting Started](#getting-started)
+- [Development Setup](#development-setup)
+- [Making Your First Contribution](#making-your-first-contribution)
+- [Code Guidelines](#code-guidelines)
+- [Commit Guidelines](#commit-guidelines)
+- [Pull Request Process](#pull-request-process)
+- [Community](#community)
 
-### Reporting Bugs
+---
 
-1. Check if the bug has already been reported in [Issues](https://github.com/adabana-saki/ShortShield/issues)
-2. If not, create a new issue using the Bug Report template
-3. Include:
-   - Browser and version
-   - Extension version
-   - Steps to reproduce
-   - Expected vs actual behavior
-   - Screenshots if applicable
+## Ways to Contribute
 
-### Suggesting Features
+There are many ways to contribute, even if you don't write code:
 
-1. Check existing [Issues](https://github.com/adabana-saki/ShortShield/issues) for similar suggestions
-2. Create a new issue using the Feature Request template
-3. Describe:
-   - The problem you're trying to solve
-   - Your proposed solution
-   - Alternative solutions you've considered
+| Contribution Type    | Description                                   | Difficulty  |
+| -------------------- | --------------------------------------------- | ----------- |
+| **Report Bugs**      | Found something broken? Let us know!          | Easy        |
+| **Suggest Features** | Have an idea? We'd love to hear it            | Easy        |
+| **Improve Docs**     | Fix typos, add examples, clarify instructions | Easy        |
+| **Translate**        | Help make ShortShield accessible globally     | Easy-Medium |
+| **Fix Bugs**         | Squash those pesky bugs                       | Medium      |
+| **Add Features**     | Implement new functionality                   | Medium-Hard |
+| **Review PRs**       | Help review other contributions               | Medium      |
 
-### Contributing Code
+---
 
-#### Setup
+## Getting Started
 
-1. Fork the repository
-2. Clone your fork:
+### Find Something to Work On
+
+1. **Good First Issues**: Start here! Issues labeled [`good first issue`](https://github.com/adabana-saki/ShortShield/labels/good%20first%20issue) are specifically designed for new contributors.
+
+2. **Help Wanted**: Issues labeled [`help wanted`](https://github.com/adabana-saki/ShortShield/labels/help%20wanted) are ready for anyone to pick up.
+
+3. **Your Own Ideas**: Have something in mind? Open an issue first to discuss!
+
+### Before You Start
+
+1. **Check existing issues** to avoid duplicates
+2. **Comment on the issue** you want to work on (we'll assign it to you)
+3. **Ask questions** if anything is unclear — we're happy to help!
+
+---
+
+## Development Setup
+
+### Prerequisites
+
+- **Node.js** 20 or higher
+- **pnpm** 9 or higher
+- A modern browser (Chrome, Firefox, or Edge)
+
+### Quick Setup
+
+```bash
+# 1. Fork the repository on GitHub
+
+# 2. Clone your fork
+git clone https://github.com/YOUR_USERNAME/ShortShield.git
+cd ShortShield
+
+# 3. Install dependencies
+pnpm install
+
+# 4. Start development server
+pnpm dev
+
+# 5. Load the extension in your browser
+# Chrome: chrome://extensions → Developer mode → Load unpacked → dist/chrome
+# Firefox: about:debugging → Load Temporary Add-on → dist/firefox/manifest.json
+```
+
+### Useful Commands
+
+```bash
+pnpm dev            # Start dev server with hot reload
+pnpm build:chrome   # Build for Chrome
+pnpm build:firefox  # Build for Firefox
+pnpm build:edge     # Build for Edge
+pnpm build:all      # Build for all browsers
+pnpm test:unit      # Run unit tests
+pnpm test:e2e       # Run E2E tests
+pnpm lint           # Check code style
+pnpm lint:fix       # Auto-fix code style issues
+pnpm typecheck      # Check TypeScript types
+pnpm i18n:check     # Validate translations
+```
+
+---
+
+## Making Your First Contribution
+
+### Step-by-Step Guide
+
+1. **Fork & Clone**
+
    ```bash
    git clone https://github.com/YOUR_USERNAME/ShortShield.git
    cd ShortShield
    ```
-3. Install dependencies:
-   ```bash
-   pnpm install
-   ```
-4. Create a branch:
+
+2. **Create a Branch**
+
    ```bash
    git checkout -b feature/your-feature-name
+   # or
+   git checkout -b fix/bug-description
    ```
 
-#### Development Workflow
+3. **Make Your Changes**
+   - Write your code
+   - Add tests if applicable
+   - Update documentation if needed
 
-1. Make your changes
-2. Ensure code quality:
+4. **Test Your Changes**
+
    ```bash
    pnpm lint
    pnpm typecheck
    pnpm test:unit
    ```
-3. Test manually in browser
-4. Commit your changes (see Commit Guidelines below)
-5. Push to your fork
-6. Open a Pull Request
 
-#### Commit Guidelines
+5. **Commit Your Changes**
 
-We use conventional commits. Format:
+   ```bash
+   git add .
+   git commit -m "feat: add your feature description"
+   ```
+
+6. **Push & Create PR**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+   Then open a Pull Request on GitHub!
+
+---
+
+## Code Guidelines
+
+### TypeScript
+
+- Use TypeScript strict mode (already configured)
+- Avoid `any` type — use proper types
+- Export types that are used across files
+
+### React
+
+- Use functional components with hooks
+- Keep components small and focused
+- Use the existing UI component patterns
+
+### Styling
+
+- Use Tailwind CSS classes
+- Follow existing naming conventions
+- Keep styles scoped to components
+
+### File Structure
+
+```text
+src/
+├── background/      # Service worker logic
+├── content/         # Content scripts (DOM manipulation)
+├── popup/           # Popup UI components
+├── options/         # Options page components
+└── shared/          # Shared utilities, types, hooks
+```
+
+### Testing
+
+- Write tests for new features
+- Maintain existing test coverage
+- Test files go in `tests/` with `.test.ts` extension
+
+---
+
+## Commit Guidelines
+
+We use [Conventional Commits](https://www.conventionalcommits.org/). This helps us:
+
+- Generate changelogs automatically
+- Trigger semantic versioning
+- Keep history readable
+
+### Format
 
 ```
 type(scope): description
@@ -75,67 +203,94 @@ type(scope): description
 [optional footer]
 ```
 
-Types:
+### Types
 
-- `feat`: New feature
-- `fix`: Bug fix
-- `docs`: Documentation changes
-- `style`: Code style (formatting, semicolons, etc.)
-- `refactor`: Code refactoring
-- `test`: Adding or updating tests
-- `chore`: Maintenance tasks
+| Type       | Description                               |
+| ---------- | ----------------------------------------- |
+| `feat`     | New feature                               |
+| `fix`      | Bug fix                                   |
+| `docs`     | Documentation only                        |
+| `style`    | Code style (formatting, semicolons, etc.) |
+| `refactor` | Code refactoring (no feature/fix)         |
+| `test`     | Adding or updating tests                  |
+| `chore`    | Maintenance tasks                         |
+| `perf`     | Performance improvement                   |
 
-Examples:
+### Examples
 
+```bash
+feat(content): add TikTok live stream blocking
+fix(popup): resolve toggle not persisting state
+docs(readme): add troubleshooting section
+style(options): fix button alignment
+test(content): add tests for YouTube detector
 ```
-feat(content): add TikTok blocking support
-fix(popup): resolve toggle state not persisting
-docs(readme): update installation instructions
-```
 
-#### Pull Request Guidelines
+---
 
-1. Use the Pull Request template
-2. Reference any related issues
-3. Include screenshots for UI changes
-4. Ensure all checks pass
-5. Request review from maintainers
+## Pull Request Process
 
-### Code Style
+### Before Submitting
 
-- TypeScript strict mode
-- ESLint and Prettier for formatting
-- Follow existing patterns in the codebase
+- [ ] Code compiles without errors (`pnpm typecheck`)
+- [ ] Linting passes (`pnpm lint`)
+- [ ] Tests pass (`pnpm test:unit`)
+- [ ] Documentation updated (if applicable)
+- [ ] Commit messages follow conventions
+- [ ] Branch is up-to-date with `main`
 
-### Testing
+### PR Template
 
-- Write tests for new features
-- Maintain test coverage above 80%
-- Run tests before submitting:
-  ```bash
-  pnpm test:unit
-  pnpm test:e2e
-  ```
+When you open a PR, you'll see a template. Please fill it out completely:
 
-### Documentation
+- Describe what you changed and why
+- Link related issues
+- Add screenshots for UI changes
+- Mark the appropriate checkboxes
 
-- Update README if adding features
-- Add JSDoc comments for public APIs
-- Update translations if adding strings
+### Review Process
 
-## Security
+1. **Automated checks** run first (CI, linting, tests)
+2. **Maintainer review** within a few days
+3. **Address feedback** if requested
+4. **Merge!** Once approved, we'll merge your PR
 
-- Never commit sensitive data
-- Validate all user inputs
-- Follow secure coding practices
-- Report security issues privately (see SECURITY.md)
+### After Merge
 
-## Questions?
+- Your contribution is live!
+- You'll be added to our contributors list
+- The change will be included in the next release
 
-- Open a Discussion for general questions
-- Join our community chat (coming soon)
-- Check existing issues and discussions
+---
 
-## License
+## Community
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
+### Getting Help
+
+- **GitHub Issues**: For bugs and feature requests
+- **GitHub Discussions**: For questions and ideas
+- **Discord**: Coming soon!
+
+### Code of Conduct
+
+We expect all contributors to be respectful and constructive. See our Code of Conduct for details.
+
+### Recognition
+
+All contributors are recognized! Your GitHub avatar will appear in our README and release notes.
+
+---
+
+## Thank You!
+
+Every contribution matters. Whether you're fixing a typo, adding a translation, or implementing a new feature — you're helping make ShortShield better for everyone.
+
+**Questions?** Open an issue or start a discussion. We're here to help!
+
+---
+
+<div align="center">
+
+**Happy Contributing!**
+
+</div>

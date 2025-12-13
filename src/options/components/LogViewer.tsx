@@ -1,13 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /**
  * Log viewer component
  * Displays blocking history and allows filtering/clearing
  */
 
 import { useState, useCallback, useEffect } from 'react';
+import browser from 'webextension-polyfill';
 import { useI18n } from '@/shared/hooks/useI18n';
-import type { Platform, LogEntry } from '@/shared/types';
-import { sendMessage } from '@/shared/utils/storage';
+import type { Platform, LogEntry, MessageResponse } from '@/shared/types';
+import { createMessage } from '@/shared/types';
 import { createLogger } from '@/shared/utils/logger';
 
 const logger = createLogger('log-viewer');
@@ -87,10 +88,12 @@ export function LogViewer() {
     setError(null);
 
     try {
-      const response = await sendMessage({ type: 'GET_LOGS' });
+      const response = (await browser.runtime.sendMessage(
+        createMessage({ type: 'GET_LOGS' })
+      )) as MessageResponse<LogEntry[]>;
 
       if (response.success === true && Array.isArray(response.data)) {
-        setLogs(response.data as LogEntry[]);
+        setLogs(response.data);
       } else {
         setError(t('logsLoadError'));
       }
@@ -114,7 +117,9 @@ export function LogViewer() {
     setError(null);
 
     try {
-      const response = await sendMessage({ type: 'CLEAR_LOGS' });
+      const response = (await browser.runtime.sendMessage(
+        createMessage({ type: 'CLEAR_LOGS' })
+      )) as MessageResponse<void>;
 
       if (response.success === true) {
         setLogs([]);
@@ -192,7 +197,7 @@ export function LogViewer() {
           </select>
         </label>
         <span className="log-count">
-          {t('logsCount', { count: String(filteredLogs.length) })}
+          {t('logsCount', [String(filteredLogs.length)])}
         </span>
       </div>
 
@@ -225,10 +230,7 @@ export function LogViewer() {
                 {t('logsPrevious')}
               </button>
               <span>
-                {t('logsPage', {
-                  current: String(page + 1),
-                  total: String(totalPages),
-                })}
+                {t('logsPage', [String(page + 1), String(totalPages)])}
               </span>
               <button
                 onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
