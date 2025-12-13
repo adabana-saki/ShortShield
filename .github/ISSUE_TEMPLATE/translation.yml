@@ -1,0 +1,68 @@
+name: Translation / 翻訳
+description: Add or improve translations / 翻訳の追加や改善
+labels: ["i18n", "translation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping with translations!
+        翻訳へのご協力ありがとうございます！
+
+        Please read [TRANSLATING.md](../../TRANSLATING.md) before submitting.
+        提出前に [TRANSLATING.md](../../TRANSLATING.md) をお読みください。
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type / タイプ
+      description: What kind of translation work? / どの種類の翻訳作業ですか？
+      options:
+        - New Language / 新しい言語
+        - Update Existing / 既存の更新
+        - Fix Error / エラー修正
+    validations:
+      required: true
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language / 言語
+      description: Which language? / どの言語ですか？
+      options:
+        - Chinese (Simplified) / 中国語（簡体字）
+        - Chinese (Traditional) / 中国語（繁体字）
+        - Korean / 韓国語
+        - Spanish / スペイン語
+        - Portuguese (Brazil) / ポルトガル語（ブラジル）
+        - German / ドイツ語
+        - French / フランス語
+        - Other / その他
+    validations:
+      required: true
+
+  - type: input
+    id: other-language
+    attributes:
+      label: Other Language / その他の言語
+      description: If you selected "Other", specify the language / 「その他」を選択した場合、言語を指定
+      placeholder: "e.g., Italian (it)"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description / 説明
+      description: |
+        Describe what you're adding or changing.
+        追加または変更する内容を説明してください。
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist / チェックリスト
+      options:
+        - label: I have read TRANSLATING.md / TRANSLATING.mdを読みました
+          required: true
+        - label: I ran `pnpm i18n:check` / `pnpm i18n:check`を実行しました
+        - label: I tested in the actual extension / 実際の拡張機能でテストしました

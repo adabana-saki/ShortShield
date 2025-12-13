@@ -27,6 +27,11 @@
     "typecheck": "tsc --noEmit",
     "i18n:check": "tsx scripts/i18n-check.ts",
     "i18n:extract": "tsx scripts/i18n-extract.ts",
+    "manifest:sync": "tsx scripts/manifest-transform.ts sync",
+    "manifest:to-firefox": "tsx scripts/manifest-transform.ts to-firefox",
+    "manifest:to-chrome": "tsx scripts/manifest-transform.ts to-chrome",
+    "manifest:validate": "tsx scripts/manifest-transform.ts validate",
+    "icons:generate": "tsx scripts/generate-icons.ts",
     "prepare": "husky",
     "release": "pnpm build:all && pnpm test:unit",
     "audit:security": "pnpm audit --audit-level=moderate"

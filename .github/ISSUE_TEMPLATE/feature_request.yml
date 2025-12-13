@@ -1,0 +1,69 @@
+name: Feature Request / 機能リクエスト
+description: Suggest a new feature or improvement / 新機能や改善を提案
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for your feature suggestion!
+        機能の提案ありがとうございます！
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / 問題
+      description: |
+        What problem does this feature solve?
+        この機能はどんな問題を解決しますか？
+      placeholder: |
+        I'm always frustrated when...
+        〜の時にいつも困っています...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution / 提案する解決策
+      description: |
+        How would you like this to work?
+        どのように動作してほしいですか？
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered / 検討した代替案
+      description: |
+        Have you considered any alternative solutions?
+        代替の解決策を検討しましたか？
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Related Platform / 関連プラットフォーム
+      description: Which platform is this for? / どのプラットフォーム向けですか？
+      multiple: true
+      options:
+        - YouTube Shorts
+        - TikTok
+        - Instagram Reels
+        - All Platforms / すべて
+        - Popup UI / ポップアップUI
+        - Options Page / オプションページ
+        - Other / その他
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context / 追加情報
+      description: Screenshots, mockups, or other context / スクリーンショット、モックアップなど
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution / コントリビューション
+      description: Would you like to help implement this? / 実装に協力していただけますか？
+      options:
+        - label: I'd like to implement this feature / この機能を実装したい

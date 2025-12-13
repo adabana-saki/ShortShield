@@ -240,3 +240,163 @@ export function validateWhitelistInput(input: {
     },
   };
 }
+
+/**
+ * Validation result interface
+ */
+export interface ValidationResult {
+  isValid: boolean;
+  error?: string;
+}
+
+/**
+ * Alias for sanitizeTextInput
+ */
+export function sanitizeInput(input: string, maxLength?: number): string {
+  return sanitizeTextInput(input, maxLength);
+}
+
+/**
+ * Validate channel ID with result object
+ */
+export function validateChannelId(id: string): ValidationResult {
+  if (!id || typeof id !== 'string') {
+    return { isValid: false, error: 'Channel ID is required' };
+  }
+
+  const sanitized = sanitizeTextInput(id.trim(), 100);
+
+  if (!sanitized) {
+    return { isValid: false, error: 'Channel ID cannot be empty' };
+  }
+
+  // Accept @handle format (more permissive for TikTok/Instagram)
+  if (/^@[\w.]{1,50}$/.test(sanitized)) {
+    return { isValid: true };
+  }
+
+  // YouTube UC format
+  if (/^UC[\w-]{22}$/.test(sanitized)) {
+    return { isValid: true };
+  }
+
+  // Simple username (no @ prefix)
+  if (/^[\w.]{1,50}$/.test(sanitized)) {
+    return { isValid: true };
+  }
+
+  return { isValid: false, error: 'Invalid channel ID format' };
+}
+
+/**
+ * Validate URL with result object
+ */
+export function validateUrl(url: string): ValidationResult {
+  if (!url || typeof url !== 'string') {
+    return { isValid: false, error: 'URL is required' };
+  }
+
+  const sanitized = sanitizeTextInput(url.trim(), LIMITS.MAX_URL_LENGTH);
+
+  if (!sanitized) {
+    return { isValid: false, error: 'URL cannot be empty' };
+  }
+
+  if (!isValidUrlFormat(sanitized)) {
+    return { isValid: false, error: 'Invalid URL format. Must start with http:// or https://' };
+  }
+
+  return { isValid: true };
+}
+
+/**
+ * Validate CSS selector with result object
+ */
+export function validateCssSelector(selector: string): ValidationResult {
+  if (!selector || typeof selector !== 'string') {
+    return { isValid: false, error: 'Selector is required' };
+  }
+
+  const sanitized = sanitizeTextInput(selector.trim(), LIMITS.MAX_SELECTOR_LENGTH);
+
+  if (!sanitized) {
+    return { isValid: false, error: 'Selector cannot be empty' };
+  }
+
+  // Block potentially dangerous patterns
+  const dangerousPatterns = [
+    /javascript:/i,
+    /expression\s*\(/i,
+    /url\s*\(/i,
+    /@import/i,
+  ];
+
+  for (const pattern of dangerousPatterns) {
+    if (pattern.test(sanitized)) {
+      return { isValid: false, error: 'Selector contains unsafe patterns' };
+    }
+  }
+
+  // Try to validate by using querySelector
+  try {
+    document.createDocumentFragment().querySelector(sanitized);
+    return { isValid: true };
+  } catch {
+    return { isValid: false, error: 'Invalid CSS selector syntax' };
+  }
+}
+
+/**
+ * Validate settings object
+ */
+export function validateSettings(data: unknown): ValidationResult {
+  if (!data || typeof data !== 'object') {
+    return { isValid: false, error: 'Settings must be an object' };
+  }
+
+  const settings = data as Record<string, unknown>;
+
+  // Validate enabled
+  if ('enabled' in settings && typeof settings.enabled !== 'boolean') {
+    return { isValid: false, error: 'enabled must be a boolean' };
+  }
+
+  // Validate platforms
+  if ('platforms' in settings) {
+    if (typeof settings.platforms !== 'object' || settings.platforms === null) {
+      return { isValid: false, error: 'platforms must be an object' };
+    }
+
+    const platforms = settings.platforms as Record<string, unknown>;
+    for (const [key, value] of Object.entries(platforms)) {
+      if (!['youtube', 'tiktok', 'instagram'].includes(key)) {
+        return { isValid: false, error: `Unknown platform: ${key}` };
+      }
+      if (typeof value !== 'boolean') {
+        return { isValid: false, error: `Platform ${key} must be a boolean` };
+      }
+    }
+  }
+
+  // Validate whitelist
+  if ('whitelist' in settings) {
+    if (!Array.isArray(settings.whitelist)) {
+      return { isValid: false, error: 'whitelist must be an array' };
+    }
+
+    for (const entry of settings.whitelist) {
+      if (typeof entry !== 'object' || entry === null) {
+        return { isValid: false, error: 'whitelist entries must be objects' };
+      }
+    }
+  }
+
+  // Validate preferences
+  if ('preferences' in settings) {
+    if (typeof settings.preferences !== 'object' || settings.preferences === null) {
+      return { isValid: false, error: 'preferences must be an object' };
+    }
+  }
+
+  return { isValid: true };
+}

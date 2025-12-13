@@ -1,0 +1,134 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g., 1.0.0)'
+        required: true
+        type: string
+
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '9'
+
+jobs:
+  validate:
+    name: Validate Release
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "version=${{ inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Validate version format
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Invalid version format: $VERSION"
+            exit 1
+          fi
+
+  build:
+    name: Build Release
+    needs: validate
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chrome, firefox]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run tests
+        run: pnpm test:unit
+
+      - name: Build for ${{ matrix.browser }}
+        run: pnpm build:${{ matrix.browser }}
+        env:
+          NODE_ENV: production
+
+      - name: Create ZIP archive
+        run: |
+          cd dist/${{ matrix.browser }}
+          zip -r ../../shortshield-${{ matrix.browser }}-v${{ needs.validate.outputs.version }}.zip .
+
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: shortshield-${{ matrix.browser }}-v${{ needs.validate.outputs.version }}
+          path: shortshield-${{ matrix.browser }}-v${{ needs.validate.outputs.version }}.zip
+
+  release:
+    name: Create Release
+    needs: [validate, build]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Chrome artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: shortshield-chrome-v${{ needs.validate.outputs.version }}
+
+      - name: Download Firefox artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: shortshield-firefox-v${{ needs.validate.outputs.version }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.validate.outputs.version }}
+          name: ShortShield v${{ needs.validate.outputs.version }}
+          draft: true
+          prerelease: false
+          files: |
+            shortshield-chrome-v${{ needs.validate.outputs.version }}.zip
+            shortshield-firefox-v${{ needs.validate.outputs.version }}.zip
+          body: |
+            ## ShortShield v${{ needs.validate.outputs.version }}
+
+            ### Downloads
+            - **Chrome**: `shortshield-chrome-v${{ needs.validate.outputs.version }}.zip`
+            - **Firefox**: `shortshield-firefox-v${{ needs.validate.outputs.version }}.zip`
+
+            ### Installation
+            1. Download the ZIP file for your browser
+            2. Extract the contents
+            3. Load as unpacked extension (Chrome) or temporary add-on (Firefox)
+
+            ### Changes
+            See [CHANGELOG.md](CHANGELOG.md) for details.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,24 @@
+# Default owners for everything
+* @adalab/shortshield-maintainers
+
+# Documentation
+*.md @adalab/shortshield-docs
+docs/ @adalab/shortshield-docs
+
+# Translations
+public/_locales/ @adalab/shortshield-i18n
+
+# CI/CD
+.github/ @adalab/shortshield-maintainers
+
+# Core extension code
+src/background/ @adalab/shortshield-core
+src/content/ @adalab/shortshield-core
+src/shared/ @adalab/shortshield-core
+
+# UI components
+src/popup/ @adalab/shortshield-ui
+src/options/ @adalab/shortshield-ui
+
+# Tests
+tests/ @adalab/shortshield-qa
