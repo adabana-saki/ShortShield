@@ -1,0 +1,45 @@
+ShortShield - 屏蔽短视频
+
+重获你的时间！ShortShield屏蔽热门平台的短视频，帮助您保持专注和高效。
+
+功能
+
+- 屏蔽YouTube Shorts、TikTok和Instagram Reels
+- 一键开启/关闭屏蔽功能
+- 白名单特定频道或账号
+- 查看屏蔽统计数据
+- 不收集任何数据 - 尊重您的隐私
+
+为什么选择ShortShield？
+
+短视频被设计成让你无限滚动。ShortShield帮助您：
+
+- 专注于重要的事情
+- 减少无意识刷手机
+- 夺回每天的宝贵时间
+
+注重隐私
+
+- 不收集数据
+- 不使用外部服务器
+- 不进行追踪
+- 100%开源
+
+支持语言
+
+English, 日本語, 简体中文, 繁體中文, 한국어, Español, Português, Deutsch, Français
+
+开源
+
+ShortShield是开源的！查看代码、报告问题或贡献：
+https://github.com/adalab/shortshield
+
+权限说明
+
+- 存储：本地保存您的设置
+- 标签页：检测您访问的网站
+- 主机权限：在YouTube、TikTok、Instagram上运行
+
+支持
+
+有问题吗？在GitHub上提交Issue或查看我们的文档。

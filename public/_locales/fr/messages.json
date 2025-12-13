@@ -1,0 +1,428 @@
+{
+  "extensionName": {
+    "message": "ShortShield",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Bloquez les vidéos courtes et retrouvez votre concentration",
+    "description": "Description shown in browser extension store"
+  },
+  "popupTitle": {
+    "message": "ShortShield",
+    "description": "Title shown in the popup header"
+  },
+  "popupStatusEnabled": {
+    "message": "Blocage Actif",
+    "description": "Status text when blocking is enabled"
+  },
+  "popupStatusDisabled": {
+    "message": "Blocage en Pause",
+    "description": "Status text when blocking is disabled"
+  },
+  "popupToggleOn": {
+    "message": "Désactiver",
+    "description": "Button text to turn off blocking"
+  },
+  "popupToggleOff": {
+    "message": "Activer",
+    "description": "Button text to turn on blocking"
+  },
+  "popupPlatformYouTube": {
+    "message": "YouTube Shorts",
+    "description": "YouTube platform name"
+  },
+  "popupPlatformTikTok": {
+    "message": "TikTok",
+    "description": "TikTok platform name"
+  },
+  "popupPlatformInstagram": {
+    "message": "Instagram Reels",
+    "description": "Instagram platform name"
+  },
+  "popupStatsToday": {
+    "message": "Bloqués Aujourd'hui",
+    "description": "Label for today's block count"
+  },
+  "popupStatsTotal": {
+    "message": "Total Bloqué",
+    "description": "Label for total block count"
+  },
+  "popupOpenOptions": {
+    "message": "Paramètres",
+    "description": "Button text to open options page"
+  },
+  "optionsTitle": {
+    "message": "Paramètres ShortShield",
+    "description": "Title of the options page"
+  },
+  "optionsPlatformsTitle": {
+    "message": "Plateformes",
+    "description": "Section title for platform settings"
+  },
+  "optionsPlatformsDescription": {
+    "message": "Choisissez les plateformes à bloquer",
+    "description": "Description for platform settings section"
+  },
+  "optionsWhitelistTitle": {
+    "message": "Liste Blanche",
+    "description": "Section title for whitelist"
+  },
+  "optionsWhitelistDescription": {
+    "message": "Chaînes, URLs ou domaines que vous ne voulez pas bloquer",
+    "description": "Description for whitelist section"
+  },
+  "optionsWhitelistAdd": {
+    "message": "Ajouter à la Liste Blanche",
+    "description": "Button text to add whitelist entry"
+  },
+  "optionsWhitelistEmpty": {
+    "message": "Aucune entrée dans la liste blanche",
+    "description": "Message when whitelist is empty"
+  },
+  "optionsWhitelistTypeChannel": {
+    "message": "Chaîne",
+    "description": "Whitelist type: Channel"
+  },
+  "optionsWhitelistTypeUrl": {
+    "message": "URL",
+    "description": "Whitelist type: URL"
+  },
+  "optionsWhitelistTypeDomain": {
+    "message": "Domaine",
+    "description": "Whitelist type: Domain"
+  },
+  "optionsPreferencesTitle": {
+    "message": "Préférences",
+    "description": "Section title for preferences"
+  },
+  "optionsPreferencesShowStats": {
+    "message": "Afficher les statistiques",
+    "description": "Preference to show statistics"
+  },
+  "optionsPreferencesRedirect": {
+    "message": "Rediriger les Shorts vers des vidéos normales",
+    "description": "Preference to redirect shorts to regular videos"
+  },
+  "optionsPreferencesNotifications": {
+    "message": "Afficher les notifications lors du blocage",
+    "description": "Preference to show notifications"
+  },
+  "optionsDataTitle": {
+    "message": "Gestion des Données",
+    "description": "Section title for data management"
+  },
+  "optionsDataExport": {
+    "message": "Exporter les Paramètres",
+    "description": "Button to export settings"
+  },
+  "optionsDataImport": {
+    "message": "Importer les Paramètres",
+    "description": "Button to import settings"
+  },
+  "optionsDataClear": {
+    "message": "Effacer Toutes les Données",
+    "description": "Button to clear all data"
+  },
+  "optionsDataClearConfirm": {
+    "message": "Êtes-vous sûr de vouloir effacer toutes les données ? Cette action est irréversible.",
+    "description": "Confirmation message for clearing data"
+  },
+  "optionsLogsTitle": {
+    "message": "Historique des Blocages",
+    "description": "Section title for block logs"
+  },
+  "optionsLogsClear": {
+    "message": "Effacer l'Historique",
+    "description": "Button to clear block history"
+  },
+  "optionsLogsEmpty": {
+    "message": "Aucun contenu bloqué pour l'instant",
+    "description": "Message when no blocks have been logged"
+  },
+  "errorGeneric": {
+    "message": "Une erreur s'est produite. Veuillez réessayer.",
+    "description": "Generic error message"
+  },
+  "errorInvalidInput": {
+    "message": "Veuillez vérifier votre saisie et réessayer.",
+    "description": "Error message for invalid input"
+  },
+  "successSaved": {
+    "message": "Paramètres enregistrés",
+    "description": "Success message when settings are saved"
+  },
+  "successImported": {
+    "message": "Paramètres importés avec succès",
+    "description": "Success message when settings are imported"
+  },
+  "successExported": {
+    "message": "Paramètres exportés avec succès",
+    "description": "Success message when settings are exported"
+  },
+  "confirmDelete": {
+    "message": "Êtes-vous sûr de vouloir supprimer ceci ?",
+    "description": "Confirmation message for deletion"
+  },
+  "cancel": {
+    "message": "Annuler",
+    "description": "Cancel button text"
+  },
+  "save": {
+    "message": "Enregistrer",
+    "description": "Save button text"
+  },
+  "delete": {
+    "message": "Supprimer",
+    "description": "Delete button text"
+  },
+  "add": {
+    "message": "Ajouter",
+    "description": "Add button text"
+  },
+  "remove": {
+    "message": "Retirer",
+    "description": "Remove button text"
+  },
+  "statsBlockedCount": {
+    "message": "$COUNT$ bloqués",
+    "description": "Block count display",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "42"
+      }
+    }
+  },
+  "optionsTabPlatforms": {
+    "message": "Plateformes",
+    "description": "Tab name for platforms settings"
+  },
+  "optionsTabWhitelist": {
+    "message": "Liste Blanche",
+    "description": "Tab name for whitelist management"
+  },
+  "optionsTabLogs": {
+    "message": "Historique",
+    "description": "Tab name for block history"
+  },
+  "optionsTabBackup": {
+    "message": "Sauvegarde",
+    "description": "Tab name for export/import"
+  },
+  "optionsStatsTitle": {
+    "message": "Statistiques",
+    "description": "Section title for statistics"
+  },
+  "whitelistTitle": {
+    "message": "Gestion de la Liste Blanche",
+    "description": "Whitelist section title"
+  },
+  "whitelistDescription": {
+    "message": "Ajoutez des chaînes ou vidéos que vous souhaitez autoriser. Le contenu en liste blanche ne sera pas bloqué.",
+    "description": "Whitelist section description"
+  },
+  "whitelistTypeChannel": {
+    "message": "Chaîne",
+    "description": "Channel whitelist type"
+  },
+  "whitelistTypeVideo": {
+    "message": "Vidéo/URL",
+    "description": "Video/URL whitelist type"
+  },
+  "whitelistPlaceholderChannel": {
+    "message": "Entrez le nom ou l'ID de la chaîne (ex: @utilisateur)",
+    "description": "Placeholder for channel input"
+  },
+  "whitelistPlaceholderUrl": {
+    "message": "Entrez l'URL de la vidéo",
+    "description": "Placeholder for URL input"
+  },
+  "whitelistAdd": {
+    "message": "Ajouter",
+    "description": "Add button text"
+  },
+  "whitelistAdding": {
+    "message": "Ajout en cours...",
+    "description": "Adding in progress"
+  },
+  "whitelistRemove": {
+    "message": "Retirer",
+    "description": "Remove button aria label"
+  },
+  "whitelistEmpty": {
+    "message": "Aucun élément en liste blanche pour cette plateforme",
+    "description": "Empty whitelist message"
+  },
+  "whitelistErrorEmpty": {
+    "message": "Veuillez entrer une valeur",
+    "description": "Error for empty input"
+  },
+  "whitelistErrorInvalidChannel": {
+    "message": "Veuillez entrer un ID de chaîne valide",
+    "description": "Error for invalid channel"
+  },
+  "whitelistErrorInvalidUrl": {
+    "message": "Veuillez entrer une URL valide",
+    "description": "Error for invalid URL"
+  },
+  "whitelistErrorDuplicate": {
+    "message": "Cet élément est déjà en liste blanche",
+    "description": "Error for duplicate entry"
+  },
+  "whitelistErrorFailed": {
+    "message": "Échec de l'ajout à la liste blanche",
+    "description": "Error when adding fails"
+  },
+  "exportImportTitle": {
+    "message": "Sauvegarde et Restauration",
+    "description": "Export/import section title"
+  },
+  "exportImportDescription": {
+    "message": "Exportez vos paramètres vers un fichier ou importez des paramètres depuis une sauvegarde.",
+    "description": "Export/import section description"
+  },
+  "exportButton": {
+    "message": "Exporter les Paramètres",
+    "description": "Export button text"
+  },
+  "importButton": {
+    "message": "Importer les Paramètres",
+    "description": "Import button text"
+  },
+  "exporting": {
+    "message": "Exportation...",
+    "description": "Exporting in progress"
+  },
+  "importing": {
+    "message": "Importation...",
+    "description": "Importing in progress"
+  },
+  "exportDescription": {
+    "message": "Téléchargez vos paramètres actuels au format JSON",
+    "description": "Export action description"
+  },
+  "importDescription": {
+    "message": "Restaurez les paramètres depuis un fichier exporté précédemment",
+    "description": "Import action description"
+  },
+  "exportSuccess": {
+    "message": "Paramètres exportés avec succès",
+    "description": "Export success message"
+  },
+  "exportError": {
+    "message": "Échec de l'exportation des paramètres",
+    "description": "Export error message"
+  },
+  "importSuccess": {
+    "message": "Paramètres importés avec succès",
+    "description": "Import success message"
+  },
+  "importError": {
+    "message": "Échec de l'importation des paramètres",
+    "description": "Import error message"
+  },
+  "importErrorInvalidType": {
+    "message": "Veuillez sélectionner un fichier JSON",
+    "description": "Error for invalid file type"
+  },
+  "importErrorTooLarge": {
+    "message": "Le fichier est trop volumineux (max 1Mo)",
+    "description": "Error for file too large"
+  },
+  "importErrorInvalidJson": {
+    "message": "Format JSON invalide",
+    "description": "Error for invalid JSON"
+  },
+  "importErrorInvalidStructure": {
+    "message": "Structure de paramètres invalide",
+    "description": "Error for invalid structure"
+  },
+  "importErrorValidation": {
+    "message": "Échec de la validation des paramètres",
+    "description": "Error for validation failure"
+  },
+  "importWarning": {
+    "message": "Attention : L'importation des paramètres remplacera vos paramètres actuels. Assurez-vous d'exporter une sauvegarde d'abord.",
+    "description": "Import warning message"
+  },
+  "logsTitle": {
+    "message": "Historique des Blocages",
+    "description": "Logs section title"
+  },
+  "logsDescription": {
+    "message": "Consultez votre activité de blocage récente.",
+    "description": "Logs section description"
+  },
+  "logsRefresh": {
+    "message": "Actualiser",
+    "description": "Refresh button text"
+  },
+  "logsClear": {
+    "message": "Tout Effacer",
+    "description": "Clear logs button text"
+  },
+  "logsClearing": {
+    "message": "Effacement...",
+    "description": "Clearing in progress"
+  },
+  "logsClearConfirm": {
+    "message": "Êtes-vous sûr de vouloir effacer tout l'historique ?",
+    "description": "Confirm clear logs"
+  },
+  "logsClearError": {
+    "message": "Échec de l'effacement de l'historique",
+    "description": "Error clearing logs"
+  },
+  "logsLoadError": {
+    "message": "Échec du chargement de l'historique",
+    "description": "Error loading logs"
+  },
+  "logsFilterPlatform": {
+    "message": "Plateforme",
+    "description": "Platform filter label"
+  },
+  "logsFilterAll": {
+    "message": "Toutes les Plateformes",
+    "description": "All platforms filter option"
+  },
+  "logsCount": {
+    "message": "$COUNT$ entrées",
+    "description": "Log entry count",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "42"
+      }
+    }
+  },
+  "logsLoading": {
+    "message": "Chargement de l'historique...",
+    "description": "Loading logs message"
+  },
+  "logsEmpty": {
+    "message": "Aucun contenu bloqué dans l'historique",
+    "description": "Empty logs message"
+  },
+  "logsPrevious": {
+    "message": "Précédent",
+    "description": "Previous page button"
+  },
+  "logsNext": {
+    "message": "Suivant",
+    "description": "Next page button"
+  },
+  "logsPage": {
+    "message": "Page $CURRENT$ sur $TOTAL$",
+    "description": "Page indicator",
+    "placeholders": {
+      "current": {
+        "content": "$1",
+        "example": "1"
+      },
+      "total": {
+        "content": "$2",
+        "example": "5"
+      }
+    }
+  }
+}

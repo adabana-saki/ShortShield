@@ -1,0 +1,45 @@
+ShortShield - Kurzvideos blockieren
+
+Hol dir deine Zeit zurück! ShortShield blockiert Kurzvideos von beliebten Plattformen und hilft dir, fokussiert und produktiv zu bleiben.
+
+FUNKTIONEN
+
+- Blockiert YouTube Shorts, TikTok und Instagram Reels
+- Ein-Klick-Umschaltung zum Aktivieren/Deaktivieren
+- Whitelist für bestimmte Kanäle oder Konten
+- Statistiken über blockierte Inhalte anzeigen
+- Keine Datensammlung - deine Privatsphäre wird respektiert
+
+WARUM SHORTSHIELD?
+
+Kurzvideos sind darauf ausgelegt, dich endlos scrollen zu lassen. ShortShield hilft dir:
+
+- Dich auf das Wichtige zu konzentrieren
+- Gedankenloses Scrollen zu reduzieren
+- Stunden deines Tages zurückzugewinnen
+
+PRIVATSPHÄRE IM FOKUS
+
+- Keine Datensammlung
+- Keine externen Server
+- Kein Tracking
+- 100% Open Source
+
+SPRACHEN
+
+English, 日本語, 简体中文, 繁體中文, 한국어, Español, Português, Deutsch, Français
+
+OPEN SOURCE
+
+ShortShield ist Open Source! Sieh dir den Code an, melde Probleme oder trage bei:
+https://github.com/adalab/shortshield
+
+BERECHTIGUNGEN
+
+- Speicher: Speichert deine Einstellungen lokal
+- Tabs: Erkennt, welche Website du besuchst
+- Host-Berechtigungen: Läuft auf YouTube, TikTok, Instagram
+
+SUPPORT
+
+Fragen oder Probleme? Öffne ein Issue auf GitHub oder sieh in unsere Dokumentation.

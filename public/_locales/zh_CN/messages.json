@@ -1,0 +1,428 @@
+{
+  "extensionName": {
+    "message": "ShortShield",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "屏蔽短视频，重获专注力",
+    "description": "Description shown in browser extension store"
+  },
+  "popupTitle": {
+    "message": "ShortShield",
+    "description": "Title shown in the popup header"
+  },
+  "popupStatusEnabled": {
+    "message": "拦截已启用",
+    "description": "Status text when blocking is enabled"
+  },
+  "popupStatusDisabled": {
+    "message": "拦截已暂停",
+    "description": "Status text when blocking is disabled"
+  },
+  "popupToggleOn": {
+    "message": "关闭",
+    "description": "Button text to turn off blocking"
+  },
+  "popupToggleOff": {
+    "message": "开启",
+    "description": "Button text to turn on blocking"
+  },
+  "popupPlatformYouTube": {
+    "message": "YouTube Shorts",
+    "description": "YouTube platform name"
+  },
+  "popupPlatformTikTok": {
+    "message": "TikTok",
+    "description": "TikTok platform name"
+  },
+  "popupPlatformInstagram": {
+    "message": "Instagram Reels",
+    "description": "Instagram platform name"
+  },
+  "popupStatsToday": {
+    "message": "今日拦截",
+    "description": "Label for today's block count"
+  },
+  "popupStatsTotal": {
+    "message": "总计拦截",
+    "description": "Label for total block count"
+  },
+  "popupOpenOptions": {
+    "message": "设置",
+    "description": "Button text to open options page"
+  },
+  "optionsTitle": {
+    "message": "ShortShield 设置",
+    "description": "Title of the options page"
+  },
+  "optionsPlatformsTitle": {
+    "message": "平台",
+    "description": "Section title for platform settings"
+  },
+  "optionsPlatformsDescription": {
+    "message": "选择要拦截的平台",
+    "description": "Description for platform settings section"
+  },
+  "optionsWhitelistTitle": {
+    "message": "白名单",
+    "description": "Section title for whitelist"
+  },
+  "optionsWhitelistDescription": {
+    "message": "不想拦截的频道、网址或域名",
+    "description": "Description for whitelist section"
+  },
+  "optionsWhitelistAdd": {
+    "message": "添加到白名单",
+    "description": "Button text to add whitelist entry"
+  },
+  "optionsWhitelistEmpty": {
+    "message": "暂无白名单",
+    "description": "Message when whitelist is empty"
+  },
+  "optionsWhitelistTypeChannel": {
+    "message": "频道",
+    "description": "Whitelist type: Channel"
+  },
+  "optionsWhitelistTypeUrl": {
+    "message": "网址",
+    "description": "Whitelist type: URL"
+  },
+  "optionsWhitelistTypeDomain": {
+    "message": "域名",
+    "description": "Whitelist type: Domain"
+  },
+  "optionsPreferencesTitle": {
+    "message": "偏好设置",
+    "description": "Section title for preferences"
+  },
+  "optionsPreferencesShowStats": {
+    "message": "显示统计数据",
+    "description": "Preference to show statistics"
+  },
+  "optionsPreferencesRedirect": {
+    "message": "将短视频重定向到常规视频",
+    "description": "Preference to redirect shorts to regular videos"
+  },
+  "optionsPreferencesNotifications": {
+    "message": "拦截时显示通知",
+    "description": "Preference to show notifications"
+  },
+  "optionsDataTitle": {
+    "message": "数据管理",
+    "description": "Section title for data management"
+  },
+  "optionsDataExport": {
+    "message": "导出设置",
+    "description": "Button to export settings"
+  },
+  "optionsDataImport": {
+    "message": "导入设置",
+    "description": "Button to import settings"
+  },
+  "optionsDataClear": {
+    "message": "清除所有数据",
+    "description": "Button to clear all data"
+  },
+  "optionsDataClearConfirm": {
+    "message": "确定要清除所有数据吗？此操作无法撤销。",
+    "description": "Confirmation message for clearing data"
+  },
+  "optionsLogsTitle": {
+    "message": "拦截历史",
+    "description": "Section title for block logs"
+  },
+  "optionsLogsClear": {
+    "message": "清除历史",
+    "description": "Button to clear block history"
+  },
+  "optionsLogsEmpty": {
+    "message": "暂无拦截记录",
+    "description": "Message when no blocks have been logged"
+  },
+  "errorGeneric": {
+    "message": "发生错误，请重试。",
+    "description": "Generic error message"
+  },
+  "errorInvalidInput": {
+    "message": "请检查输入后重试。",
+    "description": "Error message for invalid input"
+  },
+  "successSaved": {
+    "message": "设置已保存",
+    "description": "Success message when settings are saved"
+  },
+  "successImported": {
+    "message": "设置导入成功",
+    "description": "Success message when settings are imported"
+  },
+  "successExported": {
+    "message": "设置导出成功",
+    "description": "Success message when settings are exported"
+  },
+  "confirmDelete": {
+    "message": "确定要删除吗？",
+    "description": "Confirmation message for deletion"
+  },
+  "cancel": {
+    "message": "取消",
+    "description": "Cancel button text"
+  },
+  "save": {
+    "message": "保存",
+    "description": "Save button text"
+  },
+  "delete": {
+    "message": "删除",
+    "description": "Delete button text"
+  },
+  "add": {
+    "message": "添加",
+    "description": "Add button text"
+  },
+  "remove": {
+    "message": "移除",
+    "description": "Remove button text"
+  },
+  "statsBlockedCount": {
+    "message": "已拦截 $COUNT$ 个",
+    "description": "Block count display",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "42"
+      }
+    }
+  },
+  "optionsTabPlatforms": {
+    "message": "平台",
+    "description": "Tab name for platforms settings"
+  },
+  "optionsTabWhitelist": {
+    "message": "白名单",
+    "description": "Tab name for whitelist management"
+  },
+  "optionsTabLogs": {
+    "message": "历史",
+    "description": "Tab name for block history"
+  },
+  "optionsTabBackup": {
+    "message": "备份",
+    "description": "Tab name for export/import"
+  },
+  "optionsStatsTitle": {
+    "message": "统计",
+    "description": "Section title for statistics"
+  },
+  "whitelistTitle": {
+    "message": "白名单管理",
+    "description": "Whitelist section title"
+  },
+  "whitelistDescription": {
+    "message": "添加您想允许的频道或视频。白名单内容不会被拦截。",
+    "description": "Whitelist section description"
+  },
+  "whitelistTypeChannel": {
+    "message": "频道",
+    "description": "Channel whitelist type"
+  },
+  "whitelistTypeVideo": {
+    "message": "视频/网址",
+    "description": "Video/URL whitelist type"
+  },
+  "whitelistPlaceholderChannel": {
+    "message": "输入频道名称或ID（如 @username）",
+    "description": "Placeholder for channel input"
+  },
+  "whitelistPlaceholderUrl": {
+    "message": "输入视频网址",
+    "description": "Placeholder for URL input"
+  },
+  "whitelistAdd": {
+    "message": "添加",
+    "description": "Add button text"
+  },
+  "whitelistAdding": {
+    "message": "添加中...",
+    "description": "Adding in progress"
+  },
+  "whitelistRemove": {
+    "message": "移除",
+    "description": "Remove button aria label"
+  },
+  "whitelistEmpty": {
+    "message": "该平台暂无白名单项目",
+    "description": "Empty whitelist message"
+  },
+  "whitelistErrorEmpty": {
+    "message": "请输入内容",
+    "description": "Error for empty input"
+  },
+  "whitelistErrorInvalidChannel": {
+    "message": "请输入有效的频道ID",
+    "description": "Error for invalid channel"
+  },
+  "whitelistErrorInvalidUrl": {
+    "message": "请输入有效的网址",
+    "description": "Error for invalid URL"
+  },
+  "whitelistErrorDuplicate": {
+    "message": "该项目已在白名单中",
+    "description": "Error for duplicate entry"
+  },
+  "whitelistErrorFailed": {
+    "message": "添加到白名单失败",
+    "description": "Error when adding fails"
+  },
+  "exportImportTitle": {
+    "message": "备份与恢复",
+    "description": "Export/import section title"
+  },
+  "exportImportDescription": {
+    "message": "将设置导出到文件或从备份导入设置。",
+    "description": "Export/import section description"
+  },
+  "exportButton": {
+    "message": "导出设置",
+    "description": "Export button text"
+  },
+  "importButton": {
+    "message": "导入设置",
+    "description": "Import button text"
+  },
+  "exporting": {
+    "message": "导出中...",
+    "description": "Exporting in progress"
+  },
+  "importing": {
+    "message": "导入中...",
+    "description": "Importing in progress"
+  },
+  "exportDescription": {
+    "message": "将当前设置下载为JSON文件",
+    "description": "Export action description"
+  },
+  "importDescription": {
+    "message": "从之前导出的文件恢复设置",
+    "description": "Import action description"
+  },
+  "exportSuccess": {
+    "message": "设置导出成功",
+    "description": "Export success message"
+  },
+  "exportError": {
+    "message": "设置导出失败",
+    "description": "Export error message"
+  },
+  "importSuccess": {
+    "message": "设置导入成功",
+    "description": "Import success message"
+  },
+  "importError": {
+    "message": "设置导入失败",
+    "description": "Import error message"
+  },
+  "importErrorInvalidType": {
+    "message": "请选择JSON文件",
+    "description": "Error for invalid file type"
+  },
+  "importErrorTooLarge": {
+    "message": "文件过大（最大1MB）",
+    "description": "Error for file too large"
+  },
+  "importErrorInvalidJson": {
+    "message": "无效的JSON格式",
+    "description": "Error for invalid JSON"
+  },
+  "importErrorInvalidStructure": {
+    "message": "无效的设置结构",
+    "description": "Error for invalid structure"
+  },
+  "importErrorValidation": {
+    "message": "设置验证失败",
+    "description": "Error for validation failure"
+  },
+  "importWarning": {
+    "message": "警告：导入设置将替换当前设置。请先导出备份。",
+    "description": "Import warning message"
+  },
+  "logsTitle": {
+    "message": "拦截历史",
+    "description": "Logs section title"
+  },
+  "logsDescription": {
+    "message": "查看您最近的拦截记录。",
+    "description": "Logs section description"
+  },
+  "logsRefresh": {
+    "message": "刷新",
+    "description": "Refresh button text"
+  },
+  "logsClear": {
+    "message": "全部清除",
+    "description": "Clear logs button text"
+  },
+  "logsClearing": {
+    "message": "清除中...",
+    "description": "Clearing in progress"
+  },
+  "logsClearConfirm": {
+    "message": "确定要清除所有历史记录吗？",
+    "description": "Confirm clear logs"
+  },
+  "logsClearError": {
+    "message": "清除历史失败",
+    "description": "Error clearing logs"
+  },
+  "logsLoadError": {
+    "message": "加载历史失败",
+    "description": "Error loading logs"
+  },
+  "logsFilterPlatform": {
+    "message": "平台",
+    "description": "Platform filter label"
+  },
+  "logsFilterAll": {
+    "message": "全部平台",
+    "description": "All platforms filter option"
+  },
+  "logsCount": {
+    "message": "$COUNT$ 条记录",
+    "description": "Log entry count",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "42"
+      }
+    }
+  },
+  "logsLoading": {
+    "message": "加载中...",
+    "description": "Loading logs message"
+  },
+  "logsEmpty": {
+    "message": "暂无拦截记录",
+    "description": "Empty logs message"
+  },
+  "logsPrevious": {
+    "message": "上一页",
+    "description": "Previous page button"
+  },
+  "logsNext": {
+    "message": "下一页",
+    "description": "Next page button"
+  },
+  "logsPage": {
+    "message": "第 $CURRENT$ 页，共 $TOTAL$ 页",
+    "description": "Page indicator",
+    "placeholders": {
+      "current": {
+        "content": "$1",
+        "example": "1"
+      },
+      "total": {
+        "content": "$2",
+        "example": "5"
+      }
+    }
+  }
+}
