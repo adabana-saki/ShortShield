@@ -1,0 +1,75 @@
+{
+  "platform": "youtube",
+  "version": "1.0.0",
+  "lastUpdated": "2025-01-01",
+  "selectors": [
+    {
+      "selector": "ytd-reel-shelf-renderer",
+      "description": "YouTube Shorts shelf on homepage",
+      "enabled": true,
+      "priority": 10
+    },
+    {
+      "selector": "ytd-rich-section-renderer:has([is-shorts])",
+      "description": "Rich section containing Shorts",
+      "enabled": true,
+      "priority": 9
+    },
+    {
+      "selector": "ytd-reel-item-renderer",
+      "description": "Individual Shorts item in shelf",
+      "enabled": true,
+      "priority": 8
+    },
+    {
+      "selector": "a[href*=\"/shorts/\"]",
+      "description": "Links to Shorts videos",
+      "enabled": true,
+      "priority": 7
+    },
+    {
+      "selector": "[page-subtype=\"shorts\"]",
+      "description": "Shorts page identifier",
+      "enabled": true,
+      "priority": 10
+    },
+    {
+      "selector": "ytd-guide-entry-renderer a[title=\"Shorts\"]",
+      "description": "Shorts navigation link",
+      "enabled": true,
+      "priority": 6
+    },
+    {
+      "selector": "ytd-mini-guide-entry-renderer[aria-label=\"Shorts\"]",
+      "description": "Mini guide Shorts entry",
+      "enabled": true,
+      "priority": 6
+    }
+  ],
+  "urlPatterns": [
+    {
+      "pattern": "/shorts/*",
+      "description": "Shorts video page",
+      "blockPage": true,
+      "enabled": true
+    },
+    {
+      "pattern": "/shorts",
+      "description": "Shorts browse page",
+      "blockPage": true,
+      "enabled": true
+    }
+  ],
+  "containers": [
+    {
+      "pattern": "ytd-rich-item-renderer",
+      "type": "selector",
+      "maxDepth": 5
+    },
+    {
+      "pattern": "ytd-video-renderer",
+      "type": "selector",
+      "maxDepth": 5
+    }
+  ]
+}

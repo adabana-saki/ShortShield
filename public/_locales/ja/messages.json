@@ -1,0 +1,428 @@
+{
+  "extensionName": {
+    "message": "ShortShield",
+    "description": "拡張機能の名前"
+  },
+  "extensionDescription": {
+    "message": "短尺動画をブロックして集中力を取り戻す",
+    "description": "ブラウザ拡張機能ストアに表示される説明"
+  },
+  "popupTitle": {
+    "message": "ShortShield",
+    "description": "ポップアップヘッダーに表示されるタイトル"
+  },
+  "popupStatusEnabled": {
+    "message": "ブロック有効",
+    "description": "ブロックが有効な時のステータステキスト"
+  },
+  "popupStatusDisabled": {
+    "message": "ブロック停止中",
+    "description": "ブロックが無効な時のステータステキスト"
+  },
+  "popupToggleOn": {
+    "message": "オフにする",
+    "description": "ブロックをオフにするボタンテキスト"
+  },
+  "popupToggleOff": {
+    "message": "オンにする",
+    "description": "ブロックをオンにするボタンテキスト"
+  },
+  "popupPlatformYouTube": {
+    "message": "YouTube ショート",
+    "description": "YouTubeプラットフォーム名"
+  },
+  "popupPlatformTikTok": {
+    "message": "TikTok",
+    "description": "TikTokプラットフォーム名"
+  },
+  "popupPlatformInstagram": {
+    "message": "Instagram リール",
+    "description": "Instagramプラットフォーム名"
+  },
+  "popupStatsToday": {
+    "message": "今日のブロック数",
+    "description": "今日のブロック数のラベル"
+  },
+  "popupStatsTotal": {
+    "message": "合計ブロック数",
+    "description": "合計ブロック数のラベル"
+  },
+  "popupOpenOptions": {
+    "message": "設定",
+    "description": "オプションページを開くボタンテキスト"
+  },
+  "optionsTitle": {
+    "message": "ShortShield 設定",
+    "description": "オプションページのタイトル"
+  },
+  "optionsPlatformsTitle": {
+    "message": "プラットフォーム",
+    "description": "プラットフォーム設定のセクションタイトル"
+  },
+  "optionsPlatformsDescription": {
+    "message": "ブロックするプラットフォームを選択",
+    "description": "プラットフォーム設定セクションの説明"
+  },
+  "optionsWhitelistTitle": {
+    "message": "ホワイトリスト",
+    "description": "ホワイトリストのセクションタイトル"
+  },
+  "optionsWhitelistDescription": {
+    "message": "ブロックしないチャンネル、URL、ドメイン",
+    "description": "ホワイトリストセクションの説明"
+  },
+  "optionsWhitelistAdd": {
+    "message": "ホワイトリストに追加",
+    "description": "ホワイトリストエントリを追加するボタンテキスト"
+  },
+  "optionsWhitelistEmpty": {
+    "message": "ホワイトリストは空です",
+    "description": "ホワイトリストが空の時のメッセージ"
+  },
+  "optionsWhitelistTypeChannel": {
+    "message": "チャンネル",
+    "description": "ホワイトリストタイプ: チャンネル"
+  },
+  "optionsWhitelistTypeUrl": {
+    "message": "URL",
+    "description": "ホワイトリストタイプ: URL"
+  },
+  "optionsWhitelistTypeDomain": {
+    "message": "ドメイン",
+    "description": "ホワイトリストタイプ: ドメイン"
+  },
+  "optionsPreferencesTitle": {
+    "message": "環境設定",
+    "description": "環境設定のセクションタイトル"
+  },
+  "optionsPreferencesShowStats": {
+    "message": "統計を表示",
+    "description": "統計を表示する設定"
+  },
+  "optionsPreferencesRedirect": {
+    "message": "ショートを通常動画にリダイレクト",
+    "description": "ショートを通常動画にリダイレクトする設定"
+  },
+  "optionsPreferencesNotifications": {
+    "message": "ブロック時に通知を表示",
+    "description": "通知を表示する設定"
+  },
+  "optionsDataTitle": {
+    "message": "データ管理",
+    "description": "データ管理のセクションタイトル"
+  },
+  "optionsDataExport": {
+    "message": "設定をエクスポート",
+    "description": "設定をエクスポートするボタン"
+  },
+  "optionsDataImport": {
+    "message": "設定をインポート",
+    "description": "設定をインポートするボタン"
+  },
+  "optionsDataClear": {
+    "message": "すべてのデータを削除",
+    "description": "すべてのデータを削除するボタン"
+  },
+  "optionsDataClearConfirm": {
+    "message": "本当にすべてのデータを削除しますか？この操作は元に戻せません。",
+    "description": "データ削除の確認メッセージ"
+  },
+  "optionsLogsTitle": {
+    "message": "ブロック履歴",
+    "description": "ブロックログのセクションタイトル"
+  },
+  "optionsLogsClear": {
+    "message": "履歴を削除",
+    "description": "ブロック履歴を削除するボタン"
+  },
+  "optionsLogsEmpty": {
+    "message": "ブロック履歴はありません",
+    "description": "ブロックが記録されていない時のメッセージ"
+  },
+  "errorGeneric": {
+    "message": "エラーが発生しました。もう一度お試しください。",
+    "description": "一般的なエラーメッセージ"
+  },
+  "errorInvalidInput": {
+    "message": "入力内容を確認して、もう一度お試しください。",
+    "description": "無効な入力のエラーメッセージ"
+  },
+  "successSaved": {
+    "message": "設定を保存しました",
+    "description": "設定が保存された時の成功メッセージ"
+  },
+  "successImported": {
+    "message": "設定のインポートに成功しました",
+    "description": "設定がインポートされた時の成功メッセージ"
+  },
+  "successExported": {
+    "message": "設定のエクスポートに成功しました",
+    "description": "設定がエクスポートされた時の成功メッセージ"
+  },
+  "confirmDelete": {
+    "message": "本当に削除しますか？",
+    "description": "削除の確認メッセージ"
+  },
+  "cancel": {
+    "message": "キャンセル",
+    "description": "キャンセルボタンテキスト"
+  },
+  "save": {
+    "message": "保存",
+    "description": "保存ボタンテキスト"
+  },
+  "delete": {
+    "message": "削除",
+    "description": "削除ボタンテキスト"
+  },
+  "add": {
+    "message": "追加",
+    "description": "追加ボタンテキスト"
+  },
+  "remove": {
+    "message": "削除",
+    "description": "削除ボタンテキスト"
+  },
+  "statsBlockedCount": {
+    "message": "$COUNT$ 件ブロック",
+    "description": "ブロック数の表示",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "42"
+      }
+    }
+  },
+  "optionsTabPlatforms": {
+    "message": "プラットフォーム",
+    "description": "プラットフォーム設定のタブ名"
+  },
+  "optionsTabWhitelist": {
+    "message": "ホワイトリスト",
+    "description": "ホワイトリスト管理のタブ名"
+  },
+  "optionsTabLogs": {
+    "message": "履歴",
+    "description": "ブロック履歴のタブ名"
+  },
+  "optionsTabBackup": {
+    "message": "バックアップ",
+    "description": "エクスポート/インポートのタブ名"
+  },
+  "optionsStatsTitle": {
+    "message": "統計情報",
+    "description": "統計情報のセクションタイトル"
+  },
+  "whitelistTitle": {
+    "message": "ホワイトリスト管理",
+    "description": "ホワイトリストセクションのタイトル"
+  },
+  "whitelistDescription": {
+    "message": "許可するチャンネルや動画を追加します。ホワイトリストに登録されたコンテンツはブロックされません。",
+    "description": "ホワイトリストセクションの説明"
+  },
+  "whitelistTypeChannel": {
+    "message": "チャンネル",
+    "description": "チャンネルホワイトリストタイプ"
+  },
+  "whitelistTypeVideo": {
+    "message": "動画/URL",
+    "description": "動画/URLホワイトリストタイプ"
+  },
+  "whitelistPlaceholderChannel": {
+    "message": "チャンネル名またはID（例: @username）を入力",
+    "description": "チャンネル入力のプレースホルダー"
+  },
+  "whitelistPlaceholderUrl": {
+    "message": "動画のURLを入力",
+    "description": "URL入力のプレースホルダー"
+  },
+  "whitelistAdd": {
+    "message": "追加",
+    "description": "追加ボタンテキスト"
+  },
+  "whitelistAdding": {
+    "message": "追加中...",
+    "description": "追加処理中"
+  },
+  "whitelistRemove": {
+    "message": "削除",
+    "description": "削除ボタンのaria-label"
+  },
+  "whitelistEmpty": {
+    "message": "このプラットフォームにホワイトリストはありません",
+    "description": "ホワイトリストが空のメッセージ"
+  },
+  "whitelistErrorEmpty": {
+    "message": "値を入力してください",
+    "description": "空入力エラー"
+  },
+  "whitelistErrorInvalidChannel": {
+    "message": "有効なチャンネルIDを入力してください",
+    "description": "無効なチャンネルエラー"
+  },
+  "whitelistErrorInvalidUrl": {
+    "message": "有効なURLを入力してください",
+    "description": "無効なURLエラー"
+  },
+  "whitelistErrorDuplicate": {
+    "message": "このアイテムは既にホワイトリストに登録されています",
+    "description": "重複エントリエラー"
+  },
+  "whitelistErrorFailed": {
+    "message": "ホワイトリストへの追加に失敗しました",
+    "description": "追加失敗エラー"
+  },
+  "exportImportTitle": {
+    "message": "バックアップと復元",
+    "description": "エクスポート/インポートセクションのタイトル"
+  },
+  "exportImportDescription": {
+    "message": "設定をファイルにエクスポートするか、バックアップから設定をインポートします。",
+    "description": "エクスポート/インポートセクションの説明"
+  },
+  "exportButton": {
+    "message": "設定をエクスポート",
+    "description": "エクスポートボタンテキスト"
+  },
+  "importButton": {
+    "message": "設定をインポート",
+    "description": "インポートボタンテキスト"
+  },
+  "exporting": {
+    "message": "エクスポート中...",
+    "description": "エクスポート処理中"
+  },
+  "importing": {
+    "message": "インポート中...",
+    "description": "インポート処理中"
+  },
+  "exportDescription": {
+    "message": "現在の設定をJSONファイルとしてダウンロード",
+    "description": "エクスポートアクションの説明"
+  },
+  "importDescription": {
+    "message": "以前エクスポートしたファイルから設定を復元",
+    "description": "インポートアクションの説明"
+  },
+  "exportSuccess": {
+    "message": "設定のエクスポートに成功しました",
+    "description": "エクスポート成功メッセージ"
+  },
+  "exportError": {
+    "message": "設定のエクスポートに失敗しました",
+    "description": "エクスポートエラーメッセージ"
+  },
+  "importSuccess": {
+    "message": "設定のインポートに成功しました",
+    "description": "インポート成功メッセージ"
+  },
+  "importError": {
+    "message": "設定のインポートに失敗しました",
+    "description": "インポートエラーメッセージ"
+  },
+  "importErrorInvalidType": {
+    "message": "JSONファイルを選択してください",
+    "description": "無効なファイルタイプエラー"
+  },
+  "importErrorTooLarge": {
+    "message": "ファイルが大きすぎます（最大1MB）",
+    "description": "ファイルサイズエラー"
+  },
+  "importErrorInvalidJson": {
+    "message": "無効なJSON形式です",
+    "description": "無効なJSONエラー"
+  },
+  "importErrorInvalidStructure": {
+    "message": "無効な設定構造です",
+    "description": "無効な構造エラー"
+  },
+  "importErrorValidation": {
+    "message": "設定の検証に失敗しました",
+    "description": "検証失敗エラー"
+  },
+  "importWarning": {
+    "message": "警告: 設定をインポートすると、現在の設定が置き換えられます。まずバックアップをエクスポートしてください。",
+    "description": "インポート警告メッセージ"
+  },
+  "logsTitle": {
+    "message": "ブロック履歴",
+    "description": "ログセクションのタイトル"
+  },
+  "logsDescription": {
+    "message": "最近のブロック活動を表示します。",
+    "description": "ログセクションの説明"
+  },
+  "logsRefresh": {
+    "message": "更新",
+    "description": "更新ボタンテキスト"
+  },
+  "logsClear": {
+    "message": "すべて削除",
+    "description": "ログ削除ボタンテキスト"
+  },
+  "logsClearing": {
+    "message": "削除中...",
+    "description": "削除処理中"
+  },
+  "logsClearConfirm": {
+    "message": "本当にすべての履歴を削除しますか？",
+    "description": "ログ削除の確認"
+  },
+  "logsClearError": {
+    "message": "履歴の削除に失敗しました",
+    "description": "ログ削除エラー"
+  },
+  "logsLoadError": {
+    "message": "履歴の読み込みに失敗しました",
+    "description": "ログ読み込みエラー"
+  },
+  "logsFilterPlatform": {
+    "message": "プラットフォーム",
+    "description": "プラットフォームフィルターラベル"
+  },
+  "logsFilterAll": {
+    "message": "すべて",
+    "description": "すべてのプラットフォームフィルターオプション"
+  },
+  "logsCount": {
+    "message": "$COUNT$ 件",
+    "description": "ログエントリ数",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "42"
+      }
+    }
+  },
+  "logsLoading": {
+    "message": "履歴を読み込み中...",
+    "description": "ログ読み込みメッセージ"
+  },
+  "logsEmpty": {
+    "message": "履歴にブロックされたコンテンツはありません",
+    "description": "ログが空のメッセージ"
+  },
+  "logsPrevious": {
+    "message": "前へ",
+    "description": "前ページボタン"
+  },
+  "logsNext": {
+    "message": "次へ",
+    "description": "次ページボタン"
+  },
+  "logsPage": {
+    "message": "$CURRENT$ / $TOTAL$ ページ",
+    "description": "ページインジケーター",
+    "placeholders": {
+      "current": {
+        "content": "$1",
+        "example": "1"
+      },
+      "total": {
+        "content": "$2",
+        "example": "5"
+      }
+    }
+  }
+}

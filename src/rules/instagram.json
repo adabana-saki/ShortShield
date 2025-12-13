@@ -1,0 +1,73 @@
+{
+  "platform": "instagram",
+  "version": "1.0.0",
+  "lastUpdated": "2025-01-01",
+  "selectors": [
+    {
+      "selector": "[href*=\"/reels/\"]",
+      "description": "Reels tab content links",
+      "enabled": true,
+      "priority": 10
+    },
+    {
+      "selector": "[href*=\"/reel/\"]",
+      "description": "Individual reel links",
+      "enabled": true,
+      "priority": 10
+    },
+    {
+      "selector": "a[href^=\"/reels\"]",
+      "description": "Reels section in explore",
+      "enabled": true,
+      "priority": 9
+    },
+    {
+      "selector": "article a[href*=\"/reel/\"]",
+      "description": "Reel posts in articles",
+      "enabled": true,
+      "priority": 8
+    },
+    {
+      "selector": "a[href=\"/reels/\"]",
+      "description": "Reels navigation link",
+      "enabled": true,
+      "priority": 7
+    }
+  ],
+  "urlPatterns": [
+    {
+      "pattern": "/reels/*",
+      "description": "Reels browse page",
+      "blockPage": true,
+      "enabled": true
+    },
+    {
+      "pattern": "/reel/*",
+      "description": "Individual reel page",
+      "blockPage": true,
+      "enabled": true
+    }
+  ],
+  "containers": [
+    {
+      "pattern": "article",
+      "type": "selector",
+      "maxDepth": 5
+    },
+    {
+      "pattern": "_aagw",
+      "type": "class",
+      "maxDepth": 5
+    },
+    {
+      "pattern": "_aabd",
+      "type": "class",
+      "maxDepth": 5
+    },
+    {
+      "pattern": "x1lliihq",
+      "type": "class",
+      "maxDepth": 5
+    }
+  ]
+}
