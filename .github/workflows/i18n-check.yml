@@ -1,0 +1,55 @@
+name: i18n Check
+
+on:
+  push:
+    paths:
+      - 'public/_locales/**'
+      - 'src/**/*.ts'
+      - 'src/**/*.tsx'
+  pull_request:
+    paths:
+      - 'public/_locales/**'
+      - 'src/**/*.ts'
+      - 'src/**/*.tsx'
+
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '9'
+
+jobs:
+  i18n-check:
+    name: Translation Completeness Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check translation completeness
+        run: pnpm i18n:check
+
+      - name: Report missing translations
+        if: failure()
+        run: |
+          echo "## Translation Check Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Some translations are missing or incomplete." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Please run \`pnpm i18n:check\` locally to see details." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Supported Languages" >> $GITHUB_STEP_SUMMARY
+          echo "- English (en)" >> $GITHUB_STEP_SUMMARY
+          echo "- Japanese (ja)" >> $GITHUB_STEP_SUMMARY

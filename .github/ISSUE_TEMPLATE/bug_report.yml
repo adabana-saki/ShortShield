@@ -1,0 +1,102 @@
+name: Bug Report / バグ報告
+description: Report a bug or unexpected behavior / バグや予期しない動作を報告
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug! Please fill out the form below.
+        バグ報告ありがとうございます！以下のフォームにご記入ください。
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser / ブラウザ
+      description: Which browser are you using? / どのブラウザを使用していますか？
+      options:
+        - Chrome
+        - Firefox
+        - Edge
+        - Brave
+        - Opera
+        - Other / その他
+    validations:
+      required: true
+
+  - type: input
+    id: browser-version
+    attributes:
+      label: Browser Version / ブラウザバージョン
+      description: What version of the browser? / ブラウザのバージョンは？
+      placeholder: "e.g., 120.0.6099.109"
+    validations:
+      required: true
+
+  - type: input
+    id: extension-version
+    attributes:
+      label: Extension Version / 拡張機能バージョン
+      description: What version of ShortShield? / ShortShieldのバージョンは？
+      placeholder: "e.g., 0.1.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform / プラットフォーム
+      description: Which platform is affected? / どのプラットフォームで発生していますか？
+      multiple: true
+      options:
+        - YouTube Shorts
+        - TikTok
+        - Instagram Reels
+        - Popup UI / ポップアップUI
+        - Options Page / オプションページ
+        - Other / その他
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description / バグの説明
+      description: |
+        What happened? / 何が起こりましたか？
+      placeholder: |
+        Describe the bug clearly and concisely.
+        バグを明確かつ簡潔に説明してください。
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior / 期待される動作
+      description: What did you expect to happen? / 何が起こることを期待していましたか？
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce / 再現手順
+      description: How can we reproduce the issue? / どうすれば問題を再現できますか？
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots / スクリーンショット
+      description: Add screenshots if applicable / 該当する場合はスクリーンショットを追加
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context / 追加情報
+      description: Any other relevant information / その他の関連情報

@@ -4,8 +4,7 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.x.x   | :white_check_mark: |
-| < 1.0   | :x:                |
+| 0.1.x   | :white_check_mark: |
 
 ## Reporting a Vulnerability
 
@@ -65,8 +64,7 @@ We regularly audit our dependencies using:
 
 | バージョン | サポート状況       |
 | ---------- | ------------------ |
-| 1.x.x      | :white_check_mark: |
-| < 1.0      | :x:                |
+| 0.1.x      | :white_check_mark: |
 
 ## 脆弱性の報告
 

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Shield background -->
+  <path d="M64 8 L116 28 L116 60 C116 92 92 116 64 124 C36 116 12 92 12 60 L12 28 Z"
+        fill="#3B82F6" stroke="#1E40AF" stroke-width="4"/>
+
+  <!-- Inner shield highlight -->
+  <path d="M64 16 L108 33 L108 58 C108 86 87 107 64 114 C41 107 20 86 20 58 L20 33 Z"
+        fill="#60A5FA"/>
+
+  <!-- Block symbol (circle with line) -->
+  <circle cx="64" cy="64" r="28" fill="none" stroke="#FFFFFF" stroke-width="6"/>
+  <line x1="44" y1="44" x2="84" y2="84" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Play button that's being blocked -->
+  <polygon points="56,52 56,76 76,64" fill="#FFFFFF" opacity="0.5"/>
+</svg>

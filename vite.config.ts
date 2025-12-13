@@ -2,14 +2,41 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { crx } from '@crxjs/vite-plugin';
 import { resolve } from 'path';
-import manifest from './manifest.json';
+import { existsSync, readFileSync } from 'fs';
 
-const browser = process.env.BROWSER || 'chrome';
+// Determine target browser from environment
+const browser = (process.env.BROWSER || 'chrome') as 'chrome' | 'firefox';
+
+/**
+ * Load manifest based on target browser
+ * Chrome: Uses MV3 manifest.json
+ * Firefox: Uses MV2 manifest.firefox.json
+ */
+function loadManifest() {
+  const manifestPath = browser === 'firefox'
+    ? resolve(__dirname, 'manifest.firefox.json')
+    : resolve(__dirname, 'manifest.json');
+
+  if (!existsSync(manifestPath)) {
+    throw new Error(`Manifest not found: ${manifestPath}`);
+  }
+
+  const content = readFileSync(manifestPath, 'utf-8');
+  return JSON.parse(content);
+}
+
+const manifest = loadManifest();
 
 export default defineConfig({
   plugins: [
     react(),
-    crx({ manifest }),
+    crx({
+      manifest,
+      // Firefox-specific options
+      ...(browser === 'firefox' && {
+        browser: 'firefox',
+      }),
+    }),
   ],
   resolve: {
     alias: {

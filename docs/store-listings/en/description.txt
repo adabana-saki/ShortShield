@@ -1,0 +1,45 @@
+ShortShield - Block Short-Form Videos
+
+Take back your time! ShortShield blocks short-form videos from popular platforms, helping you stay focused and productive.
+
+FEATURES
+
+- Block YouTube Shorts, TikTok, and Instagram Reels
+- One-click toggle to enable/disable blocking
+- Whitelist specific channels or accounts you want to allow
+- View statistics on blocked content
+- No data collection - your privacy is respected
+
+WHY SHORTSHIELD?
+
+Short-form videos are designed to keep you scrolling endlessly. ShortShield helps you:
+
+- Focus on what matters
+- Reduce mindless scrolling
+- Reclaim hours of your day
+
+PRIVACY FOCUSED
+
+- No data collection
+- No external servers
+- No tracking
+- 100% open source
+
+LANGUAGES
+
+English, Japanese, Chinese (Simplified/Traditional), Korean, Spanish, Portuguese, German, French
+
+OPEN SOURCE
+
+ShortShield is open source! Check the code, report issues, or contribute:
+https://github.com/adalab/shortshield
+
+PERMISSIONS
+
+- Storage: Save your settings locally
+- Tabs: Detect which website you're on
+- Host permissions: Run on YouTube, TikTok, Instagram
+
+SUPPORT
+
+Questions or issues? Open an issue on GitHub or check our documentation.
