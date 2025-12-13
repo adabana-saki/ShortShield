@@ -8,7 +8,7 @@
 
 ShortShield is a browser extension that helps you stay focused by blocking short-form video content on YouTube Shorts, TikTok, and Instagram Reels.
 
-[日本語](README.ja.md)
+[日本語](README.ja.md) | [简体中文](README.zh-CN.md) | [한국어](README.ko.md)
 
 ## Features
 
@@ -32,17 +32,20 @@ Coming soon!
 ### Manual Installation (Development)
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/adalab/shortshield.git
    cd shortshield
    ```
 
 2. Install dependencies:
+
    ```bash
    pnpm install
    ```
 
 3. Build the extension:
+
    ```bash
    # For Chrome
    pnpm build:chrome

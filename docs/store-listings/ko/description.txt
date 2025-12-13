@@ -1,0 +1,45 @@
+ShortShield - 숏폼 동영상 차단
+
+시간을 되찾으세요! ShortShield는 인기 플랫폼의 숏폼 동영상을 차단하여 집중력과 생산성 유지를 도와줍니다.
+
+기능
+
+- YouTube Shorts, TikTok, Instagram Reels 차단
+- 원클릭으로 차단 켜기/끄기
+- 특정 채널이나 계정을 화이트리스트 등록
+- 차단 통계 확인
+- 데이터 수집 없음 - 개인정보 보호
+
+왜 ShortShield인가요?
+
+숏폼 동영상은 무한 스크롤을 유도하도록 설계되어 있습니다. ShortShield가 도와드립니다:
+
+- 중요한 일에 집중
+- 무의식적인 스크롤 줄이기
+- 하루의 소중한 시간 되찾기
+
+개인정보 보호 중심
+
+- 데이터 수집 없음
+- 외부 서버 없음
+- 추적 없음
+- 100% 오픈 소스
+
+지원 언어
+
+English, 日本語, 简体中文, 繁體中文, 한국어, Español, Português, Deutsch, Français
+
+오픈 소스
+
+ShortShield는 오픈 소스입니다! 코드 확인, 문제 신고, 기여하기:
+https://github.com/adalab/shortshield
+
+권한 설명
+
+- 저장소: 설정을 로컬에 저장
+- 탭: 방문 중인 웹사이트 감지
+- 호스트 권한: YouTube, TikTok, Instagram에서 실행
+
+지원
+
+질문이나 문제가 있으신가요? GitHub에서 Issue를 열거나 문서를 확인하세요.
