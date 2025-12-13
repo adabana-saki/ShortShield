@@ -23,9 +23,7 @@ interface ObserverState {
 /**
  * Create a managed mutation observer
  */
-export function createManagedObserver(
-  detector: BasePlatformDetector
-): {
+export function createManagedObserver(detector: BasePlatformDetector): {
   observe: (target: HTMLElement, options?: MutationObserverInit) => void;
   disconnect: () => void;
   process: () => void;

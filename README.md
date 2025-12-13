@@ -37,9 +37,9 @@ The result? Fragmented attention, reduced productivity, and hours lost daily.
 
 **ShortShield blocks short-form video content at the source** — before willpower even enters the equation.
 
-```
-YouTube Shorts → Blocked
-TikTok Feed   → Blocked
+```text
+YouTube Shorts  → Blocked
+TikTok Feed     → Blocked
 Instagram Reels → Blocked
 ```
 
@@ -99,11 +99,11 @@ _One click to block. One click to unblock. Full control._
 
 ### Browser Stores
 
-| Browser | Status      | Link                  |
-| ------- | ----------- | --------------------- |
-| Chrome  | Coming Soon | [Chrome Web Store](#) |
-| Firefox | Coming Soon | [Firefox Add-ons](#)  |
-| Edge    | Coming Soon | [Edge Add-ons](#)     |
+| Browser | Status      | Link             |
+| ------- | ----------- | ---------------- |
+| Chrome  | Coming Soon | Chrome Web Store |
+| Firefox | Coming Soon | Firefox Add-ons  |
+| Edge    | Coming Soon | Edge Add-ons     |
 
 ### Manual Installation (Development)
 
@@ -357,7 +357,7 @@ Project Lead: Adabana Saki
 
 ---
 
-**If ShortShield helped you reclaim your focus, consider giving it a ⭐**
+If ShortShield helped you reclaim your focus, consider giving it a ⭐
 
 [⭐ Star this project](https://github.com/adabana-saki/ShortShield)
 

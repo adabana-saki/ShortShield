@@ -168,7 +168,7 @@ pnpm i18n:check     # Validate translations
 
 ### File Structure
 
-```
+```text
 src/
 ├── background/      # Service worker logic
 ├── content/         # Content scripts (DOM manipulation)
