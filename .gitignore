@@ -76,3 +76,4 @@ yarn.lock
 
 # Development guides (internal use only)
 shortblocker-global-guide*.md
+.internal/
