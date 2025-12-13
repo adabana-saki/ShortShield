@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-argument */
 /**
  * Log viewer component
  * Displays blocking history and allows filtering/clearing
@@ -43,7 +44,9 @@ function LogItem({ log }: LogItemProps) {
       <div className="log-info">
         <div className="log-main">
           <span className="log-platform">{log.platform}</span>
-          <span className="log-action">{actionLabels[log.action] ?? log.action}</span>
+          <span className="log-action">
+            {actionLabels[log.action] ?? log.action}
+          </span>
         </div>
         {log.url && (
           <a
@@ -141,7 +144,10 @@ export function LogViewer() {
 
   // Paginate logs
   const startIndex = page * LOGS_PER_PAGE;
-  const paginatedLogs = filteredLogs.slice(startIndex, startIndex + LOGS_PER_PAGE);
+  const paginatedLogs = filteredLogs.slice(
+    startIndex,
+    startIndex + LOGS_PER_PAGE
+  );
   const totalPages = Math.ceil(filteredLogs.length / LOGS_PER_PAGE);
 
   return (

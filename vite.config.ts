@@ -8,21 +8,27 @@ import { existsSync, readFileSync } from 'fs';
 const browser = (process.env.BROWSER || 'chrome') as 'chrome' | 'firefox';
 
 /**
+ * Manifest type for crx plugin
+ */
+type CrxManifest = chrome.runtime.ManifestV3 | chrome.runtime.ManifestV2;
+
+/**
  * Load manifest based on target browser
  * Chrome: Uses MV3 manifest.json
  * Firefox: Uses MV2 manifest.firefox.json
  */
-function loadManifest() {
-  const manifestPath = browser === 'firefox'
-    ? resolve(__dirname, 'manifest.firefox.json')
-    : resolve(__dirname, 'manifest.json');
+function loadManifest(): CrxManifest {
+  const manifestPath =
+    browser === 'firefox'
+      ? resolve(__dirname, 'manifest.firefox.json')
+      : resolve(__dirname, 'manifest.json');
 
   if (!existsSync(manifestPath)) {
     throw new Error(`Manifest not found: ${manifestPath}`);
   }
 
   const content = readFileSync(manifestPath, 'utf-8');
-  return JSON.parse(content);
+  return JSON.parse(content) as CrxManifest;
 }
 
 const manifest = loadManifest();

@@ -41,11 +41,11 @@ export async function getSettings(): Promise<Settings> {
       ...stored,
       platforms: {
         ...DEFAULT_SETTINGS.platforms,
-        ...(stored as Settings).platforms,
+        ...stored.platforms,
       },
       preferences: {
         ...DEFAULT_SETTINGS.preferences,
-        ...(stored as Settings).preferences,
+        ...stored.preferences,
       },
     };
   } catch (error) {
@@ -159,7 +159,9 @@ export async function getCustomRules(): Promise<readonly CustomRule[]> {
 /**
  * Save custom rules to storage
  */
-export async function saveCustomRules(rules: readonly CustomRule[]): Promise<void> {
+export async function saveCustomRules(
+  rules: readonly CustomRule[]
+): Promise<void> {
   if (rules.length > LIMITS.MAX_CUSTOM_RULES) {
     throw new Error(`Maximum ${LIMITS.MAX_CUSTOM_RULES} custom rules allowed`);
   }
@@ -219,6 +221,7 @@ async function throttledWrite(key: string, data: unknown): Promise<void> {
 
   // Schedule write
   return new Promise((resolve, reject) => {
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     const timeout = setTimeout(async () => {
       try {
         const dataToWrite = pendingWrites.get(key);
@@ -230,6 +233,7 @@ async function throttledWrite(key: string, data: unknown): Promise<void> {
         resolve();
       } catch (error) {
         logger.error('Storage write failed', { key, error: String(error) });
+        // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
         reject(error);
       }
     }, 100); // 100ms throttle
@@ -272,7 +276,10 @@ export async function importData(backup: unknown): Promise<void> {
   const data = obj.data as Record<string, unknown>;
 
   // Validate settings if present
-  if (data[STORAGE_KEYS.SETTINGS] && !isValidSettings(data[STORAGE_KEYS.SETTINGS])) {
+  if (
+    data[STORAGE_KEYS.SETTINGS] &&
+    !isValidSettings(data[STORAGE_KEYS.SETTINGS])
+  ) {
     throw new Error('Invalid settings in backup');
   }
 

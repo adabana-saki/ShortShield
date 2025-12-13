@@ -102,6 +102,7 @@ function sanitize(data: unknown, depth = 0): unknown {
     return sanitized;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-base-to-string
   return String(data);
 }
 
@@ -163,7 +164,9 @@ function log(
     level,
     namespace,
     message: message.slice(0, 500), // Truncate message
-    context: context ? (sanitize(context) as Record<string, unknown>) : undefined,
+    context: context
+      ? (sanitize(context) as Record<string, unknown>)
+      : undefined,
   };
 
   // Add to buffer

@@ -45,7 +45,9 @@ function CustomRuleItem({ rule, onToggle, onRemove }: CustomRuleItemProps) {
     <div className={`custom-rule-item ${rule.enabled ? '' : 'disabled'}`}>
       <div className="custom-rule-info">
         <div className="custom-rule-header">
-          <span className="custom-rule-platform">{platformLabels[rule.platform]}</span>
+          <span className="custom-rule-platform">
+            {platformLabels[rule.platform]}
+          </span>
           <label className="custom-rule-toggle">
             <input
               type="checkbox"
@@ -88,7 +90,7 @@ export function CustomRules() {
   const [error, setError] = useState<string | null>(null);
   const [isAdding, setIsAdding] = useState(false);
 
-  const handleAdd = useCallback(async () => {
+  const handleAdd = useCallback(() => {
     setError(null);
 
     const sanitizedSelector = sanitizeInput(newSelector.trim());
@@ -108,7 +110,8 @@ export function CustomRules() {
 
     // Check for duplicates
     const exists = rules.some(
-      (rule) => rule.selector === sanitizedSelector && rule.platform === platform
+      (rule) =>
+        rule.selector === sanitizedSelector && rule.platform === platform
     );
 
     if (exists) {
@@ -132,7 +135,10 @@ export function CustomRules() {
       setNewSelector('');
       setNewDescription('');
 
-      logger.info('Custom rule added', { platform, selector: sanitizedSelector });
+      logger.info('Custom rule added', {
+        platform,
+        selector: sanitizedSelector,
+      });
     } catch (err) {
       logger.error('Failed to add custom rule', { error: err });
       setError(t('customRulesErrorFailed'));
@@ -245,13 +251,15 @@ export function CustomRules() {
         <h3>{t('customRulesExamplesTitle')}</h3>
         <ul>
           <li>
-            <code>[data-testid="video-card"]</code> - {t('customRulesExampleAttr')}
+            <code>[data-testid=&quot;video-card&quot;]</code> -{' '}
+            {t('customRulesExampleAttr')}
           </li>
           <li>
             <code>.video-container</code> - {t('customRulesExampleClass')}
           </li>
           <li>
-            <code>a[href*="/shorts/"]</code> - {t('customRulesExampleLink')}
+            <code>a[href*=&quot;/shorts/&quot;]</code> -{' '}
+            {t('customRulesExampleLink')}
           </li>
         </ul>
       </div>

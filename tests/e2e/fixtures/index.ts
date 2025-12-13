@@ -1,15 +1,11 @@
-import { test as base, expect, type BrowserContext, type Page } from '@playwright/test';
+/* eslint-disable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument, react-hooks/rules-of-hooks */
+import {
+  test as base,
+  expect,
+  type BrowserContext,
+  type Page,
+} from '@playwright/test';
 import { resolve } from 'path';
-
-/**
- * Extension context interface
- */
-interface ExtensionContext {
-  extensionId: string;
-  backgroundPage: Page | null;
-  popupPage: Page | null;
-  optionsPage: Page | null;
-}
 
 /**
  * Test fixtures for browser extension E2E tests
@@ -18,7 +14,8 @@ export const test = base.extend<{
   context: BrowserContext;
   extensionId: string;
 }>({
-  context: async ({ }, use) => {
+  // eslint-disable-next-line no-empty-pattern
+  context: async ({}, use) => {
     const extensionPath = resolve(__dirname, '../../../dist/chrome');
     const context = await base.chromium.launchPersistentContext('', {
       headless: false,
@@ -57,7 +54,10 @@ export { expect };
 /**
  * Helper to open extension popup
  */
-export async function openPopup(context: BrowserContext, extensionId: string): Promise<Page> {
+export async function openPopup(
+  context: BrowserContext,
+  extensionId: string
+): Promise<Page> {
   const popupUrl = `chrome-extension://${extensionId}/src/popup/index.html`;
   const page = await context.newPage();
   await page.goto(popupUrl);
@@ -68,7 +68,10 @@ export async function openPopup(context: BrowserContext, extensionId: string): P
 /**
  * Helper to open extension options page
  */
-export async function openOptions(context: BrowserContext, extensionId: string): Promise<Page> {
+export async function openOptions(
+  context: BrowserContext,
+  extensionId: string
+): Promise<Page> {
   const optionsUrl = `chrome-extension://${extensionId}/src/options/index.html`;
   const page = await context.newPage();
   await page.goto(optionsUrl);
@@ -81,13 +84,15 @@ export async function openOptions(context: BrowserContext, extensionId: string):
  */
 export async function waitForExtensionReady(page: Page): Promise<void> {
   // Wait for React to render
-  await page.waitForSelector('[data-testid="extension-root"]', {
-    state: 'visible',
-    timeout: 10000,
-  }).catch(() => {
-    // Fallback if data-testid not present
-    return page.waitForLoadState('networkidle');
-  });
+  await page
+    .waitForSelector('[data-testid="extension-root"]', {
+      state: 'visible',
+      timeout: 10000,
+    })
+    .catch(() => {
+      // Fallback if data-testid not present
+      return page.waitForLoadState('networkidle');
+    });
 }
 
 /**
@@ -117,7 +122,9 @@ export async function navigateToInstagramReels(page: Page): Promise<void> {
 /**
  * Storage helper for extension storage
  */
-export async function getExtensionStorage(page: Page): Promise<Record<string, unknown>> {
+export async function getExtensionStorage(
+  page: Page
+): Promise<Record<string, unknown>> {
   return page.evaluate(() => {
     return new Promise((resolve) => {
       chrome.storage.local.get(null, (items) => {

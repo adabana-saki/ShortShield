@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /**
  * Messaging integration tests
  */
@@ -167,7 +168,7 @@ describe('Messaging Integration', () => {
     it('should not allow prototype pollution in messages', () => {
       const maliciousMessage = {
         type: 'UPDATE_SETTINGS',
-        payload: { '__proto__': { admin: true } },
+        payload: { __proto__: { admin: true } },
       };
 
       // Should still be a valid message structure

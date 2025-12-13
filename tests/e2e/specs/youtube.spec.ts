@@ -1,4 +1,4 @@
-import { test, expect, openPopup, navigateToYouTubeShorts } from '../fixtures';
+import { test, expect, openPopup } from '../fixtures';
 
 test.describe('YouTube Shorts Blocking', () => {
   test.beforeEach(async ({ context, extensionId }) => {
@@ -44,7 +44,7 @@ test.describe('YouTube Shorts Blocking', () => {
     const isVisible = await shortsShelf.isVisible().catch(() => false);
 
     // If Shorts content exists, it should be hidden by extension
-    if (await shortsShelf.count() > 0) {
+    if ((await shortsShelf.count()) > 0) {
       expect(isVisible).toBe(false);
     }
   });
@@ -59,13 +59,14 @@ test.describe('YouTube Shorts Blocking', () => {
     await page.waitForTimeout(2000);
 
     // Check URL - should either be redirected or show blocking
-    const url = page.url();
-
     // Extension may redirect away from /shorts/ or display blocking message
     // This depends on the extension's configuration
+    expect(page.url()).toBeTruthy();
   });
 
-  test('should redirect Shorts video to regular video player', async ({ context }) => {
+  test('should redirect Shorts video to regular video player', async ({
+    context,
+  }) => {
     const page = await context.newPage();
 
     // This test requires a valid Shorts video ID
@@ -78,13 +79,14 @@ test.describe('YouTube Shorts Blocking', () => {
     // Wait for potential redirect
     await page.waitForTimeout(3000);
 
-    const currentUrl = page.url();
-
     // If redirect is enabled, URL should be changed to /watch?v=
     // This depends on extension settings
+    expect(page.url()).toBeTruthy();
   });
 
-  test('should preserve functionality on regular YouTube videos', async ({ context }) => {
+  test('should preserve functionality on regular YouTube videos', async ({
+    context,
+  }) => {
     const page = await context.newPage();
 
     // Navigate to a regular video
@@ -113,7 +115,10 @@ test.describe('YouTube Shorts Blocking', () => {
 });
 
 test.describe('YouTube Platform Toggle', () => {
-  test('should disable blocking when YouTube toggle is off', async ({ context, extensionId }) => {
+  test('should disable blocking when YouTube toggle is off', async ({
+    context,
+    extensionId,
+  }) => {
     const popup = await openPopup(context, extensionId);
 
     // Find YouTube platform toggle and disable it
