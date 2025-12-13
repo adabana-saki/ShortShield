@@ -8,19 +8,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial release preparation
-- Multi-platform support (YouTube Shorts, TikTok, Instagram Reels)
-- Granular platform toggles
-- Whitelist functionality
-- Custom CSS rules
-- Activity log viewer
-- Import/Export settings
-- Internationalization (English, Japanese)
-- Firefox compatibility
-- E2E test suite
-- CI/CD pipelines
+
+- Edge browser support with dedicated manifest
+- Comprehensive i18n support (9 languages total)
+  - Chinese Simplified (zh_CN)
+  - Chinese Traditional (zh_TW)
+  - Korean (ko)
+  - Spanish (es)
+  - Portuguese Brazil (pt_BR)
+  - German (de)
+  - French (fr)
+- Store listings for all supported languages
+- README translations (Chinese, Korean)
+- Japanese PR template
+- Detection rules documentation
+- i18n utility tests
+
+### Changed
+
+- Updated build system to support Chrome, Firefox, and Edge
+- Improved locale file structure
 
 ### Security
+
 - Input validation and sanitization
 - Content Security Policy compliance
 - Message sender validation
@@ -28,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - TBD
 
 ### Added
+
 - YouTube Shorts blocking
   - Home feed detection
   - Shorts shelf hiding
@@ -53,6 +64,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Japanese
 
 ### Technical
+
 - Chrome Manifest V3 support
 - Firefox Manifest V2 support
 - TypeScript strict mode
@@ -81,14 +93,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.2.0] - 2024-03-15
 
 ### Added
+
 - New feature description (#123)
 
 ### Changed
+
 - Updated behavior (#124)
 
 ### Fixed
+
 - Bug fix description (#125)
 
 ### Security
+
 - Security improvement (#126)
 ```
