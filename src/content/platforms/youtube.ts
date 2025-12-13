@@ -4,7 +4,7 @@
  */
 
 import { BasePlatformDetector } from './base';
-import type { Platform, BlockingAction } from '@/shared/types';
+import type { Platform } from '@/shared/types';
 import { YOUTUBE_CONFIG } from '@/shared/constants';
 import { createLogger } from '@/shared/utils/logger';
 import { isValidYouTubeVideoId } from '@/shared/utils/url';
@@ -157,7 +157,9 @@ export class YouTubeDetector extends BasePlatformDetector {
    * Scan for anchor links to Shorts
    */
   private scanShortsLinks(root: HTMLElement): void {
-    const links = root.querySelectorAll<HTMLAnchorElement>('a[href*="/shorts/"]');
+    const links = root.querySelectorAll<HTMLAnchorElement>(
+      'a[href*="/shorts/"]'
+    );
 
     for (const link of links) {
       // Find a suitable parent to hide
@@ -197,7 +199,10 @@ export class YouTubeDetector extends BasePlatformDetector {
     let current: HTMLElement | null = link;
     for (let i = 0; i < 5 && current; i++) {
       current = current.parentElement;
-      if (current?.tagName.startsWith('YTD-') && current.tagName.includes('RENDERER')) {
+      if (
+        current?.tagName.startsWith('YTD-') &&
+        current.tagName.includes('RENDERER')
+      ) {
         return current;
       }
     }

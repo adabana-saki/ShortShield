@@ -6,7 +6,7 @@
 import { useState, useCallback, useRef } from 'react';
 import { useSettings } from '@/shared/hooks/useSettings';
 import { useI18n } from '@/shared/hooks/useI18n';
-import { validateSettings, sanitizeInput } from '@/shared/utils/validation';
+import { validateSettings } from '@/shared/utils/validation';
 import { createLogger } from '@/shared/utils/logger';
 import type { Settings } from '@/shared/types';
 
@@ -49,7 +49,7 @@ export function ExportImport() {
   /**
    * Export settings to JSON file
    */
-  const handleExport = useCallback(async () => {
+  const handleExport = useCallback(() => {
     setError(null);
     setSuccess(null);
     setIsExporting(true);

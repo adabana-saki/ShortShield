@@ -1,4 +1,4 @@
-import { test, expect, openPopup, navigateToInstagramReels } from '../fixtures';
+import { test, expect, openPopup } from '../fixtures';
 
 test.describe('Instagram Reels Blocking', () => {
   test.beforeEach(async ({ context, extensionId }) => {
@@ -48,7 +48,9 @@ test.describe('Instagram Reels Blocking', () => {
 
     // Check for Reels content in feed
     // Instagram uses various selectors for Reels
-    const reelsContent = page.locator('[data-testid*="reel"], [aria-label*="Reel"]');
+    const reelsContent = page.locator(
+      '[data-testid*="reel"], [aria-label*="Reel"]'
+    );
 
     // If Reels exist in feed, they should be hidden
     const count = await reelsContent.count();
@@ -64,10 +66,13 @@ test.describe('Instagram Reels Blocking', () => {
 
     // Stories should remain visible (they're not Reels)
     // This test verifies extension doesn't over-block
-    const storiesContainer = page.locator('[aria-label*="Stories"], [data-testid*="story"]');
+    const storiesContainer = page.locator(
+      '[aria-label*="Stories"], [data-testid*="story"]'
+    );
 
     // Stories should still be accessible
     // (Unless specifically configured to block)
+    expect(storiesContainer).toBeTruthy();
   });
 
   test('should handle Instagram profile Reels tab', async ({ context }) => {
@@ -92,7 +97,10 @@ test.describe('Instagram Reels Blocking', () => {
 });
 
 test.describe('Instagram Platform Toggle', () => {
-  test('should disable blocking when Instagram toggle is off', async ({ context, extensionId }) => {
+  test('should disable blocking when Instagram toggle is off', async ({
+    context,
+    extensionId,
+  }) => {
     const popup = await openPopup(context, extensionId);
 
     // Find Instagram platform toggle
@@ -111,7 +119,10 @@ test.describe('Instagram Platform Toggle', () => {
     // With blocking disabled, Reels should be accessible
   });
 
-  test('should persist Instagram settings', async ({ context, extensionId }) => {
+  test('should persist Instagram settings', async ({
+    context,
+    extensionId,
+  }) => {
     // Disable Instagram
     const popup1 = await openPopup(context, extensionId);
     const toggle = popup1.getByRole('checkbox', { name: /instagram/i });

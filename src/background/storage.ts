@@ -4,7 +4,12 @@
  */
 
 import browser from 'webextension-polyfill';
-import type { Settings, LogEntry, WhitelistEntry, WhitelistId } from '@/shared/types';
+import type {
+  Settings,
+  LogEntry,
+  WhitelistEntry,
+  WhitelistId,
+} from '@/shared/types';
 import { isValidSettings } from '@/shared/types';
 import { STORAGE_KEYS, DEFAULT_SETTINGS, LIMITS } from '@/shared/constants';
 import { createLogger } from '@/shared/utils/logger';
@@ -19,7 +24,7 @@ export async function getSettings(): Promise<Settings> {
     const result = await browser.storage.local.get(STORAGE_KEYS.SETTINGS);
     const settings = result[STORAGE_KEYS.SETTINGS];
 
-    if (!settings) {
+    if (settings === undefined || settings === null) {
       logger.info('No settings found, using defaults');
       return DEFAULT_SETTINGS;
     }
@@ -29,13 +34,16 @@ export async function getSettings(): Promise<Settings> {
       return DEFAULT_SETTINGS;
     }
 
+    // At this point, settings is validated as Settings type
+    const validSettings = settings;
+
     // Check if daily stats need reset
     const today = new Date().toISOString().split('T')[0];
-    if (settings.stats.lastResetDate !== today) {
+    if (validSettings.stats.lastResetDate !== today) {
       const resetSettings: Settings = {
-        ...settings,
+        ...validSettings,
         stats: {
-          ...settings.stats,
+          ...validSettings.stats,
           blockedToday: 0,
           lastResetDate: today,
         },
@@ -44,7 +52,7 @@ export async function getSettings(): Promise<Settings> {
       return resetSettings;
     }
 
-    return settings as Settings;
+    return validSettings;
   } catch (error) {
     logger.error('Failed to get settings', { error });
     return DEFAULT_SETTINGS;
@@ -150,7 +158,10 @@ export async function addWhitelistEntry(
   };
 
   await saveSettings(updated);
-  logger.info('Whitelist entry added', { platform: entry.platform, type: entry.type });
+  logger.info('Whitelist entry added', {
+    platform: entry.platform,
+    type: entry.type,
+  });
   return updated;
 }
 
@@ -175,8 +186,8 @@ export async function removeWhitelistEntry(id: string): Promise<Settings> {
  */
 export async function getLogs(): Promise<LogEntry[]> {
   try {
-    const result = await browser.storage.local.get(STORAGE_KEYS.LOGS);
-    const logs = result[STORAGE_KEYS.LOGS];
+    const result = await browser.storage.local.get(STORAGE_KEYS.APP_LOGS);
+    const logs = result[STORAGE_KEYS.APP_LOGS];
 
     if (!Array.isArray(logs)) {
       return [];
@@ -206,21 +217,29 @@ export async function addLogEntry(
     };
 
     // Add to beginning (most recent first)
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const updatedLogs = [newEntry, ...logs];
 
     // Trim to max size
     const trimmedLogs = updatedLogs.slice(0, LIMITS.MAX_LOG_ENTRIES);
 
     // Remove old logs based on retention policy
-    const retentionMs = settings.preferences.logRetentionDays * 24 * 60 * 60 * 1000;
+    const retentionMs =
+      settings.preferences.logRetentionDays * 24 * 60 * 60 * 1000;
     const cutoffTime = Date.now() - retentionMs;
-    const filteredLogs = trimmedLogs.filter((log) => log.timestamp > cutoffTime);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    const filteredLogs = trimmedLogs.filter(
+      (log) => log.timestamp > cutoffTime
+    );
 
     await browser.storage.local.set({
-      [STORAGE_KEYS.LOGS]: filteredLogs,
+      [STORAGE_KEYS.APP_LOGS]: filteredLogs,
     });
 
-    logger.debug('Log entry added', { platform: entry.platform, action: entry.action });
+    logger.debug('Log entry added', {
+      platform: entry.platform,
+      action: entry.action,
+    });
   } catch (error) {
     logger.error('Failed to add log entry', { error });
   }
@@ -232,7 +251,7 @@ export async function addLogEntry(
 export async function clearLogs(): Promise<void> {
   try {
     await browser.storage.local.set({
-      [STORAGE_KEYS.LOGS]: [],
+      [STORAGE_KEYS.APP_LOGS]: [],
     });
     logger.info('Logs cleared');
   } catch (error) {
@@ -264,8 +283,13 @@ export async function getStorageInfo(): Promise<{
 }> {
   try {
     // Chrome provides getBytesInUse, Firefox doesn't
+    type StorageWithBytesInUse = typeof browser.storage.local & {
+      getBytesInUse: (keys: string | string[] | null) => Promise<number>;
+    };
     if ('getBytesInUse' in browser.storage.local) {
-      const bytesInUse = await (browser.storage.local as any).getBytesInUse(null);
+      const bytesInUse = await (
+        browser.storage.local as StorageWithBytesInUse
+      ).getBytesInUse(null);
       return {
         bytesInUse,
         quota: 10 * 1024 * 1024, // 10MB for local storage
@@ -273,6 +297,7 @@ export async function getStorageInfo(): Promise<{
     }
 
     // Fallback: estimate from stringified data
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
     const data = await browser.storage.local.get(null);
     const bytesInUse = new Blob([JSON.stringify(data)]).size;
     return {

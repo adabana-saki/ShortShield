@@ -7,7 +7,6 @@ import browser from 'webextension-polyfill';
 import type {
   Message,
   MessageResponse,
-  MessageType,
   GetSettingsResponse,
   UpdateSettingsResponse,
   GetStatsResponse,
@@ -21,7 +20,7 @@ import type {
   WhitelistId,
   BlockLogEntry,
 } from '@/shared/types';
-import { MESSAGE_TYPES, isValidMessage, isMessageType } from '@/shared/types';
+import { isValidMessage, isMessageType } from '@/shared/types';
 import {
   getSettings,
   updateSettings,
@@ -31,7 +30,6 @@ import {
 } from '@/shared/utils';
 import { createLogger } from '@/shared/utils/logger';
 import { validateWhitelistInput } from '@/shared/utils/validation';
-import { DEFAULT_SETTINGS } from '@/shared/constants';
 
 const logger = createLogger('messaging');
 
@@ -218,8 +216,8 @@ async function handleWhitelistRemove(
     }
 
     await updateSettings({
-      whitelist: filtered as WhitelistEntry[],
-    } as unknown as Parameters<typeof updateSettings>[0]);
+      whitelist: filtered,
+    });
 
     return { success: true };
   } catch (error) {

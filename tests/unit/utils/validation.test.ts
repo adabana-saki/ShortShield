@@ -48,12 +48,15 @@ describe('isValidUrlFormat', () => {
   it('should accept valid HTTP URLs', () => {
     expect(isValidUrlFormat('http://example.com')).toBe(true);
     expect(isValidUrlFormat('https://example.com')).toBe(true);
-    expect(isValidUrlFormat('https://www.youtube.com/shorts/abc123')).toBe(true);
+    expect(isValidUrlFormat('https://www.youtube.com/shorts/abc123')).toBe(
+      true
+    );
   });
 
   it('should reject invalid URLs', () => {
     expect(isValidUrlFormat('not-a-url')).toBe(false);
     expect(isValidUrlFormat('ftp://example.com')).toBe(false);
+    // eslint-disable-next-line no-script-url
     expect(isValidUrlFormat('javascript:alert(1)')).toBe(false);
     expect(isValidUrlFormat('')).toBe(false);
   });

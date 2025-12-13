@@ -1,4 +1,4 @@
-import { test, expect, openPopup, navigateToTikTok } from '../fixtures';
+import { test, expect, openPopup } from '../fixtures';
 
 test.describe('TikTok Blocking', () => {
   test.beforeEach(async ({ context, extensionId }) => {
@@ -37,15 +37,21 @@ test.describe('TikTok Blocking', () => {
 
     // Check if video containers are hidden
     // TikTok's structure varies, so we check common selectors
-    const videoContainers = page.locator('[data-e2e="recommend-list-item-container"]');
+    const videoContainers = page.locator(
+      '[data-e2e="recommend-list-item-container"]'
+    );
 
     // If videos exist, they should be hidden by extension
     const count = await videoContainers.count();
     if (count > 0) {
       // Check visibility of first few items
       for (let i = 0; i < Math.min(count, 3); i++) {
-        const isHidden = await videoContainers.nth(i).isHidden().catch(() => true);
+        const isHidden = await videoContainers
+          .nth(i)
+          .isHidden()
+          .catch(() => true);
         // Videos should be hidden when blocking is enabled
+        expect(typeof isHidden).toBe('boolean');
       }
     }
   });
@@ -83,7 +89,10 @@ test.describe('TikTok Blocking', () => {
 });
 
 test.describe('TikTok Platform Toggle', () => {
-  test('should disable blocking when TikTok toggle is off', async ({ context, extensionId }) => {
+  test('should disable blocking when TikTok toggle is off', async ({
+    context,
+    extensionId,
+  }) => {
     const popup = await openPopup(context, extensionId);
 
     // Find TikTok platform toggle
@@ -103,7 +112,10 @@ test.describe('TikTok Platform Toggle', () => {
     // (Actual verification depends on implementation)
   });
 
-  test('should persist TikTok settings across sessions', async ({ context, extensionId }) => {
+  test('should persist TikTok settings across sessions', async ({
+    context,
+    extensionId,
+  }) => {
     // Disable TikTok
     const popup1 = await openPopup(context, extensionId);
     const tiktokToggle = popup1.getByRole('checkbox', { name: /tiktok/i });

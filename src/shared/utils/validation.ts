@@ -14,11 +14,14 @@ export function sanitizeTextInput(input: string, maxLength = 1000): string {
     return '';
   }
 
-  return input
-    .trim()
-    .slice(0, maxLength)
-    .replace(/[<>]/g, '') // Remove potential HTML tags
-    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g, ''); // Remove control characters
+  return (
+    input
+      .trim()
+      .slice(0, maxLength)
+      .replace(/[<>]/g, '') // Remove potential HTML tags
+      // eslint-disable-next-line no-control-regex
+      .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g, '')
+  ); // Remove control characters
 }
 
 /**
@@ -303,7 +306,10 @@ export function validateUrl(url: string): ValidationResult {
   }
 
   if (!isValidUrlFormat(sanitized)) {
-    return { isValid: false, error: 'Invalid URL format. Must start with http:// or https://' };
+    return {
+      isValid: false,
+      error: 'Invalid URL format. Must start with http:// or https://',
+    };
   }
 
   return { isValid: true };
@@ -317,7 +323,10 @@ export function validateCssSelector(selector: string): ValidationResult {
     return { isValid: false, error: 'Selector is required' };
   }
 
-  const sanitized = sanitizeTextInput(selector.trim(), LIMITS.MAX_SELECTOR_LENGTH);
+  const sanitized = sanitizeTextInput(
+    selector.trim(),
+    LIMITS.MAX_SELECTOR_LENGTH
+  );
 
   if (!sanitized) {
     return { isValid: false, error: 'Selector cannot be empty' };
@@ -393,7 +402,10 @@ export function validateSettings(data: unknown): ValidationResult {
 
   // Validate preferences
   if ('preferences' in settings) {
-    if (typeof settings.preferences !== 'object' || settings.preferences === null) {
+    if (
+      typeof settings.preferences !== 'object' ||
+      settings.preferences === null
+    ) {
       return { isValid: false, error: 'preferences must be an object' };
     }
   }

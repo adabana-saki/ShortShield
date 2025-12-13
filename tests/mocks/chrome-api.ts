@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/require-await */
 /**
  * Mock for webextension-polyfill (browser API)
  */
@@ -47,14 +48,18 @@ const storageMock = {
 
 // i18n mock
 const i18nMock = {
-  getMessage: vi.fn((messageName: string, substitutions?: string | string[]) => {
-    // Return a simple mock message
-    if (substitutions) {
-      const subs = Array.isArray(substitutions) ? substitutions : [substitutions];
-      return `${messageName}: ${subs.join(', ')}`;
+  getMessage: vi.fn(
+    (messageName: string, substitutions?: string | string[]) => {
+      // Return a simple mock message
+      if (substitutions) {
+        const subs = Array.isArray(substitutions)
+          ? substitutions
+          : [substitutions];
+        return `${messageName}: ${subs.join(', ')}`;
+      }
+      return messageName;
     }
-    return messageName;
-  }),
+  ),
   getUILanguage: vi.fn(() => 'en'),
   getAcceptLanguages: vi.fn(async () => ['en-US', 'en']),
 };

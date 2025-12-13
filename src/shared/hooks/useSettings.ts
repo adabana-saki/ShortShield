@@ -4,7 +4,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import browser from 'webextension-polyfill';
-import type { Settings, SettingsUpdate, Platform, WhitelistEntry } from '@/shared/types';
+import type { Settings, SettingsUpdate, Platform } from '@/shared/types';
 import { createMessage } from '@/shared/types';
 import { DEFAULT_SETTINGS } from '@/shared/constants';
 
@@ -48,7 +48,11 @@ export function useSettings(): UseSettingsResult {
       );
 
       if (response && typeof response === 'object' && 'success' in response) {
-        const typedResponse = response as { success: boolean; data?: Settings; error?: string };
+        const typedResponse = response as {
+          success: boolean;
+          data?: Settings;
+          error?: string;
+        };
         if (typedResponse.success && typedResponse.data) {
           setSettings(typedResponse.data);
         } else {
@@ -65,29 +69,36 @@ export function useSettings(): UseSettingsResult {
   /**
    * Update settings
    */
-  const updateSettings = useCallback(async (update: SettingsUpdate): Promise<void> => {
-    try {
-      setError(null);
+  const updateSettings = useCallback(
+    async (update: SettingsUpdate): Promise<void> => {
+      try {
+        setError(null);
 
-      const response = await browser.runtime.sendMessage(
-        createMessage({
-          type: 'UPDATE_SETTINGS',
-          payload: update,
-        })
-      );
+        const response = await browser.runtime.sendMessage(
+          createMessage({
+            type: 'UPDATE_SETTINGS',
+            payload: update,
+          })
+        );
 
-      if (response && typeof response === 'object' && 'success' in response) {
-        const typedResponse = response as { success: boolean; data?: Settings; error?: string };
-        if (typedResponse.success && typedResponse.data) {
-          setSettings(typedResponse.data);
-        } else {
-          setError(typedResponse.error ?? 'Failed to update settings');
+        if (response && typeof response === 'object' && 'success' in response) {
+          const typedResponse = response as {
+            success: boolean;
+            data?: Settings;
+            error?: string;
+          };
+          if (typedResponse.success && typedResponse.data) {
+            setSettings(typedResponse.data);
+          } else {
+            setError(typedResponse.error ?? 'Failed to update settings');
+          }
         }
+      } catch (err) {
+        setError(String(err));
       }
-    } catch (err) {
-      setError(String(err));
-    }
-  }, []);
+    },
+    []
+  );
 
   /**
    * Toggle enabled state
@@ -133,11 +144,17 @@ export function useSettings(): UseSettingsResult {
         );
 
         if (response && typeof response === 'object' && 'success' in response) {
-          const typedResponse = response as { success: boolean; data?: Settings; error?: string };
+          const typedResponse = response as {
+            success: boolean;
+            data?: Settings;
+            error?: string;
+          };
           if (typedResponse.success && typedResponse.data) {
             setSettings(typedResponse.data);
           } else {
-            throw new Error(typedResponse.error ?? 'Failed to add to whitelist');
+            throw new Error(
+              typedResponse.error ?? 'Failed to add to whitelist'
+            );
           }
         }
       } catch (err) {
@@ -163,11 +180,17 @@ export function useSettings(): UseSettingsResult {
       );
 
       if (response && typeof response === 'object' && 'success' in response) {
-        const typedResponse = response as { success: boolean; data?: Settings; error?: string };
+        const typedResponse = response as {
+          success: boolean;
+          data?: Settings;
+          error?: string;
+        };
         if (typedResponse.success && typedResponse.data) {
           setSettings(typedResponse.data);
         } else {
-          throw new Error(typedResponse.error ?? 'Failed to remove from whitelist');
+          throw new Error(
+            typedResponse.error ?? 'Failed to remove from whitelist'
+          );
         }
       }
     } catch (err) {
@@ -204,7 +227,11 @@ export function useSettings(): UseSettingsResult {
         );
 
         if (response && typeof response === 'object' && 'success' in response) {
-          const typedResponse = response as { success: boolean; data?: Settings; error?: string };
+          const typedResponse = response as {
+            success: boolean;
+            data?: Settings;
+            error?: string;
+          };
           if (typedResponse.success && typedResponse.data) {
             setSettings(typedResponse.data);
           } else {
@@ -231,7 +258,9 @@ export function useSettings(): UseSettingsResult {
       areaName: string
     ) => {
       if (areaName === 'local' && changes.shortshield_settings) {
-        const newSettings = changes.shortshield_settings.newValue as Settings | undefined;
+        const newSettings = changes.shortshield_settings.newValue as
+          | Settings
+          | undefined;
         if (newSettings) {
           setSettings(newSettings);
         }

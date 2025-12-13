@@ -8,7 +8,13 @@
  *   pnpm i18n:extract
  */
 
-import { readFileSync, readdirSync, statSync, writeFileSync, existsSync } from 'fs';
+import {
+  readFileSync,
+  readdirSync,
+  statSync,
+  writeFileSync,
+  existsSync,
+} from 'fs';
 import { resolve, join, extname } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -23,10 +29,10 @@ const BASE_LOCALE = 'en';
 
 // Patterns to match i18n function calls
 const I18N_PATTERNS = [
-  /\bt\(\s*['"`]([^'"`]+)['"`]/g,           // t('key') or t("key") or t(`key`)
-  /getMessage\(\s*['"`]([^'"`]+)['"`]/g,     // getMessage('key')
+  /\bt\(\s*['"`]([^'"`]+)['"`]/g, // t('key') or t("key") or t(`key`)
+  /getMessage\(\s*['"`]([^'"`]+)['"`]/g, // getMessage('key')
   /i18n\.getMessage\(\s*['"`]([^'"`]+)['"`]/g, // i18n.getMessage('key')
-  /__MSG_([a-zA-Z0-9_]+)__/g,                // __MSG_key__
+  /__MSG_([a-zA-Z0-9_]+)__/g, // __MSG_key__
 ];
 
 interface ExtractionResult {
@@ -63,7 +69,6 @@ function getSourceFiles(dir: string): string[] {
 function extractKeysFromFile(filePath: string): Map<string, string[]> {
   const content = readFileSync(filePath, 'utf-8');
   const keys = new Map<string, string[]>();
-  const lines = content.split('\n');
 
   for (const pattern of I18N_PATTERNS) {
     // Reset regex state
@@ -124,7 +129,7 @@ function loadTranslations(locale: string): Set<string> {
   }
 
   const content = readFileSync(messagesPath, 'utf-8');
-  const messages = JSON.parse(content);
+  const messages = JSON.parse(content) as Record<string, unknown>;
 
   return new Set(Object.keys(messages));
 }
@@ -134,15 +139,15 @@ function loadTranslations(locale: string): Set<string> {
  */
 function generateReport(extracted: ExtractionResult): void {
   const baseKeys = loadTranslations(BASE_LOCALE);
-  const locales = readdirSync(LOCALES_DIR).filter(f =>
+  const locales = readdirSync(LOCALES_DIR).filter((f) =>
     statSync(join(LOCALES_DIR, f)).isDirectory()
   );
 
   console.log('\n📊 i18n Extraction Report\n');
-  console.log('=' .repeat(60));
+  console.log('='.repeat(60));
 
   // Keys found in code but not in base locale
-  const missingInBase = [...extracted.keys].filter(k => !baseKeys.has(k));
+  const missingInBase = [...extracted.keys].filter((k) => !baseKeys.has(k));
 
   if (missingInBase.length > 0) {
     console.log('\n⚠️  Keys found in code but missing in base locale (en):\n');
@@ -161,14 +166,18 @@ function generateReport(extracted: ExtractionResult): void {
   }
 
   // Keys in base locale but not found in code (potentially unused)
-  const unusedKeys = [...baseKeys].filter(k => !extracted.keys.has(k));
+  const unusedKeys = [...baseKeys].filter((k) => !extracted.keys.has(k));
 
   if (unusedKeys.length > 0) {
-    console.log('\n⚠️  Keys in base locale but not found in code (potentially unused):\n');
+    console.log(
+      '\n⚠️  Keys in base locale but not found in code (potentially unused):\n'
+    );
     for (const key of unusedKeys) {
       console.log(`  - ${key}`);
     }
-    console.log('\n  Note: Some keys may be used dynamically or in manifest.json');
+    console.log(
+      '\n  Note: Some keys may be used dynamically or in manifest.json'
+    );
   }
 
   // Summary by locale
@@ -178,21 +187,26 @@ function generateReport(extracted: ExtractionResult): void {
 
   for (const locale of locales) {
     const localeKeys = loadTranslations(locale);
-    const missing = [...baseKeys].filter(k => !localeKeys.has(k)).length;
-    const coverage = baseKeys.size > 0
-      ? Math.round(((baseKeys.size - missing) / baseKeys.size) * 100)
-      : 100;
+    const missing = [...baseKeys].filter((k) => !localeKeys.has(k)).length;
+    const coverage =
+      baseKeys.size > 0
+        ? Math.round(((baseKeys.size - missing) / baseKeys.size) * 100)
+        : 100;
 
-    console.log(`| ${locale.padEnd(6)} | ${String(localeKeys.size).padEnd(7)} | ${String(missing).padEnd(7)} | ${String(coverage).padEnd(7)}% |`);
+    console.log(
+      `| ${locale.padEnd(6)} | ${String(localeKeys.size).padEnd(7)} | ${String(missing).padEnd(7)} | ${String(coverage).padEnd(7)}% |`
+    );
   }
 
   console.log('\n' + '='.repeat(60));
 
   // Export missing keys as JSON template
   if (missingInBase.length > 0) {
-    const template: Record<string, { message: string; description: string }> = {};
+    const template: Record<string, { message: string; description: string }> =
+      {};
 
     for (const key of missingInBase) {
+      // eslint-disable-next-line security/detect-object-injection
       template[key] = {
         message: `[TODO: Translate ${key}]`,
         description: `Found in: ${(extracted.locations.get(key) || []).slice(0, 2).join(', ')}`,
@@ -201,7 +215,9 @@ function generateReport(extracted: ExtractionResult): void {
 
     const outputPath = join(rootDir, 'missing-translations.json');
     writeFileSync(outputPath, JSON.stringify(template, null, 2));
-    console.log(`\n📄 Missing keys template written to: missing-translations.json\n`);
+    console.log(
+      `\n📄 Missing keys template written to: missing-translations.json\n`
+    );
   }
 }
 

@@ -81,7 +81,10 @@ interface FirefoxManifest {
 /**
  * Transform Chrome MV3 manifest to Firefox MV2 format
  */
-function chromeToFirefox(chrome: ChromeManifest, geckoId: string): FirefoxManifest {
+function chromeToFirefox(
+  chrome: ChromeManifest,
+  geckoId: string
+): FirefoxManifest {
   const firefox: FirefoxManifest = {
     manifest_version: 2,
     name: chrome.name,
@@ -89,10 +92,7 @@ function chromeToFirefox(chrome: ChromeManifest, geckoId: string): FirefoxManife
     description: chrome.description,
     default_locale: chrome.default_locale,
     // Merge permissions and host_permissions for MV2
-    permissions: [
-      ...chrome.permissions,
-      ...(chrome.host_permissions || []),
-    ],
+    permissions: [...chrome.permissions, ...(chrome.host_permissions || [])],
     browser_specific_settings: {
       gecko: {
         id: geckoId,
@@ -122,7 +122,7 @@ function chromeToFirefox(chrome: ChromeManifest, geckoId: string): FirefoxManife
   };
 
   // Remove undefined properties
-  return JSON.parse(JSON.stringify(firefox));
+  return JSON.parse(JSON.stringify(firefox)) as FirefoxManifest;
 }
 
 /**
@@ -173,7 +173,7 @@ function firefoxToChrome(firefox: FirefoxManifest): ChromeManifest {
   };
 
   // Remove undefined properties
-  return JSON.parse(JSON.stringify(chrome));
+  return JSON.parse(JSON.stringify(chrome)) as ChromeManifest;
 }
 
 /**
@@ -199,7 +199,9 @@ function saveManifest<T>(path: string, manifest: T): void {
 /**
  * Get manifest for specified browser
  */
-export function getManifestForBrowser(browser: 'chrome' | 'firefox'): ChromeManifest | FirefoxManifest {
+export function getManifestForBrowser(
+  browser: 'chrome' | 'firefox'
+): ChromeManifest | FirefoxManifest {
   const chromePath = resolve(rootDir, 'manifest.json');
   const firefoxPath = resolve(rootDir, 'manifest.firefox.json');
 
@@ -227,7 +229,7 @@ function main(): void {
     case 'to-firefox': {
       const chromePath = resolve(rootDir, 'manifest.json');
       const firefoxPath = resolve(rootDir, 'manifest.firefox.json');
-      const geckoId = args[1] || 'shortshield@example.com';
+      const geckoId = args[1] ?? 'shortshield@example.com';
 
       const chrome = loadManifest<ChromeManifest>(chromePath);
       const firefox = chromeToFirefox(chrome, geckoId);
@@ -248,8 +250,8 @@ function main(): void {
     }
 
     case 'validate': {
-      const browser = args[1] as 'chrome' | 'firefox';
-      if (!browser || !['chrome', 'firefox'].includes(browser)) {
+      const browser = args[1] as 'chrome' | 'firefox' | undefined;
+      if (browser === undefined || !['chrome', 'firefox'].includes(browser)) {
         console.error('Usage: manifest-transform validate <chrome|firefox>');
         process.exit(1);
       }
@@ -271,7 +273,9 @@ function main(): void {
       const firefoxPath = resolve(rootDir, 'manifest.firefox.json');
 
       if (!existsSync(firefoxPath)) {
-        console.log('Firefox manifest does not exist, creating from Chrome manifest...');
+        console.log(
+          'Firefox manifest does not exist, creating from Chrome manifest...'
+        );
         const chrome = loadManifest<ChromeManifest>(chromePath);
         const firefox = chromeToFirefox(chrome, 'shortshield@example.com');
         saveManifest(firefoxPath, firefox);

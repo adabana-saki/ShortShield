@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /**
  * Translation completeness tests
  */
@@ -39,12 +40,10 @@ function getLocales(): string[] {
     return [];
   }
 
-  return fs
-    .readdirSync(LOCALES_DIR)
-    .filter((f) => {
-      const stat = fs.statSync(path.join(LOCALES_DIR, f));
-      return stat.isDirectory();
-    });
+  return fs.readdirSync(LOCALES_DIR).filter((f) => {
+    const stat = fs.statSync(path.join(LOCALES_DIR, f));
+    return stat.isDirectory();
+  });
 }
 
 describe('Translation Files', () => {

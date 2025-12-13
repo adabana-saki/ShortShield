@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument, @typescript-eslint/require-await */
 /**
  * Storage integration tests
  */
@@ -21,7 +22,9 @@ vi.mock('@/shared/utils/logger', () => ({
 class MockStorage {
   private data: Record<string, unknown> = {};
 
-  async get(keys?: string | string[] | Record<string, unknown>): Promise<Record<string, unknown>> {
+  async get(
+    keys?: string | string[] | Record<string, unknown>
+  ): Promise<Record<string, unknown>> {
     if (!keys) {
       return { ...this.data };
     }
@@ -432,7 +435,9 @@ describe('Storage Integration', () => {
         whitelist: largeWhitelist,
       };
 
-      await mockStorage.set({ shortshield_settings: settingsWithLargeWhitelist });
+      await mockStorage.set({
+        shortshield_settings: settingsWithLargeWhitelist,
+      });
 
       const result = await mockStorage.get('shortshield_settings');
       const settings = result.shortshield_settings as Settings;

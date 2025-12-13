@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 /**
  * Whitelist management component
  * Allows users to add/remove whitelisted channels and videos
@@ -129,14 +130,7 @@ export function Whitelist() {
     } finally {
       setIsAdding(false);
     }
-  }, [
-    newEntry,
-    entryType,
-    platform,
-    settings.whitelist,
-    addToWhitelist,
-    t,
-  ]);
+  }, [newEntry, entryType, platform, settings.whitelist, addToWhitelist, t]);
 
   const handleRemove = useCallback(
     async (id: string) => {

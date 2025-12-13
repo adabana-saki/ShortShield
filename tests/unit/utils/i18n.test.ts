@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/no-unsafe-argument */
 /**
  * i18n utilities tests
  */
@@ -17,7 +18,10 @@ vi.mock('webextension-polyfill', () => ({
         let message = messages[key] ?? '';
         if (subs) {
           const subsArray = Array.isArray(subs) ? subs : [subs];
-          message = message.replace(/\$(\d+)/g, (_, i) => subsArray[parseInt(i, 10) - 1] ?? '');
+          message = message.replace(
+            /\$(\d+)/g,
+            (_, i) => subsArray[parseInt(i, 10) - 1] ?? ''
+          );
         }
         return message;
       }),
@@ -34,7 +38,10 @@ vi.mock('webextension-polyfill', () => ({
       let message = messages[key] ?? '';
       if (subs) {
         const subsArray = Array.isArray(subs) ? subs : [subs];
-        message = message.replace(/\$(\d+)/g, (_, i) => subsArray[parseInt(i, 10) - 1] ?? '');
+        message = message.replace(
+          /\$(\d+)/g,
+          (_, i) => subsArray[parseInt(i, 10) - 1] ?? ''
+        );
       }
       return message;
     }),
@@ -42,7 +49,12 @@ vi.mock('webextension-polyfill', () => ({
   },
 }));
 
-import { t, getUILanguage, formatNumber, formatDate } from '@/shared/utils/i18n';
+import {
+  t,
+  getUILanguage,
+  formatNumber,
+  formatDate,
+} from '@/shared/utils/i18n';
 
 describe('t()', () => {
   it('should return translated message', () => {
