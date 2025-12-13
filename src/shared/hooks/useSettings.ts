@@ -5,7 +5,14 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import browser from 'webextension-polyfill';
-import type { Settings, SettingsUpdate, Platform } from '@/shared/types';
+import type {
+  Settings,
+  SettingsUpdate,
+  Platform,
+  UpdateSettingsMessage,
+  WhitelistAddMessage,
+  WhitelistRemoveMessage,
+} from '@/shared/types';
 import { createMessage } from '@/shared/types';
 import { DEFAULT_SETTINGS } from '@/shared/constants';
 
@@ -84,7 +91,7 @@ export function useSettings(): UseSettingsResult {
         setError(null);
 
         const response = await browser.runtime.sendMessage(
-          createMessage({
+          createMessage<UpdateSettingsMessage>({
             type: 'UPDATE_SETTINGS',
             payload: update,
           })
@@ -154,7 +161,7 @@ export function useSettings(): UseSettingsResult {
         setError(null);
 
         const response = await browser.runtime.sendMessage(
-          createMessage({
+          createMessage<WhitelistAddMessage>({
             type: 'WHITELIST_ADD',
             payload: params,
           })
@@ -198,7 +205,7 @@ export function useSettings(): UseSettingsResult {
       setError(null);
 
       const response = await browser.runtime.sendMessage(
-        createMessage({
+        createMessage<WhitelistRemoveMessage>({
           type: 'WHITELIST_REMOVE',
           payload: { id },
         })
@@ -253,7 +260,7 @@ export function useSettings(): UseSettingsResult {
         }
 
         const response = await browser.runtime.sendMessage(
-          createMessage({
+          createMessage<UpdateSettingsMessage>({
             type: 'UPDATE_SETTINGS',
             payload: mergedSettings,
           })

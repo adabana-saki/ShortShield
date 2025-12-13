@@ -84,8 +84,9 @@ describe('isValidDomain', () => {
 
 describe('isValidChannelId', () => {
   it('should accept valid YouTube channel IDs', () => {
-    expect(isValidChannelId('UCxxxxxxxxxxxxxxxxx123')).toBe(true);
-    expect(isValidChannelId('UC-AbCdEfGhIjKlMnOpQrStUv')).toBe(true);
+    // UC + 22 characters = 24 total
+    expect(isValidChannelId('UCxxxxxxxxxxxxxxxxxx1234')).toBe(true);
+    expect(isValidChannelId('UC-AbCdEfGhIjKlMnOpQrStU')).toBe(true);
   });
 
   it('should accept valid @handle format', () => {

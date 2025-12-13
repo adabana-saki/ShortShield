@@ -77,6 +77,9 @@ function extractKeysFromFile(filePath: string): Map<string, string[]> {
     let match;
     while ((match = pattern.exec(content)) !== null) {
       const key = match[1];
+      if (key === undefined) {
+        continue;
+      }
 
       // Find line number
       const beforeMatch = content.substring(0, match.index);

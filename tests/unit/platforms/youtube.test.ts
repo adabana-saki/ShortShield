@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 /**
  * YouTube detector tests
  */
 
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { YouTubeDetector } from '@/content/platforms/youtube';
 import type { Settings } from '@/shared/types';
 import { DEFAULT_SETTINGS } from '@/shared/constants';

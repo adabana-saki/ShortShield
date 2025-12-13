@@ -81,6 +81,7 @@ export type SettingsUpdate = Partial<{
   platforms: Partial<PlatformSettings>;
   preferences: Partial<UserPreferences>;
   whitelist: readonly WhitelistEntry[];
+  stats: Partial<BlockingStats>; // Internal use only for stat resets
 }>;
 
 /**
