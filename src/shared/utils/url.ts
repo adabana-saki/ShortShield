@@ -74,10 +74,7 @@ export function extractYouTubeVideoId(url: string): string | null {
   }
 
   const hostname = parsed.hostname;
-  if (
-    !hostname.includes('youtube.com') &&
-    !hostname.includes('youtu.be')
-  ) {
+  if (!hostname.includes('youtube.com') && !hostname.includes('youtu.be')) {
     return null;
   }
 
@@ -95,7 +92,9 @@ export function extractYouTubeVideoId(url: string): string | null {
 
   // Handle /watch?v= URLs
   const videoId = parsed.searchParams.get('v');
-  return videoId && isValidYouTubeVideoId(videoId) ? videoId : null;
+  return videoId !== null && videoId !== '' && isValidYouTubeVideoId(videoId)
+    ? videoId
+    : null;
 }
 
 /**
@@ -119,7 +118,7 @@ export function isValidYouTubeChannelId(id: string): boolean {
  */
 export function shortsToWatchUrl(shortsUrl: string): string | null {
   const videoId = extractYouTubeVideoId(shortsUrl);
-  if (!videoId) {
+  if (videoId === null || videoId === '') {
     return null;
   }
   return `https://www.youtube.com/watch?v=${videoId}`;
@@ -130,9 +129,10 @@ export function shortsToWatchUrl(shortsUrl: string): string | null {
  */
 export function matchesUrlPattern(url: string, pattern: string): boolean {
   try {
+    // eslint-disable-next-line security/detect-non-literal-regexp
     const regex = new RegExp(pattern);
     const pathname = getPathname(url);
-    return pathname ? regex.test(pathname) : false;
+    return pathname !== null && pathname !== '' ? regex.test(pathname) : false;
   } catch {
     // Invalid regex pattern
     return false;

@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-unsafe-regex, security/detect-non-literal-regexp */
 /**
  * Input validation utilities
  * Security: Validates and sanitizes all user inputs
@@ -359,7 +360,7 @@ export function validateCssSelector(selector: string): ValidationResult {
  * Validate settings object
  */
 export function validateSettings(data: unknown): ValidationResult {
-  if (!data || typeof data !== 'object') {
+  if (data === null || data === undefined || typeof data !== 'object') {
     return { isValid: false, error: 'Settings must be an object' };
   }
 

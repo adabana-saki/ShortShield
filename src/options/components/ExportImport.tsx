@@ -200,8 +200,12 @@ export function ExportImport() {
       </div>
 
       {/* Status messages */}
-      {error && <p className="export-import-error">{error}</p>}
-      {success && <p className="export-import-success">{success}</p>}
+      {error !== null && error !== '' && (
+        <p className="export-import-error">{error}</p>
+      )}
+      {success !== null && success !== '' && (
+        <p className="export-import-success">{success}</p>
+      )}
 
       {/* Warning */}
       <div className="export-import-warning">

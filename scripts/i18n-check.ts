@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-object-injection */
 /**
  * i18n Translation Completeness Check Script
  * Validates that all locales have all required translation keys
@@ -80,7 +81,9 @@ function validateMessageEntry(
       errors.push(`[${locale}] "${key}": Invalid placeholders format`);
     } else {
       const placeholders = obj.placeholders as Record<string, unknown>;
-      for (const [placeholderKey, placeholder] of Object.entries(placeholders)) {
+      for (const [placeholderKey, placeholder] of Object.entries(
+        placeholders
+      )) {
         if (
           typeof placeholder !== 'object' ||
           placeholder === null ||

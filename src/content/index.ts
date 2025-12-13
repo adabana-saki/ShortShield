@@ -36,7 +36,12 @@ async function getSettingsSafely(): Promise<Settings | null> {
       createMessage({ type: 'GET_SETTINGS' })
     );
 
-    if (response && typeof response === 'object' && 'success' in response) {
+    if (
+      response !== null &&
+      response !== undefined &&
+      typeof response === 'object' &&
+      'success' in response
+    ) {
       const typedResponse = response as { success: boolean; data?: Settings };
       if (typedResponse.success && typedResponse.data) {
         return typedResponse.data;
@@ -100,7 +105,9 @@ async function initialize(): Promise<void> {
   // Listen for settings changes
   browser.storage.onChanged.addListener((changes, areaName) => {
     if (areaName === 'local' && changes.shortshield_settings) {
-      const newSettings = changes.shortshield_settings.newValue as Settings | undefined;
+      const newSettings = changes.shortshield_settings.newValue as
+        | Settings
+        | undefined;
       if (newSettings) {
         detector.setSettings(newSettings);
         logger.debug('Settings updated');

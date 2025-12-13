@@ -25,7 +25,7 @@ export async function getSettings(): Promise<Settings> {
     const result = await browser.storage.local.get(STORAGE_KEYS.SETTINGS);
     const stored = result[STORAGE_KEYS.SETTINGS];
 
-    if (!stored) {
+    if (stored === undefined || stored === null) {
       logger.debug('No settings found, using defaults');
       return DEFAULT_SETTINGS;
     }
@@ -178,7 +178,10 @@ export async function getStorageInfo(): Promise<{
 }> {
   try {
     // Chrome-specific API
-    if (browser.storage.local.getBytesInUse) {
+    if (
+      'getBytesInUse' in browser.storage.local &&
+      typeof browser.storage.local.getBytesInUse === 'function'
+    ) {
       const bytesUsed = await browser.storage.local.getBytesInUse(null);
       return {
         bytesUsed,
@@ -277,7 +280,8 @@ export async function importData(backup: unknown): Promise<void> {
 
   // Validate settings if present
   if (
-    data[STORAGE_KEYS.SETTINGS] &&
+    data[STORAGE_KEYS.SETTINGS] !== undefined &&
+    data[STORAGE_KEYS.SETTINGS] !== null &&
     !isValidSettings(data[STORAGE_KEYS.SETTINGS])
   ) {
     throw new Error('Invalid settings in backup');

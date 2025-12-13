@@ -176,10 +176,10 @@ export class InstagramDetector extends BasePlatformDetector {
 
     // Try to find a container div
     let current: HTMLElement | null = element;
-    for (let i = 0; i < 5 && current; i++) {
+    for (let i = 0; i < 5 && current !== null; i++) {
       current = current.parentElement;
 
-      if (!current) {
+      if (current === null) {
         break;
       }
 
@@ -211,18 +211,14 @@ export class InstagramDetector extends BasePlatformDetector {
         'a[href*="/reel/"], a[href*="/reels/"]'
       );
 
-      if (reelLink && article.dataset.shortshieldHidden !== 'true') {
+      if (reelLink !== null && article.dataset.shortshieldHidden !== 'true') {
         if (this.isWhitelisted(article)) {
           continue;
         }
 
-        // Check for Reels indicator (clip icon, "Reels" text)
-        const hasReelsIndicator = this.hasReelsIndicator(article);
-
-        if (hasReelsIndicator || reelLink) {
-          this.applyAction(article, 'hide');
-          void this.logBlock(article, 'hide');
-        }
+        // Reel link found - apply action
+        this.applyAction(article, 'hide');
+        void this.logBlock(article, 'hide');
       }
     }
 
@@ -286,7 +282,7 @@ export class InstagramDetector extends BasePlatformDetector {
       'a[href*="/reel/"], a[href*="/reels/"], a[href*="/p/"]'
     );
 
-    if (link?.href) {
+    if (link !== null && link.href !== '') {
       return link.href;
     }
 
@@ -309,7 +305,7 @@ export class InstagramDetector extends BasePlatformDetector {
       'a[href^="/"][href$="/"]'
     );
 
-    if (!userLink?.href) {
+    if (userLink === null || userLink.href === '') {
       return false;
     }
 

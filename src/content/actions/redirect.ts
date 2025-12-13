@@ -31,7 +31,8 @@ const REDIRECT_PATTERNS: RedirectPattern[] = [
   },
   // YouTube Shorts embed
   {
-    match: /^https?:\/\/(www\.)?youtube\.com\/embed\/([a-zA-Z0-9_-]+)\?.*shorts/,
+    match:
+      /^https?:\/\/(www\.)?youtube\.com\/embed\/([a-zA-Z0-9_-]+)\?.*shorts/,
     redirect: (match) => `https://www.youtube.com/watch?v=${match[2]}`,
     platform: 'youtube',
   },
@@ -75,8 +76,10 @@ export function performRedirect(url?: string): boolean {
   const currentUrl = url ?? window.location.href;
   const redirectUrl = getRedirectUrl(currentUrl);
 
-  if (!redirectUrl) {
-    logger.debug('No redirect available for URL', { url: currentUrl.slice(0, 50) });
+  if (redirectUrl === null || redirectUrl === '') {
+    logger.debug('No redirect available for URL', {
+      url: currentUrl.slice(0, 50),
+    });
     return false;
   }
 
@@ -119,7 +122,11 @@ export function transformLinks(root: HTMLElement = document.body): number {
     const href = link.href;
     const redirectUrl = getRedirectUrl(href);
 
-    if (redirectUrl && link.dataset.shortshieldTransformed !== 'true') {
+    if (
+      redirectUrl !== null &&
+      redirectUrl !== '' &&
+      link.dataset.shortshieldTransformed !== 'true'
+    ) {
       // Store original URL
       link.dataset.shortshieldOriginalHref = href;
       link.dataset.shortshieldTransformed = 'true';
@@ -159,7 +166,7 @@ export function restoreLinks(root: HTMLElement = document.body): number {
   for (const link of links) {
     const originalHref = link.dataset.shortshieldOriginalHref;
 
-    if (originalHref) {
+    if (originalHref !== undefined && originalHref !== '') {
       link.href = originalHref;
       delete link.dataset.shortshieldOriginalHref;
       delete link.dataset.shortshieldTransformed;
@@ -221,7 +228,7 @@ export function isSameVideo(url1: string, url2: string): boolean {
   const id1 = extractVideoId(url1);
   const id2 = extractVideoId(url2);
 
-  if (!id1 || !id2) {
+  if (id1 === null || id1 === '' || id2 === null || id2 === '') {
     return false;
   }
 

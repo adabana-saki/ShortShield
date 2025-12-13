@@ -48,7 +48,7 @@ function LogItem({ log }: LogItemProps) {
             {actionLabels[log.action] ?? log.action}
           </span>
         </div>
-        {log.url && (
+        {log.url !== undefined && log.url !== '' && (
           <a
             href={log.url}
             target="_blank"
@@ -89,7 +89,7 @@ export function LogViewer() {
     try {
       const response = await sendMessage({ type: 'GET_LOGS' });
 
-      if (response.success && Array.isArray(response.data)) {
+      if (response.success === true && Array.isArray(response.data)) {
         setLogs(response.data as LogEntry[]);
       } else {
         setError(t('logsLoadError'));
@@ -116,7 +116,7 @@ export function LogViewer() {
     try {
       const response = await sendMessage({ type: 'CLEAR_LOGS' });
 
-      if (response.success) {
+      if (response.success === true) {
         setLogs([]);
         setPage(0);
         logger.info('Logs cleared successfully');
@@ -197,7 +197,9 @@ export function LogViewer() {
       </div>
 
       {/* Error message */}
-      {error && <p className="log-viewer-error">{error}</p>}
+      {error !== null && error !== '' && (
+        <p className="log-viewer-error">{error}</p>
+      )}
 
       {/* Loading state */}
       {isLoading ? (

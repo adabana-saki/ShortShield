@@ -227,7 +227,9 @@ export function CustomRules() {
           {isAdding ? t('customRulesAdding') : t('customRulesAdd')}
         </button>
 
-        {error && <p className="custom-rules-error">{error}</p>}
+        {error !== null && error !== '' && (
+          <p className="custom-rules-error">{error}</p>
+        )}
       </div>
 
       {/* Rules list */}

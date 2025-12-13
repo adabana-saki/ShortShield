@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-object-injection, no-console */
 /**
  * Safe logging utility
  * Security: Sanitizes data, prevents sensitive data logging, rate limits

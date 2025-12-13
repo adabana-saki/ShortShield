@@ -324,7 +324,9 @@ function initializeRules(): void {
   rulesCache.set('youtube', youtubeRules);
   rulesCache.set('tiktok', tiktokRules);
   rulesCache.set('instagram', instagramRules);
-  logger.debug('Rules initialized', { platforms: Array.from(rulesCache.keys()) });
+  logger.debug('Rules initialized', {
+    platforms: Array.from(rulesCache.keys()),
+  });
 }
 
 // Initialize on module load
@@ -345,7 +347,9 @@ export function getSelectors(platform: Platform): readonly SelectorRule[] {
   if (!rules) {
     return [];
   }
-  return rules.selectors.filter((s) => s.enabled).sort((a, b) => b.priority - a.priority);
+  return rules.selectors
+    .filter((s) => s.enabled)
+    .sort((a, b) => b.priority - a.priority);
 }
 
 /**
@@ -362,7 +366,9 @@ export function getUrlPatterns(platform: Platform): readonly UrlRule[] {
 /**
  * Get container rules for a platform
  */
-export function getContainerRules(platform: Platform): readonly ContainerRule[] {
+export function getContainerRules(
+  platform: Platform
+): readonly ContainerRule[] {
   const rules = rulesCache.get(platform);
   if (!rules) {
     return [];
@@ -373,7 +379,10 @@ export function getContainerRules(platform: Platform): readonly ContainerRule[] 
 /**
  * Check if a URL matches any blocking pattern
  */
-export function matchesUrlPattern(platform: Platform, pathname: string): UrlRule | null {
+export function matchesUrlPattern(
+  platform: Platform,
+  pathname: string
+): UrlRule | null {
   const patterns = getUrlPatterns(platform);
 
   for (const rule of patterns) {
@@ -398,6 +407,7 @@ function matchPattern(pattern: string, pathname: string): boolean {
     .replace(/<<<DOUBLE_STAR>>>/g, '.*')
     .replace(/\//g, '\\/');
 
+  // eslint-disable-next-line security/detect-non-literal-regexp
   const regex = new RegExp(`^${regexPattern}$`);
   return regex.test(pathname);
 }
@@ -415,11 +425,11 @@ export function findContainer(
     let current: HTMLElement | null = element;
     let depth = 0;
 
-    while (current && depth < rule.maxDepth) {
+    while (current !== null && depth < rule.maxDepth) {
       current = current.parentElement;
       depth++;
 
-      if (!current) {
+      if (current === null) {
         break;
       }
 
@@ -435,7 +445,10 @@ export function findContainer(
 /**
  * Check if element matches a container rule
  */
-function matchesContainerRule(element: HTMLElement, rule: ContainerRule): boolean {
+function matchesContainerRule(
+  element: HTMLElement,
+  rule: ContainerRule
+): boolean {
   switch (rule.type) {
     case 'selector':
       return element.matches(rule.pattern);

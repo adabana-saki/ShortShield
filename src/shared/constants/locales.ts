@@ -77,7 +77,11 @@ export function normalizeLocale(browserLocale: string): SupportedLocale {
 
   // Try language code only (e.g., 'en-US' -> 'en')
   const languageCode = browserLocale.split('-')[0];
-  if (languageCode && isSupportedLocale(languageCode)) {
+  if (
+    languageCode !== undefined &&
+    languageCode !== '' &&
+    isSupportedLocale(languageCode)
+  ) {
     return languageCode;
   }
 

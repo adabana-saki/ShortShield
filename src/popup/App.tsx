@@ -12,8 +12,14 @@ import type { Platform } from '@/shared/types';
 
 export function App() {
   const { t } = useI18n();
-  const { settings, isLoading, error, toggleEnabled, togglePlatform, refreshSettings } =
-    useSettings();
+  const {
+    settings,
+    isLoading,
+    error,
+    toggleEnabled,
+    togglePlatform,
+    refreshSettings,
+  } = useSettings();
 
   /**
    * Handle platform toggle
@@ -48,7 +54,7 @@ export function App() {
   }
 
   // Error state
-  if (error) {
+  if (error !== null && error !== '') {
     return (
       <div className="popup-container">
         <div className="error-container">
@@ -73,7 +79,9 @@ export function App() {
         <span
           className={`status-badge ${settings.enabled ? 'status-badge-enabled' : 'status-badge-disabled'}`}
         >
-          {settings.enabled ? t('popupStatusEnabled') : t('popupStatusDisabled')}
+          {settings.enabled
+            ? t('popupStatusEnabled')
+            : t('popupStatusDisabled')}
         </span>
       </header>
 

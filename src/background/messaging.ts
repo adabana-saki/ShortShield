@@ -38,7 +38,7 @@ const logger = createLogger('messaging');
  */
 function isValidSender(sender: browser.Runtime.MessageSender): boolean {
   // Must have an ID
-  if (!sender.id) {
+  if (sender.id === undefined || sender.id === '') {
     return false;
   }
 
@@ -241,7 +241,7 @@ async function handleGetLogs(
     }
 
     // Apply limit if specified
-    if (message.payload?.limit) {
+    if (message.payload?.limit !== undefined && message.payload.limit > 0) {
       logs = logs.slice(-message.payload.limit);
     }
 

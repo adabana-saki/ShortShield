@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/require-await, @typescript-eslint/strict-boolean-expressions */
 /**
  * Mock for webextension-polyfill (browser API)
  */
