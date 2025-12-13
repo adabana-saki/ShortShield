@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Package manager
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Generated files
+coverage/
+.nyc_output/
+
+# IDE
+.idea/
+.vscode/
+
+# Other
+*.min.js
+*.min.css

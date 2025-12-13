@@ -1,0 +1,86 @@
+{
+  "platform": "tiktok",
+  "version": "1.0.0",
+  "lastUpdated": "2025-01-01",
+  "selectors": [
+    {
+      "selector": "[data-e2e=\"recommend-list-item-container\"]",
+      "description": "For You page video item",
+      "enabled": true,
+      "priority": 10
+    },
+    {
+      "selector": "[class*=\"DivItemContainer\"]",
+      "description": "Video feed item container",
+      "enabled": true,
+      "priority": 9
+    },
+    {
+      "selector": "[data-e2e=\"search-card-container\"]",
+      "description": "Search results video card",
+      "enabled": true,
+      "priority": 8
+    },
+    {
+      "selector": "[data-e2e=\"user-post-item\"]",
+      "description": "User profile video item",
+      "enabled": true,
+      "priority": 8
+    },
+    {
+      "selector": "[data-e2e=\"following-item\"]",
+      "description": "Following feed item",
+      "enabled": true,
+      "priority": 8
+    },
+    {
+      "selector": "[class*=\"DivVideoContainer\"]",
+      "description": "Video player container",
+      "enabled": true,
+      "priority": 7
+    },
+    {
+      "selector": "a[href*=\"/video/\"]",
+      "description": "Links to video pages",
+      "enabled": true,
+      "priority": 6
+    }
+  ],
+  "urlPatterns": [
+    {
+      "pattern": "/foryou",
+      "description": "For You page",
+      "blockPage": true,
+      "enabled": true
+    },
+    {
+      "pattern": "/",
+      "description": "Home page (For You)",
+      "blockPage": true,
+      "enabled": true
+    },
+    {
+      "pattern": "/@*/video/*",
+      "description": "Individual video page",
+      "blockPage": true,
+      "enabled": true
+    }
+  ],
+  "containers": [
+    {
+      "pattern": "ItemContainer",
+      "type": "class",
+      "maxDepth": 10
+    },
+    {
+      "pattern": "VideoCard",
+      "type": "class",
+      "maxDepth": 10
+    },
+    {
+      "pattern": "data-e2e",
+      "type": "attribute",
+      "maxDepth": 10
+    }
+  ]
+}
