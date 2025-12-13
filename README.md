@@ -172,7 +172,9 @@ _One click to block. One click to unblock. Full control._
 
 ## Why ShortShield Exists
 
-I built ShortShield after realizing I was spending 3+ hours daily on short-form videos. I tried:
+**I was angry.** Hours lost every day to short-form videos. Late nights scrolling, achieving nothing, just watching time disappear. This frustration with wasted time and the regret that followed drove me to create ShortShield.
+
+After realizing I was spending 3+ hours daily on short-form videos, I tried everything:
 
 - ❌ **Willpower** — Failed after 2 days
 - ❌ **App timers** — Just tapped "ignore"
@@ -182,6 +184,12 @@ I built ShortShield after realizing I was spending 3+ hours daily on short-form 
 What I needed was **surgical precision**: block the addictive content, but keep the platforms usable for legitimate purposes (search, specific creators, etc.).
 
 ShortShield is that tool.
+
+### The Mission
+
+**I want you to reclaim your time.** Protect your life from these cleverly engineered time thieves. Use those recovered hours to focus on what truly matters. **Live more efficiently. Live more intentionally.**
+
+ShortShield isn't just a blocker. It's a shield for your time and your life.
 
 ---
 
@@ -248,6 +256,9 @@ Currently, ShortShield is desktop-only (browser extension). Mobile support is on
 - [x] Multi-browser support
 - [ ] Browser store release
 - [ ] Usage statistics dashboard
+- [ ] **Timer functionality** (daily usage limits)
+- [ ] **Custom domain blocking** (add your own sites to block)
+- [ ] **Anti-unblock mechanism** (make it harder to disable protection)
 - [ ] Scheduled blocking (focus hours)
 - [ ] Mobile browser support (Firefox Android)
 - [ ] Safari extension
