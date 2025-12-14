@@ -34,6 +34,7 @@ function loadManifest(): CrxManifest {
 const manifest = loadManifest();
 
 export default defineConfig({
+  base: './',
   plugins: [
     react(),
     crx({

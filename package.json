@@ -1,7 +1,7 @@
 {
   "name": "shortshield",
   "displayName": "ShortShield",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Block short-form videos and reclaim your focus. Comprehensive productivity toolkit with Focus Mode, Pomodoro Timer, Time Limits, and more.",
   "type": "module",
   "private": true,
