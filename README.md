@@ -8,7 +8,11 @@ _The average person spends 2.5 hours daily on short-form videos. Take back your 
 
 [![CI](https://github.com/adabana-saki/ShortShield/actions/workflows/ci.yml/badge.svg)](https://github.com/adabana-saki/ShortShield/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/adabana-saki/ShortShield/actions/workflows/codeql.yml/badge.svg)](https://github.com/adabana-saki/ShortShield/actions/workflows/codeql.yml)
+[![codecov](https://codecov.io/gh/adabana-saki/ShortShield/branch/main/graph/badge.svg)](https://codecov.io/gh/adabana-saki/ShortShield)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/adabana-saki/ShortShield?style=social)](https://github.com/adabana-saki/ShortShield/stargazers)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 [![Chrome](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=googlechrome&logoColor=white)](https://github.com/adabana-saki/ShortShield)
 [![Firefox](https://img.shields.io/badge/Firefox-Add--on-FF7139?logo=firefox&logoColor=white)](https://github.com/adabana-saki/ShortShield)
 [![Edge](https://img.shields.io/badge/Edge-Add--on-0078D7?logo=microsoftedge&logoColor=white)](https://github.com/adabana-saki/ShortShield)
@@ -69,29 +73,62 @@ _One click to block. One click to unblock. Full control._
 
 ## Features
 
+### 🛡️ Core Blocking
+
 | Feature                     | Description                                           |
 | --------------------------- | ----------------------------------------------------- |
 | **Multi-Platform Blocking** | YouTube Shorts, TikTok, Instagram Reels — all covered |
+| **SNS Feed Blocking**       | Twitter, Facebook, LinkedIn, Reddit feeds blocked     |
+| **Custom Domain Blocking**  | Add any domain to your block list                     |
 | **Per-Platform Control**    | Block TikTok but allow Shorts? You decide             |
 | **Whitelist System**        | Allow specific creators, channels, or URLs            |
 | **Custom Rules**            | Add your own CSS selectors for advanced blocking      |
-| **Privacy-First**           | Zero data collection. Everything stays local          |
-| **Cross-Browser**           | Chrome, Firefox, Edge supported                       |
+
+### ⏱️ Focus & Productivity
+
+| Feature                | Description                                             |
+| ---------------------- | ------------------------------------------------------- |
+| **Focus Mode**         | One-click blocking for 30/60/120 minutes with soft lock |
+| **Pomodoro Timer**     | Classic 25/5 work/break cycles with auto-start          |
+| **Site Time Limits**   | Set daily usage limits per platform                     |
+| **Time Tracking**      | 90-day usage history with visual reports               |
+| **Streak Tracking**    | Track consecutive focus days with milestones            |
+| **Challenge Mode**     | Solve math/typing/pattern puzzles to bypass blocks     |
+| **Lockdown Mode**      | PIN-protect settings to prevent impulsive changes       |
+| **Schedule Blocking**  | Auto-block during specific hours (e.g., work time)     |
+
+### 🎨 Customization
+
+| Feature                  | Description                                       |
+| ------------------------ | ------------------------------------------------- |
+| **Custom Block Page**    | Personalize block message, theme, and motivation |
+| **Dark/Light Theme**     | System-aware theme with custom colors             |
+| **Multi-Language**       | 9 languages supported (EN, JA, DE, ES, FR, KO, PT, ZH) |
+| **Privacy-First**        | Zero data collection. Everything stays local      |
+| **Cross-Browser**        | Chrome, Firefox, Edge supported                   |
 
 ---
 
 ## Comparison
 
-| Feature         | ShortShield |  BlockSite  | uBlock Origin | Screen Time |
-| --------------- | :---------: | :---------: | :-----------: | :---------: |
-| YouTube Shorts  |     ✅      | ⚠️ Partial  |      ❌       |     ❌      |
-| TikTok          |     ✅      |     ✅      |      ❌       |     ✅      |
-| Instagram Reels |     ✅      | ⚠️ Partial  |      ❌       |     ❌      |
-| Whitelist       |   ✅ Free   |   💰 Paid   |      N/A      |     ❌      |
-| Custom Rules    |     ✅      |     ❌      |      ✅       |     ❌      |
-| Privacy         | ✅ No data  | ❌ Collects |  ✅ No data   | ❌ Collects |
-| Open Source     |     ✅      |     ❌      |      ✅       |     ❌      |
-| Price           |  **Free**   |  Freemium   |     Free      |    Paid     |
+| Feature          | ShortShield |  BlockSite  | uBlock Origin | Screen Time | Cold Turkey |
+| ---------------- | :---------: | :---------: | :-----------: | :---------: | :---------: |
+| YouTube Shorts   |     ✅      | ⚠️ Partial  |      ❌       |     ❌      |     ❌      |
+| TikTok           |     ✅      |     ✅      |      ❌       |     ✅      |     ✅      |
+| Instagram Reels  |     ✅      | ⚠️ Partial  |      ❌       |     ❌      |     ❌      |
+| SNS Feed Block   |     ✅      |     ❌      |      ❌       |     ❌      |     ❌      |
+| Focus Mode       |     ✅      |     ❌      |      ❌       |     ❌      | ⚠️ Partial  |
+| Pomodoro Timer   |     ✅      |     ❌      |      ❌       |     ❌      |     ❌      |
+| Time Limits      |     ✅      | ⚠️ Partial  |      ❌       |     ✅      |     ✅      |
+| Streak Tracking  |     ✅      |     ❌      |      ❌       |     ❌      |     ❌      |
+| Challenge Mode   |     ✅      |     ❌      |      ❌       |     ❌      |     ❌      |
+| Lockdown Mode    |     ✅      |     ❌      |      ❌       |     ❌      |     ✅      |
+| Whitelist        |   ✅ Free   |   💰 Paid   |      N/A      |     ❌      |   ✅ Free   |
+| Custom Rules     |     ✅      |     ❌      |      ✅       |     ❌      |     ✅      |
+| Multi-Language   |   ✅ 9      |   ✅ Many   |   ✅ Many     |   ✅ Many   |   ✅ Many   |
+| Privacy          | ✅ No data  | ❌ Collects |  ✅ No data   | ❌ Collects | ✅ No data  |
+| Open Source      |     ✅      |     ❌      |      ✅       |     ❌      |     ❌      |
+| Price            |  **Free**   |  Freemium   |     Free      |    Paid     |    Paid     |
 
 ---
 
@@ -247,21 +284,41 @@ Currently, ShortShield is desktop-only (browser extension). Mobile support is on
 
 ## Roadmap
 
+### ✅ Completed (v0.1.0)
+
 - [x] Core blocking engine
 - [x] YouTube Shorts support
 - [x] TikTok support
 - [x] Instagram Reels support
+- [x] SNS feed blocking (Twitter, Facebook, LinkedIn, Reddit)
 - [x] Whitelist system
-- [x] Custom rules
-- [x] Multi-browser support
-- [ ] Browser store release
-- [ ] Usage statistics dashboard
-- [ ] **Timer functionality** (daily usage limits)
-- [ ] **Custom domain blocking** (add your own sites to block)
-- [ ] **Anti-unblock mechanism** (make it harder to disable protection)
-- [ ] Scheduled blocking (focus hours)
+- [x] Custom rules & domain blocking
+- [x] Multi-browser support (Chrome, Firefox, Edge)
+- [x] **Focus Mode** with soft lock
+- [x] **Pomodoro Timer** with auto-start
+- [x] **Site Time Limits** (daily usage per platform)
+- [x] **Time Tracking & Reports** (90-day history)
+- [x] **Streak Tracking** with milestones
+- [x] **Challenge Mode** (math/typing/pattern puzzles)
+- [x] **Lockdown Mode** (PIN-protected settings)
+- [x] **Schedule Blocking** (time-based rules)
+- [x] **Custom Block Page** with themes
+- [x] **Multi-language support** (9 languages)
+
+### 🚀 In Progress
+
+- [ ] Browser store release (Chrome Web Store, Firefox Add-ons, Edge Add-ons)
+- [ ] Demo video & screenshots
 - [ ] Mobile browser support (Firefox Android)
+
+### 📋 Planned
+
 - [ ] Safari extension
+- [ ] Import/export settings
+- [ ] Sync across devices
+- [ ] Usage analytics dashboard
+- [ ] Habit insights & recommendations
+- [ ] Team/family sharing features
 
 [View full roadmap →](https://github.com/adabana-saki/ShortShield/projects)
 
