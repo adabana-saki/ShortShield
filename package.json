@@ -2,9 +2,35 @@
   "name": "shortshield",
   "displayName": "ShortShield",
   "version": "0.1.0",
-  "description": "Block short-form videos and reclaim your focus",
+  "description": "Block short-form videos and reclaim your focus. Comprehensive productivity toolkit with Focus Mode, Pomodoro Timer, Time Limits, and more.",
   "type": "module",
   "private": true,
+  "author": "Adabana Saki <yuuto819midorimatu@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/adabana-saki/ShortShield#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adabana-saki/ShortShield.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adabana-saki/ShortShield/issues"
+  },
+  "keywords": [
+    "browser-extension",
+    "productivity",
+    "focus",
+    "youtube-shorts",
+    "tiktok",
+    "instagram-reels",
+    "content-blocker",
+    "pomodoro",
+    "time-tracking",
+    "habit-tracking",
+    "distraction-blocker",
+    "chrome-extension",
+    "firefox-addon",
+    "edge-extension"
+  ],
   "engines": {
     "node": ">=20.0.0"
   },
