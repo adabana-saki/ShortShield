@@ -5,7 +5,11 @@
  */
 
 import type { LogLevel, AppLogEntry } from '@/shared/types';
-import { LIMITS } from '@/shared/constants';
+
+/**
+ * Maximum log buffer size
+ */
+const MAX_BUFFER_SIZE = 1000;
 
 /**
  * Patterns for sensitive data that should not be logged
@@ -174,7 +178,7 @@ function log(
   logBuffer.push(entry);
 
   // Trim buffer if too large
-  while (logBuffer.length > LIMITS.MAX_LOG_ENTRIES) {
+  while (logBuffer.length > MAX_BUFFER_SIZE) {
     logBuffer.shift();
   }
 

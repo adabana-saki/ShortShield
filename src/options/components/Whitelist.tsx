@@ -30,8 +30,15 @@ function WhitelistItem({ entry, onRemove }: WhitelistItemProps) {
 
   const platformLabels: Record<Platform, string> = {
     youtube: t('popupPlatformYouTube'),
+    youtube_full: t('popupPlatformYouTubeFull'),
     tiktok: t('popupPlatformTikTok'),
     instagram: t('popupPlatformInstagram'),
+    twitter: t('popupPlatformTwitter'),
+    facebook: t('popupPlatformFacebook'),
+    linkedin: t('popupPlatformLinkedIn'),
+    threads: t('popupPlatformThreads'),
+    snapchat: t('popupPlatformSnapchat'),
+    reddit: t('popupPlatformReddit'),
   };
 
   const typeLabels: Record<string, string> = {

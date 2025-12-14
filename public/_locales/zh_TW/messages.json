@@ -39,6 +39,82 @@
     "message": "Instagram Reels",
     "description": "Instagram platform name"
   },
+  "popupPlatformTwitter": {
+    "message": "Twitter/X",
+    "description": "Twitter/X platform name"
+  },
+  "popupPlatformFacebook": {
+    "message": "Facebook",
+    "description": "Facebook platform name"
+  },
+  "popupPlatformLinkedIn": {
+    "message": "LinkedIn",
+    "description": "LinkedIn platform name"
+  },
+  "popupPlatformThreads": {
+    "message": "Threads",
+    "description": "Threads platform name"
+  },
+  "popupPlatformSnapchat": {
+    "message": "Snapchat",
+    "description": "Snapchat platform name"
+  },
+  "popupPlatformReddit": {
+    "message": "Reddit",
+    "description": "Reddit platform name"
+  },
+  "popupPlatformYouTubeFull": {
+    "message": "YouTube (全站)",
+    "description": "Full YouTube blocking platform name"
+  },
+  "popupSectionShortVideo": {
+    "message": "短影片平台",
+    "description": "Section title for short video platforms"
+  },
+  "popupSectionFullSite": {
+    "message": "全站封鎖",
+    "description": "Section title for full site blocking"
+  },
+  "popupSectionSNS": {
+    "message": "社群網路",
+    "description": "Section title for SNS platforms"
+  },
+  "popupViewPlatforms": {
+    "message": "平台",
+    "description": "Popup view: platforms"
+  },
+  "popupViewSchedule": {
+    "message": "時間表",
+    "description": "Popup view: schedule"
+  },
+  "popupViewStats": {
+    "message": "統計",
+    "description": "Popup view: stats"
+  },
+  "popupScheduleStatus": {
+    "message": "時間表",
+    "description": "Schedule status label in popup"
+  },
+  "popupScheduleOn": {
+    "message": "已啟用",
+    "description": "Schedule is currently active"
+  },
+  "popupScheduleOff": {
+    "message": "未啟用",
+    "description": "Schedule is currently inactive"
+  },
+  "popupQuickScheduleToggle": {
+    "message": "啟用時間表",
+    "description": "Quick toggle for schedule in popup"
+  },
+  "preferencesPopupView": {
+    "message": "預設彈出視窗",
+    "description": "Setting for default popup view"
+  },
+  "preferencesPopupViewDescription": {
+    "message": "選擇打開彈出視窗時顯示的內容",
+    "description": "Description for popup view setting"
+  },
   "popupStatsToday": {
     "message": "今日封鎖",
     "description": "Label for today's block count"
@@ -424,5 +500,993 @@
         "example": "5"
       }
     }
+  },
+  "customDomainsTitle": {
+    "message": "自訂封鎖網域",
+    "description": "Custom domains section title"
+  },
+  "customDomainsDescription": {
+    "message": "新增您想要封鎖的任何網域。訪問時將封鎖整個網站。",
+    "description": "Custom domains section description"
+  },
+  "customDomainsPlaceholder": {
+    "message": "輸入網域（例如：example.com）",
+    "description": "Placeholder for domain input"
+  },
+  "customDomainsAdd": {
+    "message": "新增網域",
+    "description": "Add domain button text"
+  },
+  "customDomainsAdding": {
+    "message": "新增中...",
+    "description": "Adding domain in progress"
+  },
+  "customDomainsRemove": {
+    "message": "移除",
+    "description": "Remove domain button"
+  },
+  "customDomainsEmpty": {
+    "message": "沒有自訂封鎖網域",
+    "description": "Empty custom domains message"
+  },
+  "customDomainsErrorEmpty": {
+    "message": "請輸入網域",
+    "description": "Error for empty domain input"
+  },
+  "customDomainsErrorInvalid": {
+    "message": "請輸入有效的網域",
+    "description": "Error for invalid domain"
+  },
+  "customDomainsErrorDuplicate": {
+    "message": "此網域已被封鎖",
+    "description": "Error for duplicate domain"
+  },
+  "customDomainsErrorFailed": {
+    "message": "新增網域失敗",
+    "description": "Error when adding domain fails"
+  },
+  "optionsTabCustomDomains": {
+    "message": "自訂網域",
+    "description": "Tab name for custom domain blocking"
+  },
+  "optionsTabSchedule": {
+    "message": "時間表",
+    "description": "Tab name for schedule settings"
+  },
+  "optionsTabPreferences": {
+    "message": "偏好設定",
+    "description": "Tab name for user preferences"
+  },
+  "optionsFullSiteDescription": {
+    "message": "封鎖整個網站，而不僅僅是短影片內容",
+    "description": "Description for full site blocking section"
+  },
+  "scheduleTitle": {
+    "message": "封鎖時間表",
+    "description": "Schedule section title"
+  },
+  "scheduleDescription": {
+    "message": "設定封鎖生效的時間段。在這些時間之外，所有內容都將被允許。",
+    "description": "Schedule section description"
+  },
+  "scheduleEnabled": {
+    "message": "啟用定時封鎖",
+    "description": "Toggle to enable/disable schedule"
+  },
+  "scheduleActiveDays": {
+    "message": "生效日期",
+    "description": "Label for active days selection"
+  },
+  "scheduleTimeRanges": {
+    "message": "封鎖時段",
+    "description": "Label for time ranges"
+  },
+  "scheduleAddTimeRange": {
+    "message": "新增時段",
+    "description": "Button to add a new time range"
+  },
+  "scheduleRemoveTimeRange": {
+    "message": "移除",
+    "description": "Button to remove a time range"
+  },
+  "scheduleFrom": {
+    "message": "從",
+    "description": "Label for start time"
+  },
+  "scheduleTo": {
+    "message": "到",
+    "description": "Label for end time"
+  },
+  "scheduleDaySun": {
+    "message": "日",
+    "description": "Sunday abbreviation"
+  },
+  "scheduleDayMon": {
+    "message": "一",
+    "description": "Monday abbreviation"
+  },
+  "scheduleDayTue": {
+    "message": "二",
+    "description": "Tuesday abbreviation"
+  },
+  "scheduleDayWed": {
+    "message": "三",
+    "description": "Wednesday abbreviation"
+  },
+  "scheduleDayThu": {
+    "message": "四",
+    "description": "Thursday abbreviation"
+  },
+  "scheduleDayFri": {
+    "message": "五",
+    "description": "Friday abbreviation"
+  },
+  "scheduleDaySat": {
+    "message": "六",
+    "description": "Saturday abbreviation"
+  },
+  "scheduleStatus": {
+    "message": "時間表當前$STATUS$",
+    "description": "Current schedule status",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "有效"
+      }
+    }
+  },
+  "scheduleStatusActive": {
+    "message": "生效中",
+    "description": "Schedule is active"
+  },
+  "scheduleStatusInactive": {
+    "message": "未生效",
+    "description": "Schedule is inactive"
+  },
+  "optionsTabAppearance": {
+    "message": "外觀",
+    "description": "Tab name for block page appearance settings"
+  },
+  "blockPageTitle": {
+    "message": "封鎖頁面外觀",
+    "description": "Section title for block page customization"
+  },
+  "blockPageDescription": {
+    "message": "自訂內容被封鎖時顯示的遮罩外觀。",
+    "description": "Description for block page customization section"
+  },
+  "blockPageThemeTitle": {
+    "message": "主題",
+    "description": "Theme selection title"
+  },
+  "blockPageThemeSystem": {
+    "message": "跟隨系統",
+    "description": "Use system theme preference"
+  },
+  "blockPageThemeLight": {
+    "message": "淺色",
+    "description": "Light theme"
+  },
+  "blockPageThemeDark": {
+    "message": "深色",
+    "description": "Dark theme"
+  },
+  "blockPageColorTitle": {
+    "message": "強調色",
+    "description": "Primary color selection title"
+  },
+  "blockPageCustomColor": {
+    "message": "自訂顏色",
+    "description": "Custom color picker tooltip"
+  },
+  "blockPageCustomTitle": {
+    "message": "自訂標題",
+    "description": "Custom title input label"
+  },
+  "blockPageTitlePlaceholder": {
+    "message": "留空使用預設標題",
+    "description": "Placeholder for custom title input"
+  },
+  "blockPageCustomMessage": {
+    "message": "自訂訊息",
+    "description": "Custom message input label"
+  },
+  "blockPageMessagePlaceholder": {
+    "message": "留空使用預設訊息",
+    "description": "Placeholder for custom message input"
+  },
+  "blockPageShowQuotes": {
+    "message": "顯示勵志名言",
+    "description": "Toggle for motivational quotes"
+  },
+  "blockPageShowQuotesDescription": {
+    "message": "在封鎖頁面上顯示勵志名言",
+    "description": "Description for motivational quotes toggle"
+  },
+  "blockPageCustomQuotes": {
+    "message": "自訂名言",
+    "description": "Custom quotes section title"
+  },
+  "blockPageCustomQuotesDescription": {
+    "message": "新增您自己的名言來顯示",
+    "description": "Description for custom quotes section"
+  },
+  "blockPageQuotePlaceholder": {
+    "message": "輸入勵志名言",
+    "description": "Placeholder for quote input"
+  },
+  "blockPageAddQuote": {
+    "message": "新增名言",
+    "description": "Add quote button text"
+  },
+  "blockPageRemoveQuote": {
+    "message": "刪除名言",
+    "description": "Remove quote button aria label"
+  },
+  "blockPageNoCustomQuotes": {
+    "message": "沒有自訂名言。將使用預設名言。",
+    "description": "Message when no custom quotes exist"
+  },
+  "blockPageShowBypass": {
+    "message": "顯示繞過按鈕",
+    "description": "Toggle for bypass button"
+  },
+  "blockPageShowBypassDescription": {
+    "message": "允許暫時繞過封鎖（不建議）",
+    "description": "Description for bypass button toggle"
+  },
+  "blockPagePreview": {
+    "message": "預覽",
+    "description": "Preview section title"
+  },
+  "blockPageDefaultTitle": {
+    "message": "內容已封鎖",
+    "description": "Default block page title"
+  },
+  "blockPageDefaultMessage": {
+    "message": "ShortShield 正在保護您的專注力。",
+    "description": "Default block page message"
+  },
+  "blockPageDefaultQuote": {
+    "message": "專注於最重要的事情。",
+    "description": "Default motivational quote"
+  },
+  "blockPageBypassButton": {
+    "message": "繞過5分鐘",
+    "description": "Bypass button text"
+  },
+  "blockPageErrorUpdate": {
+    "message": "更新設定失敗",
+    "description": "Error when updating block page settings fails"
+  },
+  "blockPageErrorEmptyQuote": {
+    "message": "請輸入名言",
+    "description": "Error when quote input is empty"
+  },
+  "blockPageErrorDuplicateQuote": {
+    "message": "此名言已存在",
+    "description": "Error when quote is a duplicate"
+  },
+  "popupViewFocus": {
+    "message": "專注",
+    "description": "Popup view: focus mode"
+  },
+  "focusModeTitle": {
+    "message": "專注模式",
+    "description": "Focus mode section title"
+  },
+  "focusModeDescription": {
+    "message": "啟用無干擾的時間區塊來提高您的生產力。",
+    "description": "Focus mode section description"
+  },
+  "focusModeEnabled": {
+    "message": "啟用專注模式",
+    "description": "Toggle to enable focus mode feature"
+  },
+  "focusModeEnabledDescription": {
+    "message": "允許從彈出視窗啟動專注會話",
+    "description": "Description for focus mode enable toggle"
+  },
+  "focusModeDefaultDuration": {
+    "message": "預設時長",
+    "description": "Default focus duration setting"
+  },
+  "focusModeDefaultDurationDescription": {
+    "message": "啟動會話時預選的時長",
+    "description": "Description for default duration setting"
+  },
+  "focusModeSoftLock": {
+    "message": "允許提前取消",
+    "description": "Soft lock toggle label"
+  },
+  "focusModeSoftLockDescription": {
+    "message": "如果停用，您將無法在會話結束前取消",
+    "description": "Description for soft lock setting"
+  },
+  "focusModeNotifications": {
+    "message": "會話通知",
+    "description": "Notifications toggle label"
+  },
+  "focusModeNotificationsDescription": {
+    "message": "在會話開始和結束時顯示通知",
+    "description": "Description for notifications setting"
+  },
+  "focusModeStart": {
+    "message": "開始專注會話",
+    "description": "Button to start focus session"
+  },
+  "focusModeStarting": {
+    "message": "正在啟動...",
+    "description": "Focus session starting state"
+  },
+  "focusModeActive": {
+    "message": "專注模式已啟動",
+    "description": "Indicator that focus mode is running"
+  },
+  "focusModeCancel": {
+    "message": "取消會話",
+    "description": "Button to cancel focus session"
+  },
+  "focusModeCancelling": {
+    "message": "正在取消...",
+    "description": "Focus session cancelling state"
+  },
+  "focusModeRemaining": {
+    "message": "剩餘",
+    "description": "Time remaining label"
+  },
+  "focusModeExtend": {
+    "message": "延長會話：",
+    "description": "Label for extend session buttons"
+  },
+  "optionsTabFocus": {
+    "message": "專注",
+    "description": "Tab name for focus and pomodoro settings"
+  },
+  "pomodoroTitle": {
+    "message": "番茄鐘",
+    "description": "Pomodoro timer section title"
+  },
+  "pomodoroDescription": {
+    "message": "使用番茄工作法：25分鐘專注工作，然後短暫休息。",
+    "description": "Pomodoro timer section description"
+  },
+  "pomodoroEnabled": {
+    "message": "啟用番茄鐘",
+    "description": "Toggle to enable pomodoro timer feature"
+  },
+  "pomodoroEnabledDescription": {
+    "message": "允許從彈窗中使用番茄鐘",
+    "description": "Description for pomodoro enable toggle"
+  },
+  "pomodoroWorkDuration": {
+    "message": "工作時長",
+    "description": "Work session duration setting"
+  },
+  "pomodoroWorkDurationDescription": {
+    "message": "每個專注工作會話的時長",
+    "description": "Description for work duration setting"
+  },
+  "pomodoroBreakDuration": {
+    "message": "休息時長",
+    "description": "Break duration setting"
+  },
+  "pomodoroBreakDurationDescription": {
+    "message": "工作會話之間的短休息時長",
+    "description": "Description for break duration setting"
+  },
+  "pomodoroLongBreakDuration": {
+    "message": "長休息時長",
+    "description": "Long break duration setting"
+  },
+  "pomodoroLongBreakDurationDescription": {
+    "message": "完成一個週期後的長休息時長",
+    "description": "Description for long break duration setting"
+  },
+  "pomodoroSessionsBeforeLongBreak": {
+    "message": "長休息前的會話數",
+    "description": "Number of work sessions before long break"
+  },
+  "pomodoroSessionsBeforeLongBreakDescription": {
+    "message": "長休息前需要完成的工作會話數",
+    "description": "Description for sessions before long break setting"
+  },
+  "pomodoroAutoStartBreaks": {
+    "message": "自動開始休息",
+    "description": "Auto-start breaks setting"
+  },
+  "pomodoroAutoStartBreaksDescription": {
+    "message": "工作會話結束後自動開始休息計時器",
+    "description": "Description for auto-start breaks setting"
+  },
+  "pomodoroAutoStartWork": {
+    "message": "自動開始工作",
+    "description": "Auto-start work setting"
+  },
+  "pomodoroAutoStartWorkDescription": {
+    "message": "休息結束後自動開始工作計時器",
+    "description": "Description for auto-start work setting"
+  },
+  "pomodoroSoundEnabled": {
+    "message": "聲音通知",
+    "description": "Sound notifications setting"
+  },
+  "pomodoroSoundEnabledDescription": {
+    "message": "計時器結束時播放聲音",
+    "description": "Description for sound notifications setting"
+  },
+  "minutes": {
+    "message": "分鐘",
+    "description": "Minutes abbreviation"
+  },
+  "pomodoroWork": {
+    "message": "工作",
+    "description": "Work mode label"
+  },
+  "pomodoroBreak": {
+    "message": "休息",
+    "description": "Break mode label"
+  },
+  "pomodoroLongBreak": {
+    "message": "長休息",
+    "description": "Long break mode label"
+  },
+  "pomodoroIdle": {
+    "message": "就緒",
+    "description": "Idle/ready state label"
+  },
+  "pomodoroSessions": {
+    "message": "會話：",
+    "description": "Sessions count label"
+  },
+  "pomodoroStartWork": {
+    "message": "開始工作",
+    "description": "Button to start work session"
+  },
+  "pomodoroStartBreak": {
+    "message": "開始休息",
+    "description": "Button to start break"
+  },
+  "pomodoroPause": {
+    "message": "暫停",
+    "description": "Pause timer button"
+  },
+  "pomodoroResume": {
+    "message": "繼續",
+    "description": "Resume timer button"
+  },
+  "pomodoroSkip": {
+    "message": "跳過",
+    "description": "Skip to next session button"
+  },
+  "pomodoroStop": {
+    "message": "停止",
+    "description": "Stop and reset timer button"
+  },
+  "timeLimitsTitle": {
+    "message": "時間限制",
+    "description": "Title for time limits section"
+  },
+  "timeLimitsDescription": {
+    "message": "為每個平台設定每日時間限制",
+    "description": "Description for time limits section"
+  },
+  "timeLimitsEnabled": {
+    "message": "啟用時間限制",
+    "description": "Toggle to enable time limits"
+  },
+  "timeLimitsEnabledDescription": {
+    "message": "追蹤平台使用時間並執行每日限制",
+    "description": "Description for time limits toggle"
+  },
+  "timeLimitsWarningThreshold": {
+    "message": "警告閾值",
+    "description": "Warning threshold setting"
+  },
+  "timeLimitsWarningThresholdDescription": {
+    "message": "當使用量達到此百分比時顯示警告",
+    "description": "Description for warning threshold"
+  },
+  "timeLimitsBlockWhenReached": {
+    "message": "達到限制時封鎖",
+    "description": "Block when limit is reached setting"
+  },
+  "timeLimitsBlockWhenReachedDescription": {
+    "message": "達到每日時間限制時封鎖內容",
+    "description": "Description for block when reached setting"
+  },
+  "timeLimitsPlatformLimits": {
+    "message": "平台限制",
+    "description": "Section title for platform limits"
+  },
+  "timeLimitsNoLimit": {
+    "message": "無限制",
+    "description": "Shown when no limit is set for a platform"
+  },
+  "timeLimitsTodaysUsage": {
+    "message": "今日使用量",
+    "description": "Title for today's usage section in stats"
+  },
+  "platformYouTube": {
+    "message": "YouTube",
+    "description": "YouTube platform name"
+  },
+  "platformTikTok": {
+    "message": "TikTok",
+    "description": "TikTok platform name"
+  },
+  "platformInstagram": {
+    "message": "Instagram",
+    "description": "Instagram platform name"
+  },
+  "platformTwitter": {
+    "message": "Twitter/X",
+    "description": "Twitter platform name"
+  },
+  "platformFacebook": {
+    "message": "Facebook",
+    "description": "Facebook platform name"
+  },
+  "platformReddit": {
+    "message": "Reddit",
+    "description": "Reddit platform name"
+  },
+  "hours": {
+    "message": "小時",
+    "description": "Hours unit"
+  },
+  "hoursShort": {
+    "message": "小時",
+    "description": "Hours abbreviation"
+  },
+  "minutesShort": {
+    "message": "分鐘",
+    "description": "Minutes abbreviation"
+  },
+  "days": {
+    "message": "天",
+    "description": "Days unit"
+  },
+  "loading": {
+    "message": "載入中...",
+    "description": "Loading indicator text"
+  },
+  "optionsTabReports": {
+    "message": "報告",
+    "description": "Tab name for time tracking reports"
+  },
+  "reportsTitle": {
+    "message": "時間追蹤與報告",
+    "description": "Time reports section title"
+  },
+  "reportsDescription": {
+    "message": "追蹤和分析您在社群媒體平台上花費的時間。",
+    "description": "Time reports section description"
+  },
+  "reportsEnabled": {
+    "message": "啟用時間追蹤",
+    "description": "Toggle to enable time tracking"
+  },
+  "reportsEnabledDescription": {
+    "message": "記錄每日使用統計數據以進行分析和報告",
+    "description": "Description for time tracking toggle"
+  },
+  "reportsRetention": {
+    "message": "資料保留",
+    "description": "Data retention period setting"
+  },
+  "reportsLast7Days": {
+    "message": "最近7天",
+    "description": "Filter for last 7 days"
+  },
+  "reportsLast30Days": {
+    "message": "最近30天",
+    "description": "Filter for last 30 days"
+  },
+  "reportsLast90Days": {
+    "message": "最近90天",
+    "description": "Filter for last 90 days"
+  },
+  "reportsTotalTime": {
+    "message": "總時間",
+    "description": "Label for total time spent"
+  },
+  "reportsDailyAverage": {
+    "message": "每日平均",
+    "description": "Label for daily average time"
+  },
+  "reportsDaysTracked": {
+    "message": "追蹤天數",
+    "description": "Label for number of days tracked"
+  },
+  "reportsByPlatform": {
+    "message": "按平台",
+    "description": "Section title for platform breakdown"
+  },
+  "reportsDailyHistory": {
+    "message": "每日歷史",
+    "description": "Section title for daily history"
+  },
+  "reportsNoData": {
+    "message": "尚無追蹤資料。使用平台後將顯示您的使用統計。",
+    "description": "Message when no tracking data exists"
+  },
+  "reportsClearHistory": {
+    "message": "清除歷史",
+    "description": "Button to clear tracking history"
+  },
+  "reportsClearConfirm": {
+    "message": "確定要清除所有追蹤歷史嗎？此操作無法復原。",
+    "description": "Confirmation message for clearing history"
+  },
+  "optionsTabStreak": {
+    "message": "連續紀錄",
+    "description": "Tab name for streak tracking settings"
+  },
+  "streakTitle": {
+    "message": "連續紀錄追蹤",
+    "description": "Streak section title"
+  },
+  "streakDescription": {
+    "message": "每天保持專注來建立連續紀錄。追蹤您的進度並獲得里程碑徽章。",
+    "description": "Streak section description"
+  },
+  "streakEnabled": {
+    "message": "啟用連續紀錄追蹤",
+    "description": "Toggle to enable streak tracking"
+  },
+  "streakDays": {
+    "message": "天連續",
+    "description": "Streak days label"
+  },
+  "streakCurrent": {
+    "message": "目前連續",
+    "description": "Current streak label"
+  },
+  "streakLongest": {
+    "message": "最長連續",
+    "description": "Longest streak label"
+  },
+  "streakTotalDays": {
+    "message": "總專注天數",
+    "description": "Total focus days label"
+  },
+  "streakNextMilestone": {
+    "message": "下一個里程碑",
+    "description": "Next milestone label"
+  },
+  "streakToMilestone": {
+    "message": "距里程碑",
+    "description": "Progress towards milestone"
+  },
+  "streakMilestones": {
+    "message": "已達成里程碑",
+    "description": "Achieved milestones section title"
+  },
+  "streakGoalType": {
+    "message": "每日目標",
+    "description": "Goal type setting label"
+  },
+  "streakGoalTypeDescription": {
+    "message": "如何確定您是否達成了每日專注目標",
+    "description": "Description for goal type setting"
+  },
+  "streakGoalFocusTime": {
+    "message": "專注時間",
+    "description": "Goal type: minimum focus session time"
+  },
+  "streakGoalBlocks": {
+    "message": "攔截次數",
+    "description": "Goal type: minimum number of blocks"
+  },
+  "streakGoalNoAccess": {
+    "message": "無存取",
+    "description": "Goal type: no platform access"
+  },
+  "streakMinFocusMinutes": {
+    "message": "最低專注分鐘數",
+    "description": "Minimum focus minutes setting"
+  },
+  "streakMinFocusMinutesDescription": {
+    "message": "每天至少完成這麼多分鐘的專注時段",
+    "description": "Description for minimum focus minutes"
+  },
+  "streakMinBlocks": {
+    "message": "最低攔截次數",
+    "description": "Minimum blocks setting"
+  },
+  "streakMinBlocksDescription": {
+    "message": "每天至少攔截這麼多次干擾",
+    "description": "Description for minimum blocks"
+  },
+  "streakNotifications": {
+    "message": "連續紀錄通知",
+    "description": "Notifications toggle label"
+  },
+  "streakNotificationsDescription": {
+    "message": "達到里程碑或連續中斷時接收通知",
+    "description": "Description for notifications setting"
+  },
+  "streakReset": {
+    "message": "重設連續紀錄",
+    "description": "Reset streak button"
+  },
+  "streakResetConfirm": {
+    "message": "確定要重設連續紀錄嗎？這將清除所有進度且無法復原。",
+    "description": "Confirmation for streak reset"
+  },
+  "streakMilestoneReached": {
+    "message": "達成里程碑！",
+    "description": "Milestone notification title"
+  },
+  "streakMilestoneMessage": {
+    "message": "恭喜！您已達成 $DAYS$ 天連續紀錄！",
+    "description": "Milestone notification message",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "streakBrokenTitle": {
+    "message": "連續中斷",
+    "description": "Streak broken notification title"
+  },
+  "streakBrokenMessage": {
+    "message": "您的連續紀錄已重設。從今天開始新的連續吧！",
+    "description": "Streak broken notification message"
+  },
+  "challengeTitle": {
+    "message": "挑戰模式",
+    "description": "Challenge mode section title"
+  },
+  "challengeDescription": {
+    "message": "繞過封鎖前需要完成挑戰。增加抵抗干擾的難度。",
+    "description": "Challenge mode section description"
+  },
+  "challengeEnabled": {
+    "message": "啟用挑戰模式",
+    "description": "Toggle to enable challenge mode"
+  },
+  "challengeEnabledDescription": {
+    "message": "需要完成挑戰才能暫時繞過封鎖",
+    "description": "Description for challenge mode toggle"
+  },
+  "challengeDisableBypass": {
+    "message": "完全停用繞過",
+    "description": "Toggle to completely disable bypass"
+  },
+  "challengeDisableBypassDescription": {
+    "message": "啟用後將無法繞過任何封鎖。請謹慎使用！",
+    "description": "Description for disable bypass toggle"
+  },
+  "challengeType": {
+    "message": "挑戰類型",
+    "description": "Challenge type setting label"
+  },
+  "challengeTypeDescription": {
+    "message": "選擇繞過時需要完成的挑戰類型",
+    "description": "Description for challenge type setting"
+  },
+  "challengeTypeMath": {
+    "message": "數學題",
+    "description": "Math challenge type"
+  },
+  "challengeTypeTyping": {
+    "message": "打字測試",
+    "description": "Typing challenge type"
+  },
+  "challengeTypePattern": {
+    "message": "模式識別",
+    "description": "Pattern challenge type"
+  },
+  "challengeDifficulty": {
+    "message": "難度等級",
+    "description": "Difficulty setting label"
+  },
+  "challengeDifficultyDescription": {
+    "message": "難度越高，繞過封鎖越困難",
+    "description": "Description for difficulty setting"
+  },
+  "challengeDifficultyEasy": {
+    "message": "簡單",
+    "description": "Easy difficulty level"
+  },
+  "challengeDifficultyMedium": {
+    "message": "中等",
+    "description": "Medium difficulty level"
+  },
+  "challengeDifficultyHard": {
+    "message": "困難",
+    "description": "Hard difficulty level"
+  },
+  "challengeCooldown": {
+    "message": "冷卻時間",
+    "description": "Cooldown setting label"
+  },
+  "challengeCooldownDescription": {
+    "message": "成功繞過後需要等待的時間才能再次嘗試",
+    "description": "Description for cooldown setting"
+  },
+  "challengeTypesInfo": {
+    "message": "挑戰類型說明",
+    "description": "Title for challenge types information"
+  },
+  "challengeTypeMathInfo": {
+    "message": "解答加減乘除等算術問題",
+    "description": "Description of math challenge type"
+  },
+  "challengeTypeTypingInfo": {
+    "message": "準確輸入顯示的單詞、短語或句子",
+    "description": "Description of typing challenge type"
+  },
+  "challengeTypePatternInfo": {
+    "message": "找出數列模式中的下一個數字",
+    "description": "Description of pattern challenge type"
+  },
+  "challengeDifficultyInfo": {
+    "message": "難度等級說明",
+    "description": "Title for difficulty information"
+  },
+  "challengeDifficultyEasyInfo": {
+    "message": "可以快速解決的簡單問題",
+    "description": "Description of easy difficulty"
+  },
+  "challengeDifficultyMediumInfo": {
+    "message": "需要一些思考的中等問題",
+    "description": "Description of medium difficulty"
+  },
+  "challengeDifficultyHardInfo": {
+    "message": "需要時間和專注力的複雜問題",
+    "description": "Description of hard difficulty"
+  },
+  "lockdownTitle": {
+    "message": "鎖定模式",
+    "description": "Title for lockdown mode section"
+  },
+  "lockdownDescription": {
+    "message": "使用PIN碼保護您的設定。防止意志薄弱時的衝動更改。",
+    "description": "Description for lockdown mode"
+  },
+  "lockdownEnabled": {
+    "message": "啟用鎖定模式",
+    "description": "Toggle to enable lockdown mode feature"
+  },
+  "lockdownEnabledDescription": {
+    "message": "允許PIN保護設定更改",
+    "description": "Description for lockdown mode toggle"
+  },
+  "lockdownActiveStatus": {
+    "message": "鎖定模式已啟用。無法更改設定。",
+    "description": "Status message when lockdown is active"
+  },
+  "lockdownSetPin": {
+    "message": "設定PIN碼",
+    "description": "Title for setting initial PIN"
+  },
+  "lockdownChangePin": {
+    "message": "更改PIN碼",
+    "description": "Title for changing existing PIN"
+  },
+  "lockdownCurrentPin": {
+    "message": "目前PIN",
+    "description": "Label for current PIN input"
+  },
+  "lockdownNewPin": {
+    "message": "新PIN",
+    "description": "Label for new PIN input"
+  },
+  "lockdownConfirmPin": {
+    "message": "確認PIN",
+    "description": "Label for confirm PIN input"
+  },
+  "lockdownPinHint": {
+    "message": "PIN必須是4-8位數字",
+    "description": "Hint for PIN format"
+  },
+  "lockdownPinInvalidFormat": {
+    "message": "PIN必須是4-8位數字",
+    "description": "Error when PIN format is invalid"
+  },
+  "lockdownPinMismatch": {
+    "message": "PIN不相符",
+    "description": "Error when PINs don't match"
+  },
+  "lockdownCurrentPinRequired": {
+    "message": "更改PIN需要目前PIN",
+    "description": "Error when current PIN is missing"
+  },
+  "lockdownPinSaved": {
+    "message": "PIN儲存成功",
+    "description": "Success message when PIN is saved"
+  },
+  "lockdownPinError": {
+    "message": "PIN儲存失敗",
+    "description": "Error when saving PIN fails"
+  },
+  "lockdownSetPinButton": {
+    "message": "設定PIN",
+    "description": "Button to set initial PIN"
+  },
+  "lockdownChangePinButton": {
+    "message": "更改PIN",
+    "description": "Button to change existing PIN"
+  },
+  "lockdownEmergencyBypass": {
+    "message": "緊急解鎖等待時間",
+    "description": "Label for emergency bypass minutes setting"
+  },
+  "lockdownEmergencyBypassDescription": {
+    "message": "緊急解鎖可用前的等待時間（無需PIN）",
+    "description": "Description for emergency bypass setting"
+  },
+  "lockdownControl": {
+    "message": "鎖定控制",
+    "description": "Title for lockdown activation section"
+  },
+  "lockdownEnterPin": {
+    "message": "輸入PIN",
+    "description": "Label for PIN entry"
+  },
+  "lockdownPinRequired": {
+    "message": "需要PIN",
+    "description": "Error when PIN is empty"
+  },
+  "lockdownActivateButton": {
+    "message": "啟用鎖定",
+    "description": "Button to activate lockdown mode"
+  },
+  "lockdownActivateWarning": {
+    "message": "啟用後，您需要PIN才能更改任何設定。",
+    "description": "Warning before activating lockdown"
+  },
+  "lockdownActivateError": {
+    "message": "鎖定啟用失敗",
+    "description": "Error when activating lockdown fails"
+  },
+  "lockdownDeactivateButton": {
+    "message": "解除鎖定",
+    "description": "Button to deactivate lockdown mode"
+  },
+  "lockdownDeactivateError": {
+    "message": "鎖定解除失敗",
+    "description": "Error when deactivating lockdown fails"
+  },
+  "lockdownEmergencyBypassTitle": {
+    "message": "忘記PIN了？",
+    "description": "Title for emergency bypass section"
+  },
+  "lockdownEmergencyBypassInfo": {
+    "message": "如果您忘記了PIN，可以請求緊急解鎖。您需要等待計時器完成。",
+    "description": "Description for emergency bypass"
+  },
+  "lockdownRequestBypass": {
+    "message": "請求緊急解鎖",
+    "description": "Button to request emergency bypass"
+  },
+  "lockdownBypassReady": {
+    "message": "緊急解鎖就緒！鎖定已解除。",
+    "description": "Message when bypass is ready"
+  },
+  "lockdownBypassCountdown": {
+    "message": "剩餘時間",
+    "description": "Label for bypass countdown"
+  },
+  "lockdownInfoTitle": {
+    "message": "關於鎖定模式",
+    "description": "Title for lockdown info section"
+  },
+  "lockdownInfoItem1": {
+    "message": "鎖定防止在沒有PIN的情況下更改設定",
+    "description": "First info item about lockdown"
+  },
+  "lockdownInfoItem2": {
+    "message": "緊急解鎖允許在等待後忘記PIN時恢復",
+    "description": "Second info item about lockdown"
+  },
+  "lockdownInfoItem3": {
+    "message": "選擇一個您能記住的PIN，但不要太容易被衝動猜測",
+    "description": "Third info item about lockdown"
   }
 }

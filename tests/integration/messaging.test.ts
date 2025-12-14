@@ -86,18 +86,6 @@ describe('Messaging Integration', () => {
       expect(isValidMessage(message)).toBe(true);
     });
 
-    it('should create valid GET_LOGS message', () => {
-      const message = createMessage({ type: 'GET_LOGS' });
-      expect(message.type).toBe('GET_LOGS');
-      expect(isValidMessage(message)).toBe(true);
-    });
-
-    it('should create valid CLEAR_LOGS message', () => {
-      const message = createMessage({ type: 'CLEAR_LOGS' });
-      expect(message.type).toBe('CLEAR_LOGS');
-      expect(isValidMessage(message)).toBe(true);
-    });
-
     it('should create valid PING message', () => {
       const message = createMessage({ type: 'PING' });
       expect(message.type).toBe('PING');

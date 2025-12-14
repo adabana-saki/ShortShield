@@ -9,14 +9,24 @@
 export const STORAGE_KEYS = {
   /** Main settings storage key */
   SETTINGS: 'shortshield_settings',
-  /** Block logs storage key */
-  BLOCK_LOGS: 'shortshield_block_logs',
-  /** Application logs storage key */
-  APP_LOGS: 'shortshield_app_logs',
   /** Custom rules storage key */
   CUSTOM_RULES: 'shortshield_custom_rules',
   /** Migration version key */
   MIGRATION_VERSION: 'shortshield_migration_version',
+  /** Focus mode state key */
+  FOCUS_STATE: 'shortshield_focus_state',
+  /** Pomodoro timer state key */
+  POMODORO_STATE: 'shortshield_pomodoro_state',
+  /** Time limits usage state key */
+  TIME_LIMITS_STATE: 'shortshield_time_limits_state',
+  /** Time tracking history state key */
+  TIME_TRACKING_STATE: 'shortshield_time_tracking_state',
+  /** Streak tracking data key */
+  STREAK_DATA: 'shortshield_streak_data',
+  /** Challenge mode state key */
+  CHALLENGE_STATE: 'shortshield_challenge_state',
+  /** Lockdown mode state key */
+  LOCKDOWN_STATE: 'shortshield_lockdown_state',
 } as const;
 
 /**

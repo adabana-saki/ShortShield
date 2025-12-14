@@ -5,13 +5,8 @@
 
 import browser from 'webextension-polyfill';
 import { STORAGE_KEYS, DEFAULT_SETTINGS, LIMITS } from '@/shared/constants';
-import type {
-  Settings,
-  SettingsUpdate,
-  BlockLogEntry,
-  CustomRule,
-} from '@/shared/types';
-import { isValidSettings, isValidBlockLogEntry } from '@/shared/types';
+import type { Settings, SettingsUpdate, CustomRule } from '@/shared/types';
+import { isValidSettings } from '@/shared/types';
 import { createLogger } from './logger';
 
 const logger = createLogger('storage');
@@ -51,6 +46,11 @@ export async function getSettings(): Promise<Settings> {
       preferences: {
         ...DEFAULT_SETTINGS.preferences,
         ...stored.preferences,
+      },
+      customDomains: stored.customDomains ?? DEFAULT_SETTINGS.customDomains,
+      schedule: {
+        ...DEFAULT_SETTINGS.schedule,
+        ...(stored.schedule ?? {}),
       },
     };
   } catch (error) {
@@ -94,57 +94,15 @@ export async function updateSettings(
       ...(update.stats ?? {}),
     },
     whitelist: update.whitelist ?? current.whitelist,
+    customDomains: update.customDomains ?? current.customDomains,
+    schedule: {
+      ...current.schedule,
+      ...(update.schedule ?? {}),
+    },
   };
 
   await saveSettings(updated);
   return updated;
-}
-
-/**
- * Get block logs from storage
- */
-export async function getBlockLogs(): Promise<readonly BlockLogEntry[]> {
-  try {
-    const result = await browser.storage.local.get(STORAGE_KEYS.BLOCK_LOGS);
-    const stored = result[STORAGE_KEYS.BLOCK_LOGS];
-
-    if (!Array.isArray(stored)) {
-      return [];
-    }
-
-    // Validate each entry
-    return stored.filter(isValidBlockLogEntry);
-  } catch (error) {
-    logger.error('Failed to read block logs', { error: String(error) });
-    return [];
-  }
-}
-
-/**
- * Add a block log entry
- */
-export async function addBlockLog(entry: BlockLogEntry): Promise<void> {
-  if (!isValidBlockLogEntry(entry)) {
-    throw new Error('Invalid block log entry');
-  }
-
-  const logs = await getBlockLogs();
-  const updatedLogs = [...logs, entry];
-
-  // Trim if exceeds limit
-  while (updatedLogs.length > LIMITS.MAX_LOG_ENTRIES) {
-    updatedLogs.shift();
-  }
-
-  await throttledWrite(STORAGE_KEYS.BLOCK_LOGS, updatedLogs);
-}
-
-/**
- * Clear all block logs
- */
-export async function clearBlockLogs(): Promise<void> {
-  await browser.storage.local.remove(STORAGE_KEYS.BLOCK_LOGS);
-  logger.info('Block logs cleared');
 }
 
 /**

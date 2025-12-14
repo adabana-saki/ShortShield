@@ -4,7 +4,12 @@
 
 /* Popup container */
 .popup-container {
-  @apply w-popup min-h-[300px] max-h-[500px] bg-white text-gray-900 overflow-hidden;
+  @apply w-popup min-h-[300px] max-h-[500px] bg-white text-gray-900 flex flex-col;
+}
+
+/* Scrollable content area */
+.popup-content {
+  @apply flex-1 overflow-y-auto;
 }
 
 /* Header */
@@ -165,4 +170,368 @@
 
 .retry-button {
   @apply mt-3 px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded-md hover:bg-primary-700 transition-colors;
+}
+
+/* Popup tabs */
+.popup-tabs {
+  @apply flex border-b border-gray-200 px-2;
+}
+
+.popup-tab {
+  @apply flex-1 py-2 px-2 text-xs font-medium text-gray-500 border-b-2 border-transparent transition-colors;
+}
+
+.popup-tab:hover {
+  @apply text-gray-700;
+}
+
+.popup-tab.active {
+  @apply text-primary-600 border-primary-600;
+}
+
+/* Schedule widget */
+.schedule-widget {
+  @apply px-4 py-3;
+}
+
+.schedule-widget-header {
+  @apply flex items-center justify-between mb-3;
+}
+
+.schedule-widget-status {
+  @apply flex items-center gap-2;
+}
+
+.schedule-widget-label {
+  @apply text-sm font-medium text-gray-700;
+}
+
+.schedule-widget-badge {
+  @apply px-2 py-0.5 text-xs font-medium rounded-full;
+}
+
+.schedule-widget-badge.active {
+  @apply bg-green-100 text-green-700;
+}
+
+.schedule-widget-badge.inactive {
+  @apply bg-gray-100 text-gray-500;
+}
+
+.schedule-toggle-button {
+  @apply relative w-10 h-5 bg-gray-200 rounded-full transition-colors;
+}
+
+.schedule-toggle-button.enabled {
+  @apply bg-primary-600;
+}
+
+.schedule-toggle-button .schedule-toggle-knob {
+  @apply absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform;
+}
+
+.schedule-toggle-button.enabled .schedule-toggle-knob {
+  @apply translate-x-5;
+}
+
+.schedule-widget-time {
+  @apply text-center text-lg font-semibold text-gray-800 mb-3 py-2 bg-gray-50 rounded-md;
+}
+
+.schedule-widget-days {
+  @apply flex justify-between gap-1;
+}
+
+.schedule-day-button {
+  @apply flex-1 py-1.5 text-xs font-medium text-gray-500 bg-gray-100 rounded transition-colors;
+}
+
+.schedule-day-button:hover {
+  @apply bg-gray-200;
+}
+
+.schedule-day-button.selected {
+  @apply bg-primary-600 text-white;
+}
+
+/* Focus mode view */
+.focus-view {
+  @apply px-4 py-4;
+}
+
+/* Focus button container */
+.focus-button-container {
+  @apply flex flex-col items-center gap-4;
+}
+
+.focus-button-container.focus-active {
+  @apply gap-3;
+}
+
+/* Duration selector */
+.focus-duration-selector {
+  @apply flex gap-2;
+}
+
+.focus-duration-option {
+  @apply px-4 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg transition-colors;
+}
+
+.focus-duration-option:hover {
+  @apply bg-gray-200;
+}
+
+.focus-duration-option.selected {
+  @apply bg-primary-600 text-white;
+}
+
+.focus-duration-option:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* Start focus button */
+.focus-start-button {
+  @apply w-full flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold text-white bg-primary-600 rounded-xl hover:bg-primary-700 transition-colors;
+}
+
+.focus-start-button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.focus-icon {
+  @apply w-5 h-5;
+}
+
+.focus-button-loading {
+  @apply animate-pulse;
+}
+
+/* Focus active state */
+.focus-active-indicator {
+  @apply flex items-center gap-2 text-sm font-medium text-primary-600;
+}
+
+.focus-pulse {
+  @apply w-2 h-2 bg-primary-600 rounded-full animate-pulse;
+}
+
+.focus-active-text {
+  @apply text-primary-700;
+}
+
+.focus-cancel-button {
+  @apply w-full py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors;
+}
+
+.focus-cancel-button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.focus-error {
+  @apply text-xs text-danger text-center;
+}
+
+/* Focus countdown */
+.focus-countdown {
+  @apply flex flex-col items-center gap-4 mb-4;
+}
+
+.focus-countdown-circle {
+  @apply relative w-32 h-32;
+}
+
+.focus-countdown-svg {
+  @apply w-full h-full;
+}
+
+.focus-progress-ring {
+  @apply transition-all duration-1000 ease-linear;
+}
+
+.focus-countdown-time {
+  @apply absolute inset-0 flex flex-col items-center justify-center;
+}
+
+.focus-time-value {
+  @apply text-2xl font-bold text-gray-800;
+}
+
+.focus-time-label {
+  @apply text-xs text-gray-500;
+}
+
+/* Focus extend options */
+.focus-extend-options {
+  @apply flex flex-col items-center gap-2;
+}
+
+.focus-extend-label {
+  @apply text-xs text-gray-500;
+}
+
+.focus-extend-buttons {
+  @apply flex gap-2;
+}
+
+.focus-extend-button {
+  @apply px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 rounded-md hover:bg-primary-100 transition-colors;
+}
+
+.focus-extend-button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* Focus and Pomodoro sections */
+.focus-section,
+.pomodoro-section {
+  @apply mb-6 pb-6 border-b border-gray-200;
+}
+
+.focus-section:last-child,
+.pomodoro-section:last-child {
+  @apply mb-0 pb-0 border-b-0;
+}
+
+.focus-section-title,
+.pomodoro-section-title {
+  @apply text-sm font-semibold text-gray-800 mb-3 text-center;
+}
+
+/* Pomodoro timer */
+.pomodoro-timer {
+  @apply flex flex-col items-center gap-3 mb-4;
+}
+
+.pomodoro-timer-circle {
+  @apply relative w-28 h-28;
+}
+
+.pomodoro-timer-svg {
+  @apply w-full h-full;
+}
+
+.pomodoro-progress-ring {
+  @apply transition-all duration-1000 ease-linear;
+}
+
+.pomodoro-timer-content {
+  @apply absolute inset-0 flex flex-col items-center justify-center;
+}
+
+.pomodoro-time-value {
+  @apply text-xl font-bold text-gray-800;
+}
+
+.pomodoro-mode-label {
+  @apply text-xs font-medium mt-0.5;
+}
+
+/* Pomodoro session counter */
+.pomodoro-session-counter {
+  @apply flex items-center gap-2 text-sm text-gray-600;
+}
+
+.pomodoro-session-label {
+  @apply text-xs text-gray-500;
+}
+
+.pomodoro-session-value {
+  @apply font-semibold text-primary-600;
+}
+
+/* Pomodoro controls */
+.pomodoro-controls {
+  @apply flex flex-col items-center gap-3;
+}
+
+/* Mode selection buttons */
+.pomodoro-mode-selection {
+  @apply flex gap-2 w-full;
+}
+
+.pomodoro-mode-button {
+  @apply flex-1 py-2.5 px-4 text-sm font-medium rounded-lg transition-colors;
+}
+
+.pomodoro-mode-work {
+  @apply bg-primary-600 text-white hover:bg-primary-700;
+}
+
+.pomodoro-mode-break {
+  @apply bg-green-100 text-green-700 hover:bg-green-200;
+}
+
+.pomodoro-mode-button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* Action buttons */
+.pomodoro-action-buttons {
+  @apply flex items-center justify-center gap-3;
+}
+
+.pomodoro-action-button {
+  @apply flex items-center justify-center w-12 h-12 rounded-full transition-colors;
+}
+
+.pomodoro-play,
+.pomodoro-pause {
+  @apply bg-primary-600 text-white hover:bg-primary-700;
+}
+
+.pomodoro-skip {
+  @apply bg-gray-200 text-gray-600 hover:bg-gray-300;
+}
+
+.pomodoro-stop {
+  @apply bg-red-100 text-red-600 hover:bg-red-200;
+}
+
+.pomodoro-action-button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.pomodoro-action-button svg {
+  @apply w-5 h-5;
+}
+
+/* Time Usage Section */
+.time-usage-section {
+  @apply mt-4 pt-4 border-t border-gray-200;
+}
+
+.time-usage-title {
+  @apply text-sm font-semibold text-gray-700 mb-3;
+}
+
+.time-usage-list {
+  @apply flex flex-col gap-3;
+}
+
+.time-usage-item {
+  @apply flex flex-col gap-1;
+}
+
+.time-usage-header {
+  @apply flex items-center justify-between;
+}
+
+.time-usage-header .platform-name {
+  @apply text-sm font-medium text-gray-700;
+}
+
+.time-usage-header .usage-time {
+  @apply text-sm text-gray-600;
+}
+
+.time-usage-header .usage-limit {
+  @apply text-gray-400;
+}
+
+.usage-progress-bar {
+  @apply w-full h-2 bg-gray-200 rounded-full overflow-hidden;
+}
+
+.usage-progress-fill {
+  @apply h-full rounded-full transition-all duration-300;
 }

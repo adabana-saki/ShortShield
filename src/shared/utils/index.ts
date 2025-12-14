@@ -39,9 +39,6 @@ export {
   getSettings,
   saveSettings,
   updateSettings,
-  getBlockLogs,
-  addBlockLog,
-  clearBlockLogs,
   getCustomRules,
   saveCustomRules,
   getStorageInfo,
@@ -66,3 +63,15 @@ export {
   safeJsonParse,
   validateWhitelistInput,
 } from './validation';
+
+// Schedule utilities
+export {
+  isScheduleActive,
+  formatTime,
+  parseTime,
+  getDayName,
+  isValidTimeRange,
+} from './schedule';
+
+// Crypto utilities
+export { hashPin, verifyPin, isValidPinFormat } from './crypto';

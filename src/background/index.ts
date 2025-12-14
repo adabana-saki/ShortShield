@@ -5,6 +5,7 @@
 
 import browser from 'webextension-polyfill';
 import { setupMessageListener } from './messaging';
+import { initializeTimers } from './timers';
 import { createLogger } from '@/shared/utils/logger';
 import { getSettings, updateSettings } from '@/shared/utils/storage';
 import { PERFORMANCE } from '@/shared/constants';
@@ -47,6 +48,9 @@ async function initialize(): Promise<void> {
   try {
     // Set up message listener
     setupMessageListener();
+
+    // Initialize timer/alarm listeners
+    initializeTimers();
 
     // Check for daily stats reset
     await checkDailyReset();

@@ -28,8 +28,15 @@ describe('YouTubeDetector', () => {
       enabled: true,
       platforms: {
         youtube: true,
+        youtube_full: false,
         tiktok: true,
         instagram: true,
+        twitter: false,
+        facebook: false,
+        linkedin: false,
+        threads: false,
+        snapchat: false,
+        reddit: false,
       },
     };
     detector.setSettings(mockSettings);
