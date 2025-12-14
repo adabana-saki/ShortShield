@@ -4,7 +4,7 @@
 
 import { useState, useCallback } from 'react';
 import browser from 'webextension-polyfill';
-import type { PomodoroState, PomodoroStartMessage, MessageResponse } from '@/shared/types';
+import type { PomodoroState, PomodoroStartMessage } from '@/shared/types';
 import { createMessage } from '@/shared/types/messages';
 import { useI18n } from '@/shared/hooks/useI18n';
 
@@ -29,7 +29,7 @@ export function PomodoroControls({
         type: 'POMODORO_START',
         payload: { mode },
       });
-      const response = (await browser.runtime.sendMessage(message));
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
       if (response.success && response.data) {
         onStateChange(response.data);
       }
@@ -46,7 +46,7 @@ export function PomodoroControls({
       const message = createMessage({
         type: 'POMODORO_PAUSE' as const,
       });
-      const response = (await browser.runtime.sendMessage(message));
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
       if (response.success && response.data) {
         onStateChange(response.data);
       }
@@ -63,7 +63,7 @@ export function PomodoroControls({
       const message = createMessage({
         type: 'POMODORO_RESUME' as const,
       });
-      const response = (await browser.runtime.sendMessage(message));
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
       if (response.success && response.data) {
         onStateChange(response.data);
       }
@@ -80,7 +80,7 @@ export function PomodoroControls({
       const message = createMessage({
         type: 'POMODORO_STOP' as const,
       });
-      const response = (await browser.runtime.sendMessage(message));
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
       if (response.success && response.data) {
         onStateChange(response.data);
       }
@@ -97,7 +97,7 @@ export function PomodoroControls({
       const message = createMessage({
         type: 'POMODORO_SKIP' as const,
       });
-      const response = (await browser.runtime.sendMessage(message));
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
       if (response.success && response.data) {
         onStateChange(response.data);
       }

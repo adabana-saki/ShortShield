@@ -4,7 +4,7 @@
 
 import { useState, useCallback } from 'react';
 import browser from 'webextension-polyfill';
-import type { FocusDuration, FocusModeState, FocusStartMessage, MessageResponse } from '@/shared/types';
+import type { FocusDuration, FocusModeState, FocusStartMessage } from '@/shared/types';
 import { createMessage } from '@/shared/types/messages';
 import { useI18n } from '@/shared/hooks/useI18n';
 
@@ -32,7 +32,7 @@ export function FocusButton({ focusState, onStateChange, disabled }: FocusButton
         payload: { duration: selectedDuration },
       });
 
-      const response = (await browser.runtime.sendMessage(message));
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState; error?: string };
 
       if (response.success && response.data) {
         onStateChange(response.data);
@@ -55,7 +55,7 @@ export function FocusButton({ focusState, onStateChange, disabled }: FocusButton
         type: 'FOCUS_CANCEL' as const,
       });
 
-      const response = (await browser.runtime.sendMessage(message));
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState; error?: string };
 
       if (response.success && response.data) {
         onStateChange(response.data);

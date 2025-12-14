@@ -4,7 +4,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import browser from 'webextension-polyfill';
-import type { PomodoroState, PomodoroMode, MessageResponse } from '@/shared/types';
+import type { PomodoroState, PomodoroMode } from '@/shared/types';
 import { createMessage } from '@/shared/types/messages';
 import { useI18n } from '@/shared/hooks/useI18n';
 
@@ -93,7 +93,7 @@ export function PomodoroTimer({ pomodoroState, onStateChange }: PomodoroTimerPro
       const message = createMessage({
         type: 'POMODORO_GET_STATE' as const,
       });
-      const response = (await browser.runtime.sendMessage(message));
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
       if (response.success && response.data) {
         onStateChange(response.data);
       }

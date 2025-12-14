@@ -4,7 +4,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import browser from 'webextension-polyfill';
-import type { FocusModeState, FocusExtendMessage, MessageResponse } from '@/shared/types';
+import type { FocusModeState, FocusExtendMessage } from '@/shared/types';
 import { createMessage } from '@/shared/types/messages';
 import { useI18n } from '@/shared/hooks/useI18n';
 
@@ -84,7 +84,7 @@ export function FocusCountdown({ focusState, onStateChange }: FocusCountdownProp
       const message = createMessage({
         type: 'FOCUS_GET_STATE' as const,
       });
-      const response = (await browser.runtime.sendMessage(message));
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
       if (response.success && response.data) {
         onStateChange(response.data);
       }
@@ -100,7 +100,7 @@ export function FocusCountdown({ focusState, onStateChange }: FocusCountdownProp
         type: 'FOCUS_EXTEND',
         payload: { additionalMinutes: minutes },
       });
-      const response = (await browser.runtime.sendMessage(message));
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
       if (response.success && response.data) {
         onStateChange(response.data);
       }

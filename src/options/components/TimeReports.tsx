@@ -11,7 +11,6 @@ import type {
   TimeTrackingState,
   DailyTimeRecord,
   Platform,
-  MessageResponse,
   TimeGetHistoryMessage,
   TimeClearHistoryMessage,
 } from '@/shared/types';
@@ -48,7 +47,7 @@ export function TimeReports() {
         type: 'TIME_GET_HISTORY',
         payload: { days: selectedDays },
       });
-      const response = (await browser.runtime.sendMessage(message));
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: TimeTrackingState };
       if (response.success && response.data) {
         setHistory(response.data);
       }

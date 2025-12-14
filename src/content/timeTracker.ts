@@ -8,7 +8,6 @@ import { createMessage } from '@/shared/types';
 import type {
   Platform,
   TimeCheckLimitResult,
-  MessageResponse,
   TimeTrackActivityMessage,
   TimeCheckLimitMessage,
 } from '@/shared/types';
@@ -162,7 +161,7 @@ async function checkTimeLimit(): Promise<void> {
       },
     });
 
-    const response = (await browser.runtime.sendMessage(message));
+    const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: TimeCheckLimitResult };
 
     if (response.success && response.data) {
       const result = response.data;
@@ -269,7 +268,7 @@ export async function forceCheckLimit(): Promise<TimeCheckLimitResult | null> {
       },
     });
 
-    const response = (await browser.runtime.sendMessage(message));
+    const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: TimeCheckLimitResult };
 
     if (response.success && response.data) {
       const result = response.data;

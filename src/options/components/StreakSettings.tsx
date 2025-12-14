@@ -6,7 +6,7 @@ import { useState, useEffect, useCallback } from 'react';
 import browser from 'webextension-polyfill';
 import { useSettings } from '@/shared/hooks/useSettings';
 import { useI18n } from '@/shared/hooks/useI18n';
-import type { StreakData, MessageResponse } from '@/shared/types';
+import type { StreakData } from '@/shared/types';
 import { createMessage } from '@/shared/types/messages';
 import { DEFAULT_STREAK_DATA, STREAK_MILESTONES } from '@/shared/constants';
 
@@ -19,7 +19,7 @@ export function StreakSettings() {
   const fetchStreakData = useCallback(async () => {
     try {
       const message = createMessage({ type: 'STREAK_GET_DATA' as const });
-      const response = (await browser.runtime.sendMessage(message));
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: StreakData };
       if (response.success && response.data) {
         setStreakData(response.data);
       }
@@ -88,7 +88,7 @@ export function StreakSettings() {
 
     try {
       const message = createMessage({ type: 'STREAK_RESET' as const });
-      const response = (await browser.runtime.sendMessage(message));
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: StreakData };
       if (response.success && response.data) {
         setStreakData(response.data);
       }
