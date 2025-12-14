@@ -14,7 +14,7 @@ import { FocusButton } from './components/FocusButton';
 import { FocusCountdown } from './components/FocusCountdown';
 import { PomodoroTimer } from './components/PomodoroTimer';
 import { PomodoroControls } from './components/PomodoroControls';
-import type { Platform, PopupView, FocusModeState, PomodoroState, TimeLimitsState, StreakData, MessageResponse } from '@/shared/types';
+import type { Platform, PopupView, FocusModeState, PomodoroState, TimeLimitsState, StreakData } from '@/shared/types';
 import { createMessage } from '@/shared/types/messages';
 import { DEFAULT_FOCUS_STATE, DEFAULT_POMODORO_STATE, DEFAULT_TIME_LIMITS_STATE, DEFAULT_STREAK_DATA } from '@/shared/constants';
 
@@ -54,7 +54,7 @@ export function App() {
         const message = createMessage({
           type: 'FOCUS_GET_STATE' as const,
         });
-        const response = (await browser.runtime.sendMessage(message));
+        const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
         if (response.success && response.data) {
           setFocusState(response.data);
         }
@@ -68,7 +68,7 @@ export function App() {
         const message = createMessage({
           type: 'POMODORO_GET_STATE' as const,
         });
-        const response = (await browser.runtime.sendMessage(message));
+        const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
         if (response.success && response.data) {
           setPomodoroState(response.data);
         }
@@ -82,7 +82,7 @@ export function App() {
         const message = createMessage({
           type: 'TIME_GET_USAGE' as const,
         });
-        const response = (await browser.runtime.sendMessage(message));
+        const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: TimeLimitsState };
         if (response.success && response.data) {
           setTimeLimitsState(response.data);
         }
@@ -96,7 +96,7 @@ export function App() {
         const message = createMessage({
           type: 'STREAK_GET_DATA' as const,
         });
-        const response = (await browser.runtime.sendMessage(message));
+        const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: StreakData };
         if (response.success && response.data) {
           setStreakData(response.data);
         }

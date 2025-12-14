@@ -8,12 +8,6 @@ import { useSettings } from '@/shared/hooks/useSettings';
 import { useI18n } from '@/shared/hooks/useI18n';
 import type {
   LockdownState,
-  LockdownGetStateResponse,
-  LockdownSetPinResponse,
-  LockdownActivateResponse,
-  LockdownDeactivateResponse,
-  LockdownRequestEmergencyBypassResponse,
-  LockdownCheckEmergencyBypassResponse,
   EmergencyBypassCheckResult,
 } from '@/shared/types';
 import { isValidPinFormat } from '@/shared/utils/crypto';
@@ -67,9 +61,9 @@ export function LockdownSettings() {
 
   const loadLockdownState = async () => {
     try {
-      const response = (await browser.runtime.sendMessage({
+      const response = await browser.runtime.sendMessage({
         type: 'LOCKDOWN_GET_STATE',
-      }));
+      }) as { success: boolean; data?: LockdownState };
 
       if (response.success && response.data) {
         setLockdownState(response.data);
@@ -86,9 +80,9 @@ export function LockdownSettings() {
 
   const checkEmergencyBypassStatus = async () => {
     try {
-      const response = (await browser.runtime.sendMessage({
+      const response = await browser.runtime.sendMessage({
         type: 'LOCKDOWN_CHECK_EMERGENCY_BYPASS',
-      }));
+      }) as { success: boolean; data?: EmergencyBypassCheckResult };
 
       if (response.success && response.data) {
         setBypassStatus(response.data);
@@ -145,13 +139,13 @@ export function LockdownSettings() {
     }
 
     try {
-      const response = (await browser.runtime.sendMessage({
+      const response = await browser.runtime.sendMessage({
         type: 'LOCKDOWN_SET_PIN',
         payload: {
           pin: newPin,
           currentPin: hasPinSet ? currentPin : undefined,
         },
-      }));
+      }) as { success: boolean; error?: string };
 
       if (response.success) {
         setPinSuccess(t('lockdownPinSaved'));
@@ -176,10 +170,10 @@ export function LockdownSettings() {
     }
 
     try {
-      const response = (await browser.runtime.sendMessage({
+      const response = await browser.runtime.sendMessage({
         type: 'LOCKDOWN_ACTIVATE',
         payload: { pin: activatePin },
-      }));
+      }) as { success: boolean; data?: LockdownState; error?: string };
 
       if (response.success && response.data) {
         setLockdownState(response.data);
@@ -202,10 +196,10 @@ export function LockdownSettings() {
     }
 
     try {
-      const response = (await browser.runtime.sendMessage({
+      const response = await browser.runtime.sendMessage({
         type: 'LOCKDOWN_DEACTIVATE',
         payload: { pin: deactivatePin },
-      }));
+      }) as { success: boolean; data?: LockdownState; error?: string };
 
       if (response.success && response.data) {
         setLockdownState(response.data);
@@ -223,9 +217,9 @@ export function LockdownSettings() {
 
   const handleRequestEmergencyBypass = async () => {
     try {
-      const response = (await browser.runtime.sendMessage({
+      const response = await browser.runtime.sendMessage({
         type: 'LOCKDOWN_REQUEST_EMERGENCY_BYPASS',
-      }));
+      }) as { success: boolean; data?: LockdownState };
 
       if (response.success && response.data) {
         setLockdownState(response.data);
