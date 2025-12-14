@@ -1,0 +1,47 @@
+name: Greetings
+
+on:
+  pull_request_target:
+    types: [opened]
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: |
+            👋 Thanks for opening your first issue!
+
+            We appreciate you taking the time to contribute to ShortShield. A maintainer will review your issue and respond as soon as possible.
+
+            In the meantime, please make sure you've:
+            - ✅ Checked existing issues to avoid duplicates
+            - ✅ Provided clear steps to reproduce (for bugs)
+            - ✅ Described the expected behavior
+
+            **First time contributing to open source?** Check out our [Contributing Guide](CONTRIBUTING.md) to get started!
+          pr-message: |
+            🎉 Thanks for opening your first pull request!
+
+            We're excited to review your contribution to ShortShield. Here's what happens next:
+
+            1. **Automated checks** will run (CI, linting, tests)
+            2. **Maintainer review** within 24-48 hours
+            3. **Feedback** if any changes are needed
+            4. **Merge** once approved!
+
+            **Tips for a smooth review:**
+            - ✅ Make sure all tests pass
+            - ✅ Follow our commit message conventions
+            - ✅ Update documentation if needed
+            - ✅ Respond to review comments promptly
+
+            Thanks for helping make ShortShield better! 🚀
