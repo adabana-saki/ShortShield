@@ -4,7 +4,11 @@
  */
 
 import browser from 'webextension-polyfill';
-import { getDetectorForHostname } from './platforms';
+import {
+  getDetectorForHostname,
+  setCustomDomains,
+  getCustomDomainDetector,
+} from './platforms';
 import { createManagedObserver } from './observer';
 import { createLogger } from '@/shared/utils/logger';
 import { createMessage } from '@/shared/types';
@@ -68,7 +72,19 @@ async function initialize(): Promise<void> {
   const hostname = window.location.hostname;
   logger.debug('Initializing content script', { hostname });
 
-  // Get detector for this hostname
+  // Get settings first (needed for custom domains)
+  const settings = await getSettingsSafely();
+
+  if (settings !== null) {
+    // Update custom domains from settings
+    setCustomDomains(settings.customDomains);
+
+    // Also set settings on custom domain detector
+    const customDetector = getCustomDomainDetector();
+    customDetector.setSettings(settings);
+  }
+
+  // Get detector for this hostname (now includes custom domain check)
   const detector = getDetectorForHostname(hostname);
 
   if (!detector) {
@@ -76,9 +92,7 @@ async function initialize(): Promise<void> {
     return;
   }
 
-  // Get settings
-  const settings = await getSettingsSafely();
-
+  // Apply settings to the detector
   if (!settings) {
     logger.warn('Could not load settings, using defaults');
   } else {
@@ -108,8 +122,14 @@ async function initialize(): Promise<void> {
       const newSettings = changes.shortshield_settings.newValue as
         | Settings
         | undefined;
-      if (newSettings) {
+      if (newSettings !== undefined) {
         detector.setSettings(newSettings);
+
+        // Update custom domains
+        setCustomDomains(newSettings.customDomains);
+        const customDetector = getCustomDomainDetector();
+        customDetector.setSettings(newSettings);
+
         logger.debug('Settings updated');
 
         // Re-scan if still enabled
@@ -120,8 +140,8 @@ async function initialize(): Promise<void> {
     }
   });
 
-  // Cleanup on unload
-  window.addEventListener('unload', () => {
+  // Cleanup on page hide (unload is blocked by some sites' Permissions Policy)
+  window.addEventListener('pagehide', () => {
     observer.disconnect();
     logger.debug('Content script unloaded');
   });

@@ -39,6 +39,82 @@
     "message": "Instagram リール",
     "description": "Instagramプラットフォーム名"
   },
+  "popupPlatformTwitter": {
+    "message": "Twitter/X",
+    "description": "Twitter/Xプラットフォーム名"
+  },
+  "popupPlatformFacebook": {
+    "message": "Facebook",
+    "description": "Facebookプラットフォーム名"
+  },
+  "popupPlatformLinkedIn": {
+    "message": "LinkedIn",
+    "description": "LinkedInプラットフォーム名"
+  },
+  "popupPlatformThreads": {
+    "message": "Threads",
+    "description": "Threadsプラットフォーム名"
+  },
+  "popupPlatformSnapchat": {
+    "message": "Snapchat",
+    "description": "Snapchatプラットフォーム名"
+  },
+  "popupPlatformReddit": {
+    "message": "Reddit",
+    "description": "Redditプラットフォーム名"
+  },
+  "popupPlatformYouTubeFull": {
+    "message": "YouTube (全体)",
+    "description": "YouTube全体ブロックのプラットフォーム名"
+  },
+  "popupSectionShortVideo": {
+    "message": "短尺動画プラットフォーム",
+    "description": "短尺動画プラットフォームのセクションタイトル"
+  },
+  "popupSectionFullSite": {
+    "message": "サイト全体ブロック",
+    "description": "サイト全体ブロックのセクションタイトル"
+  },
+  "popupSectionSNS": {
+    "message": "ソーシャルネットワーク",
+    "description": "SNSプラットフォームのセクションタイトル"
+  },
+  "popupViewPlatforms": {
+    "message": "プラットフォーム",
+    "description": "ポップアップ表示: プラットフォーム"
+  },
+  "popupViewSchedule": {
+    "message": "スケジュール",
+    "description": "ポップアップ表示: スケジュール"
+  },
+  "popupViewStats": {
+    "message": "統計",
+    "description": "ポップアップ表示: 統計"
+  },
+  "popupScheduleStatus": {
+    "message": "スケジュール",
+    "description": "ポップアップのスケジュールステータスラベル"
+  },
+  "popupScheduleOn": {
+    "message": "有効",
+    "description": "スケジュールが現在有効"
+  },
+  "popupScheduleOff": {
+    "message": "無効",
+    "description": "スケジュールが現在無効"
+  },
+  "popupQuickScheduleToggle": {
+    "message": "スケジュールを有効化",
+    "description": "ポップアップでのスケジュールクイックトグル"
+  },
+  "preferencesPopupView": {
+    "message": "デフォルトポップアップ表示",
+    "description": "デフォルトポップアップ表示の設定"
+  },
+  "preferencesPopupViewDescription": {
+    "message": "ポップアップを開いた時に表示する内容を選択",
+    "description": "ポップアップ表示設定の説明"
+  },
   "popupStatsToday": {
     "message": "今日のブロック数",
     "description": "今日のブロック数のラベル"
@@ -424,5 +500,993 @@
         "example": "5"
       }
     }
+  },
+  "customDomainsTitle": {
+    "message": "カスタムブロックドメイン",
+    "description": "Custom domains section title"
+  },
+  "customDomainsDescription": {
+    "message": "ブロックしたいドメインを追加します。訪問時にサイト全体がブロックされます。",
+    "description": "Custom domains section description"
+  },
+  "customDomainsPlaceholder": {
+    "message": "ドメインを入力（例：example.com）",
+    "description": "Placeholder for domain input"
+  },
+  "customDomainsAdd": {
+    "message": "ドメインを追加",
+    "description": "Add domain button text"
+  },
+  "customDomainsAdding": {
+    "message": "追加中...",
+    "description": "Adding domain in progress"
+  },
+  "customDomainsRemove": {
+    "message": "削除",
+    "description": "Remove domain button"
+  },
+  "customDomainsEmpty": {
+    "message": "カスタムドメインはまだありません",
+    "description": "Empty custom domains message"
+  },
+  "customDomainsErrorEmpty": {
+    "message": "ドメインを入力してください",
+    "description": "Error for empty domain input"
+  },
+  "customDomainsErrorInvalid": {
+    "message": "有効なドメインを入力してください",
+    "description": "Error for invalid domain"
+  },
+  "customDomainsErrorDuplicate": {
+    "message": "このドメインは既にブロックされています",
+    "description": "Error for duplicate domain"
+  },
+  "customDomainsErrorFailed": {
+    "message": "ドメインの追加に失敗しました",
+    "description": "Error when adding domain fails"
+  },
+  "optionsTabCustomDomains": {
+    "message": "カスタムドメイン",
+    "description": "Tab name for custom domain blocking"
+  },
+  "optionsTabSchedule": {
+    "message": "スケジュール",
+    "description": "Tab name for schedule settings"
+  },
+  "optionsTabPreferences": {
+    "message": "設定",
+    "description": "Tab name for user preferences"
+  },
+  "optionsFullSiteDescription": {
+    "message": "短尺コンテンツだけでなくサイト全体をブロック",
+    "description": "Description for full site blocking section"
+  },
+  "scheduleTitle": {
+    "message": "ブロックスケジュール",
+    "description": "Schedule section title"
+  },
+  "scheduleDescription": {
+    "message": "ブロックが有効な時間を設定します。それ以外の時間はすべてのコンテンツが許可されます。",
+    "description": "Schedule section description"
+  },
+  "scheduleEnabled": {
+    "message": "スケジュールベースのブロックを有効にする",
+    "description": "Toggle to enable/disable schedule"
+  },
+  "scheduleActiveDays": {
+    "message": "有効な曜日",
+    "description": "Label for active days selection"
+  },
+  "scheduleTimeRanges": {
+    "message": "ブロック時間",
+    "description": "Label for time ranges"
+  },
+  "scheduleAddTimeRange": {
+    "message": "時間帯を追加",
+    "description": "Button to add a new time range"
+  },
+  "scheduleRemoveTimeRange": {
+    "message": "削除",
+    "description": "Button to remove a time range"
+  },
+  "scheduleFrom": {
+    "message": "開始",
+    "description": "Label for start time"
+  },
+  "scheduleTo": {
+    "message": "終了",
+    "description": "Label for end time"
+  },
+  "scheduleDaySun": {
+    "message": "日",
+    "description": "Sunday abbreviation"
+  },
+  "scheduleDayMon": {
+    "message": "月",
+    "description": "Monday abbreviation"
+  },
+  "scheduleDayTue": {
+    "message": "火",
+    "description": "Tuesday abbreviation"
+  },
+  "scheduleDayWed": {
+    "message": "水",
+    "description": "Wednesday abbreviation"
+  },
+  "scheduleDayThu": {
+    "message": "木",
+    "description": "Thursday abbreviation"
+  },
+  "scheduleDayFri": {
+    "message": "金",
+    "description": "Friday abbreviation"
+  },
+  "scheduleDaySat": {
+    "message": "土",
+    "description": "Saturday abbreviation"
+  },
+  "scheduleStatus": {
+    "message": "スケジュールは現在$STATUS$です",
+    "description": "Current schedule status",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "有効"
+      }
+    }
+  },
+  "scheduleStatusActive": {
+    "message": "有効",
+    "description": "Schedule is active"
+  },
+  "scheduleStatusInactive": {
+    "message": "無効",
+    "description": "Schedule is inactive"
+  },
+  "optionsTabAppearance": {
+    "message": "外観",
+    "description": "Tab name for block page appearance settings"
+  },
+  "blockPageTitle": {
+    "message": "ブロックページの外観",
+    "description": "Section title for block page customization"
+  },
+  "blockPageDescription": {
+    "message": "コンテンツがブロックされたときに表示されるオーバーレイの外観をカスタマイズします。",
+    "description": "Description for block page customization section"
+  },
+  "blockPageThemeTitle": {
+    "message": "テーマ",
+    "description": "Theme selection title"
+  },
+  "blockPageThemeSystem": {
+    "message": "システム",
+    "description": "Use system theme preference"
+  },
+  "blockPageThemeLight": {
+    "message": "ライト",
+    "description": "Light theme"
+  },
+  "blockPageThemeDark": {
+    "message": "ダーク",
+    "description": "Dark theme"
+  },
+  "blockPageColorTitle": {
+    "message": "アクセントカラー",
+    "description": "Primary color selection title"
+  },
+  "blockPageCustomColor": {
+    "message": "カスタムカラー",
+    "description": "Custom color picker tooltip"
+  },
+  "blockPageCustomTitle": {
+    "message": "カスタムタイトル",
+    "description": "Custom title input label"
+  },
+  "blockPageTitlePlaceholder": {
+    "message": "空欄でデフォルトタイトルを使用",
+    "description": "Placeholder for custom title input"
+  },
+  "blockPageCustomMessage": {
+    "message": "カスタムメッセージ",
+    "description": "Custom message input label"
+  },
+  "blockPageMessagePlaceholder": {
+    "message": "空欄でデフォルトメッセージを使用",
+    "description": "Placeholder for custom message input"
+  },
+  "blockPageShowQuotes": {
+    "message": "モチベーション引用を表示",
+    "description": "Toggle for motivational quotes"
+  },
+  "blockPageShowQuotesDescription": {
+    "message": "ブロックページに励みになる引用を表示します",
+    "description": "Description for motivational quotes toggle"
+  },
+  "blockPageCustomQuotes": {
+    "message": "カスタム引用",
+    "description": "Custom quotes section title"
+  },
+  "blockPageCustomQuotesDescription": {
+    "message": "ブロックページに表示する独自の引用を追加できます",
+    "description": "Description for custom quotes section"
+  },
+  "blockPageQuotePlaceholder": {
+    "message": "モチベーション引用を入力",
+    "description": "Placeholder for quote input"
+  },
+  "blockPageAddQuote": {
+    "message": "引用を追加",
+    "description": "Add quote button text"
+  },
+  "blockPageRemoveQuote": {
+    "message": "引用を削除",
+    "description": "Remove quote button aria label"
+  },
+  "blockPageNoCustomQuotes": {
+    "message": "カスタム引用がありません。デフォルトの引用が使用されます。",
+    "description": "Message when no custom quotes exist"
+  },
+  "blockPageShowBypass": {
+    "message": "バイパスボタンを表示",
+    "description": "Toggle for bypass button"
+  },
+  "blockPageShowBypassDescription": {
+    "message": "一時的にブロックを回避できるようにします（非推奨）",
+    "description": "Description for bypass button toggle"
+  },
+  "blockPagePreview": {
+    "message": "プレビュー",
+    "description": "Preview section title"
+  },
+  "blockPageDefaultTitle": {
+    "message": "コンテンツがブロックされました",
+    "description": "Default block page title"
+  },
+  "blockPageDefaultMessage": {
+    "message": "ShortShieldがあなたの集中力を守っています。",
+    "description": "Default block page message"
+  },
+  "blockPageDefaultQuote": {
+    "message": "本当に大切なことに集中しよう。",
+    "description": "Default motivational quote"
+  },
+  "blockPageBypassButton": {
+    "message": "5分間バイパス",
+    "description": "Bypass button text"
+  },
+  "blockPageErrorUpdate": {
+    "message": "設定の更新に失敗しました",
+    "description": "Error when updating block page settings fails"
+  },
+  "blockPageErrorEmptyQuote": {
+    "message": "引用を入力してください",
+    "description": "Error when quote input is empty"
+  },
+  "blockPageErrorDuplicateQuote": {
+    "message": "この引用は既に存在します",
+    "description": "Error when quote is a duplicate"
+  },
+  "popupViewFocus": {
+    "message": "集中",
+    "description": "Popup view: focus mode"
+  },
+  "focusModeTitle": {
+    "message": "フォーカスモード",
+    "description": "Focus mode section title"
+  },
+  "focusModeDescription": {
+    "message": "集中力を高めるための時間ブロックを有効にします。",
+    "description": "Focus mode section description"
+  },
+  "focusModeEnabled": {
+    "message": "フォーカスモードを有効にする",
+    "description": "Toggle to enable focus mode feature"
+  },
+  "focusModeEnabledDescription": {
+    "message": "ポップアップから集中セッションを開始できるようにします",
+    "description": "Description for focus mode enable toggle"
+  },
+  "focusModeDefaultDuration": {
+    "message": "デフォルト時間",
+    "description": "Default focus duration setting"
+  },
+  "focusModeDefaultDurationDescription": {
+    "message": "集中セッション開始時にあらかじめ選択される時間",
+    "description": "Description for default duration setting"
+  },
+  "focusModeSoftLock": {
+    "message": "早期キャンセルを許可",
+    "description": "Soft lock toggle label"
+  },
+  "focusModeSoftLockDescription": {
+    "message": "無効にすると、終了前に集中セッションをキャンセルできなくなります",
+    "description": "Description for soft lock setting"
+  },
+  "focusModeNotifications": {
+    "message": "セッション通知",
+    "description": "Notifications toggle label"
+  },
+  "focusModeNotificationsDescription": {
+    "message": "集中セッションの開始と終了時に通知を表示します",
+    "description": "Description for notifications setting"
+  },
+  "focusModeStart": {
+    "message": "集中セッションを開始",
+    "description": "Button to start focus session"
+  },
+  "focusModeStarting": {
+    "message": "開始中...",
+    "description": "Focus session starting state"
+  },
+  "focusModeActive": {
+    "message": "フォーカスモード実行中",
+    "description": "Indicator that focus mode is running"
+  },
+  "focusModeCancel": {
+    "message": "セッションをキャンセル",
+    "description": "Button to cancel focus session"
+  },
+  "focusModeCancelling": {
+    "message": "キャンセル中...",
+    "description": "Focus session cancelling state"
+  },
+  "focusModeRemaining": {
+    "message": "残り",
+    "description": "Time remaining label"
+  },
+  "focusModeExtend": {
+    "message": "セッションを延長:",
+    "description": "Label for extend session buttons"
+  },
+  "optionsTabFocus": {
+    "message": "集中",
+    "description": "Tab name for focus and pomodoro settings"
+  },
+  "pomodoroTitle": {
+    "message": "ポモドーロタイマー",
+    "description": "Pomodoro timer section title"
+  },
+  "pomodoroDescription": {
+    "message": "ポモドーロテクニック：25分の集中作業と短い休憩を繰り返します。",
+    "description": "Pomodoro timer section description"
+  },
+  "pomodoroEnabled": {
+    "message": "ポモドーロタイマーを有効化",
+    "description": "Toggle to enable pomodoro timer feature"
+  },
+  "pomodoroEnabledDescription": {
+    "message": "ポップアップからポモドーロタイマーを使用できるようにします",
+    "description": "Description for pomodoro enable toggle"
+  },
+  "pomodoroWorkDuration": {
+    "message": "作業時間",
+    "description": "Work session duration setting"
+  },
+  "pomodoroWorkDurationDescription": {
+    "message": "各集中作業セッションの長さ",
+    "description": "Description for work duration setting"
+  },
+  "pomodoroBreakDuration": {
+    "message": "休憩時間",
+    "description": "Break duration setting"
+  },
+  "pomodoroBreakDurationDescription": {
+    "message": "作業セッション間の短い休憩の長さ",
+    "description": "Description for break duration setting"
+  },
+  "pomodoroLongBreakDuration": {
+    "message": "長い休憩時間",
+    "description": "Long break duration setting"
+  },
+  "pomodoroLongBreakDurationDescription": {
+    "message": "サイクル完了後の長い休憩の長さ",
+    "description": "Description for long break duration setting"
+  },
+  "pomodoroSessionsBeforeLongBreak": {
+    "message": "長い休憩までのセッション数",
+    "description": "Number of work sessions before long break"
+  },
+  "pomodoroSessionsBeforeLongBreakDescription": {
+    "message": "長い休憩を取る前に完了する作業セッションの数",
+    "description": "Description for sessions before long break setting"
+  },
+  "pomodoroAutoStartBreaks": {
+    "message": "休憩を自動開始",
+    "description": "Auto-start breaks setting"
+  },
+  "pomodoroAutoStartBreaksDescription": {
+    "message": "作業セッション終了後に自動的に休憩タイマーを開始します",
+    "description": "Description for auto-start breaks setting"
+  },
+  "pomodoroAutoStartWork": {
+    "message": "作業を自動開始",
+    "description": "Auto-start work setting"
+  },
+  "pomodoroAutoStartWorkDescription": {
+    "message": "休憩終了後に自動的に作業タイマーを開始します",
+    "description": "Description for auto-start work setting"
+  },
+  "pomodoroSoundEnabled": {
+    "message": "サウンド通知",
+    "description": "Sound notifications setting"
+  },
+  "pomodoroSoundEnabledDescription": {
+    "message": "タイマー終了時に音を鳴らします",
+    "description": "Description for sound notifications setting"
+  },
+  "minutes": {
+    "message": "分",
+    "description": "Minutes abbreviation"
+  },
+  "pomodoroWork": {
+    "message": "作業",
+    "description": "Work mode label"
+  },
+  "pomodoroBreak": {
+    "message": "休憩",
+    "description": "Break mode label"
+  },
+  "pomodoroLongBreak": {
+    "message": "長い休憩",
+    "description": "Long break mode label"
+  },
+  "pomodoroIdle": {
+    "message": "準備完了",
+    "description": "Idle/ready state label"
+  },
+  "pomodoroSessions": {
+    "message": "セッション:",
+    "description": "Sessions count label"
+  },
+  "pomodoroStartWork": {
+    "message": "作業開始",
+    "description": "Button to start work session"
+  },
+  "pomodoroStartBreak": {
+    "message": "休憩開始",
+    "description": "Button to start break"
+  },
+  "pomodoroPause": {
+    "message": "一時停止",
+    "description": "Pause timer button"
+  },
+  "pomodoroResume": {
+    "message": "再開",
+    "description": "Resume timer button"
+  },
+  "pomodoroSkip": {
+    "message": "スキップ",
+    "description": "Skip to next session button"
+  },
+  "pomodoroStop": {
+    "message": "停止",
+    "description": "Stop and reset timer button"
+  },
+  "timeLimitsTitle": {
+    "message": "時間制限",
+    "description": "Title for time limits section"
+  },
+  "timeLimitsDescription": {
+    "message": "各プラットフォームの1日の利用時間を制限します",
+    "description": "Description for time limits section"
+  },
+  "timeLimitsEnabled": {
+    "message": "時間制限を有効にする",
+    "description": "Toggle to enable time limits"
+  },
+  "timeLimitsEnabledDescription": {
+    "message": "プラットフォームの利用時間を追跡し、1日の上限を設定します",
+    "description": "Description for time limits toggle"
+  },
+  "timeLimitsWarningThreshold": {
+    "message": "警告しきい値",
+    "description": "Warning threshold setting"
+  },
+  "timeLimitsWarningThresholdDescription": {
+    "message": "利用時間がこの割合に達したら警告を表示します",
+    "description": "Description for warning threshold"
+  },
+  "timeLimitsBlockWhenReached": {
+    "message": "制限到達時にブロック",
+    "description": "Block when limit is reached setting"
+  },
+  "timeLimitsBlockWhenReachedDescription": {
+    "message": "1日の制限時間に達したらコンテンツをブロックします",
+    "description": "Description for block when reached setting"
+  },
+  "timeLimitsPlatformLimits": {
+    "message": "プラットフォーム別の制限",
+    "description": "Section title for platform limits"
+  },
+  "timeLimitsNoLimit": {
+    "message": "制限なし",
+    "description": "Shown when no limit is set for a platform"
+  },
+  "timeLimitsTodaysUsage": {
+    "message": "今日の利用時間",
+    "description": "Title for today's usage section in stats"
+  },
+  "platformYouTube": {
+    "message": "YouTube",
+    "description": "YouTube platform name"
+  },
+  "platformTikTok": {
+    "message": "TikTok",
+    "description": "TikTok platform name"
+  },
+  "platformInstagram": {
+    "message": "Instagram",
+    "description": "Instagram platform name"
+  },
+  "platformTwitter": {
+    "message": "Twitter/X",
+    "description": "Twitter platform name"
+  },
+  "platformFacebook": {
+    "message": "Facebook",
+    "description": "Facebook platform name"
+  },
+  "platformReddit": {
+    "message": "Reddit",
+    "description": "Reddit platform name"
+  },
+  "hours": {
+    "message": "時間",
+    "description": "Hours unit"
+  },
+  "hoursShort": {
+    "message": "時間",
+    "description": "Hours abbreviation"
+  },
+  "minutesShort": {
+    "message": "分",
+    "description": "Minutes abbreviation"
+  },
+  "days": {
+    "message": "日",
+    "description": "Days unit"
+  },
+  "loading": {
+    "message": "読み込み中...",
+    "description": "Loading indicator text"
+  },
+  "optionsTabReports": {
+    "message": "レポート",
+    "description": "Tab name for time tracking reports"
+  },
+  "reportsTitle": {
+    "message": "時間追跡とレポート",
+    "description": "Time reports section title"
+  },
+  "reportsDescription": {
+    "message": "SNSプラットフォームでの利用時間を追跡・分析します。",
+    "description": "Time reports section description"
+  },
+  "reportsEnabled": {
+    "message": "時間追跡を有効にする",
+    "description": "Toggle to enable time tracking"
+  },
+  "reportsEnabledDescription": {
+    "message": "分析とレポートのために毎日の利用統計を記録します",
+    "description": "Description for time tracking toggle"
+  },
+  "reportsRetention": {
+    "message": "データ保持期間",
+    "description": "Data retention period setting"
+  },
+  "reportsLast7Days": {
+    "message": "過去7日間",
+    "description": "Filter for last 7 days"
+  },
+  "reportsLast30Days": {
+    "message": "過去30日間",
+    "description": "Filter for last 30 days"
+  },
+  "reportsLast90Days": {
+    "message": "過去90日間",
+    "description": "Filter for last 90 days"
+  },
+  "reportsTotalTime": {
+    "message": "合計時間",
+    "description": "Label for total time spent"
+  },
+  "reportsDailyAverage": {
+    "message": "1日の平均",
+    "description": "Label for daily average time"
+  },
+  "reportsDaysTracked": {
+    "message": "追跡日数",
+    "description": "Label for number of days tracked"
+  },
+  "reportsByPlatform": {
+    "message": "プラットフォーム別",
+    "description": "Section title for platform breakdown"
+  },
+  "reportsDailyHistory": {
+    "message": "日別履歴",
+    "description": "Section title for daily history"
+  },
+  "reportsNoData": {
+    "message": "まだ追跡データがありません。プラットフォームを利用すると統計が表示されます。",
+    "description": "Message when no tracking data exists"
+  },
+  "reportsClearHistory": {
+    "message": "履歴を削除",
+    "description": "Button to clear tracking history"
+  },
+  "reportsClearConfirm": {
+    "message": "すべての追跡履歴を削除してもよろしいですか？この操作は元に戻せません。",
+    "description": "Confirmation message for clearing history"
+  },
+  "optionsTabStreak": {
+    "message": "ストリーク",
+    "description": "Tab name for streak tracking settings"
+  },
+  "streakTitle": {
+    "message": "ストリーク追跡",
+    "description": "Streak section title"
+  },
+  "streakDescription": {
+    "message": "毎日集中してストリークを積み上げましょう。進捗を追跡してマイルストーンバッジを獲得できます。",
+    "description": "Streak section description"
+  },
+  "streakEnabled": {
+    "message": "ストリーク追跡を有効にする",
+    "description": "Toggle to enable streak tracking"
+  },
+  "streakDays": {
+    "message": "日連続",
+    "description": "Streak days label"
+  },
+  "streakCurrent": {
+    "message": "現在のストリーク",
+    "description": "Current streak label"
+  },
+  "streakLongest": {
+    "message": "最長ストリーク",
+    "description": "Longest streak label"
+  },
+  "streakTotalDays": {
+    "message": "総集中日数",
+    "description": "Total focus days label"
+  },
+  "streakNextMilestone": {
+    "message": "次のマイルストーン",
+    "description": "Next milestone label"
+  },
+  "streakToMilestone": {
+    "message": "マイルストーンまで",
+    "description": "Progress towards milestone"
+  },
+  "streakMilestones": {
+    "message": "達成したマイルストーン",
+    "description": "Achieved milestones section title"
+  },
+  "streakGoalType": {
+    "message": "毎日の目標",
+    "description": "Goal type setting label"
+  },
+  "streakGoalTypeDescription": {
+    "message": "毎日の集中目標の達成方法を選択",
+    "description": "Description for goal type setting"
+  },
+  "streakGoalFocusTime": {
+    "message": "集中時間",
+    "description": "Goal type: minimum focus session time"
+  },
+  "streakGoalBlocks": {
+    "message": "ブロック回数",
+    "description": "Goal type: minimum number of blocks"
+  },
+  "streakGoalNoAccess": {
+    "message": "アクセスなし",
+    "description": "Goal type: no platform access"
+  },
+  "streakMinFocusMinutes": {
+    "message": "最小集中時間（分）",
+    "description": "Minimum focus minutes setting"
+  },
+  "streakMinFocusMinutesDescription": {
+    "message": "1日に最低この時間のフォーカスセッションを完了する",
+    "description": "Description for minimum focus minutes"
+  },
+  "streakMinBlocks": {
+    "message": "最小ブロック回数",
+    "description": "Minimum blocks setting"
+  },
+  "streakMinBlocksDescription": {
+    "message": "1日に最低この回数の気を散らすコンテンツをブロックする",
+    "description": "Description for minimum blocks"
+  },
+  "streakNotifications": {
+    "message": "ストリーク通知",
+    "description": "Notifications toggle label"
+  },
+  "streakNotificationsDescription": {
+    "message": "マイルストーン達成やストリーク終了時に通知を受け取る",
+    "description": "Description for notifications setting"
+  },
+  "streakReset": {
+    "message": "ストリークをリセット",
+    "description": "Reset streak button"
+  },
+  "streakResetConfirm": {
+    "message": "ストリークをリセットしてもよろしいですか？すべての進捗が削除され、元に戻すことはできません。",
+    "description": "Confirmation for streak reset"
+  },
+  "streakMilestoneReached": {
+    "message": "マイルストーン達成！",
+    "description": "Milestone notification title"
+  },
+  "streakMilestoneMessage": {
+    "message": "おめでとうございます！$DAYS$日連続のストリークを達成しました！",
+    "description": "Milestone notification message",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "streakBrokenTitle": {
+    "message": "ストリーク終了",
+    "description": "Streak broken notification title"
+  },
+  "streakBrokenMessage": {
+    "message": "ストリークがリセットされました。今日から新しいストリークを始めましょう！",
+    "description": "Streak broken notification message"
+  },
+  "challengeTitle": {
+    "message": "チャレンジモード",
+    "description": "Challenge mode section title"
+  },
+  "challengeDescription": {
+    "message": "ブロックをバイパスする前にチャレンジを解く必要があります。気が散ることへの抵抗力を高めます。",
+    "description": "Challenge mode section description"
+  },
+  "challengeEnabled": {
+    "message": "チャレンジモードを有効にする",
+    "description": "Toggle to enable challenge mode"
+  },
+  "challengeEnabledDescription": {
+    "message": "ブロックを一時的にバイパスするにはチャレンジを解く必要があります",
+    "description": "Description for challenge mode toggle"
+  },
+  "challengeDisableBypass": {
+    "message": "バイパスを完全に無効化",
+    "description": "Toggle to completely disable bypass"
+  },
+  "challengeDisableBypassDescription": {
+    "message": "有効にすると、ブロックをバイパスする方法がなくなります。注意して使用してください！",
+    "description": "Description for disable bypass toggle"
+  },
+  "challengeType": {
+    "message": "チャレンジタイプ",
+    "description": "Challenge type setting label"
+  },
+  "challengeTypeDescription": {
+    "message": "バイパスするために解くチャレンジの種類を選択",
+    "description": "Description for challenge type setting"
+  },
+  "challengeTypeMath": {
+    "message": "計算問題",
+    "description": "Math challenge type"
+  },
+  "challengeTypeTyping": {
+    "message": "タイピングテスト",
+    "description": "Typing challenge type"
+  },
+  "challengeTypePattern": {
+    "message": "パターン認識",
+    "description": "Pattern challenge type"
+  },
+  "challengeDifficulty": {
+    "message": "難易度",
+    "description": "Difficulty setting label"
+  },
+  "challengeDifficultyDescription": {
+    "message": "難易度が高いほどバイパスが困難になります",
+    "description": "Description for difficulty setting"
+  },
+  "challengeDifficultyEasy": {
+    "message": "簡単",
+    "description": "Easy difficulty level"
+  },
+  "challengeDifficultyMedium": {
+    "message": "普通",
+    "description": "Medium difficulty level"
+  },
+  "challengeDifficultyHard": {
+    "message": "難しい",
+    "description": "Hard difficulty level"
+  },
+  "challengeCooldown": {
+    "message": "クールダウン期間",
+    "description": "Cooldown setting label"
+  },
+  "challengeCooldownDescription": {
+    "message": "バイパス成功後、次のバイパスを試みるまでの待機時間",
+    "description": "Description for cooldown setting"
+  },
+  "challengeTypesInfo": {
+    "message": "チャレンジタイプの説明",
+    "description": "Title for challenge types information"
+  },
+  "challengeTypeMathInfo": {
+    "message": "加算、減算、乗算、除算などの算術問題を解きます",
+    "description": "Description of math challenge type"
+  },
+  "challengeTypeTypingInfo": {
+    "message": "表示された単語、フレーズ、または文を正確に入力します",
+    "description": "Description of typing challenge type"
+  },
+  "challengeTypePatternInfo": {
+    "message": "数列パターンの次の数字を見つけます",
+    "description": "Description of pattern challenge type"
+  },
+  "challengeDifficultyInfo": {
+    "message": "難易度の説明",
+    "description": "Title for difficulty information"
+  },
+  "challengeDifficultyEasyInfo": {
+    "message": "すばやく解ける簡単な問題",
+    "description": "Description of easy difficulty"
+  },
+  "challengeDifficultyMediumInfo": {
+    "message": "少し考える必要がある中程度の問題",
+    "description": "Description of medium difficulty"
+  },
+  "challengeDifficultyHardInfo": {
+    "message": "時間と集中力を要する複雑な問題",
+    "description": "Description of hard difficulty"
+  },
+  "lockdownTitle": {
+    "message": "ロックダウンモード",
+    "description": "Title for lockdown mode section"
+  },
+  "lockdownDescription": {
+    "message": "PINコードで設定を保護します。意志が弱いときの衝動的な変更を防ぎます。",
+    "description": "Description for lockdown mode"
+  },
+  "lockdownEnabled": {
+    "message": "ロックダウンモードを有効化",
+    "description": "Toggle to enable lockdown mode feature"
+  },
+  "lockdownEnabledDescription": {
+    "message": "設定変更にPIN保護を許可",
+    "description": "Description for lockdown mode toggle"
+  },
+  "lockdownActiveStatus": {
+    "message": "ロックダウンモードが有効です。設定を変更できません。",
+    "description": "Status message when lockdown is active"
+  },
+  "lockdownSetPin": {
+    "message": "PINコードを設定",
+    "description": "Title for setting initial PIN"
+  },
+  "lockdownChangePin": {
+    "message": "PINコードを変更",
+    "description": "Title for changing existing PIN"
+  },
+  "lockdownCurrentPin": {
+    "message": "現在のPIN",
+    "description": "Label for current PIN input"
+  },
+  "lockdownNewPin": {
+    "message": "新しいPIN",
+    "description": "Label for new PIN input"
+  },
+  "lockdownConfirmPin": {
+    "message": "PINを確認",
+    "description": "Label for confirm PIN input"
+  },
+  "lockdownPinHint": {
+    "message": "PINは4〜8桁の数字です",
+    "description": "Hint for PIN format"
+  },
+  "lockdownPinInvalidFormat": {
+    "message": "PINは4〜8桁の数字である必要があります",
+    "description": "Error when PIN format is invalid"
+  },
+  "lockdownPinMismatch": {
+    "message": "PINが一致しません",
+    "description": "Error when PINs don't match"
+  },
+  "lockdownCurrentPinRequired": {
+    "message": "PINを変更するには現在のPINが必要です",
+    "description": "Error when current PIN is missing"
+  },
+  "lockdownPinSaved": {
+    "message": "PINを保存しました",
+    "description": "Success message when PIN is saved"
+  },
+  "lockdownPinError": {
+    "message": "PINの保存に失敗しました",
+    "description": "Error when saving PIN fails"
+  },
+  "lockdownSetPinButton": {
+    "message": "PINを設定",
+    "description": "Button to set initial PIN"
+  },
+  "lockdownChangePinButton": {
+    "message": "PINを変更",
+    "description": "Button to change existing PIN"
+  },
+  "lockdownEmergencyBypass": {
+    "message": "緊急解除待機時間",
+    "description": "Label for emergency bypass minutes setting"
+  },
+  "lockdownEmergencyBypassDescription": {
+    "message": "緊急解除が利用可能になるまでの待機時間（PIN不要）",
+    "description": "Description for emergency bypass setting"
+  },
+  "lockdownControl": {
+    "message": "ロックダウン制御",
+    "description": "Title for lockdown activation section"
+  },
+  "lockdownEnterPin": {
+    "message": "PINを入力",
+    "description": "Label for PIN entry"
+  },
+  "lockdownPinRequired": {
+    "message": "PINが必要です",
+    "description": "Error when PIN is empty"
+  },
+  "lockdownActivateButton": {
+    "message": "ロックダウンを有効化",
+    "description": "Button to activate lockdown mode"
+  },
+  "lockdownActivateWarning": {
+    "message": "有効化すると、設定を変更するにはPINが必要になります。",
+    "description": "Warning before activating lockdown"
+  },
+  "lockdownActivateError": {
+    "message": "ロックダウンの有効化に失敗しました",
+    "description": "Error when activating lockdown fails"
+  },
+  "lockdownDeactivateButton": {
+    "message": "ロックダウンを解除",
+    "description": "Button to deactivate lockdown mode"
+  },
+  "lockdownDeactivateError": {
+    "message": "ロックダウンの解除に失敗しました",
+    "description": "Error when deactivating lockdown fails"
+  },
+  "lockdownEmergencyBypassTitle": {
+    "message": "PINを忘れた場合",
+    "description": "Title for emergency bypass section"
+  },
+  "lockdownEmergencyBypassInfo": {
+    "message": "PINを忘れた場合は、緊急解除をリクエストできます。解除タイマーが完了するまで待つ必要があります。",
+    "description": "Description for emergency bypass"
+  },
+  "lockdownRequestBypass": {
+    "message": "緊急解除をリクエスト",
+    "description": "Button to request emergency bypass"
+  },
+  "lockdownBypassReady": {
+    "message": "緊急解除が完了しました！ロックダウンが解除されました。",
+    "description": "Message when bypass is ready"
+  },
+  "lockdownBypassCountdown": {
+    "message": "残り時間",
+    "description": "Label for bypass countdown"
+  },
+  "lockdownInfoTitle": {
+    "message": "ロックダウンモードについて",
+    "description": "Title for lockdown info section"
+  },
+  "lockdownInfoItem1": {
+    "message": "ロックダウンはPINなしでの設定変更を防ぎます",
+    "description": "First info item about lockdown"
+  },
+  "lockdownInfoItem2": {
+    "message": "緊急解除は待機後にPINを忘れた場合の回復を可能にします",
+    "description": "Second info item about lockdown"
+  },
+  "lockdownInfoItem3": {
+    "message": "覚えやすいが、衝動的に推測されにくいPINを選んでください",
+    "description": "Third info item about lockdown"
   }
 }

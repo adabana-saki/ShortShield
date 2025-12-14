@@ -3,7 +3,33 @@
  * Security: All patterns are readonly and validated at compile time
  */
 
-import type { Platform, PlatformRules } from '@/shared/types';
+import type {
+  Platform,
+  PlatformRules,
+  ShortVideoPlatform,
+  SNSPlatform,
+} from '@/shared/types';
+
+/**
+ * List of short video platforms
+ */
+export const SHORT_VIDEO_PLATFORMS: readonly ShortVideoPlatform[] = [
+  'youtube',
+  'tiktok',
+  'instagram',
+] as const;
+
+/**
+ * List of SNS platforms
+ */
+export const SNS_PLATFORMS: readonly SNSPlatform[] = [
+  'twitter',
+  'facebook',
+  'linkedin',
+  'threads',
+  'snapchat',
+  'reddit',
+] as const;
 
 /**
  * YouTube Shorts detection configuration
@@ -147,12 +173,100 @@ export const INSTAGRAM_CONFIG: PlatformRules = {
 } as const;
 
 /**
+ * Twitter/X detection configuration (full site block)
+ */
+export const TWITTER_CONFIG: PlatformRules = {
+  platform: 'twitter',
+  hosts: [
+    'twitter.com',
+    'www.twitter.com',
+    'x.com',
+    'www.x.com',
+    'mobile.twitter.com',
+    'mobile.x.com',
+  ],
+  urlRules: [],
+  selectorRules: [],
+  attributeRules: [],
+} as const;
+
+/**
+ * Facebook detection configuration (full site block)
+ */
+export const FACEBOOK_CONFIG: PlatformRules = {
+  platform: 'facebook',
+  hosts: [
+    'facebook.com',
+    'www.facebook.com',
+    'm.facebook.com',
+    'web.facebook.com',
+  ],
+  urlRules: [],
+  selectorRules: [],
+  attributeRules: [],
+} as const;
+
+/**
+ * LinkedIn detection configuration (full site block)
+ */
+export const LINKEDIN_CONFIG: PlatformRules = {
+  platform: 'linkedin',
+  hosts: ['linkedin.com', 'www.linkedin.com'],
+  urlRules: [],
+  selectorRules: [],
+  attributeRules: [],
+} as const;
+
+/**
+ * Threads detection configuration (full site block)
+ */
+export const THREADS_CONFIG: PlatformRules = {
+  platform: 'threads',
+  hosts: ['threads.net', 'www.threads.net'],
+  urlRules: [],
+  selectorRules: [],
+  attributeRules: [],
+} as const;
+
+/**
+ * Snapchat detection configuration (full site block)
+ */
+export const SNAPCHAT_CONFIG: PlatformRules = {
+  platform: 'snapchat',
+  hosts: ['snapchat.com', 'www.snapchat.com', 'web.snapchat.com'],
+  urlRules: [],
+  selectorRules: [],
+  attributeRules: [],
+} as const;
+
+/**
+ * Reddit detection configuration (full site block)
+ */
+export const REDDIT_CONFIG: PlatformRules = {
+  platform: 'reddit',
+  hosts: ['reddit.com', 'www.reddit.com', 'old.reddit.com', 'new.reddit.com'],
+  urlRules: [],
+  selectorRules: [],
+  attributeRules: [],
+} as const;
+
+/**
  * All platform configurations
  */
 export const PLATFORM_CONFIGS: Readonly<Record<Platform, PlatformRules>> = {
+  // Short video platforms
   youtube: YOUTUBE_CONFIG,
   tiktok: TIKTOK_CONFIG,
   instagram: INSTAGRAM_CONFIG,
+  // Full site blockers (uses same config as parent platform)
+  youtube_full: YOUTUBE_CONFIG,
+  // SNS platforms
+  twitter: TWITTER_CONFIG,
+  facebook: FACEBOOK_CONFIG,
+  linkedin: LINKEDIN_CONFIG,
+  threads: THREADS_CONFIG,
+  snapchat: SNAPCHAT_CONFIG,
+  reddit: REDDIT_CONFIG,
 } as const;
 
 /**

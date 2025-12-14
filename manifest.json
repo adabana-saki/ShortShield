@@ -32,7 +32,14 @@
       "matches": [
         "*://*.youtube.com/*",
         "*://*.tiktok.com/*",
-        "*://*.instagram.com/*"
+        "*://*.instagram.com/*",
+        "*://*.twitter.com/*",
+        "*://*.x.com/*",
+        "*://*.facebook.com/*",
+        "*://*.linkedin.com/*",
+        "*://*.threads.net/*",
+        "*://*.snapchat.com/*",
+        "*://*.reddit.com/*"
       ],
       "js": ["src/content/index.ts"],
       "run_at": "document_idle"
@@ -40,12 +47,21 @@
   ],
   "permissions": [
     "storage",
-    "activeTab"
+    "activeTab",
+    "alarms",
+    "notifications"
   ],
   "host_permissions": [
     "*://*.youtube.com/*",
     "*://*.tiktok.com/*",
-    "*://*.instagram.com/*"
+    "*://*.instagram.com/*",
+    "*://*.twitter.com/*",
+    "*://*.x.com/*",
+    "*://*.facebook.com/*",
+    "*://*.linkedin.com/*",
+    "*://*.threads.net/*",
+    "*://*.snapchat.com/*",
+    "*://*.reddit.com/*"
   ],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"

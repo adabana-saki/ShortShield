@@ -90,52 +90,60 @@ export class InstagramDetector extends BasePlatformDetector {
       pathname: window.location.pathname,
     });
 
-    // Find main content and hide/blur it
-    const mainContent = document.querySelector<HTMLElement>(
-      'main, [role="main"], section'
-    );
-
-    if (mainContent) {
-      this.applyAction(mainContent, 'blur');
-      void this.logBlock(mainContent, 'blur');
-    }
-
-    // Show overlay
-    this.showBlockedOverlay();
-  }
-
-  /**
-   * Show blocked content overlay
-   */
-  private showBlockedOverlay(): void {
+    // Check if overlay already exists
     if (document.getElementById('shortshield-instagram-overlay')) {
       return;
     }
 
-    const overlay = document.createElement('div');
-    overlay.id = 'shortshield-instagram-overlay';
-    overlay.style.cssText = `
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: linear-gradient(135deg, #833AB4, #FD1D1D, #F77737);
-      color: white;
-      padding: 40px;
-      border-radius: 16px;
-      text-align: center;
-      z-index: 99999;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    `;
+    // Blur the main content
+    this.blurMainContent(['main', '[role="main"]', 'section']);
 
-    overlay.innerHTML = `
-      <div style="font-size: 48px; margin-bottom: 16px;">🛡️</div>
-      <h2 style="font-size: 24px; margin-bottom: 8px;">ShortShield Active</h2>
-      <p style="font-size: 16px; opacity: 0.9;">Instagram Reels content is being blocked</p>
-    `;
+    // Create blocking overlay using customizable method
+    const overlay = this.createBlockOverlay({
+      id: 'shortshield-instagram-overlay',
+      title: 'Instagram Reels Blocked',
+      message:
+        'ShortShield is protecting your focus by blocking Reels content.',
+      platformName: 'Instagram',
+      primaryButtonText: 'Go to Instagram Home',
+      onPrimaryClick: () => {
+        window.location.href = 'https://www.instagram.com/';
+      },
+      onBypassClick: () => {
+        this.handleBypass();
+      },
+    });
 
     document.body.appendChild(overlay);
+    void this.logBlock(overlay, 'blur');
+  }
+
+  /**
+   * Handle bypass button click - temporarily disable blocking
+   */
+  private handleBypass(): void {
+    const overlay = document.getElementById('shortshield-instagram-overlay');
+    if (overlay) {
+      overlay.remove();
+    }
+
+    // Remove blur from main content
+    const selectors = ['main', '[role="main"]', 'section'];
+    for (const selector of selectors) {
+      const element = document.querySelector<HTMLElement>(selector);
+      if (element) {
+        element.style.removeProperty('filter');
+        element.style.removeProperty('pointer-events');
+      }
+    }
+
+    // Set a temporary bypass flag in sessionStorage
+    sessionStorage.setItem(
+      'shortshield-bypass-instagram',
+      Date.now().toString()
+    );
+
+    logger.info('Bypass activated for Instagram');
   }
 
   /**

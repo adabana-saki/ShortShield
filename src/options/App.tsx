@@ -5,19 +5,46 @@
 import { useState } from 'react';
 import { useSettings } from '@/shared/hooks/useSettings';
 import { useI18n } from '@/shared/hooks/useI18n';
-import type { Platform } from '@/shared/types';
-import { Whitelist, ExportImport, LogViewer } from './components';
+import type { Platform, PopupView } from '@/shared/types';
+import {
+  Whitelist,
+  ExportImport,
+  CustomDomains,
+  Schedule,
+  BlockPageCustomizer,
+  FocusModeSettings,
+  PomodoroSettings,
+  TimeLimitsConfig,
+  TimeReports,
+  StreakSettings,
+  ChallengeSettings,
+  LockdownSettings,
+} from './components';
 
-type TabId = 'platforms' | 'whitelist' | 'logs' | 'backup';
+type TabId =
+  | 'platforms'
+  | 'customDomains'
+  | 'schedule'
+  | 'whitelist'
+  | 'focus'
+  | 'streak'
+  | 'reports'
+  | 'appearance'
+  | 'preferences'
+  | 'backup';
 
 export function App() {
   const { t, formatNumber } = useI18n();
-  const { settings, isLoading, error, togglePlatform, refreshSettings } =
+  const { settings, isLoading, error, togglePlatform, updateSettings, refreshSettings } =
     useSettings();
   const [activeTab, setActiveTab] = useState<TabId>('platforms');
 
   const handleTogglePlatform = (platform: Platform) => {
     void togglePlatform(platform);
+  };
+
+  const handlePopupViewChange = (view: PopupView) => {
+    void updateSettings({ preferences: { popupDefaultView: view } });
   };
 
   if (isLoading) {
@@ -41,9 +68,22 @@ export function App() {
 
   const tabs: { id: TabId; label: string }[] = [
     { id: 'platforms', label: t('optionsTabPlatforms') },
+    { id: 'customDomains', label: t('optionsTabCustomDomains') },
+    { id: 'schedule', label: t('optionsTabSchedule') },
     { id: 'whitelist', label: t('optionsTabWhitelist') },
-    { id: 'logs', label: t('optionsTabLogs') },
+    { id: 'focus', label: t('optionsTabFocus') },
+    { id: 'streak', label: t('optionsTabStreak') },
+    { id: 'reports', label: t('optionsTabReports') },
+    { id: 'appearance', label: t('optionsTabAppearance') },
+    { id: 'preferences', label: t('optionsTabPreferences') },
     { id: 'backup', label: t('optionsTabBackup') },
+  ];
+
+  const popupViewOptions: { value: PopupView; label: string }[] = [
+    { value: 'schedule', label: t('popupViewSchedule') },
+    { value: 'platforms', label: t('popupViewPlatforms') },
+    { value: 'stats', label: t('popupViewStats') },
+    { value: 'focus', label: t('popupViewFocus') },
   ];
 
   return (
@@ -70,7 +110,7 @@ export function App() {
         {activeTab === 'platforms' && (
           <>
             <section className="options-section">
-              <h2>{t('optionsPlatformsTitle')}</h2>
+              <h2>{t('popupSectionShortVideo')}</h2>
               <p className="section-description">
                 {t('optionsPlatformsDescription')}
               </p>
@@ -106,6 +146,84 @@ export function App() {
             </section>
 
             <section className="options-section">
+              <h2>{t('popupSectionFullSite')}</h2>
+              <p className="section-description">
+                {t('optionsFullSiteDescription')}
+              </p>
+
+              <div className="platform-list">
+                <label className="platform-toggle">
+                  <input
+                    type="checkbox"
+                    checked={settings.platforms.youtube_full}
+                    onChange={() => handleTogglePlatform('youtube_full')}
+                  />
+                  <span>{t('popupPlatformYouTubeFull')}</span>
+                </label>
+              </div>
+            </section>
+
+            <section className="options-section">
+              <h2>{t('popupSectionSNS')}</h2>
+
+              <div className="platform-list">
+                <label className="platform-toggle">
+                  <input
+                    type="checkbox"
+                    checked={settings.platforms.twitter}
+                    onChange={() => handleTogglePlatform('twitter')}
+                  />
+                  <span>{t('popupPlatformTwitter')}</span>
+                </label>
+
+                <label className="platform-toggle">
+                  <input
+                    type="checkbox"
+                    checked={settings.platforms.facebook}
+                    onChange={() => handleTogglePlatform('facebook')}
+                  />
+                  <span>{t('popupPlatformFacebook')}</span>
+                </label>
+
+                <label className="platform-toggle">
+                  <input
+                    type="checkbox"
+                    checked={settings.platforms.linkedin}
+                    onChange={() => handleTogglePlatform('linkedin')}
+                  />
+                  <span>{t('popupPlatformLinkedIn')}</span>
+                </label>
+
+                <label className="platform-toggle">
+                  <input
+                    type="checkbox"
+                    checked={settings.platforms.threads}
+                    onChange={() => handleTogglePlatform('threads')}
+                  />
+                  <span>{t('popupPlatformThreads')}</span>
+                </label>
+
+                <label className="platform-toggle">
+                  <input
+                    type="checkbox"
+                    checked={settings.platforms.snapchat}
+                    onChange={() => handleTogglePlatform('snapchat')}
+                  />
+                  <span>{t('popupPlatformSnapchat')}</span>
+                </label>
+
+                <label className="platform-toggle">
+                  <input
+                    type="checkbox"
+                    checked={settings.platforms.reddit}
+                    onChange={() => handleTogglePlatform('reddit')}
+                  />
+                  <span>{t('popupPlatformReddit')}</span>
+                </label>
+              </div>
+            </section>
+
+            <section className="options-section">
               <h2>{t('optionsStatsTitle')}</h2>
               <div className="stats-display">
                 <div className="stat">
@@ -125,6 +243,20 @@ export function App() {
           </>
         )}
 
+        {/* Custom Domains Tab */}
+        {activeTab === 'customDomains' && (
+          <section className="options-section">
+            <CustomDomains />
+          </section>
+        )}
+
+        {/* Schedule Tab */}
+        {activeTab === 'schedule' && (
+          <section className="options-section">
+            <Schedule />
+          </section>
+        )}
+
         {/* Whitelist Tab */}
         {activeTab === 'whitelist' && (
           <section className="options-section">
@@ -132,10 +264,72 @@ export function App() {
           </section>
         )}
 
-        {/* Logs Tab */}
-        {activeTab === 'logs' && (
+        {/* Focus Tab */}
+        {activeTab === 'focus' && (
+          <>
+            <section className="options-section">
+              <FocusModeSettings />
+            </section>
+            <section className="options-section">
+              <PomodoroSettings />
+            </section>
+            <section className="options-section">
+              <TimeLimitsConfig />
+            </section>
+            <section className="options-section">
+              <LockdownSettings />
+            </section>
+          </>
+        )}
+
+        {/* Streak Tab */}
+        {activeTab === 'streak' && (
           <section className="options-section">
-            <LogViewer />
+            <StreakSettings />
+          </section>
+        )}
+
+        {/* Reports Tab */}
+        {activeTab === 'reports' && (
+          <section className="options-section">
+            <TimeReports />
+          </section>
+        )}
+
+        {/* Appearance Tab */}
+        {activeTab === 'appearance' && (
+          <>
+            <section className="options-section">
+              <BlockPageCustomizer />
+            </section>
+            <section className="options-section">
+              <ChallengeSettings />
+            </section>
+          </>
+        )}
+
+        {/* Preferences Tab */}
+        {activeTab === 'preferences' && (
+          <section className="options-section">
+            <h2>{t('preferencesPopupView')}</h2>
+            <p className="section-description">
+              {t('preferencesPopupViewDescription')}
+            </p>
+
+            <div className="preference-options">
+              {popupViewOptions.map((option) => (
+                <label key={option.value} className="preference-radio">
+                  <input
+                    type="radio"
+                    name="popupDefaultView"
+                    value={option.value}
+                    checked={settings.preferences.popupDefaultView === option.value}
+                    onChange={() => handlePopupViewChange(option.value)}
+                  />
+                  <span>{option.label}</span>
+                </label>
+              ))}
+            </div>
           </section>
         )}
 

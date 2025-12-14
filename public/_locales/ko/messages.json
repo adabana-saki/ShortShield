@@ -39,6 +39,82 @@
     "message": "Instagram Reels",
     "description": "Instagram platform name"
   },
+  "popupPlatformTwitter": {
+    "message": "Twitter/X",
+    "description": "Twitter/X platform name"
+  },
+  "popupPlatformFacebook": {
+    "message": "Facebook",
+    "description": "Facebook platform name"
+  },
+  "popupPlatformLinkedIn": {
+    "message": "LinkedIn",
+    "description": "LinkedIn platform name"
+  },
+  "popupPlatformThreads": {
+    "message": "Threads",
+    "description": "Threads platform name"
+  },
+  "popupPlatformSnapchat": {
+    "message": "Snapchat",
+    "description": "Snapchat platform name"
+  },
+  "popupPlatformReddit": {
+    "message": "Reddit",
+    "description": "Reddit platform name"
+  },
+  "popupPlatformYouTubeFull": {
+    "message": "YouTube (전체)",
+    "description": "Full YouTube blocking platform name"
+  },
+  "popupSectionShortVideo": {
+    "message": "숏폼 동영상 플랫폼",
+    "description": "Section title for short video platforms"
+  },
+  "popupSectionFullSite": {
+    "message": "전체 사이트 차단",
+    "description": "Section title for full site blocking"
+  },
+  "popupSectionSNS": {
+    "message": "소셜 네트워크",
+    "description": "Section title for SNS platforms"
+  },
+  "popupViewPlatforms": {
+    "message": "플랫폼",
+    "description": "Popup view: platforms"
+  },
+  "popupViewSchedule": {
+    "message": "일정",
+    "description": "Popup view: schedule"
+  },
+  "popupViewStats": {
+    "message": "통계",
+    "description": "Popup view: stats"
+  },
+  "popupScheduleStatus": {
+    "message": "일정",
+    "description": "Schedule status label in popup"
+  },
+  "popupScheduleOn": {
+    "message": "활성",
+    "description": "Schedule is currently active"
+  },
+  "popupScheduleOff": {
+    "message": "비활성",
+    "description": "Schedule is currently inactive"
+  },
+  "popupQuickScheduleToggle": {
+    "message": "일정 활성화",
+    "description": "Quick toggle for schedule in popup"
+  },
+  "preferencesPopupView": {
+    "message": "기본 팝업 보기",
+    "description": "Setting for default popup view"
+  },
+  "preferencesPopupViewDescription": {
+    "message": "팝업을 열 때 표시할 내용 선택",
+    "description": "Description for popup view setting"
+  },
   "popupStatsToday": {
     "message": "오늘 차단",
     "description": "Label for today's block count"
@@ -424,5 +500,993 @@
         "example": "5"
       }
     }
+  },
+  "customDomainsTitle": {
+    "message": "사용자 정의 차단 도메인",
+    "description": "Custom domains section title"
+  },
+  "customDomainsDescription": {
+    "message": "차단하려는 도메인을 추가하세요. 방문 시 전체 사이트가 차단됩니다.",
+    "description": "Custom domains section description"
+  },
+  "customDomainsPlaceholder": {
+    "message": "도메인 입력 (예: example.com)",
+    "description": "Placeholder for domain input"
+  },
+  "customDomainsAdd": {
+    "message": "도메인 추가",
+    "description": "Add domain button text"
+  },
+  "customDomainsAdding": {
+    "message": "추가 중...",
+    "description": "Adding domain in progress"
+  },
+  "customDomainsRemove": {
+    "message": "제거",
+    "description": "Remove domain button"
+  },
+  "customDomainsEmpty": {
+    "message": "사용자 정의 차단 도메인이 없습니다",
+    "description": "Empty custom domains message"
+  },
+  "customDomainsErrorEmpty": {
+    "message": "도메인을 입력하세요",
+    "description": "Error for empty domain input"
+  },
+  "customDomainsErrorInvalid": {
+    "message": "유효한 도메인을 입력하세요",
+    "description": "Error for invalid domain"
+  },
+  "customDomainsErrorDuplicate": {
+    "message": "이 도메인은 이미 차단되어 있습니다",
+    "description": "Error for duplicate domain"
+  },
+  "customDomainsErrorFailed": {
+    "message": "도메인 추가 실패",
+    "description": "Error when adding domain fails"
+  },
+  "optionsTabCustomDomains": {
+    "message": "사용자 정의 도메인",
+    "description": "Tab name for custom domain blocking"
+  },
+  "optionsTabSchedule": {
+    "message": "일정",
+    "description": "Tab name for schedule settings"
+  },
+  "optionsTabPreferences": {
+    "message": "환경설정",
+    "description": "Tab name for user preferences"
+  },
+  "optionsFullSiteDescription": {
+    "message": "숏폼 콘텐츠뿐만 아니라 전체 사이트 차단",
+    "description": "Description for full site blocking section"
+  },
+  "scheduleTitle": {
+    "message": "차단 일정",
+    "description": "Schedule section title"
+  },
+  "scheduleDescription": {
+    "message": "차단이 활성화되는 시간을 설정합니다. 이 시간 외에는 모든 콘텐츠가 허용됩니다.",
+    "description": "Schedule section description"
+  },
+  "scheduleEnabled": {
+    "message": "일정 기반 차단 활성화",
+    "description": "Toggle to enable/disable schedule"
+  },
+  "scheduleActiveDays": {
+    "message": "활성 요일",
+    "description": "Label for active days selection"
+  },
+  "scheduleTimeRanges": {
+    "message": "차단 시간",
+    "description": "Label for time ranges"
+  },
+  "scheduleAddTimeRange": {
+    "message": "시간대 추가",
+    "description": "Button to add a new time range"
+  },
+  "scheduleRemoveTimeRange": {
+    "message": "제거",
+    "description": "Button to remove a time range"
+  },
+  "scheduleFrom": {
+    "message": "시작",
+    "description": "Label for start time"
+  },
+  "scheduleTo": {
+    "message": "종료",
+    "description": "Label for end time"
+  },
+  "scheduleDaySun": {
+    "message": "일",
+    "description": "Sunday abbreviation"
+  },
+  "scheduleDayMon": {
+    "message": "월",
+    "description": "Monday abbreviation"
+  },
+  "scheduleDayTue": {
+    "message": "화",
+    "description": "Tuesday abbreviation"
+  },
+  "scheduleDayWed": {
+    "message": "수",
+    "description": "Wednesday abbreviation"
+  },
+  "scheduleDayThu": {
+    "message": "목",
+    "description": "Thursday abbreviation"
+  },
+  "scheduleDayFri": {
+    "message": "금",
+    "description": "Friday abbreviation"
+  },
+  "scheduleDaySat": {
+    "message": "토",
+    "description": "Saturday abbreviation"
+  },
+  "scheduleStatus": {
+    "message": "일정이 현재 $STATUS$입니다",
+    "description": "Current schedule status",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "활성"
+      }
+    }
+  },
+  "scheduleStatusActive": {
+    "message": "활성",
+    "description": "Schedule is active"
+  },
+  "scheduleStatusInactive": {
+    "message": "비활성",
+    "description": "Schedule is inactive"
+  },
+  "optionsTabAppearance": {
+    "message": "외관",
+    "description": "Tab name for block page appearance settings"
+  },
+  "blockPageTitle": {
+    "message": "차단 페이지 외관",
+    "description": "Section title for block page customization"
+  },
+  "blockPageDescription": {
+    "message": "콘텐츠가 차단될 때 표시되는 오버레이의 모양을 사용자 정의합니다.",
+    "description": "Description for block page customization section"
+  },
+  "blockPageThemeTitle": {
+    "message": "테마",
+    "description": "Theme selection title"
+  },
+  "blockPageThemeSystem": {
+    "message": "시스템",
+    "description": "Use system theme preference"
+  },
+  "blockPageThemeLight": {
+    "message": "라이트",
+    "description": "Light theme"
+  },
+  "blockPageThemeDark": {
+    "message": "다크",
+    "description": "Dark theme"
+  },
+  "blockPageColorTitle": {
+    "message": "강조 색상",
+    "description": "Primary color selection title"
+  },
+  "blockPageCustomColor": {
+    "message": "사용자 정의 색상",
+    "description": "Custom color picker tooltip"
+  },
+  "blockPageCustomTitle": {
+    "message": "사용자 정의 제목",
+    "description": "Custom title input label"
+  },
+  "blockPageTitlePlaceholder": {
+    "message": "기본 제목을 사용하려면 비워두세요",
+    "description": "Placeholder for custom title input"
+  },
+  "blockPageCustomMessage": {
+    "message": "사용자 정의 메시지",
+    "description": "Custom message input label"
+  },
+  "blockPageMessagePlaceholder": {
+    "message": "기본 메시지를 사용하려면 비워두세요",
+    "description": "Placeholder for custom message input"
+  },
+  "blockPageShowQuotes": {
+    "message": "동기 부여 인용구 표시",
+    "description": "Toggle for motivational quotes"
+  },
+  "blockPageShowQuotesDescription": {
+    "message": "차단 페이지에 영감을 주는 인용구를 표시합니다",
+    "description": "Description for motivational quotes toggle"
+  },
+  "blockPageCustomQuotes": {
+    "message": "사용자 정의 인용구",
+    "description": "Custom quotes section title"
+  },
+  "blockPageCustomQuotesDescription": {
+    "message": "표시할 자신만의 인용구를 추가하세요",
+    "description": "Description for custom quotes section"
+  },
+  "blockPageQuotePlaceholder": {
+    "message": "동기 부여 인용구 입력",
+    "description": "Placeholder for quote input"
+  },
+  "blockPageAddQuote": {
+    "message": "인용구 추가",
+    "description": "Add quote button text"
+  },
+  "blockPageRemoveQuote": {
+    "message": "인용구 삭제",
+    "description": "Remove quote button aria label"
+  },
+  "blockPageNoCustomQuotes": {
+    "message": "사용자 정의 인용구가 없습니다. 기본 인용구가 사용됩니다.",
+    "description": "Message when no custom quotes exist"
+  },
+  "blockPageShowBypass": {
+    "message": "우회 버튼 표시",
+    "description": "Toggle for bypass button"
+  },
+  "blockPageShowBypassDescription": {
+    "message": "일시적으로 차단을 우회할 수 있습니다 (권장하지 않음)",
+    "description": "Description for bypass button toggle"
+  },
+  "blockPagePreview": {
+    "message": "미리보기",
+    "description": "Preview section title"
+  },
+  "blockPageDefaultTitle": {
+    "message": "콘텐츠 차단됨",
+    "description": "Default block page title"
+  },
+  "blockPageDefaultMessage": {
+    "message": "ShortShield가 당신의 집중력을 보호하고 있습니다.",
+    "description": "Default block page message"
+  },
+  "blockPageDefaultQuote": {
+    "message": "가장 중요한 것에 집중하세요.",
+    "description": "Default motivational quote"
+  },
+  "blockPageBypassButton": {
+    "message": "5분간 우회",
+    "description": "Bypass button text"
+  },
+  "blockPageErrorUpdate": {
+    "message": "설정 업데이트 실패",
+    "description": "Error when updating block page settings fails"
+  },
+  "blockPageErrorEmptyQuote": {
+    "message": "인용구를 입력하세요",
+    "description": "Error when quote input is empty"
+  },
+  "blockPageErrorDuplicateQuote": {
+    "message": "이 인용구는 이미 존재합니다",
+    "description": "Error when quote is a duplicate"
+  },
+  "popupViewFocus": {
+    "message": "집중",
+    "description": "Popup view: focus mode"
+  },
+  "focusModeTitle": {
+    "message": "집중 모드",
+    "description": "Focus mode section title"
+  },
+  "focusModeDescription": {
+    "message": "방해 없는 시간 블록을 활성화하여 생산성을 높이세요.",
+    "description": "Focus mode section description"
+  },
+  "focusModeEnabled": {
+    "message": "집중 모드 활성화",
+    "description": "Toggle to enable focus mode feature"
+  },
+  "focusModeEnabledDescription": {
+    "message": "팝업에서 집중 세션을 시작할 수 있습니다",
+    "description": "Description for focus mode enable toggle"
+  },
+  "focusModeDefaultDuration": {
+    "message": "기본 시간",
+    "description": "Default focus duration setting"
+  },
+  "focusModeDefaultDurationDescription": {
+    "message": "집중 세션 시작 시 미리 선택되는 시간",
+    "description": "Description for default duration setting"
+  },
+  "focusModeSoftLock": {
+    "message": "조기 취소 허용",
+    "description": "Soft lock toggle label"
+  },
+  "focusModeSoftLockDescription": {
+    "message": "비활성화하면 세션이 끝나기 전에 취소할 수 없습니다",
+    "description": "Description for soft lock setting"
+  },
+  "focusModeNotifications": {
+    "message": "세션 알림",
+    "description": "Notifications toggle label"
+  },
+  "focusModeNotificationsDescription": {
+    "message": "집중 세션 시작과 종료 시 알림을 표시합니다",
+    "description": "Description for notifications setting"
+  },
+  "focusModeStart": {
+    "message": "집중 세션 시작",
+    "description": "Button to start focus session"
+  },
+  "focusModeStarting": {
+    "message": "시작 중...",
+    "description": "Focus session starting state"
+  },
+  "focusModeActive": {
+    "message": "집중 모드 활성화됨",
+    "description": "Indicator that focus mode is running"
+  },
+  "focusModeCancel": {
+    "message": "세션 취소",
+    "description": "Button to cancel focus session"
+  },
+  "focusModeCancelling": {
+    "message": "취소 중...",
+    "description": "Focus session cancelling state"
+  },
+  "focusModeRemaining": {
+    "message": "남음",
+    "description": "Time remaining label"
+  },
+  "focusModeExtend": {
+    "message": "세션 연장:",
+    "description": "Label for extend session buttons"
+  },
+  "optionsTabFocus": {
+    "message": "집중",
+    "description": "Tab name for focus and pomodoro settings"
+  },
+  "pomodoroTitle": {
+    "message": "뽀모도로 타이머",
+    "description": "Pomodoro timer section title"
+  },
+  "pomodoroDescription": {
+    "message": "뽀모도로 기법을 사용하세요: 25분 집중 작업 후 짧은 휴식.",
+    "description": "Pomodoro timer section description"
+  },
+  "pomodoroEnabled": {
+    "message": "뽀모도로 타이머 활성화",
+    "description": "Toggle to enable pomodoro timer feature"
+  },
+  "pomodoroEnabledDescription": {
+    "message": "팝업에서 뽀모도로 타이머를 사용할 수 있게 합니다",
+    "description": "Description for pomodoro enable toggle"
+  },
+  "pomodoroWorkDuration": {
+    "message": "작업 시간",
+    "description": "Work session duration setting"
+  },
+  "pomodoroWorkDurationDescription": {
+    "message": "각 집중 작업 세션의 길이",
+    "description": "Description for work duration setting"
+  },
+  "pomodoroBreakDuration": {
+    "message": "휴식 시간",
+    "description": "Break duration setting"
+  },
+  "pomodoroBreakDurationDescription": {
+    "message": "작업 세션 사이의 짧은 휴식 길이",
+    "description": "Description for break duration setting"
+  },
+  "pomodoroLongBreakDuration": {
+    "message": "긴 휴식 시간",
+    "description": "Long break duration setting"
+  },
+  "pomodoroLongBreakDurationDescription": {
+    "message": "사이클 완료 후 긴 휴식의 길이",
+    "description": "Description for long break duration setting"
+  },
+  "pomodoroSessionsBeforeLongBreak": {
+    "message": "긴 휴식 전 세션 수",
+    "description": "Number of work sessions before long break"
+  },
+  "pomodoroSessionsBeforeLongBreakDescription": {
+    "message": "긴 휴식 전에 완료할 작업 세션 수",
+    "description": "Description for sessions before long break setting"
+  },
+  "pomodoroAutoStartBreaks": {
+    "message": "휴식 자동 시작",
+    "description": "Auto-start breaks setting"
+  },
+  "pomodoroAutoStartBreaksDescription": {
+    "message": "작업 세션 종료 후 자동으로 휴식 타이머를 시작합니다",
+    "description": "Description for auto-start breaks setting"
+  },
+  "pomodoroAutoStartWork": {
+    "message": "작업 자동 시작",
+    "description": "Auto-start work setting"
+  },
+  "pomodoroAutoStartWorkDescription": {
+    "message": "휴식 종료 후 자동으로 작업 타이머를 시작합니다",
+    "description": "Description for auto-start work setting"
+  },
+  "pomodoroSoundEnabled": {
+    "message": "소리 알림",
+    "description": "Sound notifications setting"
+  },
+  "pomodoroSoundEnabledDescription": {
+    "message": "타이머 완료 시 소리를 재생합니다",
+    "description": "Description for sound notifications setting"
+  },
+  "minutes": {
+    "message": "분",
+    "description": "Minutes abbreviation"
+  },
+  "pomodoroWork": {
+    "message": "작업",
+    "description": "Work mode label"
+  },
+  "pomodoroBreak": {
+    "message": "휴식",
+    "description": "Break mode label"
+  },
+  "pomodoroLongBreak": {
+    "message": "긴 휴식",
+    "description": "Long break mode label"
+  },
+  "pomodoroIdle": {
+    "message": "준비됨",
+    "description": "Idle/ready state label"
+  },
+  "pomodoroSessions": {
+    "message": "세션:",
+    "description": "Sessions count label"
+  },
+  "pomodoroStartWork": {
+    "message": "작업 시작",
+    "description": "Button to start work session"
+  },
+  "pomodoroStartBreak": {
+    "message": "휴식 시작",
+    "description": "Button to start break"
+  },
+  "pomodoroPause": {
+    "message": "일시정지",
+    "description": "Pause timer button"
+  },
+  "pomodoroResume": {
+    "message": "재개",
+    "description": "Resume timer button"
+  },
+  "pomodoroSkip": {
+    "message": "건너뛰기",
+    "description": "Skip to next session button"
+  },
+  "pomodoroStop": {
+    "message": "중지",
+    "description": "Stop and reset timer button"
+  },
+  "timeLimitsTitle": {
+    "message": "시간 제한",
+    "description": "Title for time limits section"
+  },
+  "timeLimitsDescription": {
+    "message": "각 플랫폼의 일일 시간 제한을 설정하세요",
+    "description": "Description for time limits section"
+  },
+  "timeLimitsEnabled": {
+    "message": "시간 제한 활성화",
+    "description": "Toggle to enable time limits"
+  },
+  "timeLimitsEnabledDescription": {
+    "message": "플랫폼 사용 시간을 추적하고 일일 제한을 적용합니다",
+    "description": "Description for time limits toggle"
+  },
+  "timeLimitsWarningThreshold": {
+    "message": "경고 임계값",
+    "description": "Warning threshold setting"
+  },
+  "timeLimitsWarningThresholdDescription": {
+    "message": "사용량이 제한의 이 비율에 도달하면 경고를 표시합니다",
+    "description": "Description for warning threshold"
+  },
+  "timeLimitsBlockWhenReached": {
+    "message": "제한 도달 시 차단",
+    "description": "Block when limit is reached setting"
+  },
+  "timeLimitsBlockWhenReachedDescription": {
+    "message": "일일 시간 제한에 도달하면 콘텐츠를 차단합니다",
+    "description": "Description for block when reached setting"
+  },
+  "timeLimitsPlatformLimits": {
+    "message": "플랫폼 제한",
+    "description": "Section title for platform limits"
+  },
+  "timeLimitsNoLimit": {
+    "message": "제한 없음",
+    "description": "Shown when no limit is set for a platform"
+  },
+  "timeLimitsTodaysUsage": {
+    "message": "오늘 사용량",
+    "description": "Title for today's usage section in stats"
+  },
+  "platformYouTube": {
+    "message": "YouTube",
+    "description": "YouTube platform name"
+  },
+  "platformTikTok": {
+    "message": "TikTok",
+    "description": "TikTok platform name"
+  },
+  "platformInstagram": {
+    "message": "Instagram",
+    "description": "Instagram platform name"
+  },
+  "platformTwitter": {
+    "message": "Twitter/X",
+    "description": "Twitter platform name"
+  },
+  "platformFacebook": {
+    "message": "Facebook",
+    "description": "Facebook platform name"
+  },
+  "platformReddit": {
+    "message": "Reddit",
+    "description": "Reddit platform name"
+  },
+  "hours": {
+    "message": "시간",
+    "description": "Hours unit"
+  },
+  "hoursShort": {
+    "message": "시간",
+    "description": "Hours abbreviation"
+  },
+  "minutesShort": {
+    "message": "분",
+    "description": "Minutes abbreviation"
+  },
+  "days": {
+    "message": "일",
+    "description": "Days unit"
+  },
+  "loading": {
+    "message": "로딩 중...",
+    "description": "Loading indicator text"
+  },
+  "optionsTabReports": {
+    "message": "리포트",
+    "description": "Tab name for time tracking reports"
+  },
+  "reportsTitle": {
+    "message": "시간 추적 및 리포트",
+    "description": "Time reports section title"
+  },
+  "reportsDescription": {
+    "message": "소셜 미디어 플랫폼에서 보내는 시간을 추적하고 분석합니다.",
+    "description": "Time reports section description"
+  },
+  "reportsEnabled": {
+    "message": "시간 추적 활성화",
+    "description": "Toggle to enable time tracking"
+  },
+  "reportsEnabledDescription": {
+    "message": "분석 및 리포트를 위해 일일 사용 통계를 기록합니다",
+    "description": "Description for time tracking toggle"
+  },
+  "reportsRetention": {
+    "message": "데이터 보관 기간",
+    "description": "Data retention period setting"
+  },
+  "reportsLast7Days": {
+    "message": "지난 7일",
+    "description": "Filter for last 7 days"
+  },
+  "reportsLast30Days": {
+    "message": "지난 30일",
+    "description": "Filter for last 30 days"
+  },
+  "reportsLast90Days": {
+    "message": "지난 90일",
+    "description": "Filter for last 90 days"
+  },
+  "reportsTotalTime": {
+    "message": "총 시간",
+    "description": "Label for total time spent"
+  },
+  "reportsDailyAverage": {
+    "message": "일일 평균",
+    "description": "Label for daily average time"
+  },
+  "reportsDaysTracked": {
+    "message": "추적된 일수",
+    "description": "Label for number of days tracked"
+  },
+  "reportsByPlatform": {
+    "message": "플랫폼별",
+    "description": "Section title for platform breakdown"
+  },
+  "reportsDailyHistory": {
+    "message": "일별 기록",
+    "description": "Section title for daily history"
+  },
+  "reportsNoData": {
+    "message": "아직 추적 데이터가 없습니다. 플랫폼을 사용하면 통계가 표시됩니다.",
+    "description": "Message when no tracking data exists"
+  },
+  "reportsClearHistory": {
+    "message": "기록 삭제",
+    "description": "Button to clear tracking history"
+  },
+  "reportsClearConfirm": {
+    "message": "모든 추적 기록을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    "description": "Confirmation message for clearing history"
+  },
+  "optionsTabStreak": {
+    "message": "스트릭",
+    "description": "Tab name for streak tracking settings"
+  },
+  "streakTitle": {
+    "message": "스트릭 추적",
+    "description": "Streak section title"
+  },
+  "streakDescription": {
+    "message": "매일 집중하여 스트릭을 쌓으세요. 진행 상황을 추적하고 마일스톤 배지를 획득하세요.",
+    "description": "Streak section description"
+  },
+  "streakEnabled": {
+    "message": "스트릭 추적 활성화",
+    "description": "Toggle to enable streak tracking"
+  },
+  "streakDays": {
+    "message": "일 연속",
+    "description": "Streak days label"
+  },
+  "streakCurrent": {
+    "message": "현재 스트릭",
+    "description": "Current streak label"
+  },
+  "streakLongest": {
+    "message": "최장 스트릭",
+    "description": "Longest streak label"
+  },
+  "streakTotalDays": {
+    "message": "총 집중 일수",
+    "description": "Total focus days label"
+  },
+  "streakNextMilestone": {
+    "message": "다음 마일스톤",
+    "description": "Next milestone label"
+  },
+  "streakToMilestone": {
+    "message": "마일스톤까지",
+    "description": "Progress towards milestone"
+  },
+  "streakMilestones": {
+    "message": "달성한 마일스톤",
+    "description": "Achieved milestones section title"
+  },
+  "streakGoalType": {
+    "message": "일일 목표",
+    "description": "Goal type setting label"
+  },
+  "streakGoalTypeDescription": {
+    "message": "일일 집중 목표 달성 여부를 결정하는 방법",
+    "description": "Description for goal type setting"
+  },
+  "streakGoalFocusTime": {
+    "message": "집중 시간",
+    "description": "Goal type: minimum focus session time"
+  },
+  "streakGoalBlocks": {
+    "message": "차단 횟수",
+    "description": "Goal type: minimum number of blocks"
+  },
+  "streakGoalNoAccess": {
+    "message": "접속 없음",
+    "description": "Goal type: no platform access"
+  },
+  "streakMinFocusMinutes": {
+    "message": "최소 집중 시간(분)",
+    "description": "Minimum focus minutes setting"
+  },
+  "streakMinFocusMinutesDescription": {
+    "message": "하루에 최소 이 시간만큼 집중 세션을 완료하세요",
+    "description": "Description for minimum focus minutes"
+  },
+  "streakMinBlocks": {
+    "message": "최소 차단 횟수",
+    "description": "Minimum blocks setting"
+  },
+  "streakMinBlocksDescription": {
+    "message": "하루에 최소 이 횟수만큼 방해 요소를 차단하세요",
+    "description": "Description for minimum blocks"
+  },
+  "streakNotifications": {
+    "message": "스트릭 알림",
+    "description": "Notifications toggle label"
+  },
+  "streakNotificationsDescription": {
+    "message": "마일스톤 달성 또는 스트릭 종료 시 알림 받기",
+    "description": "Description for notifications setting"
+  },
+  "streakReset": {
+    "message": "스트릭 초기화",
+    "description": "Reset streak button"
+  },
+  "streakResetConfirm": {
+    "message": "스트릭을 초기화하시겠습니까? 모든 진행 상황이 삭제되며 되돌릴 수 없습니다.",
+    "description": "Confirmation for streak reset"
+  },
+  "streakMilestoneReached": {
+    "message": "마일스톤 달성!",
+    "description": "Milestone notification title"
+  },
+  "streakMilestoneMessage": {
+    "message": "축하합니다! $DAYS$일 연속 스트릭을 달성했습니다!",
+    "description": "Milestone notification message",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "streakBrokenTitle": {
+    "message": "스트릭 종료",
+    "description": "Streak broken notification title"
+  },
+  "streakBrokenMessage": {
+    "message": "스트릭이 초기화되었습니다. 오늘부터 새로운 스트릭을 시작하세요!",
+    "description": "Streak broken notification message"
+  },
+  "challengeTitle": {
+    "message": "챌린지 모드",
+    "description": "Challenge mode section title"
+  },
+  "challengeDescription": {
+    "message": "차단을 우회하기 전에 챌린지를 풀어야 합니다. 방해 요소에 대한 저항력을 높입니다.",
+    "description": "Challenge mode section description"
+  },
+  "challengeEnabled": {
+    "message": "챌린지 모드 활성화",
+    "description": "Toggle to enable challenge mode"
+  },
+  "challengeEnabledDescription": {
+    "message": "차단을 일시적으로 우회하려면 챌린지를 풀어야 합니다",
+    "description": "Description for challenge mode toggle"
+  },
+  "challengeDisableBypass": {
+    "message": "우회 완전 비활성화",
+    "description": "Toggle to completely disable bypass"
+  },
+  "challengeDisableBypassDescription": {
+    "message": "활성화하면 차단을 우회할 방법이 없습니다. 주의해서 사용하세요!",
+    "description": "Description for disable bypass toggle"
+  },
+  "challengeType": {
+    "message": "챌린지 유형",
+    "description": "Challenge type setting label"
+  },
+  "challengeTypeDescription": {
+    "message": "우회를 위해 풀어야 할 챌린지 유형을 선택하세요",
+    "description": "Description for challenge type setting"
+  },
+  "challengeTypeMath": {
+    "message": "수학 문제",
+    "description": "Math challenge type"
+  },
+  "challengeTypeTyping": {
+    "message": "타이핑 테스트",
+    "description": "Typing challenge type"
+  },
+  "challengeTypePattern": {
+    "message": "패턴 인식",
+    "description": "Pattern challenge type"
+  },
+  "challengeDifficulty": {
+    "message": "난이도",
+    "description": "Difficulty setting label"
+  },
+  "challengeDifficultyDescription": {
+    "message": "난이도가 높을수록 우회가 어려워집니다",
+    "description": "Description for difficulty setting"
+  },
+  "challengeDifficultyEasy": {
+    "message": "쉬움",
+    "description": "Easy difficulty level"
+  },
+  "challengeDifficultyMedium": {
+    "message": "보통",
+    "description": "Medium difficulty level"
+  },
+  "challengeDifficultyHard": {
+    "message": "어려움",
+    "description": "Hard difficulty level"
+  },
+  "challengeCooldown": {
+    "message": "쿨다운 기간",
+    "description": "Cooldown setting label"
+  },
+  "challengeCooldownDescription": {
+    "message": "우회 성공 후 다음 우회를 시도하기까지 대기 시간",
+    "description": "Description for cooldown setting"
+  },
+  "challengeTypesInfo": {
+    "message": "챌린지 유형 설명",
+    "description": "Title for challenge types information"
+  },
+  "challengeTypeMathInfo": {
+    "message": "덧셈, 뺄셈, 곱셈, 나눗셈 등의 산술 문제를 풉니다",
+    "description": "Description of math challenge type"
+  },
+  "challengeTypeTypingInfo": {
+    "message": "표시된 단어, 문구 또는 문장을 정확히 입력합니다",
+    "description": "Description of typing challenge type"
+  },
+  "challengeTypePatternInfo": {
+    "message": "수열 패턴에서 다음 숫자를 찾습니다",
+    "description": "Description of pattern challenge type"
+  },
+  "challengeDifficultyInfo": {
+    "message": "난이도 설명",
+    "description": "Title for difficulty information"
+  },
+  "challengeDifficultyEasyInfo": {
+    "message": "빠르게 풀 수 있는 간단한 문제",
+    "description": "Description of easy difficulty"
+  },
+  "challengeDifficultyMediumInfo": {
+    "message": "약간의 생각이 필요한 중간 난이도 문제",
+    "description": "Description of medium difficulty"
+  },
+  "challengeDifficultyHardInfo": {
+    "message": "시간과 집중력이 필요한 복잡한 문제",
+    "description": "Description of hard difficulty"
+  },
+  "lockdownTitle": {
+    "message": "잠금 모드",
+    "description": "Title for lockdown mode section"
+  },
+  "lockdownDescription": {
+    "message": "PIN 코드로 설정을 보호하세요. 의지가 약할 때 충동적인 변경을 방지합니다.",
+    "description": "Description for lockdown mode"
+  },
+  "lockdownEnabled": {
+    "message": "잠금 모드 활성화",
+    "description": "Toggle to enable lockdown mode feature"
+  },
+  "lockdownEnabledDescription": {
+    "message": "설정 변경에 PIN 보호 허용",
+    "description": "Description for lockdown mode toggle"
+  },
+  "lockdownActiveStatus": {
+    "message": "잠금 모드가 활성화되어 있습니다. 설정을 변경할 수 없습니다.",
+    "description": "Status message when lockdown is active"
+  },
+  "lockdownSetPin": {
+    "message": "PIN 코드 설정",
+    "description": "Title for setting initial PIN"
+  },
+  "lockdownChangePin": {
+    "message": "PIN 코드 변경",
+    "description": "Title for changing existing PIN"
+  },
+  "lockdownCurrentPin": {
+    "message": "현재 PIN",
+    "description": "Label for current PIN input"
+  },
+  "lockdownNewPin": {
+    "message": "새 PIN",
+    "description": "Label for new PIN input"
+  },
+  "lockdownConfirmPin": {
+    "message": "PIN 확인",
+    "description": "Label for confirm PIN input"
+  },
+  "lockdownPinHint": {
+    "message": "PIN은 4-8자리 숫자여야 합니다",
+    "description": "Hint for PIN format"
+  },
+  "lockdownPinInvalidFormat": {
+    "message": "PIN은 4-8자리 숫자여야 합니다",
+    "description": "Error when PIN format is invalid"
+  },
+  "lockdownPinMismatch": {
+    "message": "PIN이 일치하지 않습니다",
+    "description": "Error when PINs don't match"
+  },
+  "lockdownCurrentPinRequired": {
+    "message": "PIN 변경에는 현재 PIN이 필요합니다",
+    "description": "Error when current PIN is missing"
+  },
+  "lockdownPinSaved": {
+    "message": "PIN이 저장되었습니다",
+    "description": "Success message when PIN is saved"
+  },
+  "lockdownPinError": {
+    "message": "PIN 저장 실패",
+    "description": "Error when saving PIN fails"
+  },
+  "lockdownSetPinButton": {
+    "message": "PIN 설정",
+    "description": "Button to set initial PIN"
+  },
+  "lockdownChangePinButton": {
+    "message": "PIN 변경",
+    "description": "Button to change existing PIN"
+  },
+  "lockdownEmergencyBypass": {
+    "message": "비상 해제 대기 시간",
+    "description": "Label for emergency bypass minutes setting"
+  },
+  "lockdownEmergencyBypassDescription": {
+    "message": "비상 해제가 가능해지기까지의 대기 시간 (PIN 불필요)",
+    "description": "Description for emergency bypass setting"
+  },
+  "lockdownControl": {
+    "message": "잠금 제어",
+    "description": "Title for lockdown activation section"
+  },
+  "lockdownEnterPin": {
+    "message": "PIN 입력",
+    "description": "Label for PIN entry"
+  },
+  "lockdownPinRequired": {
+    "message": "PIN이 필요합니다",
+    "description": "Error when PIN is empty"
+  },
+  "lockdownActivateButton": {
+    "message": "잠금 활성화",
+    "description": "Button to activate lockdown mode"
+  },
+  "lockdownActivateWarning": {
+    "message": "활성화되면 설정을 변경하려면 PIN이 필요합니다.",
+    "description": "Warning before activating lockdown"
+  },
+  "lockdownActivateError": {
+    "message": "잠금 활성화 실패",
+    "description": "Error when activating lockdown fails"
+  },
+  "lockdownDeactivateButton": {
+    "message": "잠금 해제",
+    "description": "Button to deactivate lockdown mode"
+  },
+  "lockdownDeactivateError": {
+    "message": "잠금 해제 실패",
+    "description": "Error when deactivating lockdown fails"
+  },
+  "lockdownEmergencyBypassTitle": {
+    "message": "PIN을 잊으셨나요?",
+    "description": "Title for emergency bypass section"
+  },
+  "lockdownEmergencyBypassInfo": {
+    "message": "PIN을 잊으셨다면 비상 해제를 요청할 수 있습니다. 타이머가 완료될 때까지 기다려야 합니다.",
+    "description": "Description for emergency bypass"
+  },
+  "lockdownRequestBypass": {
+    "message": "비상 해제 요청",
+    "description": "Button to request emergency bypass"
+  },
+  "lockdownBypassReady": {
+    "message": "비상 해제 준비 완료! 잠금이 해제되었습니다.",
+    "description": "Message when bypass is ready"
+  },
+  "lockdownBypassCountdown": {
+    "message": "남은 시간",
+    "description": "Label for bypass countdown"
+  },
+  "lockdownInfoTitle": {
+    "message": "잠금 모드 정보",
+    "description": "Title for lockdown info section"
+  },
+  "lockdownInfoItem1": {
+    "message": "잠금은 PIN 없이 설정 변경을 방지합니다",
+    "description": "First info item about lockdown"
+  },
+  "lockdownInfoItem2": {
+    "message": "비상 해제는 대기 후 PIN을 잊었을 때 복구할 수 있게 합니다",
+    "description": "Second info item about lockdown"
+  },
+  "lockdownInfoItem3": {
+    "message": "기억하기 쉽지만 충동적으로 추측하기 어려운 PIN을 선택하세요",
+    "description": "Third info item about lockdown"
   }
 }

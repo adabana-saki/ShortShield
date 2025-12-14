@@ -7,7 +7,6 @@ import browser from 'webextension-polyfill';
 import type {
   Settings,
   SettingsUpdate,
-  LogEntry,
   WhitelistEntry,
   WhitelistId,
 } from '@/shared/types';
@@ -181,83 +180,6 @@ export async function removeWhitelistEntry(id: string): Promise<Settings> {
   await saveSettings(updated);
   logger.info('Whitelist entry removed', { id });
   return updated;
-}
-
-/**
- * Get logs from storage
- */
-export async function getLogs(): Promise<LogEntry[]> {
-  try {
-    const result = await browser.storage.local.get(STORAGE_KEYS.APP_LOGS);
-    const logs = result[STORAGE_KEYS.APP_LOGS];
-
-    if (!Array.isArray(logs)) {
-      return [];
-    }
-
-    return logs as LogEntry[];
-  } catch (error) {
-    logger.error('Failed to get logs', { error });
-    return [];
-  }
-}
-
-/**
- * Add log entry
- */
-export async function addLogEntry(
-  entry: Omit<LogEntry, 'id' | 'timestamp'>
-): Promise<void> {
-  try {
-    const logs = await getLogs();
-    const settings = await getSettings();
-
-    const newEntry: LogEntry = {
-      ...entry,
-      id: `log_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
-      timestamp: Date.now(),
-    };
-
-    // Add to beginning (most recent first)
-    const updatedLogs = [newEntry, ...logs];
-
-    // Trim to max size
-    const trimmedLogs = updatedLogs.slice(0, LIMITS.MAX_LOG_ENTRIES);
-
-    // Remove old logs based on retention policy
-    const retentionMs =
-      settings.preferences.logRetentionDays * 24 * 60 * 60 * 1000;
-    const cutoffTime = Date.now() - retentionMs;
-    const filteredLogs = trimmedLogs.filter(
-      (log: LogEntry) => log.timestamp > cutoffTime
-    );
-
-    await browser.storage.local.set({
-      [STORAGE_KEYS.APP_LOGS]: filteredLogs,
-    });
-
-    logger.debug('Log entry added', {
-      platform: entry.platform,
-      action: entry.action,
-    });
-  } catch (error) {
-    logger.error('Failed to add log entry', { error });
-  }
-}
-
-/**
- * Clear all logs
- */
-export async function clearLogs(): Promise<void> {
-  try {
-    await browser.storage.local.set({
-      [STORAGE_KEYS.APP_LOGS]: [],
-    });
-    logger.info('Logs cleared');
-  } catch (error) {
-    logger.error('Failed to clear logs', { error });
-    throw error;
-  }
 }
 
 /**

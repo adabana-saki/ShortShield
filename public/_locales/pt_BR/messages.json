@@ -39,6 +39,82 @@
     "message": "Instagram Reels",
     "description": "Instagram platform name"
   },
+  "popupPlatformTwitter": {
+    "message": "Twitter/X",
+    "description": "Twitter/X platform name"
+  },
+  "popupPlatformFacebook": {
+    "message": "Facebook",
+    "description": "Facebook platform name"
+  },
+  "popupPlatformLinkedIn": {
+    "message": "LinkedIn",
+    "description": "LinkedIn platform name"
+  },
+  "popupPlatformThreads": {
+    "message": "Threads",
+    "description": "Threads platform name"
+  },
+  "popupPlatformSnapchat": {
+    "message": "Snapchat",
+    "description": "Snapchat platform name"
+  },
+  "popupPlatformReddit": {
+    "message": "Reddit",
+    "description": "Reddit platform name"
+  },
+  "popupPlatformYouTubeFull": {
+    "message": "YouTube (Completo)",
+    "description": "Full YouTube blocking platform name"
+  },
+  "popupSectionShortVideo": {
+    "message": "Plataformas de Vídeos Curtos",
+    "description": "Section title for short video platforms"
+  },
+  "popupSectionFullSite": {
+    "message": "Bloqueio de Site Completo",
+    "description": "Section title for full site blocking"
+  },
+  "popupSectionSNS": {
+    "message": "Redes Sociais",
+    "description": "Section title for SNS platforms"
+  },
+  "popupViewPlatforms": {
+    "message": "Plataformas",
+    "description": "Popup view: platforms"
+  },
+  "popupViewSchedule": {
+    "message": "Horário",
+    "description": "Popup view: schedule"
+  },
+  "popupViewStats": {
+    "message": "Estatísticas",
+    "description": "Popup view: stats"
+  },
+  "popupScheduleStatus": {
+    "message": "Horário",
+    "description": "Schedule status label in popup"
+  },
+  "popupScheduleOn": {
+    "message": "Ativo",
+    "description": "Schedule is currently active"
+  },
+  "popupScheduleOff": {
+    "message": "Inativo",
+    "description": "Schedule is currently inactive"
+  },
+  "popupQuickScheduleToggle": {
+    "message": "Ativar Horário",
+    "description": "Quick toggle for schedule in popup"
+  },
+  "preferencesPopupView": {
+    "message": "Visualização Padrão do Popup",
+    "description": "Setting for default popup view"
+  },
+  "preferencesPopupViewDescription": {
+    "message": "Escolha o que mostrar ao abrir o popup",
+    "description": "Description for popup view setting"
+  },
   "popupStatsToday": {
     "message": "Bloqueados Hoje",
     "description": "Label for today's block count"
@@ -424,5 +500,993 @@
         "example": "5"
       }
     }
+  },
+  "customDomainsTitle": {
+    "message": "Domínios Bloqueados Personalizados",
+    "description": "Custom domains section title"
+  },
+  "customDomainsDescription": {
+    "message": "Adicione qualquer domínio que você queira bloquear. O site inteiro será bloqueado quando você visitá-lo.",
+    "description": "Custom domains section description"
+  },
+  "customDomainsPlaceholder": {
+    "message": "Digite o domínio (ex: exemplo.com.br)",
+    "description": "Placeholder for domain input"
+  },
+  "customDomainsAdd": {
+    "message": "Adicionar Domínio",
+    "description": "Add domain button text"
+  },
+  "customDomainsAdding": {
+    "message": "Adicionando...",
+    "description": "Adding domain in progress"
+  },
+  "customDomainsRemove": {
+    "message": "Remover",
+    "description": "Remove domain button"
+  },
+  "customDomainsEmpty": {
+    "message": "Nenhum domínio personalizado bloqueado",
+    "description": "Empty custom domains message"
+  },
+  "customDomainsErrorEmpty": {
+    "message": "Por favor digite um domínio",
+    "description": "Error for empty domain input"
+  },
+  "customDomainsErrorInvalid": {
+    "message": "Por favor digite um domínio válido",
+    "description": "Error for invalid domain"
+  },
+  "customDomainsErrorDuplicate": {
+    "message": "Este domínio já está bloqueado",
+    "description": "Error for duplicate domain"
+  },
+  "customDomainsErrorFailed": {
+    "message": "Falha ao adicionar domínio",
+    "description": "Error when adding domain fails"
+  },
+  "optionsTabCustomDomains": {
+    "message": "Domínios Personalizados",
+    "description": "Tab name for custom domain blocking"
+  },
+  "optionsTabSchedule": {
+    "message": "Horários",
+    "description": "Tab name for schedule settings"
+  },
+  "optionsTabPreferences": {
+    "message": "Preferências",
+    "description": "Tab name for user preferences"
+  },
+  "optionsFullSiteDescription": {
+    "message": "Bloquear sites inteiros, não apenas vídeos curtos",
+    "description": "Description for full site blocking section"
+  },
+  "scheduleTitle": {
+    "message": "Horários de Bloqueio",
+    "description": "Schedule section title"
+  },
+  "scheduleDescription": {
+    "message": "Defina os horários em que o bloqueio está ativo. Fora desses horários, todo o conteúdo será permitido.",
+    "description": "Schedule section description"
+  },
+  "scheduleEnabled": {
+    "message": "Ativar bloqueio por horário",
+    "description": "Toggle to enable/disable schedule"
+  },
+  "scheduleActiveDays": {
+    "message": "Dias Ativos",
+    "description": "Label for active days selection"
+  },
+  "scheduleTimeRanges": {
+    "message": "Horários de Bloqueio",
+    "description": "Label for time ranges"
+  },
+  "scheduleAddTimeRange": {
+    "message": "Adicionar Horário",
+    "description": "Button to add a new time range"
+  },
+  "scheduleRemoveTimeRange": {
+    "message": "Remover",
+    "description": "Button to remove a time range"
+  },
+  "scheduleFrom": {
+    "message": "De",
+    "description": "Label for start time"
+  },
+  "scheduleTo": {
+    "message": "Até",
+    "description": "Label for end time"
+  },
+  "scheduleDaySun": {
+    "message": "Dom",
+    "description": "Sunday abbreviation"
+  },
+  "scheduleDayMon": {
+    "message": "Seg",
+    "description": "Monday abbreviation"
+  },
+  "scheduleDayTue": {
+    "message": "Ter",
+    "description": "Tuesday abbreviation"
+  },
+  "scheduleDayWed": {
+    "message": "Qua",
+    "description": "Wednesday abbreviation"
+  },
+  "scheduleDayThu": {
+    "message": "Qui",
+    "description": "Thursday abbreviation"
+  },
+  "scheduleDayFri": {
+    "message": "Sex",
+    "description": "Friday abbreviation"
+  },
+  "scheduleDaySat": {
+    "message": "Sáb",
+    "description": "Saturday abbreviation"
+  },
+  "scheduleStatus": {
+    "message": "O horário está atualmente $STATUS$",
+    "description": "Current schedule status",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "ativo"
+      }
+    }
+  },
+  "scheduleStatusActive": {
+    "message": "ativo",
+    "description": "Schedule is active"
+  },
+  "scheduleStatusInactive": {
+    "message": "inativo",
+    "description": "Schedule is inactive"
+  },
+  "optionsTabAppearance": {
+    "message": "Aparência",
+    "description": "Tab name for block page appearance settings"
+  },
+  "blockPageTitle": {
+    "message": "Aparência da página de bloqueio",
+    "description": "Section title for block page customization"
+  },
+  "blockPageDescription": {
+    "message": "Personalize como a sobreposição de bloqueio aparece.",
+    "description": "Description for block page customization section"
+  },
+  "blockPageThemeTitle": {
+    "message": "Tema",
+    "description": "Theme selection title"
+  },
+  "blockPageThemeSystem": {
+    "message": "Sistema",
+    "description": "Use system theme preference"
+  },
+  "blockPageThemeLight": {
+    "message": "Claro",
+    "description": "Light theme"
+  },
+  "blockPageThemeDark": {
+    "message": "Escuro",
+    "description": "Dark theme"
+  },
+  "blockPageColorTitle": {
+    "message": "Cor de destaque",
+    "description": "Primary color selection title"
+  },
+  "blockPageCustomColor": {
+    "message": "Cor personalizada",
+    "description": "Custom color picker tooltip"
+  },
+  "blockPageCustomTitle": {
+    "message": "Título personalizado",
+    "description": "Custom title input label"
+  },
+  "blockPageTitlePlaceholder": {
+    "message": "Deixe vazio para título padrão",
+    "description": "Placeholder for custom title input"
+  },
+  "blockPageCustomMessage": {
+    "message": "Mensagem personalizada",
+    "description": "Custom message input label"
+  },
+  "blockPageMessagePlaceholder": {
+    "message": "Deixe vazio para mensagem padrão",
+    "description": "Placeholder for custom message input"
+  },
+  "blockPageShowQuotes": {
+    "message": "Mostrar citações motivacionais",
+    "description": "Toggle for motivational quotes"
+  },
+  "blockPageShowQuotesDescription": {
+    "message": "Exibe uma citação inspiradora na página de bloqueio",
+    "description": "Description for motivational quotes toggle"
+  },
+  "blockPageCustomQuotes": {
+    "message": "Citações personalizadas",
+    "description": "Custom quotes section title"
+  },
+  "blockPageCustomQuotesDescription": {
+    "message": "Adicione suas próprias citações para exibir",
+    "description": "Description for custom quotes section"
+  },
+  "blockPageQuotePlaceholder": {
+    "message": "Digite uma citação motivacional",
+    "description": "Placeholder for quote input"
+  },
+  "blockPageAddQuote": {
+    "message": "Adicionar citação",
+    "description": "Add quote button text"
+  },
+  "blockPageRemoveQuote": {
+    "message": "Remover citação",
+    "description": "Remove quote button aria label"
+  },
+  "blockPageNoCustomQuotes": {
+    "message": "Sem citações personalizadas. Citações padrão serão usadas.",
+    "description": "Message when no custom quotes exist"
+  },
+  "blockPageShowBypass": {
+    "message": "Mostrar botão de bypass",
+    "description": "Toggle for bypass button"
+  },
+  "blockPageShowBypassDescription": {
+    "message": "Permite ignorar temporariamente o bloqueio (não recomendado)",
+    "description": "Description for bypass button toggle"
+  },
+  "blockPagePreview": {
+    "message": "Visualização",
+    "description": "Preview section title"
+  },
+  "blockPageDefaultTitle": {
+    "message": "Conteúdo bloqueado",
+    "description": "Default block page title"
+  },
+  "blockPageDefaultMessage": {
+    "message": "ShortShield está protegendo sua concentração.",
+    "description": "Default block page message"
+  },
+  "blockPageDefaultQuote": {
+    "message": "Concentre-se no que mais importa.",
+    "description": "Default motivational quote"
+  },
+  "blockPageBypassButton": {
+    "message": "Ignorar por 5 minutos",
+    "description": "Bypass button text"
+  },
+  "blockPageErrorUpdate": {
+    "message": "Falha ao atualizar configurações",
+    "description": "Error when updating block page settings fails"
+  },
+  "blockPageErrorEmptyQuote": {
+    "message": "Por favor, insira uma citação",
+    "description": "Error when quote input is empty"
+  },
+  "blockPageErrorDuplicateQuote": {
+    "message": "Esta citação já existe",
+    "description": "Error when quote is a duplicate"
+  },
+  "popupViewFocus": {
+    "message": "Foco",
+    "description": "Popup view: focus mode"
+  },
+  "focusModeTitle": {
+    "message": "Modo de Foco",
+    "description": "Focus mode section title"
+  },
+  "focusModeDescription": {
+    "message": "Ative blocos de tempo sem distrações para aumentar sua produtividade.",
+    "description": "Focus mode section description"
+  },
+  "focusModeEnabled": {
+    "message": "Ativar Modo de Foco",
+    "description": "Toggle to enable focus mode feature"
+  },
+  "focusModeEnabledDescription": {
+    "message": "Permite iniciar sessões de foco pelo popup",
+    "description": "Description for focus mode enable toggle"
+  },
+  "focusModeDefaultDuration": {
+    "message": "Duração padrão",
+    "description": "Default focus duration setting"
+  },
+  "focusModeDefaultDurationDescription": {
+    "message": "Duração pré-selecionada ao iniciar uma sessão",
+    "description": "Description for default duration setting"
+  },
+  "focusModeSoftLock": {
+    "message": "Permitir cancelamento antecipado",
+    "description": "Soft lock toggle label"
+  },
+  "focusModeSoftLockDescription": {
+    "message": "Se desativado, você não poderá cancelar sessões antes de terminarem",
+    "description": "Description for soft lock setting"
+  },
+  "focusModeNotifications": {
+    "message": "Notificações de sessão",
+    "description": "Notifications toggle label"
+  },
+  "focusModeNotificationsDescription": {
+    "message": "Mostra notificações quando as sessões começam e terminam",
+    "description": "Description for notifications setting"
+  },
+  "focusModeStart": {
+    "message": "Iniciar sessão de foco",
+    "description": "Button to start focus session"
+  },
+  "focusModeStarting": {
+    "message": "Iniciando...",
+    "description": "Focus session starting state"
+  },
+  "focusModeActive": {
+    "message": "Modo de Foco ativo",
+    "description": "Indicator that focus mode is running"
+  },
+  "focusModeCancel": {
+    "message": "Cancelar sessão",
+    "description": "Button to cancel focus session"
+  },
+  "focusModeCancelling": {
+    "message": "Cancelando...",
+    "description": "Focus session cancelling state"
+  },
+  "focusModeRemaining": {
+    "message": "restante",
+    "description": "Time remaining label"
+  },
+  "focusModeExtend": {
+    "message": "Estender sessão:",
+    "description": "Label for extend session buttons"
+  },
+  "optionsTabFocus": {
+    "message": "Foco",
+    "description": "Tab name for focus and pomodoro settings"
+  },
+  "pomodoroTitle": {
+    "message": "Temporizador Pomodoro",
+    "description": "Pomodoro timer section title"
+  },
+  "pomodoroDescription": {
+    "message": "Use a técnica Pomodoro: 25 minutos de trabalho focado seguidos de pausas curtas.",
+    "description": "Pomodoro timer section description"
+  },
+  "pomodoroEnabled": {
+    "message": "Ativar temporizador Pomodoro",
+    "description": "Toggle to enable pomodoro timer feature"
+  },
+  "pomodoroEnabledDescription": {
+    "message": "Permite usar o temporizador Pomodoro no popup",
+    "description": "Description for pomodoro enable toggle"
+  },
+  "pomodoroWorkDuration": {
+    "message": "Duração do trabalho",
+    "description": "Work session duration setting"
+  },
+  "pomodoroWorkDurationDescription": {
+    "message": "Duração de cada sessão de trabalho focado",
+    "description": "Description for work duration setting"
+  },
+  "pomodoroBreakDuration": {
+    "message": "Duração da pausa",
+    "description": "Break duration setting"
+  },
+  "pomodoroBreakDurationDescription": {
+    "message": "Duração das pausas curtas entre sessões de trabalho",
+    "description": "Description for break duration setting"
+  },
+  "pomodoroLongBreakDuration": {
+    "message": "Duração da pausa longa",
+    "description": "Long break duration setting"
+  },
+  "pomodoroLongBreakDurationDescription": {
+    "message": "Duração da pausa longa após completar um ciclo",
+    "description": "Description for long break duration setting"
+  },
+  "pomodoroSessionsBeforeLongBreak": {
+    "message": "Sessões antes da pausa longa",
+    "description": "Number of work sessions before long break"
+  },
+  "pomodoroSessionsBeforeLongBreakDescription": {
+    "message": "Quantas sessões de trabalho completar antes de uma pausa longa",
+    "description": "Description for sessions before long break setting"
+  },
+  "pomodoroAutoStartBreaks": {
+    "message": "Iniciar pausas automaticamente",
+    "description": "Auto-start breaks setting"
+  },
+  "pomodoroAutoStartBreaksDescription": {
+    "message": "Iniciar automaticamente o temporizador de pausa após a sessão de trabalho",
+    "description": "Description for auto-start breaks setting"
+  },
+  "pomodoroAutoStartWork": {
+    "message": "Iniciar trabalho automaticamente",
+    "description": "Auto-start work setting"
+  },
+  "pomodoroAutoStartWorkDescription": {
+    "message": "Iniciar automaticamente o temporizador de trabalho após a pausa",
+    "description": "Description for auto-start work setting"
+  },
+  "pomodoroSoundEnabled": {
+    "message": "Notificações sonoras",
+    "description": "Sound notifications setting"
+  },
+  "pomodoroSoundEnabledDescription": {
+    "message": "Tocar um som quando o temporizador terminar",
+    "description": "Description for sound notifications setting"
+  },
+  "minutes": {
+    "message": "min",
+    "description": "Minutes abbreviation"
+  },
+  "pomodoroWork": {
+    "message": "Trabalho",
+    "description": "Work mode label"
+  },
+  "pomodoroBreak": {
+    "message": "Pausa",
+    "description": "Break mode label"
+  },
+  "pomodoroLongBreak": {
+    "message": "Pausa longa",
+    "description": "Long break mode label"
+  },
+  "pomodoroIdle": {
+    "message": "Pronto",
+    "description": "Idle/ready state label"
+  },
+  "pomodoroSessions": {
+    "message": "Sessões:",
+    "description": "Sessions count label"
+  },
+  "pomodoroStartWork": {
+    "message": "Iniciar trabalho",
+    "description": "Button to start work session"
+  },
+  "pomodoroStartBreak": {
+    "message": "Iniciar pausa",
+    "description": "Button to start break"
+  },
+  "pomodoroPause": {
+    "message": "Pausar",
+    "description": "Pause timer button"
+  },
+  "pomodoroResume": {
+    "message": "Retomar",
+    "description": "Resume timer button"
+  },
+  "pomodoroSkip": {
+    "message": "Pular",
+    "description": "Skip to next session button"
+  },
+  "pomodoroStop": {
+    "message": "Parar",
+    "description": "Stop and reset timer button"
+  },
+  "timeLimitsTitle": {
+    "message": "Limites de Tempo",
+    "description": "Title for time limits section"
+  },
+  "timeLimitsDescription": {
+    "message": "Definir limites diários de tempo para cada plataforma",
+    "description": "Description for time limits section"
+  },
+  "timeLimitsEnabled": {
+    "message": "Ativar Limites de Tempo",
+    "description": "Toggle to enable time limits"
+  },
+  "timeLimitsEnabledDescription": {
+    "message": "Rastrear tempo gasto em plataformas e aplicar limites diários",
+    "description": "Description for time limits toggle"
+  },
+  "timeLimitsWarningThreshold": {
+    "message": "Limite de Aviso",
+    "description": "Warning threshold setting"
+  },
+  "timeLimitsWarningThresholdDescription": {
+    "message": "Mostrar aviso quando o uso atingir esta porcentagem do limite",
+    "description": "Description for warning threshold"
+  },
+  "timeLimitsBlockWhenReached": {
+    "message": "Bloquear ao Atingir Limite",
+    "description": "Block when limit is reached setting"
+  },
+  "timeLimitsBlockWhenReachedDescription": {
+    "message": "Bloquear conteúdo quando o limite diário for atingido",
+    "description": "Description for block when reached setting"
+  },
+  "timeLimitsPlatformLimits": {
+    "message": "Limites por Plataforma",
+    "description": "Section title for platform limits"
+  },
+  "timeLimitsNoLimit": {
+    "message": "Sem limite",
+    "description": "Shown when no limit is set for a platform"
+  },
+  "timeLimitsTodaysUsage": {
+    "message": "Uso de Hoje",
+    "description": "Title for today's usage section in stats"
+  },
+  "platformYouTube": {
+    "message": "YouTube",
+    "description": "YouTube platform name"
+  },
+  "platformTikTok": {
+    "message": "TikTok",
+    "description": "TikTok platform name"
+  },
+  "platformInstagram": {
+    "message": "Instagram",
+    "description": "Instagram platform name"
+  },
+  "platformTwitter": {
+    "message": "Twitter/X",
+    "description": "Twitter platform name"
+  },
+  "platformFacebook": {
+    "message": "Facebook",
+    "description": "Facebook platform name"
+  },
+  "platformReddit": {
+    "message": "Reddit",
+    "description": "Reddit platform name"
+  },
+  "hours": {
+    "message": "horas",
+    "description": "Hours unit"
+  },
+  "hoursShort": {
+    "message": "h",
+    "description": "Hours abbreviation"
+  },
+  "minutesShort": {
+    "message": "m",
+    "description": "Minutes abbreviation"
+  },
+  "days": {
+    "message": "dias",
+    "description": "Days unit"
+  },
+  "loading": {
+    "message": "Carregando...",
+    "description": "Loading indicator text"
+  },
+  "optionsTabReports": {
+    "message": "Relatórios",
+    "description": "Tab name for time tracking reports"
+  },
+  "reportsTitle": {
+    "message": "Rastreamento de Tempo e Relatórios",
+    "description": "Time reports section title"
+  },
+  "reportsDescription": {
+    "message": "Acompanhe e analise como você gasta tempo nas redes sociais.",
+    "description": "Time reports section description"
+  },
+  "reportsEnabled": {
+    "message": "Ativar Rastreamento de Tempo",
+    "description": "Toggle to enable time tracking"
+  },
+  "reportsEnabledDescription": {
+    "message": "Registrar estatísticas de uso diário para análise e relatórios",
+    "description": "Description for time tracking toggle"
+  },
+  "reportsRetention": {
+    "message": "Retenção de Dados",
+    "description": "Data retention period setting"
+  },
+  "reportsLast7Days": {
+    "message": "Últimos 7 dias",
+    "description": "Filter for last 7 days"
+  },
+  "reportsLast30Days": {
+    "message": "Últimos 30 dias",
+    "description": "Filter for last 30 days"
+  },
+  "reportsLast90Days": {
+    "message": "Últimos 90 dias",
+    "description": "Filter for last 90 days"
+  },
+  "reportsTotalTime": {
+    "message": "Tempo Total",
+    "description": "Label for total time spent"
+  },
+  "reportsDailyAverage": {
+    "message": "Média Diária",
+    "description": "Label for daily average time"
+  },
+  "reportsDaysTracked": {
+    "message": "Dias Rastreados",
+    "description": "Label for number of days tracked"
+  },
+  "reportsByPlatform": {
+    "message": "Por Plataforma",
+    "description": "Section title for platform breakdown"
+  },
+  "reportsDailyHistory": {
+    "message": "Histórico Diário",
+    "description": "Section title for daily history"
+  },
+  "reportsNoData": {
+    "message": "Ainda não há dados de rastreamento. Use as plataformas para ver suas estatísticas.",
+    "description": "Message when no tracking data exists"
+  },
+  "reportsClearHistory": {
+    "message": "Limpar Histórico",
+    "description": "Button to clear tracking history"
+  },
+  "reportsClearConfirm": {
+    "message": "Tem certeza que deseja limpar todo o histórico? Isso não pode ser desfeito.",
+    "description": "Confirmation message for clearing history"
+  },
+  "optionsTabStreak": {
+    "message": "Sequência",
+    "description": "Tab name for streak tracking settings"
+  },
+  "streakTitle": {
+    "message": "Rastreamento de Sequência",
+    "description": "Streak section title"
+  },
+  "streakDescription": {
+    "message": "Construa uma sequência mantendo-se focado todos os dias. Acompanhe seu progresso e ganhe medalhas de marcos.",
+    "description": "Streak section description"
+  },
+  "streakEnabled": {
+    "message": "Ativar Rastreamento de Sequência",
+    "description": "Toggle to enable streak tracking"
+  },
+  "streakDays": {
+    "message": "dias de sequência",
+    "description": "Streak days label"
+  },
+  "streakCurrent": {
+    "message": "Sequência Atual",
+    "description": "Current streak label"
+  },
+  "streakLongest": {
+    "message": "Melhor Sequência",
+    "description": "Longest streak label"
+  },
+  "streakTotalDays": {
+    "message": "Total de Dias de Foco",
+    "description": "Total focus days label"
+  },
+  "streakNextMilestone": {
+    "message": "Próximo Marco",
+    "description": "Next milestone label"
+  },
+  "streakToMilestone": {
+    "message": "para o marco",
+    "description": "Progress towards milestone"
+  },
+  "streakMilestones": {
+    "message": "Marcos Alcançados",
+    "description": "Achieved milestones section title"
+  },
+  "streakGoalType": {
+    "message": "Meta Diária",
+    "description": "Goal type setting label"
+  },
+  "streakGoalTypeDescription": {
+    "message": "Como determinar se você atingiu sua meta diária de foco",
+    "description": "Description for goal type setting"
+  },
+  "streakGoalFocusTime": {
+    "message": "Tempo de Foco",
+    "description": "Goal type: minimum focus session time"
+  },
+  "streakGoalBlocks": {
+    "message": "Quantidade de Bloqueios",
+    "description": "Goal type: minimum number of blocks"
+  },
+  "streakGoalNoAccess": {
+    "message": "Sem Acesso",
+    "description": "Goal type: no platform access"
+  },
+  "streakMinFocusMinutes": {
+    "message": "Minutos Mínimos de Foco",
+    "description": "Minimum focus minutes setting"
+  },
+  "streakMinFocusMinutesDescription": {
+    "message": "Completar pelo menos esses minutos de sessões de foco por dia",
+    "description": "Description for minimum focus minutes"
+  },
+  "streakMinBlocks": {
+    "message": "Quantidade Mínima de Bloqueios",
+    "description": "Minimum blocks setting"
+  },
+  "streakMinBlocksDescription": {
+    "message": "Bloquear pelo menos essa quantidade de distrações por dia",
+    "description": "Description for minimum blocks"
+  },
+  "streakNotifications": {
+    "message": "Notificações de Sequência",
+    "description": "Notifications toggle label"
+  },
+  "streakNotificationsDescription": {
+    "message": "Receber notificações quando atingir marcos ou perder sua sequência",
+    "description": "Description for notifications setting"
+  },
+  "streakReset": {
+    "message": "Reiniciar Sequência",
+    "description": "Reset streak button"
+  },
+  "streakResetConfirm": {
+    "message": "Tem certeza que deseja reiniciar sua sequência? Isso apagará todo o progresso e não pode ser desfeito.",
+    "description": "Confirmation for streak reset"
+  },
+  "streakMilestoneReached": {
+    "message": "Marco Alcançado!",
+    "description": "Milestone notification title"
+  },
+  "streakMilestoneMessage": {
+    "message": "Parabéns! Você alcançou uma sequência de $DAYS$ dias!",
+    "description": "Milestone notification message",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "streakBrokenTitle": {
+    "message": "Sequência Interrompida",
+    "description": "Streak broken notification title"
+  },
+  "streakBrokenMessage": {
+    "message": "Sua sequência foi reiniciada. Comece uma nova sequência hoje!",
+    "description": "Streak broken notification message"
+  },
+  "challengeTitle": {
+    "message": "Modo Desafio",
+    "description": "Challenge mode section title"
+  },
+  "challengeDescription": {
+    "message": "Requer resolver um desafio antes de ignorar um bloqueio. Dificulta ceder às distrações.",
+    "description": "Challenge mode section description"
+  },
+  "challengeEnabled": {
+    "message": "Ativar Modo Desafio",
+    "description": "Toggle to enable challenge mode"
+  },
+  "challengeEnabledDescription": {
+    "message": "Requer resolver um desafio para ignorar bloqueios temporariamente",
+    "description": "Description for challenge mode toggle"
+  },
+  "challengeDisableBypass": {
+    "message": "Desativar Bypass Completamente",
+    "description": "Toggle to completely disable bypass"
+  },
+  "challengeDisableBypassDescription": {
+    "message": "Quando ativado, não há como ignorar os bloqueios. Use com cuidado!",
+    "description": "Description for disable bypass toggle"
+  },
+  "challengeType": {
+    "message": "Tipo de Desafio",
+    "description": "Challenge type setting label"
+  },
+  "challengeTypeDescription": {
+    "message": "Escolha o tipo de desafio que você deve resolver para ignorar",
+    "description": "Description for challenge type setting"
+  },
+  "challengeTypeMath": {
+    "message": "Problemas de Matemática",
+    "description": "Math challenge type"
+  },
+  "challengeTypeTyping": {
+    "message": "Teste de Digitação",
+    "description": "Typing challenge type"
+  },
+  "challengeTypePattern": {
+    "message": "Reconhecimento de Padrões",
+    "description": "Pattern challenge type"
+  },
+  "challengeDifficulty": {
+    "message": "Nível de Dificuldade",
+    "description": "Difficulty setting label"
+  },
+  "challengeDifficultyDescription": {
+    "message": "Maior dificuldade torna mais difícil ignorar bloqueios",
+    "description": "Description for difficulty setting"
+  },
+  "challengeDifficultyEasy": {
+    "message": "Fácil",
+    "description": "Easy difficulty level"
+  },
+  "challengeDifficultyMedium": {
+    "message": "Médio",
+    "description": "Medium difficulty level"
+  },
+  "challengeDifficultyHard": {
+    "message": "Difícil",
+    "description": "Hard difficulty level"
+  },
+  "challengeCooldown": {
+    "message": "Período de Espera",
+    "description": "Cooldown setting label"
+  },
+  "challengeCooldownDescription": {
+    "message": "Tempo de espera antes de poder tentar outro bypass após um bem-sucedido",
+    "description": "Description for cooldown setting"
+  },
+  "challengeTypesInfo": {
+    "message": "Tipos de Desafios Explicados",
+    "description": "Title for challenge types information"
+  },
+  "challengeTypeMathInfo": {
+    "message": "Resolva problemas aritméticos como adição, subtração, multiplicação ou divisão",
+    "description": "Description of math challenge type"
+  },
+  "challengeTypeTypingInfo": {
+    "message": "Digite uma palavra, frase ou sentença exatamente como mostrado",
+    "description": "Description of typing challenge type"
+  },
+  "challengeTypePatternInfo": {
+    "message": "Encontre o próximo número em um padrão de sequência",
+    "description": "Description of pattern challenge type"
+  },
+  "challengeDifficultyInfo": {
+    "message": "Níveis de Dificuldade Explicados",
+    "description": "Title for difficulty information"
+  },
+  "challengeDifficultyEasyInfo": {
+    "message": "Problemas simples que podem ser resolvidos rapidamente",
+    "description": "Description of easy difficulty"
+  },
+  "challengeDifficultyMediumInfo": {
+    "message": "Problemas moderados que requerem alguma reflexão",
+    "description": "Description of medium difficulty"
+  },
+  "challengeDifficultyHardInfo": {
+    "message": "Problemas complexos que levam tempo e concentração",
+    "description": "Description of hard difficulty"
+  },
+  "lockdownTitle": {
+    "message": "Modo Bloqueio",
+    "description": "Title for lockdown mode section"
+  },
+  "lockdownDescription": {
+    "message": "Proteja suas configurações com um código PIN. Evita mudanças impulsivas quando a vontade está fraca.",
+    "description": "Description for lockdown mode"
+  },
+  "lockdownEnabled": {
+    "message": "Ativar modo bloqueio",
+    "description": "Toggle to enable lockdown mode feature"
+  },
+  "lockdownEnabledDescription": {
+    "message": "Permitir proteção por PIN para alterações de configurações",
+    "description": "Description for lockdown mode toggle"
+  },
+  "lockdownActiveStatus": {
+    "message": "O modo bloqueio está ativo. As configurações não podem ser alteradas.",
+    "description": "Status message when lockdown is active"
+  },
+  "lockdownSetPin": {
+    "message": "Definir código PIN",
+    "description": "Title for setting initial PIN"
+  },
+  "lockdownChangePin": {
+    "message": "Alterar código PIN",
+    "description": "Title for changing existing PIN"
+  },
+  "lockdownCurrentPin": {
+    "message": "PIN atual",
+    "description": "Label for current PIN input"
+  },
+  "lockdownNewPin": {
+    "message": "Novo PIN",
+    "description": "Label for new PIN input"
+  },
+  "lockdownConfirmPin": {
+    "message": "Confirmar PIN",
+    "description": "Label for confirm PIN input"
+  },
+  "lockdownPinHint": {
+    "message": "O PIN deve ter 4-8 dígitos",
+    "description": "Hint for PIN format"
+  },
+  "lockdownPinInvalidFormat": {
+    "message": "O PIN deve ter 4-8 dígitos",
+    "description": "Error when PIN format is invalid"
+  },
+  "lockdownPinMismatch": {
+    "message": "Os PINs não coincidem",
+    "description": "Error when PINs don't match"
+  },
+  "lockdownCurrentPinRequired": {
+    "message": "O PIN atual é necessário para alterá-lo",
+    "description": "Error when current PIN is missing"
+  },
+  "lockdownPinSaved": {
+    "message": "PIN salvo com sucesso",
+    "description": "Success message when PIN is saved"
+  },
+  "lockdownPinError": {
+    "message": "Falha ao salvar o PIN",
+    "description": "Error when saving PIN fails"
+  },
+  "lockdownSetPinButton": {
+    "message": "Definir PIN",
+    "description": "Button to set initial PIN"
+  },
+  "lockdownChangePinButton": {
+    "message": "Alterar PIN",
+    "description": "Button to change existing PIN"
+  },
+  "lockdownEmergencyBypass": {
+    "message": "Tempo de desbloqueio de emergência",
+    "description": "Label for emergency bypass minutes setting"
+  },
+  "lockdownEmergencyBypassDescription": {
+    "message": "Tempo de espera antes do desbloqueio de emergência ficar disponível (sem PIN)",
+    "description": "Description for emergency bypass setting"
+  },
+  "lockdownControl": {
+    "message": "Controle de bloqueio",
+    "description": "Title for lockdown activation section"
+  },
+  "lockdownEnterPin": {
+    "message": "Digite o PIN",
+    "description": "Label for PIN entry"
+  },
+  "lockdownPinRequired": {
+    "message": "O PIN é necessário",
+    "description": "Error when PIN is empty"
+  },
+  "lockdownActivateButton": {
+    "message": "Ativar bloqueio",
+    "description": "Button to activate lockdown mode"
+  },
+  "lockdownActivateWarning": {
+    "message": "Uma vez ativado, você precisará do seu PIN para alterar qualquer configuração.",
+    "description": "Warning before activating lockdown"
+  },
+  "lockdownActivateError": {
+    "message": "Falha ao ativar o bloqueio",
+    "description": "Error when activating lockdown fails"
+  },
+  "lockdownDeactivateButton": {
+    "message": "Desativar bloqueio",
+    "description": "Button to deactivate lockdown mode"
+  },
+  "lockdownDeactivateError": {
+    "message": "Falha ao desativar o bloqueio",
+    "description": "Error when deactivating lockdown fails"
+  },
+  "lockdownEmergencyBypassTitle": {
+    "message": "Esqueceu o PIN?",
+    "description": "Title for emergency bypass section"
+  },
+  "lockdownEmergencyBypassInfo": {
+    "message": "Se você esqueceu seu PIN, pode solicitar um desbloqueio de emergência. Você precisará esperar o timer terminar.",
+    "description": "Description for emergency bypass"
+  },
+  "lockdownRequestBypass": {
+    "message": "Solicitar desbloqueio de emergência",
+    "description": "Button to request emergency bypass"
+  },
+  "lockdownBypassReady": {
+    "message": "Desbloqueio de emergência pronto! O bloqueio foi desativado.",
+    "description": "Message when bypass is ready"
+  },
+  "lockdownBypassCountdown": {
+    "message": "Tempo restante",
+    "description": "Label for bypass countdown"
+  },
+  "lockdownInfoTitle": {
+    "message": "Sobre o modo bloqueio",
+    "description": "Title for lockdown info section"
+  },
+  "lockdownInfoItem1": {
+    "message": "O bloqueio impede alterações de configurações sem seu PIN",
+    "description": "First info item about lockdown"
+  },
+  "lockdownInfoItem2": {
+    "message": "O desbloqueio de emergência permite recuperação se você esquecer seu PIN após esperar",
+    "description": "Second info item about lockdown"
+  },
+  "lockdownInfoItem3": {
+    "message": "Escolha um PIN que você lembrará - mas não tão fácil de adivinhar impulsivamente",
+    "description": "Third info item about lockdown"
   }
 }

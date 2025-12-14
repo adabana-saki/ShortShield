@@ -84,7 +84,8 @@ describe('Content Script Integration', () => {
   describe('Platform Detector Registry', () => {
     it('should have all detectors registered', () => {
       const detectors = getAllDetectors();
-      expect(detectors.length).toBe(3);
+      // 3 short video platforms + 6 SNS platforms
+      expect(detectors.length).toBe(9);
     });
 
     it('should return YouTube detector for youtube.com', () => {

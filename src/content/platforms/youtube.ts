@@ -12,6 +12,11 @@ import { isValidYouTubeVideoId } from '@/shared/utils/url';
 const logger = createLogger('youtube');
 
 /**
+ * Flag to prevent multiple redirects
+ */
+let isRedirecting = false;
+
+/**
  * YouTube-specific short-form content detector
  */
 export class YouTubeDetector extends BasePlatformDetector {
@@ -45,20 +50,42 @@ export class YouTubeDetector extends BasePlatformDetector {
   }
 
   /**
+   * Check if full YouTube blocking is enabled
+   */
+  private isFullSiteBlockingEnabled(): boolean {
+    if (!this.settings?.enabled) {
+      return false;
+    }
+    return this.settings.platforms.youtube_full === true;
+  }
+
+  /**
    * Scan DOM for YouTube Shorts
    */
   scan(root: HTMLElement): void {
+    // Check full site blocking first (higher priority)
+    if (this.isFullSiteBlockingEnabled()) {
+      this.blockFullSite();
+      return;
+    }
+
     if (!this.isEnabled()) {
       return;
     }
 
-    // Check URL-based redirect first
-    if (this.shouldRedirect()) {
-      this.handleRedirect();
+    // Check if on a Shorts URL
+    if (this.isOnShortsPage()) {
+      // If redirect preference is enabled, redirect
+      if (this.settings?.preferences?.redirectShortsToRegular === true) {
+        this.handleRedirect();
+      } else {
+        // Otherwise, block the page
+        this.blockShortsPage();
+      }
       return;
     }
 
-    // DOM-based detection
+    // DOM-based detection for feed elements
     for (const selector of this.selectors) {
       const elements = root.querySelectorAll<HTMLElement>(selector);
 
@@ -74,18 +101,117 @@ export class YouTubeDetector extends BasePlatformDetector {
   /**
    * Check if current page is a Shorts URL
    */
-  private shouldRedirect(): boolean {
-    const pathname = window.location.pathname;
-    return (
-      pathname.startsWith('/shorts/') &&
-      this.settings?.preferences?.redirectShortsToRegular === true
-    );
+  private isOnShortsPage(): boolean {
+    return window.location.pathname.startsWith('/shorts/');
+  }
+
+  /**
+   * Block the Shorts page with an overlay
+   */
+  private blockShortsPage(): void {
+    // Prevent multiple overlays
+    if (document.getElementById('shortshield-youtube-overlay')) {
+      return;
+    }
+
+    // Blur the main content
+    this.blurMainContent(['#content', 'ytd-app', '#page-manager']);
+
+    // Create blocking overlay using customizable method
+    const overlay = this.createBlockOverlay({
+      id: 'shortshield-youtube-overlay',
+      title: 'YouTube Shorts Blocked',
+      message:
+        'ShortShield is protecting your focus by blocking short-form video content.',
+      platformName: 'YouTube',
+      primaryButtonText: 'Go to YouTube Home',
+      onPrimaryClick: () => {
+        window.location.href = 'https://www.youtube.com/';
+      },
+      onBypassClick: () => {
+        this.handleBypass('shortshield-youtube-overlay');
+      },
+    });
+
+    document.body.appendChild(overlay);
+
+    logger.info('Blocked YouTube Shorts page');
+    void this.logBlock(overlay, 'blur');
+  }
+
+  /**
+   * Block the full YouTube site with an overlay
+   */
+  private blockFullSite(): void {
+    // Prevent multiple overlays
+    if (document.getElementById('shortshield-youtube-full-overlay')) {
+      return;
+    }
+
+    // Also remove any Shorts overlay if present
+    const shortsOverlay = document.getElementById('shortshield-youtube-overlay');
+    if (shortsOverlay) {
+      shortsOverlay.remove();
+    }
+
+    // Blur the main content
+    this.blurMainContent(['#content', 'ytd-app', '#page-manager', 'body']);
+
+    // Create blocking overlay using customizable method
+    const overlay = this.createBlockOverlay({
+      id: 'shortshield-youtube-full-overlay',
+      title: 'YouTube Blocked',
+      message: 'ShortShield is blocking YouTube to help you stay focused.',
+      platformName: 'YouTube',
+      primaryButtonText: 'Close Tab',
+      onPrimaryClick: () => {
+        window.close();
+      },
+      onBypassClick: () => {
+        this.handleBypass('shortshield-youtube-full-overlay');
+      },
+    });
+
+    document.body.appendChild(overlay);
+
+    logger.info('Blocked full YouTube site');
+    void this.logBlock(overlay, 'blur');
+  }
+
+  /**
+   * Handle bypass button click - temporarily disable blocking
+   */
+  private handleBypass(overlayId: string): void {
+    const overlay = document.getElementById(overlayId);
+    if (overlay) {
+      overlay.remove();
+    }
+
+    // Remove blur from main content
+    const selectors = ['#content', 'ytd-app', '#page-manager', 'body'];
+    for (const selector of selectors) {
+      const element = document.querySelector<HTMLElement>(selector);
+      if (element) {
+        element.style.removeProperty('filter');
+        element.style.removeProperty('pointer-events');
+      }
+    }
+
+    // Set a temporary bypass flag in sessionStorage
+    sessionStorage.setItem('shortshield-bypass-youtube', Date.now().toString());
+
+    logger.info('Bypass activated for YouTube');
   }
 
   /**
    * Handle redirect from Shorts to regular video
    */
   private handleRedirect(): void {
+    // Prevent multiple redirects
+    if (isRedirecting) {
+      return;
+    }
+
     const pathname = window.location.pathname;
     const videoId = pathname.split('/shorts/')[1]?.split('?')[0];
 
@@ -94,6 +220,7 @@ export class YouTubeDetector extends BasePlatformDetector {
       videoId !== '' &&
       isValidYouTubeVideoId(videoId)
     ) {
+      isRedirecting = true;
       const newUrl = `https://www.youtube.com/watch?v=${videoId}`;
       logger.info('Redirecting shorts to regular video', { videoId });
 

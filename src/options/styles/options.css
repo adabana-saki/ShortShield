@@ -313,3 +313,468 @@
 .error button {
   @apply px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700;
 }
+
+/* Custom Domains Section */
+.custom-domains h2 {
+  @apply text-lg font-semibold text-gray-900 mb-2;
+}
+
+.add-domain-form {
+  @apply flex gap-2 mb-4;
+}
+
+.domain-input {
+  @apply flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-primary-500 focus:border-primary-500;
+}
+
+.add-domain-button {
+  @apply px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-md hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap;
+}
+
+.error-message {
+  @apply text-sm text-red-600 mb-4;
+}
+
+.domain-list {
+  @apply space-y-2;
+}
+
+.empty-message {
+  @apply text-sm text-gray-500 text-center py-8;
+}
+
+.domain-item {
+  @apply flex items-center justify-between p-3 bg-gray-50 rounded-md;
+}
+
+.domain-name {
+  @apply font-medium text-gray-900;
+}
+
+.remove-button {
+  @apply px-3 py-1 text-sm text-red-600 hover:text-red-800 hover:bg-red-50 rounded transition-colors;
+}
+
+/* Schedule Section */
+.schedule-section h2 {
+  @apply text-lg font-semibold text-gray-900 mb-2;
+}
+
+.schedule-section h3 {
+  @apply text-sm font-medium text-gray-700 mb-2;
+}
+
+.schedule-toggle {
+  @apply mb-4;
+}
+
+.schedule-status {
+  @apply text-sm px-3 py-2 rounded-md mb-4;
+}
+
+.schedule-status.active {
+  @apply bg-green-50 text-green-700 border border-green-200;
+}
+
+.schedule-status.inactive {
+  @apply bg-gray-50 text-gray-600 border border-gray-200;
+}
+
+.schedule-days {
+  @apply mb-6;
+}
+
+.day-checkboxes {
+  @apply flex flex-wrap gap-3;
+}
+
+.day-checkbox {
+  @apply flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-100 transition-colors;
+}
+
+.day-checkbox input[type='checkbox'] {
+  @apply w-4 h-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500;
+}
+
+.day-checkbox span {
+  @apply text-sm text-gray-700;
+}
+
+.schedule-time-ranges {
+  @apply mb-4;
+}
+
+.time-ranges-list {
+  @apply space-y-3 mb-4;
+}
+
+.time-range-item {
+  @apply flex items-center gap-4 p-3 bg-gray-50 rounded-md;
+}
+
+.time-input-group {
+  @apply flex items-center gap-2;
+}
+
+.time-input-group span {
+  @apply text-sm text-gray-600;
+}
+
+.time-input {
+  @apply px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-primary-500 focus:border-primary-500;
+}
+
+.remove-time-range-button {
+  @apply ml-auto px-3 py-1 text-sm text-red-600 hover:text-red-800 hover:bg-red-50 rounded transition-colors;
+}
+
+.add-time-range-button {
+  @apply px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-200 transition-colors;
+}
+
+/* Preference options */
+.preference-options {
+  @apply space-y-3;
+}
+
+.preference-radio {
+  @apply flex items-center gap-3 cursor-pointer;
+}
+
+.preference-radio input[type='radio'] {
+  @apply w-4 h-4 text-primary-600 border-gray-300 focus:ring-primary-500;
+}
+
+.preference-radio span {
+  @apply text-gray-700;
+}
+
+/* Block Page Customizer Section */
+.block-page-customizer h2 {
+  @apply text-lg font-semibold text-gray-900 mb-2;
+}
+
+.block-page-customizer h3 {
+  @apply text-sm font-medium text-gray-700 mb-2;
+}
+
+.block-page-section {
+  @apply mb-6;
+}
+
+.block-page-error {
+  @apply text-sm text-red-600 mb-4 p-3 bg-red-50 rounded-md;
+}
+
+/* Theme Options */
+.theme-options {
+  @apply flex gap-4;
+}
+
+.theme-option {
+  @apply flex items-center gap-2 cursor-pointer;
+}
+
+.theme-option input[type='radio'] {
+  @apply w-4 h-4 text-primary-600 border-gray-300 focus:ring-primary-500;
+}
+
+.theme-option span {
+  @apply text-sm text-gray-700;
+}
+
+/* Color Options */
+.color-options {
+  @apply flex flex-wrap gap-2 items-center;
+}
+
+.color-option {
+  @apply w-8 h-8 rounded-full border-2 border-transparent cursor-pointer transition-all;
+}
+
+.color-option:hover {
+  @apply scale-110;
+}
+
+.color-option.selected {
+  @apply border-gray-900 ring-2 ring-offset-2 ring-gray-400;
+}
+
+.color-picker {
+  @apply w-8 h-8 rounded-full cursor-pointer border border-gray-300;
+}
+
+/* Block Page Input */
+.block-page-input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-primary-500 focus:border-primary-500;
+}
+
+.block-page-textarea {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-primary-500 focus:border-primary-500 resize-none;
+}
+
+/* Block Page Toggle */
+.block-page-toggle {
+  @apply flex items-center gap-3 cursor-pointer;
+}
+
+.block-page-toggle input[type='checkbox'] {
+  @apply w-5 h-5 rounded border-gray-300 text-primary-600 focus:ring-primary-500;
+}
+
+.block-page-toggle span {
+  @apply text-sm font-medium text-gray-700;
+}
+
+.toggle-description {
+  @apply text-xs text-gray-500 mt-1 ml-8;
+}
+
+.subsection-description {
+  @apply text-xs text-gray-500 mb-3;
+}
+
+/* Quote Form */
+.quote-form {
+  @apply flex gap-2 mb-4;
+}
+
+.quote-input {
+  @apply flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-primary-500 focus:border-primary-500;
+}
+
+.quote-add-button {
+  @apply px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-md hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap;
+}
+
+.quote-list {
+  @apply space-y-2;
+}
+
+.quote-empty {
+  @apply text-sm text-gray-500 text-center py-4;
+}
+
+.quote-item {
+  @apply flex items-center justify-between p-3 bg-gray-50 rounded-md;
+}
+
+.quote-text {
+  @apply flex-1 text-sm text-gray-700 italic;
+}
+
+.quote-remove {
+  @apply ml-2 w-6 h-6 flex items-center justify-center text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors;
+}
+
+/* Block Page Preview */
+.block-page-preview {
+  @apply p-6 rounded-lg border border-gray-200 bg-gradient-to-b from-gray-50 to-gray-100;
+}
+
+.block-page-preview.dark {
+  @apply bg-gradient-to-b from-gray-800 to-gray-900 border-gray-700;
+}
+
+.block-page-preview.dark .preview-title,
+.block-page-preview.dark .preview-message {
+  @apply text-gray-100;
+}
+
+.block-page-preview.dark .preview-quote {
+  @apply text-gray-300;
+}
+
+.block-page-preview.light {
+  @apply bg-gradient-to-b from-white to-gray-50;
+}
+
+.preview-content {
+  @apply text-center;
+}
+
+.preview-icon {
+  @apply text-4xl mb-3;
+}
+
+.preview-title {
+  @apply text-lg font-bold text-gray-900 mb-2;
+}
+
+.preview-message {
+  @apply text-sm text-gray-600 mb-3;
+}
+
+.preview-quote {
+  @apply text-xs text-gray-500 italic mb-4;
+}
+
+.preview-bypass-button {
+  @apply px-4 py-2 text-sm font-medium border-2 rounded-md bg-transparent hover:bg-gray-100 transition-colors;
+}
+
+/* Time Reports Section */
+.time-reports h2 {
+  @apply text-lg font-semibold text-gray-900 mb-2;
+}
+
+.time-reports h3 {
+  @apply text-sm font-medium text-gray-700 mb-3 mt-6;
+}
+
+.time-reports .subsection-title {
+  @apply text-base font-medium text-gray-800 mt-6 mb-3;
+}
+
+/* Date range buttons */
+.date-range-buttons {
+  @apply flex gap-2;
+}
+
+.date-range-btn {
+  @apply px-3 py-1.5 text-sm font-medium rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors;
+}
+
+.date-range-btn.active {
+  @apply bg-primary-600 text-white hover:bg-primary-700;
+}
+
+/* Summary cards */
+.reports-summary {
+  @apply grid grid-cols-3 gap-4 mt-6;
+}
+
+.summary-card {
+  @apply bg-gray-50 rounded-lg p-4 text-center;
+}
+
+.summary-label {
+  @apply block text-sm text-gray-500 mb-1;
+}
+
+.summary-value {
+  @apply block text-2xl font-bold text-gray-900;
+}
+
+/* Platform breakdown */
+.platform-breakdown {
+  @apply mt-6;
+}
+
+.platform-totals {
+  @apply space-y-2;
+}
+
+.platform-total-row {
+  @apply flex items-center gap-3 p-2 bg-gray-50 rounded-md;
+}
+
+.platform-color {
+  @apply w-4 h-4 rounded-full;
+}
+
+.platform-total-row .platform-name {
+  @apply flex-1 text-sm text-gray-700;
+}
+
+.platform-time {
+  @apply text-sm font-medium text-gray-900;
+}
+
+.platform-percent {
+  @apply text-xs text-gray-500 w-16 text-right;
+}
+
+/* Daily history */
+.daily-history {
+  @apply mt-6;
+}
+
+.history-list {
+  @apply space-y-2 max-h-96 overflow-y-auto;
+}
+
+.history-row {
+  @apply flex items-center gap-4 p-2 bg-gray-50 rounded-md;
+}
+
+.history-date {
+  @apply text-sm text-gray-600 w-24;
+}
+
+.history-total {
+  @apply text-sm font-medium text-gray-900 w-20 text-right;
+}
+
+/* Chart bars */
+.chart-bar {
+  @apply relative bg-gray-200 rounded overflow-hidden;
+}
+
+.chart-segment {
+  @apply absolute top-0 h-full transition-all;
+}
+
+/* Actions row */
+.actions-row {
+  @apply mt-6 pt-4 border-t border-gray-200;
+}
+
+.btn-danger {
+  @apply px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-md hover:bg-red-700 transition-colors;
+}
+
+/* No data state */
+.no-data {
+  @apply text-center py-8 text-gray-500;
+}
+
+/* Settings row */
+.setting-row {
+  @apply mb-4;
+}
+
+.toggle-label {
+  @apply flex items-center gap-3 cursor-pointer;
+}
+
+.toggle-label input[type='checkbox'] {
+  @apply w-5 h-5 rounded border-gray-300 text-primary-600 focus:ring-primary-500;
+}
+
+.toggle-text {
+  @apply text-sm font-medium text-gray-700;
+}
+
+.setting-description {
+  @apply text-xs text-gray-500 mt-1 ml-8;
+}
+
+.select-label {
+  @apply flex items-center gap-3;
+}
+
+.select-label .label-text {
+  @apply text-sm font-medium text-gray-700;
+}
+
+.select-label select {
+  @apply px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-primary-500 focus:border-primary-500;
+}
+
+/* Time Limits Config */
+.platform-limits {
+  @apply mt-6;
+}
+
+.platform-limit-row {
+  @apply flex items-center justify-between p-3 bg-gray-50 rounded-md mb-2;
+}
+
+.limit-select {
+  @apply px-3 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-primary-500 focus:border-primary-500;
+}
+
+.limit-disabled {
+  @apply text-sm text-gray-400;
+}
