@@ -2,6 +2,126 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===================================
+   CSS Variables & Dark Mode Support
+   =================================== */
+
+:root {
+  /* Light mode colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f9fafb;
+  --color-bg-tertiary: #f3f4f6;
+  --color-bg-hover: #e5e7eb;
+  --color-bg-active: #dbeafe;
+
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+  --color-text-tertiary: #6b7280;
+  --color-text-muted: #9ca3af;
+
+  --color-border-primary: #e5e7eb;
+  --color-border-secondary: #d1d5db;
+  --color-border-focus: #3b82f6;
+
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
+  --color-accent-light: #dbeafe;
+  --color-accent-text: #1d4ed8;
+
+  --color-success: #10b981;
+  --color-success-light: #d1fae5;
+  --color-success-text: #065f46;
+
+  --color-warning: #f59e0b;
+  --color-warning-light: #fef3c7;
+  --color-warning-text: #92400e;
+
+  --color-danger: #ef4444;
+  --color-danger-light: #fee2e2;
+  --color-danger-text: #991b1b;
+
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-shadow-lg: rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode */
+.dark {
+  --color-bg-primary: #1f2937;
+  --color-bg-secondary: #111827;
+  --color-bg-tertiary: #374151;
+  --color-bg-hover: #4b5563;
+  --color-bg-active: #1e3a5f;
+
+  --color-text-primary: #f9fafb;
+  --color-text-secondary: #d1d5db;
+  --color-text-tertiary: #9ca3af;
+  --color-text-muted: #6b7280;
+
+  --color-border-primary: #374151;
+  --color-border-secondary: #4b5563;
+  --color-border-focus: #60a5fa;
+
+  --color-accent: #60a5fa;
+  --color-accent-hover: #3b82f6;
+  --color-accent-light: #1e3a5f;
+  --color-accent-text: #93c5fd;
+
+  --color-success: #34d399;
+  --color-success-light: #064e3b;
+  --color-success-text: #6ee7b7;
+
+  --color-warning: #fbbf24;
+  --color-warning-light: #78350f;
+  --color-warning-text: #fcd34d;
+
+  --color-danger: #f87171;
+  --color-danger-light: #7f1d1d;
+  --color-danger-text: #fca5a5;
+
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-shadow-lg: rgba(0, 0, 0, 0.4);
+}
+
+/* Auto dark mode based on system preference */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --color-bg-primary: #1f2937;
+    --color-bg-secondary: #111827;
+    --color-bg-tertiary: #374151;
+    --color-bg-hover: #4b5563;
+    --color-bg-active: #1e3a5f;
+
+    --color-text-primary: #f9fafb;
+    --color-text-secondary: #d1d5db;
+    --color-text-tertiary: #9ca3af;
+    --color-text-muted: #6b7280;
+
+    --color-border-primary: #374151;
+    --color-border-secondary: #4b5563;
+    --color-border-focus: #60a5fa;
+
+    --color-accent: #60a5fa;
+    --color-accent-hover: #3b82f6;
+    --color-accent-light: #1e3a5f;
+    --color-accent-text: #93c5fd;
+
+    --color-success: #34d399;
+    --color-success-light: #064e3b;
+    --color-success-text: #6ee7b7;
+
+    --color-warning: #fbbf24;
+    --color-warning-light: #78350f;
+    --color-warning-text: #fcd34d;
+
+    --color-danger: #f87171;
+    --color-danger-light: #7f1d1d;
+    --color-danger-text: #fca5a5;
+
+    --color-shadow: rgba(0, 0, 0, 0.3);
+    --color-shadow-lg: rgba(0, 0, 0, 0.4);
+  }
+}
+
 /* Options page container */
 .options-container {
   @apply max-w-3xl mx-auto p-6 font-sans;
@@ -777,4 +897,1830 @@
 
 .limit-disabled {
   @apply text-sm text-gray-400;
+}
+
+/* ===================================
+   NEW UI: Settings Layout (Sidebar + Main)
+   =================================== */
+
+.settings-layout {
+  @apply flex min-h-screen bg-gray-50;
+}
+
+/* ===================================
+   Sidebar Navigation
+   =================================== */
+
+.sidebar {
+  @apply w-64 bg-white border-r border-gray-200 flex flex-col fixed h-full;
+}
+
+.sidebar-header {
+  @apply p-4 border-b border-gray-200;
+}
+
+.sidebar-logo {
+  @apply flex items-center gap-3;
+}
+
+.sidebar-logo-icon {
+  @apply w-8 h-8 text-primary-600;
+}
+
+.sidebar-logo-text {
+  @apply text-lg font-bold text-gray-900;
+}
+
+.sidebar-content {
+  @apply flex-1 overflow-y-auto py-4;
+}
+
+.sidebar-footer {
+  @apply p-4 border-t border-gray-200;
+}
+
+.sidebar-version {
+  @apply text-xs text-gray-400;
+}
+
+/* Sidebar Items */
+.sidebar-item-container {
+  @apply px-2;
+}
+
+.sidebar-item-nested {
+  @apply pl-4;
+}
+
+.sidebar-item {
+  @apply w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-gray-600 rounded-lg transition-colors;
+}
+
+.sidebar-item:hover {
+  @apply bg-gray-50 text-gray-900;
+}
+
+.sidebar-item-active {
+  @apply bg-primary-50 text-primary-700;
+}
+
+.sidebar-item-active:hover {
+  @apply bg-primary-100;
+}
+
+.sidebar-item-nested-btn {
+  @apply py-2 text-sm;
+}
+
+.sidebar-item-icon {
+  @apply w-5 h-5 flex-shrink-0;
+}
+
+.sidebar-item-icon svg {
+  @apply w-full h-full;
+}
+
+.sidebar-item-label {
+  @apply flex-1 text-left;
+}
+
+.sidebar-item-chevron {
+  @apply w-4 h-4 text-gray-400 transition-transform duration-200;
+}
+
+.sidebar-item-chevron.expanded {
+  @apply rotate-180;
+}
+
+.sidebar-item-chevron svg {
+  @apply w-full h-full;
+}
+
+/* Sidebar Submenu */
+.sidebar-submenu {
+  @apply mt-1 ml-8 space-y-1;
+}
+
+.sidebar-subitem {
+  @apply w-full px-3 py-2 text-sm text-gray-600 rounded-md text-left transition-colors;
+}
+
+.sidebar-subitem:hover {
+  @apply bg-gray-50 text-gray-900;
+}
+
+.sidebar-subitem-active {
+  @apply bg-primary-50 text-primary-700 font-medium;
+}
+
+/* ===================================
+   Collapsible Section
+   =================================== */
+
+.collapsible-section {
+  @apply px-2;
+}
+
+.collapsible-header {
+  @apply w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-gray-600 rounded-lg transition-colors;
+}
+
+.collapsible-header:hover {
+  @apply bg-gray-50 text-gray-900;
+}
+
+.collapsible-header-expanded {
+  @apply text-gray-900;
+}
+
+.collapsible-section-active .collapsible-header {
+  @apply bg-primary-50 text-primary-700;
+}
+
+.collapsible-icon {
+  @apply w-5 h-5 flex-shrink-0;
+}
+
+.collapsible-icon svg {
+  @apply w-full h-full;
+}
+
+.collapsible-title {
+  @apply flex-1 text-left;
+}
+
+.collapsible-chevron {
+  @apply w-4 h-4 text-gray-400 transition-transform duration-200;
+}
+
+.collapsible-chevron.expanded {
+  @apply rotate-180;
+}
+
+.collapsible-chevron svg {
+  @apply w-full h-full;
+}
+
+.collapsible-content {
+  @apply overflow-hidden max-h-0 transition-all duration-200;
+}
+
+.collapsible-content-expanded {
+  @apply max-h-96 mt-1;
+}
+
+/* ===================================
+   Main Content Area
+   =================================== */
+
+.settings-main {
+  @apply flex-1 ml-64 p-8;
+}
+
+/* ===================================
+   Dashboard
+   =================================== */
+
+.dashboard {
+  @apply max-w-5xl mx-auto;
+}
+
+.dashboard-header {
+  @apply flex items-start justify-between mb-8;
+}
+
+.dashboard-header-left {
+  @apply flex-1;
+}
+
+.dashboard-title {
+  @apply text-2xl font-bold text-gray-900;
+}
+
+.dashboard-subtitle {
+  @apply text-gray-500 mt-1;
+}
+
+.dashboard-header-right {
+  @apply flex items-center;
+}
+
+.dashboard-toggle {
+  @apply flex items-center gap-3 cursor-pointer;
+}
+
+.dashboard-toggle-label {
+  @apply text-sm font-medium text-gray-600;
+}
+
+/* Toggle Switch (Large) */
+.toggle-switch-lg {
+  @apply relative inline-block w-14 h-8;
+}
+
+.toggle-switch-lg input {
+  @apply opacity-0 w-0 h-0;
+}
+
+.toggle-switch-lg .toggle-slider {
+  @apply absolute cursor-pointer inset-0 bg-gray-300 rounded-full transition-colors duration-200;
+}
+
+.toggle-switch-lg .toggle-slider::before {
+  @apply absolute content-[''] h-6 w-6 left-1 bottom-1 bg-white rounded-full transition-transform duration-200;
+}
+
+.toggle-switch-lg input:checked + .toggle-slider {
+  @apply bg-primary-600;
+}
+
+.toggle-switch-lg input:checked + .toggle-slider::before {
+  @apply translate-x-6;
+}
+
+/* Dashboard Stats */
+.dashboard-stats {
+  @apply grid grid-cols-3 gap-6 mb-8;
+}
+
+/* Status Card */
+.status-card {
+  @apply bg-white rounded-xl p-6 border border-gray-200 flex items-center gap-4;
+}
+
+.status-card-icon {
+  @apply w-12 h-12 rounded-full flex items-center justify-center;
+}
+
+.status-card-icon svg {
+  @apply w-6 h-6;
+}
+
+.status-card-default .status-card-icon {
+  @apply bg-gray-100 text-gray-600;
+}
+
+.status-card-accent .status-card-icon {
+  @apply bg-primary-100 text-primary-600;
+}
+
+.status-card-success .status-card-icon {
+  @apply bg-green-100 text-green-600;
+}
+
+.status-card-warning .status-card-icon {
+  @apply bg-yellow-100 text-yellow-600;
+}
+
+.status-card-content {
+  @apply flex-1;
+}
+
+.status-card-value {
+  @apply block text-2xl font-bold text-gray-900;
+}
+
+.status-card-title {
+  @apply block text-sm text-gray-500;
+}
+
+.status-card-subtitle {
+  @apply block text-xs text-gray-400 mt-1;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  @apply grid grid-cols-2 gap-6;
+}
+
+.dashboard-card {
+  @apply bg-white rounded-xl p-6 border border-gray-200;
+}
+
+.dashboard-card-wide {
+  @apply col-span-2;
+}
+
+/* Platform Summary */
+.platform-summary-header {
+  @apply flex items-center justify-between mb-4;
+}
+
+.platform-summary-title {
+  @apply text-base font-semibold text-gray-900;
+}
+
+.platform-summary-edit {
+  @apply flex items-center gap-1 text-sm text-primary-600 hover:text-primary-700 font-medium;
+}
+
+.platform-summary-edit svg {
+  @apply w-4 h-4;
+}
+
+.platform-summary-list {
+  @apply flex flex-wrap gap-2;
+}
+
+.platform-summary-empty {
+  @apply text-sm text-gray-500;
+}
+
+.platform-badge {
+  @apply px-3 py-1.5 text-sm rounded-full font-medium;
+}
+
+.platform-badge-active {
+  @apply bg-primary-100 text-primary-700;
+}
+
+.platform-badge-more {
+  @apply bg-gray-100 text-gray-600;
+}
+
+/* Schedule Status (Dashboard) */
+.schedule-status-header {
+  @apply flex items-center justify-between mb-3;
+}
+
+.schedule-status-info {
+  @apply flex items-center gap-3;
+}
+
+.schedule-status-title {
+  @apply text-base font-semibold text-gray-900;
+}
+
+.schedule-status-badge {
+  @apply px-2 py-1 text-xs font-medium rounded-full;
+}
+
+.schedule-status-badge.active {
+  @apply bg-green-100 text-green-700;
+}
+
+.schedule-status-badge.inactive {
+  @apply bg-gray-100 text-gray-600;
+}
+
+.schedule-status-edit {
+  @apply flex items-center gap-1 text-sm text-primary-600 hover:text-primary-700 font-medium;
+}
+
+.schedule-status-edit svg {
+  @apply w-4 h-4;
+}
+
+.schedule-status-summary {
+  @apply text-sm text-gray-600;
+}
+
+/* Quick Actions */
+.quick-actions-title {
+  @apply text-base font-semibold text-gray-900 mb-4;
+}
+
+.quick-actions-focus {
+  @apply flex items-center gap-4;
+}
+
+.quick-actions-duration {
+  @apply flex gap-2;
+}
+
+.quick-actions-duration-btn {
+  @apply px-4 py-2 text-sm font-medium rounded-lg border border-gray-200 text-gray-600 transition-colors;
+}
+
+.quick-actions-duration-btn:hover:not(:disabled) {
+  @apply border-primary-300 text-primary-600;
+}
+
+.quick-actions-duration-btn.active {
+  @apply bg-primary-50 border-primary-300 text-primary-700;
+}
+
+.quick-actions-duration-btn:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.quick-actions-start {
+  @apply flex items-center gap-2 px-6 py-2.5 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.quick-actions-start svg {
+  @apply w-4 h-4;
+}
+
+.quick-actions-hint {
+  @apply text-sm text-gray-400 mt-3;
+}
+
+.quick-actions-active {
+  @apply flex items-center justify-between;
+}
+
+.quick-actions-timer {
+  @apply text-center;
+}
+
+.quick-actions-timer-label {
+  @apply block text-sm text-gray-500;
+}
+
+.quick-actions-timer-value {
+  @apply block text-3xl font-bold text-primary-600;
+}
+
+.quick-actions-cancel {
+  @apply px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg transition-colors;
+}
+
+/* ===================================
+   Toggle Row Component
+   =================================== */
+
+.toggle-row {
+  @apply flex items-center justify-between py-3 border-b border-gray-100 last:border-0;
+}
+
+.toggle-row-disabled {
+  @apply opacity-50;
+}
+
+.toggle-row-info {
+  @apply flex-1;
+}
+
+.toggle-row-label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+.toggle-row-description {
+  @apply block text-xs text-gray-500 mt-0.5;
+}
+
+.toggle-switch {
+  @apply relative inline-block w-11 h-6;
+}
+
+.toggle-switch input {
+  @apply opacity-0 w-0 h-0;
+}
+
+.toggle-switch .toggle-slider {
+  @apply absolute cursor-pointer inset-0 bg-gray-300 rounded-full transition-colors duration-200;
+}
+
+.toggle-switch .toggle-slider::before {
+  @apply absolute content-[''] h-5 w-5 left-0.5 bottom-0.5 bg-white rounded-full transition-transform duration-200;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  @apply bg-primary-600;
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  @apply translate-x-5;
+}
+
+.toggle-switch input:disabled + .toggle-slider {
+  @apply cursor-not-allowed opacity-50;
+}
+
+/* ===================================
+   Section Header Component
+   =================================== */
+
+.section-header {
+  @apply flex items-start justify-between mb-6;
+}
+
+.section-header-left {
+  @apply flex items-start gap-4;
+}
+
+.section-header-icon {
+  @apply w-10 h-10 bg-primary-100 text-primary-600 rounded-lg flex items-center justify-center flex-shrink-0;
+}
+
+.section-header-icon svg {
+  @apply w-5 h-5;
+}
+
+.section-header-text {
+  @apply flex-1;
+}
+
+.section-header-title {
+  @apply text-xl font-bold text-gray-900;
+}
+
+.section-header-description {
+  @apply text-sm text-gray-500 mt-1;
+}
+
+.section-header-action {
+  @apply flex-shrink-0;
+}
+
+/* ===================================
+   Settings Section
+   =================================== */
+
+.settings-section {
+  @apply bg-white rounded-xl border border-gray-200 p-6;
+}
+
+/* Settings Group */
+.settings-group {
+  @apply mb-6 last:mb-0;
+}
+
+.settings-group-title {
+  @apply text-sm font-semibold text-gray-900 mb-3 pb-2 border-b border-gray-100;
+}
+
+.settings-group-content {
+  @apply space-y-1;
+}
+
+/* ===================================
+   Feature Card Component
+   =================================== */
+
+.feature-card {
+  @apply bg-white rounded-lg border border-gray-200 p-4 flex items-center gap-4;
+}
+
+.feature-card-clickable {
+  @apply cursor-pointer hover:border-primary-300 hover:shadow-sm transition-all;
+}
+
+.feature-card-icon {
+  @apply w-10 h-10 bg-primary-100 text-primary-600 rounded-lg flex items-center justify-center flex-shrink-0;
+}
+
+.feature-card-content {
+  @apply flex-1;
+}
+
+.feature-card-title {
+  @apply block text-sm text-gray-500;
+}
+
+.feature-card-value {
+  @apply block text-lg font-bold text-gray-900;
+}
+
+.feature-card-subtitle {
+  @apply block text-xs text-gray-400 mt-0.5;
+}
+
+.feature-card-subtitle.trend-up {
+  @apply text-green-600;
+}
+
+.feature-card-subtitle.trend-down {
+  @apply text-red-600;
+}
+
+/* ===================================
+   Loading and Error States
+   =================================== */
+
+.options-loading {
+  @apply flex flex-col items-center justify-center min-h-screen bg-gray-50;
+}
+
+.options-loading .loading-spinner {
+  @apply w-12 h-12 border-4 border-gray-200 border-t-primary-600 rounded-full animate-spin mb-4;
+}
+
+.options-loading p {
+  @apply text-gray-500;
+}
+
+.options-error {
+  @apply flex flex-col items-center justify-center min-h-screen bg-gray-50;
+}
+
+.options-error .error-icon {
+  @apply w-16 h-16 text-red-400 mb-4;
+}
+
+.options-error .error-icon svg {
+  @apply w-full h-full;
+}
+
+.options-error .error-message {
+  @apply text-gray-600 mb-4;
+}
+
+.options-error .error-retry {
+  @apply px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors;
+}
+
+/* ===================================
+   Onboarding Wizard
+   =================================== */
+
+.onboarding-container {
+  @apply min-h-screen bg-gradient-to-br from-primary-50 to-blue-50 flex items-center justify-center p-6;
+}
+
+.onboarding-card {
+  @apply bg-white rounded-2xl shadow-xl w-full max-w-lg overflow-hidden;
+}
+
+.onboarding-content {
+  @apply p-8;
+}
+
+.onboarding-step {
+  @apply text-center;
+}
+
+/* Welcome Step */
+.welcome-step .welcome-icon {
+  @apply w-20 h-20 mx-auto mb-6 text-primary-600;
+}
+
+.welcome-step .welcome-icon svg {
+  @apply w-full h-full;
+}
+
+.onboarding-title {
+  @apply text-2xl font-bold text-gray-900 mb-3;
+}
+
+.onboarding-subtitle {
+  @apply text-gray-600 mb-6;
+}
+
+.welcome-features {
+  @apply space-y-4 text-left mt-8;
+}
+
+.welcome-feature {
+  @apply flex items-center gap-4;
+}
+
+.welcome-feature-icon {
+  @apply w-10 h-10 flex-shrink-0 text-primary-500 bg-primary-50 rounded-full p-2;
+}
+
+.welcome-feature-icon svg {
+  @apply w-full h-full;
+}
+
+.welcome-feature-text {
+  @apply text-sm text-gray-700;
+}
+
+/* Platform Step */
+.platform-step .platform-cards {
+  @apply space-y-3 mt-6 text-left;
+}
+
+.platform-card {
+  @apply flex items-center gap-4 p-4 border-2 border-gray-200 rounded-xl cursor-pointer transition-all;
+}
+
+.platform-card:hover {
+  @apply border-gray-300 bg-gray-50;
+}
+
+.platform-card.selected {
+  @apply border-primary-500 bg-primary-50;
+}
+
+.platform-card input[type='checkbox'] {
+  @apply sr-only;
+}
+
+.platform-card-content {
+  @apply flex-1;
+}
+
+.platform-card-name {
+  @apply block font-medium text-gray-900;
+}
+
+.platform-card-desc {
+  @apply block text-sm text-gray-500 mt-0.5;
+}
+
+.platform-card-check {
+  @apply w-6 h-6 text-primary-600 opacity-0 transition-opacity;
+}
+
+.platform-card-check svg {
+  @apply w-full h-full;
+}
+
+.platform-card.selected .platform-card-check {
+  @apply opacity-100;
+}
+
+/* Schedule Step */
+.schedule-step .schedule-options {
+  @apply space-y-3 mt-6 text-left;
+}
+
+.schedule-option {
+  @apply flex items-center gap-4 p-4 border-2 border-gray-200 rounded-xl cursor-pointer transition-all;
+}
+
+.schedule-option:hover {
+  @apply border-gray-300 bg-gray-50;
+}
+
+.schedule-option.selected {
+  @apply border-primary-500 bg-primary-50;
+}
+
+.schedule-option input[type='radio'] {
+  @apply sr-only;
+}
+
+.schedule-option-content {
+  @apply flex items-center gap-3 flex-1;
+}
+
+.schedule-option-icon {
+  @apply w-10 h-10 flex-shrink-0 text-gray-400 bg-gray-100 rounded-full p-2;
+}
+
+.schedule-option.selected .schedule-option-icon {
+  @apply text-primary-600 bg-primary-100;
+}
+
+.schedule-option-icon svg {
+  @apply w-full h-full;
+}
+
+.schedule-option-text {
+  @apply flex-1;
+}
+
+.schedule-option-title {
+  @apply block font-medium text-gray-900;
+}
+
+.schedule-option-desc {
+  @apply block text-sm text-gray-500 mt-0.5;
+}
+
+.schedule-option-check {
+  @apply w-6 h-6 text-primary-600 opacity-0 transition-opacity;
+}
+
+.schedule-option-check svg {
+  @apply w-full h-full;
+}
+
+.schedule-option.selected .schedule-option-check {
+  @apply opacity-100;
+}
+
+/* Complete Step */
+.complete-step .complete-icon {
+  @apply w-20 h-20 mx-auto mb-6 text-green-500 bg-green-50 rounded-full p-4;
+}
+
+.complete-step .complete-icon svg {
+  @apply w-full h-full;
+}
+
+.complete-summary {
+  @apply mt-8 space-y-4 text-left;
+}
+
+.complete-summary-item {
+  @apply p-4 bg-gray-50 rounded-xl;
+}
+
+.complete-summary-label {
+  @apply block text-sm text-gray-500 mb-2;
+}
+
+.complete-summary-value {
+  @apply flex flex-wrap gap-2;
+}
+
+.complete-badge {
+  @apply px-3 py-1 bg-primary-100 text-primary-700 text-sm font-medium rounded-full;
+}
+
+.complete-empty {
+  @apply text-gray-400 text-sm;
+}
+
+.complete-tip {
+  @apply mt-6 p-4 bg-blue-50 rounded-xl flex items-start gap-3 text-left;
+}
+
+.complete-tip-icon {
+  @apply w-5 h-5 flex-shrink-0 text-blue-500 mt-0.5;
+}
+
+.complete-tip-icon svg {
+  @apply w-full h-full;
+}
+
+.complete-tip-text {
+  @apply text-sm text-blue-700;
+}
+
+/* Hints */
+.onboarding-hint {
+  @apply text-xs text-gray-400 mt-4;
+}
+
+/* Footer */
+.onboarding-footer {
+  @apply px-8 py-4 bg-gray-50 border-t border-gray-200 flex items-center;
+}
+
+.onboarding-footer.first-step {
+  @apply justify-end;
+}
+
+.onboarding-footer:not(.first-step) {
+  @apply justify-between;
+}
+
+/* Progress indicator */
+.onboarding-progress {
+  @apply flex items-center justify-center gap-2 p-6 bg-gray-50 border-b border-gray-200;
+}
+
+.onboarding-progress-step {
+  @apply flex items-center;
+}
+
+.onboarding-progress-dot {
+  @apply w-3 h-3 rounded-full bg-gray-300 transition-colors;
+}
+
+.onboarding-progress-step.active .onboarding-progress-dot {
+  @apply bg-primary-600 ring-4 ring-primary-100;
+}
+
+.onboarding-progress-step.completed .onboarding-progress-dot {
+  @apply bg-primary-500;
+}
+
+.onboarding-progress-line {
+  @apply w-8 h-0.5 bg-gray-300 mx-1;
+}
+
+.onboarding-progress-step.completed .onboarding-progress-line {
+  @apply bg-primary-400;
+}
+
+/* Action buttons */
+.onboarding-actions {
+  @apply flex items-center justify-center gap-3 p-6 bg-gray-50 border-t border-gray-200;
+}
+
+.onboarding-btn {
+  @apply px-6 py-2.5 text-sm font-medium rounded-lg transition-colors cursor-pointer;
+}
+
+.onboarding-btn.secondary {
+  @apply text-gray-600 hover:text-gray-900 hover:bg-gray-200 bg-gray-100;
+}
+
+.onboarding-btn.primary {
+  @apply bg-primary-600 text-white hover:bg-primary-700;
+}
+
+.onboarding-btn.skip {
+  @apply text-gray-500 hover:text-gray-700 hover:bg-gray-100;
+}
+
+/* ===================================
+   Productivity Settings Items
+   =================================== */
+
+.focus-mode-settings,
+.pomodoro-settings,
+.streak-settings {
+  @apply space-y-1;
+}
+
+.focus-mode-settings .settings-section-title,
+.pomodoro-settings .settings-section-title,
+.streak-settings .settings-section-title,
+.focus-mode-settings .settings-section-description,
+.pomodoro-settings .settings-section-description,
+.streak-settings .settings-section-description {
+  @apply hidden;
+}
+
+.settings-item {
+  @apply flex items-center justify-between py-4 border-b border-gray-100 last:border-0;
+}
+
+.settings-item-info {
+  @apply flex-1 pr-4;
+}
+
+.settings-item-label {
+  @apply block text-sm font-medium text-gray-800;
+}
+
+.settings-item-description {
+  @apply block text-xs text-gray-500 mt-1 leading-relaxed;
+}
+
+.settings-select {
+  @apply px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm font-medium text-gray-700
+         focus:ring-2 focus:ring-primary-500 focus:border-primary-500 cursor-pointer
+         min-w-[120px] appearance-none bg-no-repeat bg-right pr-8;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-size: 1.5em 1.5em;
+}
+
+.settings-select:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.settings-duration-options {
+  @apply flex gap-2 flex-wrap;
+}
+
+.duration-option {
+  @apply px-4 py-2 text-sm font-medium rounded-lg border-2 border-gray-200 text-gray-600
+         transition-all cursor-pointer hover:border-primary-300 hover:text-primary-600;
+}
+
+.duration-option.selected {
+  @apply bg-primary-50 border-primary-500 text-primary-700;
+}
+
+.duration-option:disabled {
+  @apply opacity-50 cursor-not-allowed hover:border-gray-200 hover:text-gray-600;
+}
+
+/* ===================================
+   Streak Settings
+   =================================== */
+
+.streak-settings {
+  @apply space-y-4;
+}
+
+.streak-settings .section-title,
+.streak-settings .section-description {
+  @apply hidden;
+}
+
+.streak-overview {
+  @apply grid grid-cols-3 gap-4 my-6;
+}
+
+.streak-card {
+  @apply bg-gray-50 rounded-xl p-4 text-center border border-gray-100;
+}
+
+.streak-card-current {
+  @apply bg-primary-50 border-primary-200;
+}
+
+.streak-card-value {
+  @apply block text-3xl font-bold text-gray-900;
+}
+
+.streak-card-current .streak-card-value {
+  @apply text-primary-600;
+}
+
+.streak-card-label {
+  @apply block text-sm text-gray-500 mt-1;
+}
+
+.streak-progress-section {
+  @apply my-6 p-4 bg-gray-50 rounded-xl;
+}
+
+.streak-progress-header {
+  @apply flex justify-between text-sm text-gray-600 mb-2;
+}
+
+.streak-progress-bar-large {
+  @apply h-3 bg-gray-200 rounded-full overflow-hidden;
+}
+
+.streak-progress-fill-large {
+  @apply h-full bg-primary-500 rounded-full transition-all duration-300;
+}
+
+.streak-milestone-list {
+  @apply flex flex-wrap gap-2 mt-2;
+}
+
+.streak-milestone-item {
+  @apply px-3 py-1 bg-yellow-100 text-yellow-800 text-sm font-medium rounded-full;
+}
+
+.input-label {
+  @apply flex items-center gap-3;
+}
+
+.input-label .label-text {
+  @apply text-sm font-medium text-gray-700;
+}
+
+.input-label input[type='number'] {
+  @apply w-24 px-3 py-2 border border-gray-200 rounded-lg text-sm text-center
+         focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
+}
+
+/* ===================================
+   Dark Mode - Layout & Navigation
+   =================================== */
+
+.dark .settings-layout {
+  background-color: var(--color-bg-secondary);
+}
+
+.dark .sidebar {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-primary);
+}
+
+.dark .sidebar-header {
+  border-color: var(--color-border-primary);
+}
+
+.dark .sidebar-logo-text {
+  color: var(--color-text-primary);
+}
+
+.dark .sidebar-footer {
+  border-color: var(--color-border-primary);
+}
+
+.dark .sidebar-item {
+  color: var(--color-text-secondary);
+}
+
+.dark .sidebar-item:hover {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+}
+
+.dark .sidebar-item-active {
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+}
+
+.dark .sidebar-subitem {
+  color: var(--color-text-secondary);
+}
+
+.dark .sidebar-subitem:hover {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+}
+
+.dark .sidebar-subitem-active {
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+}
+
+/* ===================================
+   Dark Mode - Settings Section
+   =================================== */
+
+.dark .settings-section {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-primary);
+}
+
+.dark .section-header-icon {
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+}
+
+.dark .section-header-title {
+  color: var(--color-text-primary);
+}
+
+.dark .section-header-description {
+  color: var(--color-text-tertiary);
+}
+
+.dark .settings-group-title {
+  color: var(--color-text-primary);
+  border-color: var(--color-border-primary);
+}
+
+/* ===================================
+   Dark Mode - Toggle Row
+   =================================== */
+
+.dark .toggle-row {
+  border-color: var(--color-border-primary);
+}
+
+.dark .toggle-row-label {
+  color: var(--color-text-primary);
+}
+
+.dark .toggle-row-description {
+  color: var(--color-text-tertiary);
+}
+
+.dark .toggle-switch .toggle-slider {
+  background-color: var(--color-bg-hover);
+}
+
+.dark .toggle-switch input:checked + .toggle-slider {
+  background-color: var(--color-accent);
+}
+
+/* ===================================
+   Dark Mode - Dashboard
+   =================================== */
+
+.dark .dashboard-title {
+  color: var(--color-text-primary);
+}
+
+.dark .dashboard-subtitle {
+  color: var(--color-text-tertiary);
+}
+
+.dark .status-card {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-primary);
+}
+
+.dark .status-card-value {
+  color: var(--color-text-primary);
+}
+
+.dark .status-card-title {
+  color: var(--color-text-tertiary);
+}
+
+.dark .dashboard-card {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-primary);
+}
+
+/* ===================================
+   Dark Mode - Forms & Inputs
+   =================================== */
+
+.dark .settings-select,
+.dark .whitelist-select,
+.dark .whitelist-input,
+.dark .domain-input,
+.dark .time-input,
+.dark .quote-input,
+.dark .block-page-input,
+.dark .block-page-textarea,
+.dark .input-label input[type='number'] {
+  background-color: var(--color-bg-tertiary);
+  border-color: var(--color-border-secondary);
+  color: var(--color-text-primary);
+}
+
+.dark .settings-select:focus,
+.dark .whitelist-select:focus,
+.dark .whitelist-input:focus,
+.dark .domain-input:focus,
+.dark .time-input:focus,
+.dark .quote-input:focus,
+.dark .block-page-input:focus,
+.dark .block-page-textarea:focus,
+.dark .input-label input[type='number']:focus {
+  border-color: var(--color-accent);
+}
+
+.dark .settings-select::placeholder,
+.dark .whitelist-input::placeholder,
+.dark .domain-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ===================================
+   Dark Mode - Buttons
+   =================================== */
+
+.dark .add-domain-button,
+.dark .whitelist-add-button,
+.dark .quote-add-button,
+.dark .export-button {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.dark .add-domain-button:hover,
+.dark .whitelist-add-button:hover,
+.dark .quote-add-button:hover,
+.dark .export-button:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.dark .import-button,
+.dark .add-time-range-button {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+}
+
+.dark .import-button:hover,
+.dark .add-time-range-button:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.dark .remove-button,
+.dark .remove-time-range-button {
+  color: var(--color-danger);
+}
+
+.dark .remove-button:hover,
+.dark .remove-time-range-button:hover {
+  background-color: var(--color-danger-light);
+}
+
+.dark .btn-danger {
+  background-color: var(--color-danger);
+}
+
+.dark .duration-option {
+  border-color: var(--color-border-secondary);
+  color: var(--color-text-secondary);
+}
+
+.dark .duration-option:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.dark .duration-option.selected {
+  background-color: var(--color-accent-light);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ===================================
+   Dark Mode - Lists & Items
+   =================================== */
+
+.dark .domain-item,
+.dark .whitelist-item,
+.dark .quote-item,
+.dark .time-range-item,
+.dark .log-item,
+.dark .platform-limit-row,
+.dark .history-row,
+.dark .platform-total-row {
+  background-color: var(--color-bg-tertiary);
+}
+
+.dark .domain-name,
+.dark .whitelist-item-value {
+  color: var(--color-text-primary);
+}
+
+.dark .whitelist-item-platform,
+.dark .whitelist-item-type,
+.dark .log-action {
+  background-color: var(--color-bg-hover);
+  color: var(--color-text-secondary);
+}
+
+.dark .whitelist-item-meta,
+.dark .whitelist-item-date,
+.dark .log-timestamp {
+  color: var(--color-text-muted);
+}
+
+.dark .empty-message,
+.dark .whitelist-empty,
+.dark .quote-empty,
+.dark .no-data {
+  color: var(--color-text-muted);
+}
+
+/* ===================================
+   Dark Mode - Schedule
+   =================================== */
+
+.dark .schedule-status.active {
+  background-color: var(--color-success-light);
+  color: var(--color-success-text);
+  border-color: var(--color-success);
+}
+
+.dark .schedule-status.inactive {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  border-color: var(--color-border-secondary);
+}
+
+.dark .day-checkbox {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+}
+
+.dark .day-checkbox:hover {
+  background-color: var(--color-bg-hover);
+}
+
+/* ===================================
+   Dark Mode - Streak
+   =================================== */
+
+.dark .streak-card {
+  background-color: var(--color-bg-tertiary);
+  border-color: var(--color-border-primary);
+}
+
+.dark .streak-card-current {
+  background-color: var(--color-accent-light);
+  border-color: var(--color-accent);
+}
+
+.dark .streak-card-value {
+  color: var(--color-text-primary);
+}
+
+.dark .streak-card-current .streak-card-value {
+  color: var(--color-accent);
+}
+
+.dark .streak-card-label {
+  color: var(--color-text-tertiary);
+}
+
+.dark .streak-progress-section {
+  background-color: var(--color-bg-tertiary);
+}
+
+.dark .streak-progress-bar-large {
+  background-color: var(--color-bg-hover);
+}
+
+.dark .streak-milestone-item {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning-text);
+}
+
+/* ===================================
+   Dark Mode - Reports
+   =================================== */
+
+.dark .summary-card {
+  background-color: var(--color-bg-tertiary);
+}
+
+.dark .summary-label {
+  color: var(--color-text-tertiary);
+}
+
+.dark .summary-value {
+  color: var(--color-text-primary);
+}
+
+.dark .date-range-btn {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+}
+
+.dark .date-range-btn:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.dark .date-range-btn.active {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.dark .chart-bar {
+  background-color: var(--color-bg-hover);
+}
+
+/* ===================================
+   Dark Mode - Alerts & Messages
+   =================================== */
+
+.dark .error-message,
+.dark .whitelist-error,
+.dark .block-page-error {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger-text);
+}
+
+.dark .export-import-warning {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning-text);
+  border-color: var(--color-warning);
+}
+
+.dark .export-import-success {
+  color: var(--color-success-text);
+}
+
+/* ===================================
+   Dark Mode - Onboarding
+   =================================== */
+
+.dark .onboarding-container {
+  background: linear-gradient(135deg, #1e3a5f 0%, #1f2937 100%);
+}
+
+.dark .onboarding-card {
+  background-color: var(--color-bg-primary);
+}
+
+.dark .onboarding-title {
+  color: var(--color-text-primary);
+}
+
+.dark .onboarding-subtitle {
+  color: var(--color-text-secondary);
+}
+
+.dark .onboarding-footer {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-primary);
+}
+
+.dark .platform-card,
+.dark .schedule-option {
+  border-color: var(--color-border-secondary);
+  background-color: var(--color-bg-primary);
+}
+
+.dark .platform-card:hover,
+.dark .schedule-option:hover {
+  border-color: var(--color-border-secondary);
+  background-color: var(--color-bg-tertiary);
+}
+
+.dark .platform-card.selected,
+.dark .schedule-option.selected {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-light);
+}
+
+.dark .platform-card-name,
+.dark .schedule-option-title {
+  color: var(--color-text-primary);
+}
+
+.dark .platform-card-desc,
+.dark .schedule-option-desc {
+  color: var(--color-text-tertiary);
+}
+
+.dark .welcome-feature-text {
+  color: var(--color-text-secondary);
+}
+
+.dark .complete-summary-item {
+  background-color: var(--color-bg-tertiary);
+}
+
+.dark .complete-tip {
+  background-color: var(--color-accent-light);
+}
+
+.dark .complete-tip-text {
+  color: var(--color-accent-text);
+}
+
+.dark .onboarding-btn.secondary {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+}
+
+.dark .onboarding-btn.secondary:hover {
+  background-color: var(--color-bg-hover);
+}
+
+/* ===================================
+   Dark Mode - Block Page Preview
+   =================================== */
+
+.dark .block-page-preview {
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg-tertiary),
+    var(--color-bg-primary)
+  );
+  border-color: var(--color-border-primary);
+}
+
+.dark .preview-title {
+  color: var(--color-text-primary);
+}
+
+.dark .preview-message {
+  color: var(--color-text-secondary);
+}
+
+.dark .preview-quote {
+  color: var(--color-text-tertiary);
+}
+
+/* ===================================
+   Improved UI - Custom Domains
+   =================================== */
+
+.custom-domains h2,
+.whitelist-section h2,
+.schedule-section h2 {
+  @apply hidden;
+}
+
+.custom-domains .section-description,
+.whitelist-section .section-description,
+.schedule-section .section-description {
+  @apply hidden;
+}
+
+.add-domain-form {
+  @apply flex gap-3 mb-6;
+}
+
+.domain-input {
+  @apply flex-1 px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm
+         focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all;
+}
+
+.add-domain-button {
+  @apply px-6 py-3 bg-primary-600 text-white text-sm font-semibold rounded-xl
+         hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed
+         transition-all whitespace-nowrap shadow-sm;
+}
+
+.domain-list {
+  @apply space-y-3;
+}
+
+.domain-item {
+  @apply flex items-center justify-between p-4 bg-gray-50 rounded-xl
+         border border-gray-100 transition-all hover:shadow-sm;
+}
+
+.domain-name {
+  @apply font-medium text-gray-900;
+}
+
+.remove-button {
+  @apply px-4 py-2 text-sm font-medium text-red-600 hover:text-red-800
+         hover:bg-red-50 rounded-lg transition-all;
+}
+
+.empty-message {
+  @apply text-center py-12 text-gray-400 text-sm;
+}
+
+.error-message {
+  @apply text-sm text-red-600 mb-4 p-3 bg-red-50 rounded-xl border border-red-100;
+}
+
+/* ===================================
+   Improved UI - Whitelist
+   =================================== */
+
+.whitelist-form {
+  @apply mb-6 space-y-3;
+}
+
+.whitelist-form-row {
+  @apply flex gap-3;
+}
+
+.whitelist-select {
+  @apply px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium
+         focus:ring-2 focus:ring-primary-500 focus:border-primary-500 cursor-pointer;
+}
+
+.whitelist-input {
+  @apply flex-1 px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm
+         focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
+}
+
+.whitelist-add-button {
+  @apply px-6 py-3 bg-primary-600 text-white text-sm font-semibold rounded-xl
+         hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed
+         transition-all whitespace-nowrap shadow-sm;
+}
+
+.whitelist-error {
+  @apply text-sm text-red-600 p-3 bg-red-50 rounded-xl border border-red-100;
+}
+
+.whitelist-list {
+  @apply space-y-3;
+}
+
+.whitelist-empty {
+  @apply text-center py-12 text-gray-400 text-sm;
+}
+
+.whitelist-item {
+  @apply flex items-center justify-between p-4 bg-gray-50 rounded-xl
+         border border-gray-100 transition-all hover:shadow-sm;
+}
+
+.whitelist-item-info {
+  @apply flex-1 min-w-0;
+}
+
+.whitelist-item-value {
+  @apply block font-medium text-gray-900 truncate;
+}
+
+.whitelist-item-meta {
+  @apply flex flex-wrap gap-2 mt-2;
+}
+
+.whitelist-item-platform,
+.whitelist-item-type {
+  @apply px-2.5 py-1 text-xs font-medium bg-gray-200 text-gray-600 rounded-lg;
+}
+
+.whitelist-item-date {
+  @apply text-xs text-gray-400;
+}
+
+.whitelist-item-remove {
+  @apply ml-3 w-9 h-9 flex items-center justify-center text-gray-400
+         hover:text-red-600 hover:bg-red-50 rounded-lg transition-all text-lg;
+}
+
+/* ===================================
+   Improved UI - Schedule
+   =================================== */
+
+.schedule-toggle {
+  @apply mb-6;
+}
+
+.schedule-toggle .platform-toggle {
+  @apply flex items-center gap-3;
+}
+
+.schedule-toggle .platform-toggle input {
+  @apply w-5 h-5;
+}
+
+.schedule-toggle .platform-toggle span {
+  @apply text-sm font-medium text-gray-700;
+}
+
+.schedule-status {
+  @apply text-sm px-4 py-3 rounded-xl mb-6 font-medium;
+}
+
+.schedule-status.active {
+  @apply bg-green-50 text-green-700 border border-green-200;
+}
+
+.schedule-status.inactive {
+  @apply bg-gray-50 text-gray-600 border border-gray-200;
+}
+
+.schedule-days {
+  @apply mb-8;
+}
+
+.schedule-days h3 {
+  @apply text-sm font-semibold text-gray-800 mb-4;
+}
+
+.day-checkboxes {
+  @apply flex flex-wrap gap-2;
+}
+
+.day-checkbox {
+  @apply flex items-center gap-2 px-4 py-2.5 bg-gray-50 rounded-xl cursor-pointer
+         hover:bg-gray-100 transition-all border border-gray-100;
+}
+
+.day-checkbox input[type='checkbox'] {
+  @apply w-4 h-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500;
+}
+
+.day-checkbox span {
+  @apply text-sm font-medium text-gray-700;
+}
+
+.schedule-time-ranges h3 {
+  @apply text-sm font-semibold text-gray-800 mb-4;
+}
+
+.time-ranges-list {
+  @apply space-y-3 mb-4;
+}
+
+.time-range-item {
+  @apply flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100;
+}
+
+.time-input-group {
+  @apply flex items-center gap-2;
+}
+
+.time-input-group span {
+  @apply text-sm font-medium text-gray-500;
+}
+
+.time-input {
+  @apply px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm font-medium
+         focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
+}
+
+.remove-time-range-button {
+  @apply ml-auto px-4 py-2 text-sm font-medium text-red-600
+         hover:text-red-800 hover:bg-red-50 rounded-lg transition-all;
+}
+
+.add-time-range-button {
+  @apply px-5 py-2.5 bg-gray-100 text-gray-700 text-sm font-semibold rounded-xl
+         hover:bg-gray-200 transition-all;
+}
+
+/* ===================================
+   Improved UI - Settings Items
+   =================================== */
+
+.setting-row {
+  @apply py-4 border-b border-gray-100 last:border-0;
+}
+
+.toggle-label {
+  @apply flex items-center gap-3 cursor-pointer;
+}
+
+.toggle-label input[type='checkbox'] {
+  @apply w-5 h-5 rounded border-gray-300 text-primary-600 focus:ring-primary-500;
+}
+
+.toggle-text {
+  @apply text-sm font-medium text-gray-800;
+}
+
+.setting-description {
+  @apply text-xs text-gray-500 mt-2 ml-8 leading-relaxed;
+}
+
+.select-label {
+  @apply flex items-center gap-4;
+}
+
+.select-label .label-text {
+  @apply text-sm font-medium text-gray-800 min-w-[140px];
+}
+
+.select-label select {
+  @apply px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium
+         focus:ring-2 focus:ring-primary-500 focus:border-primary-500 cursor-pointer;
+}
+
+/* ===================================
+   Improved UI - Theme Switcher
+   =================================== */
+
+.theme-switcher {
+  @apply flex items-center gap-2 p-1 bg-gray-100 rounded-xl;
+}
+
+.theme-btn {
+  @apply flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all;
+}
+
+.theme-btn.active {
+  @apply bg-white text-gray-900 shadow-sm;
+}
+
+.theme-btn:not(.active) {
+  @apply text-gray-500 hover:text-gray-700;
+}
+
+.theme-btn svg {
+  @apply w-4 h-4;
+}
+
+.dark .theme-switcher {
+  @apply bg-gray-800;
+}
+
+.dark .theme-btn.active {
+  @apply bg-gray-700 text-white;
+}
+
+.dark .theme-btn:not(.active) {
+  @apply text-gray-400 hover:text-gray-200;
 }

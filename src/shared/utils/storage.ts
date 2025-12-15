@@ -95,10 +95,36 @@ export async function updateSettings(
     },
     whitelist: update.whitelist ?? current.whitelist,
     customDomains: update.customDomains ?? current.customDomains,
-    schedule: {
-      ...current.schedule,
-      ...(update.schedule ?? {}),
-    },
+    schedule: update.schedule
+      ? { ...current.schedule, ...update.schedule }
+      : current.schedule,
+    blockPage: update.blockPage
+      ? { ...current.blockPage, ...update.blockPage }
+      : current.blockPage,
+    focusMode: update.focusMode
+      ? { ...current.focusMode, ...update.focusMode }
+      : current.focusMode,
+    pomodoro: update.pomodoro
+      ? { ...current.pomodoro, ...update.pomodoro }
+      : current.pomodoro,
+    timeLimits: update.timeLimits
+      ? { ...current.timeLimits, ...update.timeLimits }
+      : current.timeLimits,
+    timeTracking: update.timeTracking
+      ? { ...current.timeTracking, ...update.timeTracking }
+      : current.timeTracking,
+    streak: update.streak
+      ? { ...current.streak, ...update.streak }
+      : current.streak,
+    challenge: update.challenge
+      ? { ...current.challenge, ...update.challenge }
+      : current.challenge,
+    lockdown: update.lockdown
+      ? { ...current.lockdown, ...update.lockdown }
+      : current.lockdown,
+    onboardingCompleted:
+      update.onboardingCompleted ?? current.onboardingCompleted,
+    version: current.version,
   };
 
   await saveSettings(updated);
