@@ -12,6 +12,9 @@ import {
   THREADS_CONFIG,
   SNAPCHAT_CONFIG,
   REDDIT_CONFIG,
+  DISCORD_CONFIG,
+  PINTEREST_CONFIG,
+  TWITCH_CONFIG,
 } from '@/shared/constants';
 import { createLogger } from '@/shared/utils/logger';
 
@@ -27,6 +30,9 @@ const SNS_CONFIGS: Record<SNSPlatform, { hosts: readonly string[] }> = {
   threads: THREADS_CONFIG,
   snapchat: SNAPCHAT_CONFIG,
   reddit: REDDIT_CONFIG,
+  discord: DISCORD_CONFIG,
+  pinterest: PINTEREST_CONFIG,
+  twitch: TWITCH_CONFIG,
 };
 
 /**
@@ -103,18 +109,39 @@ export class SNSDetector extends BasePlatformDetector {
 
     const platformName = this.getPlatformDisplayName();
 
-    overlay.innerHTML = `
-      <div style="text-align: center; max-width: 400px; padding: 40px;">
-        <div style="font-size: 72px; margin-bottom: 24px;">&#x1F6E1;&#xFE0F;</div>
-        <h1 style="font-size: 28px; font-weight: 600; margin: 0 0 12px 0;">ShortShield Active</h1>
-        <p style="font-size: 18px; opacity: 0.9; margin: 0 0 24px 0;">
-          ${platformName} is blocked to help you stay focused.
-        </p>
-        <p style="font-size: 14px; opacity: 0.6; margin: 0;">
-          You can disable this in the ShortShield settings.
-        </p>
-      </div>
-    `;
+    // Create content container
+    const contentDiv = document.createElement('div');
+    contentDiv.style.cssText =
+      'text-align: center; max-width: 400px; padding: 40px;';
+
+    // Create icon
+    const iconDiv = document.createElement('div');
+    iconDiv.style.cssText = 'font-size: 72px; margin-bottom: 24px;';
+    iconDiv.textContent = '🛡️';
+    contentDiv.appendChild(iconDiv);
+
+    // Create title
+    const title = document.createElement('h1');
+    title.style.cssText =
+      'font-size: 28px; font-weight: 600; margin: 0 0 12px 0;';
+    title.textContent = 'ShortShield Active';
+    contentDiv.appendChild(title);
+
+    // Create main message
+    const mainMessage = document.createElement('p');
+    mainMessage.style.cssText =
+      'font-size: 18px; opacity: 0.9; margin: 0 0 24px 0;';
+    mainMessage.textContent = `${platformName} is blocked to help you stay focused.`;
+    contentDiv.appendChild(mainMessage);
+
+    // Create settings hint
+    const settingsHint = document.createElement('p');
+    settingsHint.style.cssText = 'font-size: 14px; opacity: 0.6; margin: 0;';
+    settingsHint.textContent =
+      'You can disable this in the ShortShield settings.';
+    contentDiv.appendChild(settingsHint);
+
+    overlay.appendChild(contentDiv);
 
     document.documentElement.appendChild(overlay);
 
@@ -133,6 +160,9 @@ export class SNSDetector extends BasePlatformDetector {
       threads: 'Threads',
       snapchat: 'Snapchat',
       reddit: 'Reddit',
+      discord: 'Discord',
+      pinterest: 'Pinterest',
+      twitch: 'Twitch',
     };
     return names[this.snsPlatform];
   }
@@ -149,5 +179,8 @@ export function createSNSDetectors(): SNSDetector[] {
     new SNSDetector('threads'),
     new SNSDetector('snapchat'),
     new SNSDetector('reddit'),
+    new SNSDetector('discord'),
+    new SNSDetector('pinterest'),
+    new SNSDetector('twitch'),
   ];
 }

@@ -90,9 +90,9 @@ export function BlockingSection({
         }
       />
 
-      {/* Short Video Platforms */}
+      {/* All Platforms */}
       <div className="settings-group">
-        <h3 className="settings-group-title">{t('popupSectionShortVideo')}</h3>
+        <h3 className="settings-group-title">{t('popupSectionSNS')}</h3>
         <div className="settings-group-content">
           <ToggleRow
             label={t('popupPlatformYouTube')}
@@ -112,13 +112,6 @@ export function BlockingSection({
             checked={settings.platforms.instagram}
             onChange={() => onTogglePlatform('instagram')}
           />
-        </div>
-      </div>
-
-      {/* SNS Platforms */}
-      <div className="settings-group">
-        <h3 className="settings-group-title">{t('popupSectionSNS')}</h3>
-        <div className="settings-group-content">
           <ToggleRow
             label={t('popupPlatformTwitter')}
             checked={settings.platforms.twitter}
