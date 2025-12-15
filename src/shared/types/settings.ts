@@ -30,7 +30,10 @@ export type SNSPlatform =
   | 'linkedin'
   | 'threads'
   | 'snapchat'
-  | 'reddit';
+  | 'reddit'
+  | 'discord'
+  | 'pinterest'
+  | 'twitch';
 
 /**
  * All supported platforms for blocking
@@ -63,6 +66,9 @@ export interface SNSPlatformSettings {
   readonly threads: boolean;
   readonly snapchat: boolean;
   readonly reddit: boolean;
+  readonly discord: boolean;
+  readonly pinterest: boolean;
+  readonly twitch: boolean;
 }
 
 /**
@@ -385,6 +391,7 @@ export interface Settings {
   readonly streak: StreakSettings;
   readonly challenge: ChallengeSettings;
   readonly lockdown: LockdownSettings;
+  readonly onboardingCompleted: boolean; // Whether user has completed initial setup
   readonly version: number; // Schema version for migrations
 }
 
@@ -407,6 +414,7 @@ export type SettingsUpdate = Partial<{
   streak: Partial<StreakSettings>;
   challenge: Partial<ChallengeSettings>;
   lockdown: Partial<LockdownSettings>;
+  onboardingCompleted: boolean;
 }>;
 
 /**
@@ -447,6 +455,9 @@ export function isValidWhitelistEntry(value: unknown): value is WhitelistEntry {
     'threads',
     'snapchat',
     'reddit',
+    'discord',
+    'pinterest',
+    'twitch',
   ];
 
   return (

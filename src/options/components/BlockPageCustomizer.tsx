@@ -3,7 +3,7 @@
  * Allows users to customize the appearance of block overlays
  */
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useSettings } from '@/shared/hooks/useSettings';
 import { useI18n } from '@/shared/hooks/useI18n';
 import type { BlockPageTheme } from '@/shared/types';
@@ -46,15 +46,29 @@ export function BlockPageCustomizer() {
   const [isUpdating, setIsUpdating] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Local state for title and message to allow smooth typing
+  const [localTitle, setLocalTitle] = useState('');
+  const [localMessage, setLocalMessage] = useState('');
+
   const { blockPage } = settings;
 
-  const handleTitleChange = useCallback(
-    async (title: string) => {
+  // Sync local state with settings when they change
+  useEffect(() => {
+    setLocalTitle(blockPage.title);
+    setLocalMessage(blockPage.message);
+  }, [blockPage.title, blockPage.message]);
+
+  const handleTitleBlur = useCallback(
+    async () => {
+      const sanitized = sanitizeInput(localTitle);
+      if (sanitized === blockPage.title) {
+        return; // No change
+      }
       setError(null);
       try {
         setIsUpdating(true);
         await updateSettings({
-          blockPage: { title: sanitizeInput(title) },
+          blockPage: { title: sanitized },
         });
       } catch (err) {
         logger.error('Failed to update title', { error: err });
@@ -63,16 +77,20 @@ export function BlockPageCustomizer() {
         setIsUpdating(false);
       }
     },
-    [updateSettings, t]
+    [localTitle, blockPage.title, updateSettings, t]
   );
 
-  const handleMessageChange = useCallback(
-    async (message: string) => {
+  const handleMessageBlur = useCallback(
+    async () => {
+      const sanitized = sanitizeInput(localMessage);
+      if (sanitized === blockPage.message) {
+        return; // No change
+      }
       setError(null);
       try {
         setIsUpdating(true);
         await updateSettings({
-          blockPage: { message: sanitizeInput(message) },
+          blockPage: { message: sanitized },
         });
       } catch (err) {
         logger.error('Failed to update message', { error: err });
@@ -81,7 +99,7 @@ export function BlockPageCustomizer() {
         setIsUpdating(false);
       }
     },
-    [updateSettings, t]
+    [localMessage, blockPage.message, updateSettings, t]
   );
 
   const handleThemeChange = useCallback(
@@ -268,8 +286,9 @@ export function BlockPageCustomizer() {
         <input
           type="text"
           className="block-page-input"
-          value={blockPage.title}
-          onChange={(e) => void handleTitleChange(e.target.value)}
+          value={localTitle}
+          onChange={(e) => setLocalTitle(e.target.value)}
+          onBlur={() => void handleTitleBlur()}
           placeholder={t('blockPageTitlePlaceholder')}
           disabled={isUpdating}
           maxLength={100}
@@ -281,8 +300,9 @@ export function BlockPageCustomizer() {
         <h3>{t('blockPageCustomMessage')}</h3>
         <textarea
           className="block-page-textarea"
-          value={blockPage.message}
-          onChange={(e) => void handleMessageChange(e.target.value)}
+          value={localMessage}
+          onChange={(e) => setLocalMessage(e.target.value)}
+          onBlur={() => void handleMessageBlur()}
           placeholder={t('blockPageMessagePlaceholder')}
           disabled={isUpdating}
           maxLength={500}
@@ -378,10 +398,10 @@ export function BlockPageCustomizer() {
               🛡️
             </div>
             <h4 className="preview-title">
-              {blockPage.title || t('blockPageDefaultTitle')}
+              {localTitle || t('blockPageDefaultTitle')}
             </h4>
             <p className="preview-message">
-              {blockPage.message || t('blockPageDefaultMessage')}
+              {localMessage || t('blockPageDefaultMessage')}
             </p>
             {blockPage.showMotivationalQuote && (
               <p className="preview-quote">

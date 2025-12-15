@@ -29,6 +29,9 @@ export const SNS_PLATFORMS: readonly SNSPlatform[] = [
   'threads',
   'snapchat',
   'reddit',
+  'discord',
+  'pinterest',
+  'twitch',
 ] as const;
 
 /**
@@ -251,6 +254,39 @@ export const REDDIT_CONFIG: PlatformRules = {
 } as const;
 
 /**
+ * Discord detection configuration (full site block)
+ */
+export const DISCORD_CONFIG: PlatformRules = {
+  platform: 'discord',
+  hosts: ['discord.com', 'www.discord.com', 'discordapp.com', 'www.discordapp.com'],
+  urlRules: [],
+  selectorRules: [],
+  attributeRules: [],
+} as const;
+
+/**
+ * Pinterest detection configuration (full site block)
+ */
+export const PINTEREST_CONFIG: PlatformRules = {
+  platform: 'pinterest',
+  hosts: ['pinterest.com', 'www.pinterest.com', 'jp.pinterest.com', 'pinterest.jp'],
+  urlRules: [],
+  selectorRules: [],
+  attributeRules: [],
+} as const;
+
+/**
+ * Twitch detection configuration (full site block)
+ */
+export const TWITCH_CONFIG: PlatformRules = {
+  platform: 'twitch',
+  hosts: ['twitch.tv', 'www.twitch.tv', 'm.twitch.tv'],
+  urlRules: [],
+  selectorRules: [],
+  attributeRules: [],
+} as const;
+
+/**
  * All platform configurations
  */
 export const PLATFORM_CONFIGS: Readonly<Record<Platform, PlatformRules>> = {
@@ -267,6 +303,9 @@ export const PLATFORM_CONFIGS: Readonly<Record<Platform, PlatformRules>> = {
   threads: THREADS_CONFIG,
   snapchat: SNAPCHAT_CONFIG,
   reddit: REDDIT_CONFIG,
+  discord: DISCORD_CONFIG,
+  pinterest: PINTEREST_CONFIG,
+  twitch: TWITCH_CONFIG,
 } as const;
 
 /**

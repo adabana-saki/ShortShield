@@ -1,150 +1,120 @@
 /**
- * Main popup application component
+ * Main popup application component - Single scroll view design
  */
 
 import { useState, useEffect, useCallback } from 'react';
 import browser from 'webextension-polyfill';
 import { useSettings } from '@/shared/hooks/useSettings';
 import { useI18n } from '@/shared/hooks/useI18n';
-import { Toggle } from './components/Toggle';
-import { Stats } from './components/Stats';
-import { QuickSettings } from './components/QuickSettings';
-import { ScheduleWidget } from './components/ScheduleWidget';
-import { FocusButton } from './components/FocusButton';
-import { FocusCountdown } from './components/FocusCountdown';
-import { PomodoroTimer } from './components/PomodoroTimer';
-import { PomodoroControls } from './components/PomodoroControls';
-import type { Platform, PopupView, FocusModeState, PomodoroState, TimeLimitsState, StreakData } from '@/shared/types';
 import { createMessage } from '@/shared/types/messages';
-import { DEFAULT_FOCUS_STATE, DEFAULT_POMODORO_STATE, DEFAULT_TIME_LIMITS_STATE, DEFAULT_STREAK_DATA } from '@/shared/constants';
+import type { Platform, FocusModeState, PomodoroState, StreakData } from '@/shared/types';
+import {
+  DEFAULT_FOCUS_STATE,
+  DEFAULT_POMODORO_STATE,
+  DEFAULT_STREAK_DATA,
+} from '@/shared/constants';
+import { ActiveTimerWidget } from './components/ActiveTimerWidget';
+import { CompactStats } from './components/CompactStats';
+import { PlatformGrid } from './components/PlatformGrid';
+import { FocusLauncher } from './components/FocusLauncher';
+import { ScheduleBadge } from './components/ScheduleBadge';
 
 export function App() {
   const { t } = useI18n();
-  const {
-    settings,
-    isLoading,
-    error,
-    toggleEnabled,
-    togglePlatform,
-    refreshSettings,
-  } = useSettings();
+  const { settings, isLoading, error, toggleEnabled, togglePlatform, refreshSettings } =
+    useSettings();
 
-  // Use user's preferred default view
-  const [activeView, setActiveView] = useState<PopupView | null>(null);
-
-  // Focus mode state
   const [focusState, setFocusState] = useState<FocusModeState>(DEFAULT_FOCUS_STATE);
-
-  // Pomodoro state
   const [pomodoroState, setPomodoroState] = useState<PomodoroState>(DEFAULT_POMODORO_STATE);
-
-  // Time limits state
-  const [timeLimitsState, setTimeLimitsState] = useState<TimeLimitsState>(DEFAULT_TIME_LIMITS_STATE);
-
-  // Streak data state
   const [streakData, setStreakData] = useState<StreakData>(DEFAULT_STREAK_DATA);
 
-  // Get the actual view to display (use preference if not set)
-  const currentView = activeView ?? settings.preferences.popupDefaultView;
+  const fetchFocusState = useCallback(async () => {
+    try {
+      const message = createMessage({ type: 'FOCUS_GET_STATE' as const });
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
+      if (response.success && response.data) {
+        setFocusState(response.data);
+      }
+    } catch {
+      // Ignore errors
+    }
+  }, []);
 
-  // Fetch focus and pomodoro state on mount
+  const fetchPomodoroState = useCallback(async () => {
+    try {
+      const message = createMessage({ type: 'POMODORO_GET_STATE' as const });
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
+      if (response.success && response.data) {
+        setPomodoroState(response.data);
+      }
+    } catch {
+      // Ignore errors
+    }
+  }, []);
+
+  const fetchStreakData = useCallback(async () => {
+    try {
+      const message = createMessage({ type: 'STREAK_GET_DATA' as const });
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: StreakData };
+      if (response.success && response.data) {
+        setStreakData(response.data);
+      }
+    } catch {
+      // Ignore errors
+    }
+  }, []);
+
   useEffect(() => {
-    const fetchFocusState = async () => {
-      try {
-        const message = createMessage({
-          type: 'FOCUS_GET_STATE' as const,
-        });
-        const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
-        if (response.success && response.data) {
-          setFocusState(response.data);
-        }
-      } catch {
-        // Ignore errors, use default state
-      }
-    };
-
-    const fetchPomodoroState = async () => {
-      try {
-        const message = createMessage({
-          type: 'POMODORO_GET_STATE' as const,
-        });
-        const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
-        if (response.success && response.data) {
-          setPomodoroState(response.data);
-        }
-      } catch {
-        // Ignore errors, use default state
-      }
-    };
-
-    const fetchTimeLimitsState = async () => {
-      try {
-        const message = createMessage({
-          type: 'TIME_GET_USAGE' as const,
-        });
-        const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: TimeLimitsState };
-        if (response.success && response.data) {
-          setTimeLimitsState(response.data);
-        }
-      } catch {
-        // Ignore errors, use default state
-      }
-    };
-
-    const fetchStreakData = async () => {
-      try {
-        const message = createMessage({
-          type: 'STREAK_GET_DATA' as const,
-        });
-        const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: StreakData };
-        if (response.success && response.data) {
-          setStreakData(response.data);
-        }
-      } catch {
-        // Ignore errors, use default state
-      }
-    };
-
     void fetchFocusState();
     void fetchPomodoroState();
-    void fetchTimeLimitsState();
     void fetchStreakData();
 
-    // Poll for updates every second when timers are active
     const interval = setInterval(() => {
       void fetchFocusState();
       void fetchPomodoroState();
-      void fetchTimeLimitsState();
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [fetchFocusState, fetchPomodoroState, fetchStreakData]);
 
-  const handleFocusStateChange = useCallback((newState: FocusModeState) => {
-    setFocusState(newState);
-  }, []);
-
-  const handlePomodoroStateChange = useCallback((newState: PomodoroState) => {
-    setPomodoroState(newState);
-  }, []);
-
-  /**
-   * Handle platform toggle
-   */
-  const handleTogglePlatform = (platform: Platform) => {
-    void togglePlatform(platform);
-  };
-
-  /**
-   * Handle main toggle
-   */
   const handleToggleEnabled = () => {
     void toggleEnabled();
   };
 
-  /**
-   * Open options page
-   */
+  const handleTogglePlatform = (platform: Platform) => {
+    void togglePlatform(platform);
+  };
+
+  const handleCancelFocus = async () => {
+    try {
+      const message = createMessage({ type: 'FOCUS_CANCEL' as const });
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
+      if (response.success && response.data) {
+        setFocusState(response.data);
+      }
+    } catch {
+      // Ignore errors
+    }
+  };
+
+  const handlePomodoroAction = async (action: 'pause' | 'resume' | 'skip' | 'stop') => {
+    try {
+      const typeMap = {
+        pause: 'POMODORO_PAUSE' as const,
+        resume: 'POMODORO_RESUME' as const,
+        skip: 'POMODORO_SKIP' as const,
+        stop: 'POMODORO_STOP' as const,
+      };
+      const message = createMessage({ type: typeMap[action] });
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
+      if (response.success && response.data) {
+        setPomodoroState(response.data);
+      }
+    } catch {
+      // Ignore errors
+    }
+  };
+
   const openOptions = () => {
     void browser.runtime.openOptionsPage();
   };
@@ -153,7 +123,7 @@ export function App() {
   if (isLoading) {
     return (
       <div className="popup-container">
-        <div className="loading-container">
+        <div className="popup-loading">
           <div className="loading-spinner" />
         </div>
       </div>
@@ -164,140 +134,89 @@ export function App() {
   if (error !== null && error !== '') {
     return (
       <div className="popup-container">
-        <div className="error-container">
-          <p className="error-message">{error}</p>
-          <button
-            type="button"
-            className="retry-button"
-            onClick={() => void refreshSettings()}
-          >
-            Retry
+        <div className="popup-error">
+          <p>{error}</p>
+          <button type="button" onClick={() => void refreshSettings()}>
+            {t('retry')}
           </button>
         </div>
       </div>
     );
   }
 
-  const views: { id: PopupView; label: string }[] = [
-    { id: 'focus', label: t('popupViewFocus') },
-    { id: 'schedule', label: t('popupViewSchedule') },
-    { id: 'platforms', label: t('popupViewPlatforms') },
-    { id: 'stats', label: t('popupViewStats') },
-  ];
+  // Check if pomodoro is paused (not running but not in idle mode)
+  const isPaused = !pomodoroState.isRunning && pomodoroState.mode !== 'idle';
+  const hasActiveTimer = focusState.isActive || pomodoroState.isRunning || isPaused;
 
   return (
     <div className="popup-container">
       {/* Header */}
-      <header className="popup-header">
-        <h1 className="popup-title">{t('popupTitle')}</h1>
-        <span
-          className={`status-badge ${settings.enabled ? 'status-badge-enabled' : 'status-badge-disabled'}`}
-        >
-          {settings.enabled
-            ? t('popupStatusEnabled')
-            : t('popupStatusDisabled')}
-        </span>
+      <header className="popup-header-new">
+        <div className="popup-header-left">
+          <svg className="popup-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          <span className="popup-title-new">{t('popupTitle')}</span>
+        </div>
+        <label className="popup-toggle">
+          <input
+            type="checkbox"
+            checked={settings.enabled}
+            onChange={handleToggleEnabled}
+          />
+          <span className="popup-toggle-slider" />
+        </label>
       </header>
 
-      {/* Main toggle */}
-      <Toggle enabled={settings.enabled} onToggle={handleToggleEnabled} />
-
-      {/* View tabs */}
-      <div className="popup-tabs">
-        {views.map((view) => (
-          <button
-            key={view.id}
-            type="button"
-            className={`popup-tab ${currentView === view.id ? 'active' : ''}`}
-            onClick={() => setActiveView(view.id)}
-          >
-            {view.label}
-          </button>
-        ))}
-      </div>
-
       {/* Scrollable content */}
-      <div className="popup-content">
-        {/* Focus View */}
-        {currentView === 'focus' && (
-          <div className="focus-view">
-            {/* Focus Mode Section */}
-            <div className="focus-section">
-              <h3 className="focus-section-title">{t('focusModeTitle')}</h3>
-              {focusState.isActive ? (
-                <FocusCountdown
-                  focusState={focusState}
-                  onStateChange={handleFocusStateChange}
-                />
-              ) : null}
-              <FocusButton
-                focusState={focusState}
-                onStateChange={handleFocusStateChange}
-                disabled={!settings.focusMode.enabled}
-              />
-            </div>
-
-            {/* Pomodoro Section */}
-            <div className="pomodoro-section">
-              <h3 className="pomodoro-section-title">{t('pomodoroTitle')}</h3>
-              <PomodoroTimer
-                pomodoroState={pomodoroState}
-                onStateChange={handlePomodoroStateChange}
-              />
-              <PomodoroControls
-                pomodoroState={pomodoroState}
-                onStateChange={handlePomodoroStateChange}
-                disabled={!settings.pomodoro.enabled}
-              />
-            </div>
-          </div>
-        )}
-
-        {/* Schedule View */}
-        {currentView === 'schedule' && <ScheduleWidget />}
-
-        {/* Platforms View */}
-        {currentView === 'platforms' && (
-          <QuickSettings
-            platforms={settings.platforms}
-            enabled={settings.enabled}
-            onTogglePlatform={handleTogglePlatform}
+      <div className="popup-scroll-content">
+        {/* Active Timer Widget */}
+        {hasActiveTimer && (
+          <ActiveTimerWidget
+            focusState={focusState}
+            pomodoroState={pomodoroState}
+            pomodoroSettings={settings.pomodoro}
+            onCancelFocus={() => void handleCancelFocus()}
+            onPomodoroAction={(action) => void handlePomodoroAction(action)}
           />
         )}
 
-        {/* Stats View */}
-        {currentView === 'stats' && (
-          <Stats
-            stats={settings.stats}
-            timeLimitsState={timeLimitsState}
-            streakData={streakData}
-            settings={settings}
+        {/* Stats Row */}
+        <CompactStats
+          stats={settings.stats}
+          streakData={streakData}
+          streakEnabled={settings.streak.enabled}
+        />
+
+        {/* Platform Grid */}
+        <PlatformGrid
+          platforms={settings.platforms}
+          enabled={settings.enabled}
+          onTogglePlatform={handleTogglePlatform}
+        />
+
+        {/* Schedule Badge */}
+        <ScheduleBadge schedule={settings.schedule} />
+
+        {/* Focus Launcher */}
+        {!hasActiveTimer && (
+          <FocusLauncher
+            focusEnabled={settings.focusMode.enabled}
+            pomodoroEnabled={settings.pomodoro.enabled}
+            focusState={focusState}
+            pomodoroState={pomodoroState}
+            onFocusStateChange={setFocusState}
+            onPomodoroStateChange={setPomodoroState}
           />
         )}
       </div>
 
-      {/* Footer with settings link */}
-      <footer className="popup-footer">
-        <button type="button" className="settings-link" onClick={openOptions}>
-          <svg
-            className="settings-icon"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-            />
+      {/* Footer */}
+      <footer className="popup-footer-new">
+        <button type="button" className="popup-settings-btn" onClick={openOptions}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="12" cy="12" r="3" />
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
           </svg>
           {t('popupOpenOptions')}
         </button>

@@ -85,7 +85,10 @@ export async function saveSettings(settings: Settings): Promise<void> {
 export async function updateSettings(
   update: SettingsUpdate
 ): Promise<Settings> {
+  console.log('[storage] updateSettings called with:', update);
+  console.log('[storage] onboardingCompleted in update:', update.onboardingCompleted);
   const current = await getSettings();
+  console.log('[storage] current onboardingCompleted:', current.onboardingCompleted);
 
   const updated: Settings = {
     ...current,
@@ -103,10 +106,41 @@ export async function updateSettings(
       ...(update.stats ?? {}),
     },
     whitelist: update.whitelist ?? current.whitelist,
+    customDomains: update.customDomains ?? current.customDomains,
+    schedule: update.schedule
+      ? { ...current.schedule, ...update.schedule }
+      : current.schedule,
+    blockPage: update.blockPage
+      ? { ...current.blockPage, ...update.blockPage }
+      : current.blockPage,
+    focusMode: update.focusMode
+      ? { ...current.focusMode, ...update.focusMode }
+      : current.focusMode,
+    pomodoro: update.pomodoro
+      ? { ...current.pomodoro, ...update.pomodoro }
+      : current.pomodoro,
+    timeLimits: update.timeLimits
+      ? { ...current.timeLimits, ...update.timeLimits }
+      : current.timeLimits,
+    timeTracking: update.timeTracking
+      ? { ...current.timeTracking, ...update.timeTracking }
+      : current.timeTracking,
+    streak: update.streak
+      ? { ...current.streak, ...update.streak }
+      : current.streak,
+    challenge: update.challenge
+      ? { ...current.challenge, ...update.challenge }
+      : current.challenge,
+    lockdown: update.lockdown
+      ? { ...current.lockdown, ...update.lockdown }
+      : current.lockdown,
+    onboardingCompleted: update.onboardingCompleted ?? current.onboardingCompleted,
     version: current.version,
   };
 
+  console.log('[storage] updated onboardingCompleted:', updated.onboardingCompleted);
   await saveSettings(updated);
+  console.log('[storage] Settings saved');
   return updated;
 }
 

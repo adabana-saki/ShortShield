@@ -39,6 +39,9 @@ function WhitelistItem({ entry, onRemove }: WhitelistItemProps) {
     threads: t('popupPlatformThreads'),
     snapchat: t('popupPlatformSnapchat'),
     reddit: t('popupPlatformReddit'),
+    discord: t('platformDiscord'),
+    pinterest: t('platformPinterest'),
+    twitch: t('platformTwitch'),
   };
 
   const typeLabels: Record<string, string> = {

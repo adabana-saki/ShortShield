@@ -535,3 +535,412 @@
 .usage-progress-fill {
   @apply h-full rounded-full transition-all duration-300;
 }
+
+/* ===================================
+   NEW UI: Single Scroll Popup Design
+   =================================== */
+
+/* New Header */
+.popup-header-new {
+  @apply flex items-center justify-between px-4 py-3 bg-white border-b border-gray-100;
+}
+
+.popup-header-left {
+  @apply flex items-center gap-2;
+}
+
+.popup-logo {
+  @apply w-6 h-6 text-primary-600;
+}
+
+.popup-title-new {
+  @apply text-base font-bold text-gray-900;
+}
+
+/* Popup Toggle */
+.popup-toggle {
+  @apply relative inline-block w-12 h-7 cursor-pointer;
+}
+
+.popup-toggle input {
+  @apply opacity-0 w-0 h-0;
+}
+
+.popup-toggle-slider {
+  @apply absolute inset-0 bg-gray-300 rounded-full transition-colors duration-200;
+}
+
+.popup-toggle-slider::before {
+  @apply absolute content-[''] h-5 w-5 left-1 bottom-1 bg-white rounded-full shadow transition-transform duration-200;
+}
+
+.popup-toggle input:checked + .popup-toggle-slider {
+  @apply bg-primary-600;
+}
+
+.popup-toggle input:checked + .popup-toggle-slider::before {
+  @apply translate-x-5;
+}
+
+/* Scrollable Content */
+.popup-scroll-content {
+  @apply flex-1 overflow-y-auto px-4 py-3 space-y-3;
+}
+
+/* New Footer */
+.popup-footer-new {
+  @apply px-4 py-2 border-t border-gray-100 bg-gray-50;
+}
+
+.popup-settings-btn {
+  @apply w-full flex items-center justify-center gap-2 py-2 text-sm font-medium text-gray-600 hover:text-primary-600 hover:bg-gray-100 rounded-lg transition-colors;
+}
+
+.popup-settings-btn svg {
+  @apply w-4 h-4;
+}
+
+/* Loading & Error */
+.popup-loading {
+  @apply flex items-center justify-center py-16;
+}
+
+.popup-error {
+  @apply text-center py-8;
+}
+
+.popup-error p {
+  @apply text-sm text-red-600 mb-3;
+}
+
+.popup-error button {
+  @apply px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700;
+}
+
+/* ===================================
+   Timer Widget
+   =================================== */
+
+.timer-widget {
+  @apply bg-gray-50 rounded-xl p-4;
+}
+
+.timer-header {
+  @apply flex items-center justify-between mb-3;
+}
+
+.timer-label {
+  @apply text-sm text-gray-600;
+}
+
+.timer-mode-badge {
+  @apply px-2 py-1 text-xs font-medium rounded-full;
+}
+
+.timer-mode-badge.focus {
+  @apply bg-primary-100 text-primary-700;
+}
+
+.timer-mode-badge.work {
+  @apply bg-primary-100 text-primary-700;
+}
+
+.timer-mode-badge.break {
+  @apply bg-green-100 text-green-700;
+}
+
+.timer-mode-badge.long-break {
+  @apply bg-blue-100 text-blue-700;
+}
+
+.timer-display {
+  @apply relative w-24 h-24 mx-auto mb-3;
+}
+
+.timer-circle {
+  @apply w-full h-full -rotate-90;
+}
+
+.timer-circle-bg {
+  @apply stroke-gray-200;
+}
+
+.timer-circle-progress {
+  @apply transition-all duration-1000 ease-linear;
+}
+
+.timer-circle-progress.focus {
+  @apply stroke-primary-500;
+}
+
+.timer-circle-progress.work {
+  @apply stroke-primary-500;
+}
+
+.timer-circle-progress.break {
+  @apply stroke-green-500;
+}
+
+.timer-circle-progress.long-break {
+  @apply stroke-blue-500;
+}
+
+.timer-time {
+  @apply absolute inset-0 flex items-center justify-center text-2xl font-bold text-gray-800;
+}
+
+.timer-action-btn {
+  @apply w-full py-2 text-sm font-medium rounded-lg transition-colors;
+}
+
+.timer-action-btn.danger {
+  @apply text-red-600 hover:bg-red-50;
+}
+
+.timer-controls {
+  @apply flex items-center justify-center gap-3;
+}
+
+.timer-control-btn {
+  @apply w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors;
+}
+
+.timer-control-btn.danger {
+  @apply text-red-600 hover:bg-red-50;
+}
+
+.timer-control-btn svg {
+  @apply w-5 h-5;
+}
+
+/* ===================================
+   Compact Stats
+   =================================== */
+
+.compact-stats {
+  @apply flex items-center justify-around py-2 bg-gray-50 rounded-lg;
+}
+
+.compact-stat {
+  @apply flex flex-col items-center;
+}
+
+.compact-stat.streak {
+  @apply flex-row gap-1;
+}
+
+.compact-stat-icon {
+  @apply w-4 h-4 text-yellow-500;
+}
+
+.compact-stat-icon svg {
+  @apply w-full h-full;
+}
+
+.compact-stat-value {
+  @apply text-lg font-bold text-gray-800;
+}
+
+.compact-stat-label {
+  @apply text-xs text-gray-500;
+}
+
+.compact-stat.streak .compact-stat-value {
+  @apply text-yellow-600;
+}
+
+/* ===================================
+   Platform Grid
+   =================================== */
+
+.platform-grid-container {
+  @apply bg-white rounded-lg border border-gray-200;
+}
+
+.platform-grid-header {
+  @apply w-full flex items-center justify-between px-3 py-2;
+}
+
+.platform-grid-title {
+  @apply text-sm font-medium text-gray-700 flex items-center gap-2;
+}
+
+.platform-grid-count {
+  @apply px-1.5 py-0.5 text-xs font-medium bg-primary-100 text-primary-700 rounded-full;
+}
+
+.platform-grid-chevron {
+  @apply w-4 h-4 text-gray-400 transition-transform duration-200;
+}
+
+.platform-grid-chevron.expanded {
+  @apply rotate-180;
+}
+
+.platform-grid-chevron svg {
+  @apply w-full h-full;
+}
+
+.platform-grid-content {
+  @apply px-3 pb-3 space-y-3;
+}
+
+.platform-grid-section {
+  @apply space-y-2;
+}
+
+.platform-grid-section-title {
+  @apply text-xs font-medium text-gray-500 uppercase;
+}
+
+.platform-grid {
+  @apply grid grid-cols-2 gap-2;
+}
+
+.platform-grid-item {
+  @apply flex items-center gap-2 px-2 py-1.5 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-100 transition-colors;
+}
+
+.platform-grid-item.disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.platform-grid-item input[type='checkbox'] {
+  @apply w-4 h-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500;
+}
+
+.platform-grid-name {
+  @apply text-xs text-gray-700;
+}
+
+.platform-grid-summary {
+  @apply flex flex-wrap gap-1.5 px-3 pb-3;
+}
+
+.platform-chip {
+  @apply px-2 py-1 text-xs rounded-full;
+}
+
+.platform-chip.active {
+  @apply bg-primary-100 text-primary-700;
+}
+
+.platform-chip.more {
+  @apply bg-gray-100 text-gray-600;
+}
+
+/* ===================================
+   Schedule Badge
+   =================================== */
+
+.schedule-badge {
+  @apply flex items-center gap-2 px-3 py-2 rounded-lg;
+}
+
+.schedule-badge.active {
+  @apply bg-green-50;
+}
+
+.schedule-badge.inactive {
+  @apply bg-gray-50;
+}
+
+.schedule-badge-icon {
+  @apply w-4 h-4;
+}
+
+.schedule-badge.active .schedule-badge-icon {
+  @apply text-green-600;
+}
+
+.schedule-badge.inactive .schedule-badge-icon {
+  @apply text-gray-400;
+}
+
+.schedule-badge-icon svg {
+  @apply w-full h-full;
+}
+
+.schedule-badge-text {
+  @apply text-xs font-medium;
+}
+
+.schedule-badge.active .schedule-badge-text {
+  @apply text-green-700;
+}
+
+.schedule-badge.inactive .schedule-badge-text {
+  @apply text-gray-500;
+}
+
+/* ===================================
+   Focus Launcher
+   =================================== */
+
+.focus-launcher {
+  @apply bg-white rounded-lg border border-gray-200 p-3;
+}
+
+.focus-launcher-tabs {
+  @apply flex gap-2 mb-3;
+}
+
+.focus-launcher-tab {
+  @apply flex-1 py-2 text-xs font-medium text-gray-500 bg-gray-100 rounded-lg transition-colors;
+}
+
+.focus-launcher-tab:hover:not(:disabled) {
+  @apply bg-gray-200;
+}
+
+.focus-launcher-tab.active {
+  @apply bg-primary-100 text-primary-700;
+}
+
+.focus-launcher-tab:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.focus-launcher-content {
+  @apply flex flex-col items-center gap-3;
+}
+
+.focus-duration-selector {
+  @apply flex gap-2;
+}
+
+.focus-duration-btn {
+  @apply px-4 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg transition-colors;
+}
+
+.focus-duration-btn:hover:not(:disabled) {
+  @apply bg-gray-200;
+}
+
+.focus-duration-btn.active {
+  @apply bg-primary-100 text-primary-700;
+}
+
+.focus-duration-btn:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.focus-start-btn {
+  @apply w-full flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors;
+}
+
+.focus-start-btn:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.focus-start-btn svg {
+  @apply w-4 h-4;
+}
+
+.pomodoro-info {
+  @apply text-xs text-gray-500 text-center;
+}
+
+.focus-launcher-hint {
+  @apply text-xs text-gray-400 text-center;
+}

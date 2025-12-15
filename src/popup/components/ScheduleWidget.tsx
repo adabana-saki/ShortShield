@@ -2,11 +2,9 @@
  * Schedule widget for popup
  */
 
-import { useState, useEffect } from 'react';
 import { useI18n } from '@/shared/hooks/useI18n';
 import { useSettings } from '@/shared/hooks/useSettings';
 import type { DayOfWeek } from '@/shared/types';
-import { isScheduleActive } from '@/shared/utils/schedule';
 
 const DAYS_OF_WEEK: DayOfWeek[] = [0, 1, 2, 3, 4, 5, 6];
 
@@ -23,21 +21,8 @@ const DAY_KEYS: Record<DayOfWeek, string> = {
 export function ScheduleWidget() {
   const { t } = useI18n();
   const { settings, updateSettings } = useSettings();
-  const [isActive, setIsActive] = useState(false);
 
   const schedule = settings.schedule;
-
-  // Update active status
-  useEffect(() => {
-    const checkStatus = () => {
-      setIsActive(isScheduleActive(schedule));
-    };
-
-    checkStatus();
-    const interval = setInterval(checkStatus, 30000); // Check every 30 seconds
-
-    return () => clearInterval(interval);
-  }, [schedule]);
 
   const handleToggleSchedule = async () => {
     await updateSettings({
@@ -82,9 +67,9 @@ export function ScheduleWidget() {
         <div className="schedule-widget-status">
           <span className="schedule-widget-label">{t('popupScheduleStatus')}</span>
           <span
-            className={`schedule-widget-badge ${schedule.enabled && isActive ? 'active' : 'inactive'}`}
+            className={`schedule-widget-badge ${schedule.enabled ? 'active' : 'inactive'}`}
           >
-            {schedule.enabled && isActive ? t('popupScheduleOn') : t('popupScheduleOff')}
+            {schedule.enabled ? t('popupScheduleOn') : t('popupScheduleOff')}
           </span>
         </div>
         <button

@@ -37,6 +37,9 @@ describe('YouTubeDetector', () => {
         threads: false,
         snapchat: false,
         reddit: false,
+        discord: false,
+        pinterest: false,
+        twitch: false,
       },
     };
     detector.setSettings(mockSettings);

@@ -28,15 +28,19 @@ function isTimeInRange(currentMinutes: number, range: TimeRange): boolean {
 
 /**
  * Check if blocking should be active based on schedule
- * Returns true if blocking should be active (within scheduled time)
+ * Returns true if blocking should be active
+ *
+ * Behavior:
+ * - Schedule DISABLED: Always return true (blocking works normally)
+ * - Schedule ENABLED: Return true only during scheduled days/times
  */
 export function isScheduleActive(
   schedule: ScheduleConfig,
   now: Date = new Date()
 ): boolean {
-  // If schedule is disabled, don't affect blocking
+  // If schedule is disabled, allow normal blocking to continue
   if (!schedule.enabled) {
-    return true; // Return true so it doesn't block when schedule is off
+    return true; // Blocking should work normally when schedule is off
   }
 
   const currentDay = now.getDay() as DayOfWeek;
