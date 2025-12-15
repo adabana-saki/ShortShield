@@ -4,3 +4,4 @@
 
 export { useI18n } from './useI18n';
 export { useSettings } from './useSettings';
+export { useTheme, type Theme } from './useTheme';

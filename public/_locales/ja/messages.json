@@ -63,6 +63,18 @@
     "message": "Reddit",
     "description": "Redditプラットフォーム名"
   },
+  "popupPlatformDiscord": {
+    "message": "Discord",
+    "description": "Discordプラットフォーム名"
+  },
+  "popupPlatformPinterest": {
+    "message": "Pinterest",
+    "description": "Pinterestプラットフォーム名"
+  },
+  "popupPlatformTwitch": {
+    "message": "Twitch",
+    "description": "Twitchプラットフォーム名"
+  },
   "popupPlatformYouTubeFull": {
     "message": "YouTube (全体)",
     "description": "YouTube全体ブロックのプラットフォーム名"
@@ -1031,6 +1043,18 @@
     "message": "Reddit",
     "description": "Reddit platform name"
   },
+  "platformDiscord": {
+    "message": "Discord",
+    "description": "Discord platform name"
+  },
+  "platformPinterest": {
+    "message": "Pinterest",
+    "description": "Pinterest platform name"
+  },
+  "platformTwitch": {
+    "message": "Twitch",
+    "description": "Twitch platform name"
+  },
   "hours": {
     "message": "時間",
     "description": "Hours unit"
@@ -1488,5 +1512,283 @@
   "lockdownInfoItem3": {
     "message": "覚えやすいが、衝動的に推測されにくいPINを選んでください",
     "description": "Third info item about lockdown"
+  },
+  "customDomainBlockTitle": {
+    "message": "ShortShield 実行中",
+    "description": "Title shown on custom domain block overlay"
+  },
+  "customDomainBlockMessage": {
+    "message": "$DOMAIN$ をブロックして、集中力を守っています。",
+    "description": "Message shown on custom domain block overlay",
+    "placeholders": {
+      "domain": {
+        "content": "$1",
+        "example": "twitter.com"
+      }
+    }
+  },
+  "customDomainBlockHint": {
+    "message": "ShortShield設定でこのドメインをブロックリストから削除できます。",
+    "description": "Hint shown on custom domain block overlay"
+  },
+  "dashboardTitle": {
+    "message": "ダッシュボード",
+    "description": "Dashboard page title"
+  },
+  "sidebarDashboard": {
+    "message": "ダッシュボード",
+    "description": "Sidebar: Dashboard"
+  },
+  "sidebarBlocking": {
+    "message": "ブロック設定",
+    "description": "Sidebar: Blocking settings"
+  },
+  "sidebarSchedule": {
+    "message": "スケジュール",
+    "description": "Sidebar: Schedule settings"
+  },
+  "sidebarProductivity": {
+    "message": "生産性ツール",
+    "description": "Sidebar: Productivity tools"
+  },
+  "sidebarReports": {
+    "message": "レポート",
+    "description": "Sidebar: Reports"
+  },
+  "sidebarAdvanced": {
+    "message": "詳細設定",
+    "description": "Sidebar: Advanced settings"
+  },
+  "sidebarPlatforms": {
+    "message": "プラットフォーム",
+    "description": "Sidebar submenu: Platforms"
+  },
+  "sidebarCustomDomains": {
+    "message": "カスタムドメイン",
+    "description": "Sidebar submenu: Custom Domains"
+  },
+  "sidebarWhitelist": {
+    "message": "ホワイトリスト",
+    "description": "Sidebar submenu: Whitelist"
+  },
+  "sidebarScheduleConfig": {
+    "message": "時間スケジュール",
+    "description": "Sidebar submenu: Schedule configuration"
+  },
+  "sidebarTimeLimits": {
+    "message": "時間制限",
+    "description": "Sidebar submenu: Time Limits"
+  },
+  "sidebarFocusMode": {
+    "message": "フォーカスモード",
+    "description": "Sidebar submenu: Focus Mode"
+  },
+  "sidebarPomodoro": {
+    "message": "ポモドーロ",
+    "description": "Sidebar submenu: Pomodoro"
+  },
+  "sidebarStreak": {
+    "message": "ストリーク",
+    "description": "Sidebar submenu: Streak"
+  },
+  "sidebarChallenge": {
+    "message": "チャレンジ",
+    "description": "Sidebar submenu: Challenge Mode"
+  },
+  "sidebarLockdown": {
+    "message": "ロックダウン",
+    "description": "Sidebar submenu: Lockdown Mode"
+  },
+  "sidebarAppearance": {
+    "message": "外観",
+    "description": "Sidebar submenu: Appearance"
+  },
+  "sidebarBackup": {
+    "message": "バックアップ",
+    "description": "Sidebar submenu: Backup"
+  },
+  "dashboardStatusOn": {
+    "message": "ShortShieldがあなたの集中力を守っています",
+    "description": "Dashboard status when enabled"
+  },
+  "dashboardStatusOff": {
+    "message": "保護は現在一時停止中です",
+    "description": "Dashboard status when disabled"
+  },
+  "dashboardBlockedToday": {
+    "message": "今日のブロック",
+    "description": "Dashboard stat: blocked today"
+  },
+  "dashboardBlockedTotal": {
+    "message": "合計ブロック",
+    "description": "Dashboard stat: total blocked"
+  },
+  "dashboardStreak": {
+    "message": "ストリーク",
+    "description": "Dashboard stat: streak"
+  },
+  "dashboardActivePlatforms": {
+    "message": "有効なプラットフォーム",
+    "description": "Dashboard: active platforms section"
+  },
+  "dashboardNoPlatforms": {
+    "message": "プラットフォームが選択されていません",
+    "description": "Dashboard: no platforms message"
+  },
+  "dashboardManagePlatforms": {
+    "message": "プラットフォームを管理",
+    "description": "Dashboard: manage platforms link"
+  },
+  "dashboardQuickActions": {
+    "message": "クイックアクション",
+    "description": "Dashboard: quick actions section"
+  },
+  "dashboardStartFocus": {
+    "message": "フォーカス開始",
+    "description": "Dashboard: start focus button"
+  },
+  "retry": {
+    "message": "再試行",
+    "description": "Retry button text"
+  },
+  "onboardingWelcomeTitle": {
+    "message": "ShortShieldへようこそ",
+    "description": "Onboarding: welcome title"
+  },
+  "onboardingWelcomeSubtitle": {
+    "message": "デジタルウェルビーイングをコントロールし、集中力を取り戻しましょう",
+    "description": "Onboarding: welcome subtitle"
+  },
+  "onboardingFeature1": {
+    "message": "YouTube、TikTok、Instagramなどの短尺動画をブロック",
+    "description": "Onboarding: feature 1"
+  },
+  "onboardingFeature2": {
+    "message": "仕事中に自動でブロックを有効にするスケジュール設定",
+    "description": "Onboarding: feature 2"
+  },
+  "onboardingFeature3": {
+    "message": "ストリークとフォーカスセッションで進捗を追跡",
+    "description": "Onboarding: feature 3"
+  },
+  "onboardingPlatformTitle": {
+    "message": "ブロックするプラットフォームを選択",
+    "description": "Onboarding: platform selection title"
+  },
+  "onboardingPlatformSubtitle": {
+    "message": "短尺コンテンツをブロックしたいプラットフォームを選んでください",
+    "description": "Onboarding: platform selection subtitle"
+  },
+  "onboardingYouTubeDesc": {
+    "message": "YouTubeショートをブロック",
+    "description": "Onboarding: YouTube description"
+  },
+  "onboardingTikTokDesc": {
+    "message": "TikTok動画をブロック",
+    "description": "Onboarding: TikTok description"
+  },
+  "onboardingInstagramDesc": {
+    "message": "Instagramリールをブロック",
+    "description": "Onboarding: Instagram description"
+  },
+  "onboardingPlatformHint": {
+    "message": "これらの設定はいつでも変更できます",
+    "description": "Onboarding: platform hint"
+  },
+  "onboardingScheduleTitle": {
+    "message": "スケジュールを設定",
+    "description": "Onboarding: schedule title"
+  },
+  "onboardingScheduleSubtitle": {
+    "message": "ShortShieldがあなたの集中を守るタイミングを選択してください",
+    "description": "Onboarding: schedule subtitle"
+  },
+  "onboardingScheduleWorkHours": {
+    "message": "仕事時間のみ",
+    "description": "Onboarding: work hours option"
+  },
+  "onboardingScheduleWorkHoursDesc": {
+    "message": "一般的な仕事時間（平日9時〜17時）にブロック",
+    "description": "Onboarding: work hours description"
+  },
+  "onboardingScheduleAlways": {
+    "message": "常に有効",
+    "description": "Onboarding: always active option"
+  },
+  "onboardingScheduleAlwaysDesc": {
+    "message": "最大限の集中のために24時間ブロック",
+    "description": "Onboarding: always active description"
+  },
+  "onboardingScheduleHint": {
+    "message": "後で詳細なスケジュールをカスタマイズできます",
+    "description": "Onboarding: schedule hint"
+  },
+  "onboardingCompleteTitle": {
+    "message": "準備完了！",
+    "description": "Onboarding: complete title"
+  },
+  "onboardingCompleteSubtitle": {
+    "message": "ShortShieldがあなたの集中力を守り始めました",
+    "description": "Onboarding: complete subtitle"
+  },
+  "onboardingCompletePlatforms": {
+    "message": "ブロック対象:",
+    "description": "Onboarding: complete platforms label"
+  },
+  "onboardingNoPlatforms": {
+    "message": "選択なし",
+    "description": "Onboarding: no platforms selected"
+  },
+  "onboardingCompleteSchedule": {
+    "message": "スケジュール:",
+    "description": "Onboarding: complete schedule label"
+  },
+  "onboardingCompleteTip": {
+    "message": "ヒント: ポップアップメニューでブロックのオン/オフを素早く切り替えたり、集中が必要な時にフォーカスセッションを開始できます。",
+    "description": "Onboarding: complete tip"
+  },
+  "onboardingNext": {
+    "message": "次へ",
+    "description": "Onboarding: next button"
+  },
+  "onboardingBack": {
+    "message": "戻る",
+    "description": "Onboarding: back button"
+  },
+  "onboardingGetStarted": {
+    "message": "始める",
+    "description": "Onboarding: get started button"
+  },
+  "onboardingFinish": {
+    "message": "セットアップ完了",
+    "description": "Onboarding: finish button"
+  },
+  "popupPlatformsLabel": {
+    "message": "プラットフォーム",
+    "description": "Popup: platforms section label"
+  },
+  "popupScheduleLabel": {
+    "message": "スケジュール",
+    "description": "Popup: schedule section label"
+  },
+  "popupFocusLabel": {
+    "message": "フォーカス",
+    "description": "Popup: focus section label"
+  },
+  "popupPomodoroLabel": {
+    "message": "ポモドーロ",
+    "description": "Popup: pomodoro section label"
+  },
+  "popupFocusActive": {
+    "message": "フォーカスモード実行中",
+    "description": "Popup: focus mode active"
+  },
+  "popupPomodoroActive": {
+    "message": "ポモドーロ実行中",
+    "description": "Popup: pomodoro active"
+  },
+  "popupStreakLabel": {
+    "message": "日連続",
+    "description": "Popup: streak label"
   }
 }

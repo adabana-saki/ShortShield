@@ -63,6 +63,18 @@
     "message": "Reddit",
     "description": "Reddit platform name"
   },
+  "popupPlatformDiscord": {
+    "message": "Discord",
+    "description": "Discord platform name"
+  },
+  "popupPlatformPinterest": {
+    "message": "Pinterest",
+    "description": "Pinterest platform name"
+  },
+  "popupPlatformTwitch": {
+    "message": "Twitch",
+    "description": "Twitch platform name"
+  },
   "popupPlatformYouTubeFull": {
     "message": "YouTube (All)",
     "description": "Full YouTube blocking platform name"
@@ -1031,6 +1043,18 @@
     "message": "Reddit",
     "description": "Reddit platform name"
   },
+  "platformDiscord": {
+    "message": "Discord",
+    "description": "Discord platform name"
+  },
+  "platformPinterest": {
+    "message": "Pinterest",
+    "description": "Pinterest platform name"
+  },
+  "platformTwitch": {
+    "message": "Twitch",
+    "description": "Twitch platform name"
+  },
   "hours": {
     "message": "hours",
     "description": "Hours unit"
@@ -1488,5 +1512,283 @@
   "lockdownInfoItem3": {
     "message": "Choose a PIN you'll remember - but not one that's too easy to guess impulsively",
     "description": "Third info item about lockdown"
+  },
+  "customDomainBlockTitle": {
+    "message": "ShortShield Active",
+    "description": "Title shown on custom domain block overlay"
+  },
+  "customDomainBlockMessage": {
+    "message": "$DOMAIN$ is blocked to help you stay focused.",
+    "description": "Message shown on custom domain block overlay",
+    "placeholders": {
+      "domain": {
+        "content": "$1",
+        "example": "twitter.com"
+      }
+    }
+  },
+  "customDomainBlockHint": {
+    "message": "You can remove this domain from your block list in ShortShield settings.",
+    "description": "Hint shown on custom domain block overlay"
+  },
+  "dashboardTitle": {
+    "message": "Dashboard",
+    "description": "Dashboard page title"
+  },
+  "sidebarDashboard": {
+    "message": "Dashboard",
+    "description": "Sidebar: Dashboard"
+  },
+  "sidebarBlocking": {
+    "message": "Blocking",
+    "description": "Sidebar: Blocking settings"
+  },
+  "sidebarSchedule": {
+    "message": "Schedule",
+    "description": "Sidebar: Schedule settings"
+  },
+  "sidebarProductivity": {
+    "message": "Productivity",
+    "description": "Sidebar: Productivity tools"
+  },
+  "sidebarReports": {
+    "message": "Reports",
+    "description": "Sidebar: Reports"
+  },
+  "sidebarAdvanced": {
+    "message": "Advanced",
+    "description": "Sidebar: Advanced settings"
+  },
+  "sidebarPlatforms": {
+    "message": "Platforms",
+    "description": "Sidebar submenu: Platforms"
+  },
+  "sidebarCustomDomains": {
+    "message": "Custom Domains",
+    "description": "Sidebar submenu: Custom Domains"
+  },
+  "sidebarWhitelist": {
+    "message": "Whitelist",
+    "description": "Sidebar submenu: Whitelist"
+  },
+  "sidebarScheduleConfig": {
+    "message": "Time Schedule",
+    "description": "Sidebar submenu: Schedule configuration"
+  },
+  "sidebarTimeLimits": {
+    "message": "Time Limits",
+    "description": "Sidebar submenu: Time Limits"
+  },
+  "sidebarFocusMode": {
+    "message": "Focus Mode",
+    "description": "Sidebar submenu: Focus Mode"
+  },
+  "sidebarPomodoro": {
+    "message": "Pomodoro",
+    "description": "Sidebar submenu: Pomodoro"
+  },
+  "sidebarStreak": {
+    "message": "Streak",
+    "description": "Sidebar submenu: Streak"
+  },
+  "sidebarChallenge": {
+    "message": "Challenge",
+    "description": "Sidebar submenu: Challenge Mode"
+  },
+  "sidebarLockdown": {
+    "message": "Lockdown",
+    "description": "Sidebar submenu: Lockdown Mode"
+  },
+  "sidebarAppearance": {
+    "message": "Appearance",
+    "description": "Sidebar submenu: Appearance"
+  },
+  "sidebarBackup": {
+    "message": "Backup",
+    "description": "Sidebar submenu: Backup"
+  },
+  "dashboardStatusOn": {
+    "message": "ShortShield is protecting your focus",
+    "description": "Dashboard status when enabled"
+  },
+  "dashboardStatusOff": {
+    "message": "Protection is currently paused",
+    "description": "Dashboard status when disabled"
+  },
+  "dashboardBlockedToday": {
+    "message": "Blocked Today",
+    "description": "Dashboard stat: blocked today"
+  },
+  "dashboardBlockedTotal": {
+    "message": "Total Blocked",
+    "description": "Dashboard stat: total blocked"
+  },
+  "dashboardStreak": {
+    "message": "Streak",
+    "description": "Dashboard stat: streak"
+  },
+  "dashboardActivePlatforms": {
+    "message": "Active Platforms",
+    "description": "Dashboard: active platforms section"
+  },
+  "dashboardNoPlatforms": {
+    "message": "No platforms selected",
+    "description": "Dashboard: no platforms message"
+  },
+  "dashboardManagePlatforms": {
+    "message": "Manage Platforms",
+    "description": "Dashboard: manage platforms link"
+  },
+  "dashboardQuickActions": {
+    "message": "Quick Actions",
+    "description": "Dashboard: quick actions section"
+  },
+  "dashboardStartFocus": {
+    "message": "Start Focus",
+    "description": "Dashboard: start focus button"
+  },
+  "retry": {
+    "message": "Retry",
+    "description": "Retry button text"
+  },
+  "onboardingWelcomeTitle": {
+    "message": "Welcome to ShortShield",
+    "description": "Onboarding: welcome title"
+  },
+  "onboardingWelcomeSubtitle": {
+    "message": "Take control of your digital well-being and reclaim your focus",
+    "description": "Onboarding: welcome subtitle"
+  },
+  "onboardingFeature1": {
+    "message": "Block short-form videos on YouTube, TikTok, Instagram and more",
+    "description": "Onboarding: feature 1"
+  },
+  "onboardingFeature2": {
+    "message": "Set schedules to automatically enable blocking during work hours",
+    "description": "Onboarding: feature 2"
+  },
+  "onboardingFeature3": {
+    "message": "Track your progress with streaks and focus sessions",
+    "description": "Onboarding: feature 3"
+  },
+  "onboardingPlatformTitle": {
+    "message": "Choose Platforms to Block",
+    "description": "Onboarding: platform selection title"
+  },
+  "onboardingPlatformSubtitle": {
+    "message": "Select the platforms where you want to block short-form content",
+    "description": "Onboarding: platform selection subtitle"
+  },
+  "onboardingYouTubeDesc": {
+    "message": "Block YouTube Shorts",
+    "description": "Onboarding: YouTube description"
+  },
+  "onboardingTikTokDesc": {
+    "message": "Block TikTok videos",
+    "description": "Onboarding: TikTok description"
+  },
+  "onboardingInstagramDesc": {
+    "message": "Block Instagram Reels",
+    "description": "Onboarding: Instagram description"
+  },
+  "onboardingPlatformHint": {
+    "message": "You can change these settings anytime",
+    "description": "Onboarding: platform hint"
+  },
+  "onboardingScheduleTitle": {
+    "message": "Set Your Schedule",
+    "description": "Onboarding: schedule title"
+  },
+  "onboardingScheduleSubtitle": {
+    "message": "Choose when ShortShield should protect your focus",
+    "description": "Onboarding: schedule subtitle"
+  },
+  "onboardingScheduleWorkHours": {
+    "message": "Work Hours Only",
+    "description": "Onboarding: work hours option"
+  },
+  "onboardingScheduleWorkHoursDesc": {
+    "message": "Block content during typical work hours (9 AM - 5 PM, weekdays)",
+    "description": "Onboarding: work hours description"
+  },
+  "onboardingScheduleAlways": {
+    "message": "Always Active",
+    "description": "Onboarding: always active option"
+  },
+  "onboardingScheduleAlwaysDesc": {
+    "message": "Block content 24/7 for maximum focus",
+    "description": "Onboarding: always active description"
+  },
+  "onboardingScheduleHint": {
+    "message": "You can customize your schedule in detail later",
+    "description": "Onboarding: schedule hint"
+  },
+  "onboardingCompleteTitle": {
+    "message": "You're All Set!",
+    "description": "Onboarding: complete title"
+  },
+  "onboardingCompleteSubtitle": {
+    "message": "ShortShield is now protecting your focus",
+    "description": "Onboarding: complete subtitle"
+  },
+  "onboardingCompletePlatforms": {
+    "message": "Blocking enabled for:",
+    "description": "Onboarding: complete platforms label"
+  },
+  "onboardingNoPlatforms": {
+    "message": "None selected",
+    "description": "Onboarding: no platforms selected"
+  },
+  "onboardingCompleteSchedule": {
+    "message": "Schedule:",
+    "description": "Onboarding: complete schedule label"
+  },
+  "onboardingCompleteTip": {
+    "message": "Pro tip: Use the popup menu to quickly toggle blocking on/off, or start a focus session when you need extra concentration.",
+    "description": "Onboarding: complete tip"
+  },
+  "onboardingNext": {
+    "message": "Next",
+    "description": "Onboarding: next button"
+  },
+  "onboardingBack": {
+    "message": "Back",
+    "description": "Onboarding: back button"
+  },
+  "onboardingGetStarted": {
+    "message": "Get Started",
+    "description": "Onboarding: get started button"
+  },
+  "onboardingFinish": {
+    "message": "Finish Setup",
+    "description": "Onboarding: finish button"
+  },
+  "popupPlatformsLabel": {
+    "message": "Platforms",
+    "description": "Popup: platforms section label"
+  },
+  "popupScheduleLabel": {
+    "message": "Schedule",
+    "description": "Popup: schedule section label"
+  },
+  "popupFocusLabel": {
+    "message": "Focus",
+    "description": "Popup: focus section label"
+  },
+  "popupPomodoroLabel": {
+    "message": "Pomodoro",
+    "description": "Popup: pomodoro section label"
+  },
+  "popupFocusActive": {
+    "message": "Focus Mode Active",
+    "description": "Popup: focus mode active"
+  },
+  "popupPomodoroActive": {
+    "message": "Pomodoro Active",
+    "description": "Popup: pomodoro active"
+  },
+  "popupStreakLabel": {
+    "message": "day streak",
+    "description": "Popup: streak label"
   }
 }
