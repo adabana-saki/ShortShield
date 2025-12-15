@@ -1,0 +1,153 @@
+/**
+ * Main dashboard component
+ */
+
+import { useState, useEffect, useCallback } from 'react';
+import browser from 'webextension-polyfill';
+import { useI18n } from '@/shared/hooks/useI18n';
+import { createMessage } from '@/shared/types/messages';
+import type { Settings, FocusModeState, StreakData } from '@/shared/types';
+import { DEFAULT_FOCUS_STATE, DEFAULT_STREAK_DATA } from '@/shared/constants';
+import { StatusCard } from './StatusCard';
+import { PlatformSummary } from './PlatformSummary';
+import { QuickActions } from './QuickActions';
+import { ScheduleStatus } from './ScheduleStatus';
+import type { SectionId, SubSectionId } from '../layout';
+
+interface DashboardProps {
+  settings: Settings;
+  onToggleEnabled: () => void;
+  onNavigate: (section: SectionId, subSection?: SubSectionId) => void;
+}
+
+export function Dashboard({ settings, onToggleEnabled, onNavigate }: DashboardProps) {
+  const { t, formatNumber } = useI18n();
+  const [focusState, setFocusState] = useState<FocusModeState>(DEFAULT_FOCUS_STATE);
+  const [streakData, setStreakData] = useState<StreakData>(DEFAULT_STREAK_DATA);
+
+  const fetchFocusState = useCallback(async () => {
+    try {
+      const message = createMessage({ type: 'FOCUS_GET_STATE' as const });
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
+      if (response.success && response.data) {
+        setFocusState(response.data);
+      }
+    } catch {
+      // Ignore errors
+    }
+  }, []);
+
+  const fetchStreakData = useCallback(async () => {
+    try {
+      const message = createMessage({ type: 'STREAK_GET_DATA' as const });
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: StreakData };
+      if (response.success && response.data) {
+        setStreakData(response.data);
+      }
+    } catch {
+      // Ignore errors
+    }
+  }, []);
+
+  useEffect(() => {
+    void fetchFocusState();
+    void fetchStreakData();
+
+    const interval = setInterval(() => {
+      void fetchFocusState();
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [fetchFocusState, fetchStreakData]);
+
+  return (
+    <div className="dashboard">
+      {/* Header with global toggle */}
+      <div className="dashboard-header">
+        <div className="dashboard-header-left">
+          <h1 className="dashboard-title">{t('dashboardTitle')}</h1>
+          <p className="dashboard-subtitle">{t('dashboardSubtitle')}</p>
+        </div>
+        <div className="dashboard-header-right">
+          <label className="dashboard-toggle">
+            <span className="dashboard-toggle-label">
+              {settings.enabled ? t('popupStatusEnabled') : t('popupStatusDisabled')}
+            </span>
+            <div className="toggle-switch toggle-switch-lg">
+              <input
+                type="checkbox"
+                checked={settings.enabled}
+                onChange={onToggleEnabled}
+              />
+              <span className="toggle-slider" />
+            </div>
+          </label>
+        </div>
+      </div>
+
+      {/* Status cards */}
+      <div className="dashboard-stats">
+        <StatusCard
+          title={t('popupStatsToday')}
+          value={formatNumber(settings.stats.blockedToday)}
+          icon={
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+            </svg>
+          }
+          variant="default"
+        />
+        <StatusCard
+          title={t('popupStatsTotal')}
+          value={formatNumber(settings.stats.blockedTotal)}
+          icon={
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          }
+          variant="accent"
+        />
+        <StatusCard
+          title={t('streakCurrent')}
+          value={streakData.currentStreak}
+          subtitle={`${t('streakBest')}: ${streakData.longestStreak}`}
+          icon={
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+            </svg>
+          }
+          variant="success"
+        />
+      </div>
+
+      {/* Main content grid */}
+      <div className="dashboard-grid">
+        {/* Platform summary */}
+        <div className="dashboard-card">
+          <PlatformSummary
+            platforms={settings.platforms}
+            onEditClick={() => onNavigate('blocking', 'platforms')}
+          />
+        </div>
+
+        {/* Schedule status */}
+        <div className="dashboard-card">
+          <ScheduleStatus
+            schedule={settings.schedule}
+            onEditClick={() => onNavigate('schedule', 'scheduleConfig')}
+          />
+        </div>
+
+        {/* Quick actions */}
+        <div className="dashboard-card dashboard-card-wide">
+          <QuickActions
+            focusEnabled={settings.focusMode.enabled}
+            focusState={focusState}
+            onFocusStateChange={setFocusState}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}

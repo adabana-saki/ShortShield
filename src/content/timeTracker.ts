@@ -161,7 +161,8 @@ async function checkTimeLimit(): Promise<void> {
       },
     });
 
-    const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: TimeCheckLimitResult };
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+    const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: { limitReached: boolean } };
 
     if (response.success && response.data) {
       const result = response.data;
@@ -268,6 +269,7 @@ export async function forceCheckLimit(): Promise<TimeCheckLimitResult | null> {
       },
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: TimeCheckLimitResult };
 
     if (response.success && response.data) {

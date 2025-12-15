@@ -18,10 +18,11 @@ type CrxManifest = chrome.runtime.ManifestV3;
 
 /**
  * Load manifest (Manifest V3 for all browsers)
- * All browsers (Chrome, Firefox, Edge) now use the same manifest.json
+ * Firefox uses a separate manifest due to browser-specific requirements
  */
 function loadManifest(): CrxManifest {
-  const manifestPath = resolve(__dirname, 'manifest.json');
+  const manifestFile = browser === 'firefox' ? 'manifest.firefox.json' : 'manifest.json';
+  const manifestPath = resolve(__dirname, manifestFile);
 
   if (!existsSync(manifestPath)) {
     throw new Error(`Manifest not found: ${manifestPath}`);

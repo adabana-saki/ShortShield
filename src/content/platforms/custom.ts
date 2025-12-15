@@ -6,6 +6,7 @@
 import { BasePlatformDetector } from './base';
 import type { Platform, CustomBlockedDomain } from '@/shared/types';
 import { createLogger } from '@/shared/utils/logger';
+import { t } from '@/shared/utils/i18n';
 
 const logger = createLogger('custom-domain');
 
@@ -33,6 +34,20 @@ export class CustomDomainDetector extends BasePlatformDetector {
   }
 
   /**
+   * Override isEnabled to check global enabled state only
+   * Custom domains should work independently of platform-specific settings
+   */
+  override isEnabled(): boolean {
+    if (this.settings === null) {
+      return true; // Default to enabled if settings not loaded
+    }
+
+    // For custom domains, only check global enabled state
+    // Don't check platform-specific settings
+    return this.settings.enabled;
+  }
+
+  /**
    * Check if the current hostname matches any custom blocked domain
    */
   isSupported(hostname: string): boolean {
@@ -43,10 +58,21 @@ export class CustomDomainDetector extends BasePlatformDetector {
 
   /**
    * Check if a hostname matches a domain pattern
+   * Supports wildcard patterns:
+   * - `youtube.com` - exact match (including subdomains)
+   * - `*youtube*` - contains "youtube" anywhere in hostname
+   * - `youtube*` - starts with "youtube"
+   * - `*youtube` - ends with "youtube"
+   * - `*.youtube.com` - any subdomain of youtube.com
    */
   private matchesDomain(hostname: string, domain: string): boolean {
     const normalizedHostname = hostname.toLowerCase().replace(/^www\./, '');
     const normalizedDomain = domain.toLowerCase().replace(/^www\./, '');
+
+    // Check if pattern contains wildcards
+    if (normalizedDomain.includes('*')) {
+      return this.matchesWildcardPattern(normalizedHostname, normalizedDomain);
+    }
 
     // Exact match
     if (normalizedHostname === normalizedDomain) {
@@ -59,6 +85,20 @@ export class CustomDomainDetector extends BasePlatformDetector {
     }
 
     return false;
+  }
+
+  /**
+   * Match hostname against wildcard pattern
+   */
+  private matchesWildcardPattern(hostname: string, pattern: string): boolean {
+    // Convert wildcard pattern to regex
+    // Escape special regex characters except *
+    const escapedPattern = pattern
+      .replace(/[.+?^${}()|[\]\\]/g, '\\$&')
+      .replace(/\*/g, '.*');
+
+    const regex = new RegExp(`^${escapedPattern}$`);
+    return regex.test(hostname);
   }
 
   /**
@@ -122,32 +162,43 @@ export class CustomDomainDetector extends BasePlatformDetector {
         ? domain.description
         : domain.domain;
 
-    overlay.innerHTML = `
-      <div style="text-align: center; max-width: 400px; padding: 40px;">
-        <div style="font-size: 72px; margin-bottom: 24px;">&#x1F6E1;&#xFE0F;</div>
-        <h1 style="font-size: 28px; font-weight: 600; margin: 0 0 12px 0;">ShortShield Active</h1>
-        <p style="font-size: 18px; opacity: 0.9; margin: 0 0 24px 0;">
-          ${this.escapeHtml(displayDomain)} is blocked to help you stay focused.
-        </p>
-        <p style="font-size: 14px; opacity: 0.6; margin: 0;">
-          You can remove this domain from your block list in ShortShield settings.
-        </p>
-      </div>
-    `;
+    // Create content container
+    const contentDiv = document.createElement('div');
+    contentDiv.style.cssText =
+      'text-align: center; max-width: 400px; padding: 40px;';
+
+    // Create icon
+    const iconDiv = document.createElement('div');
+    iconDiv.style.cssText = 'font-size: 72px; margin-bottom: 24px;';
+    iconDiv.textContent = '🛡️';
+    contentDiv.appendChild(iconDiv);
+
+    // Create title
+    const title = document.createElement('h1');
+    title.style.cssText =
+      'font-size: 28px; font-weight: 600; margin: 0 0 12px 0;';
+    title.textContent = t('customDomainBlockTitle');
+    contentDiv.appendChild(title);
+
+    // Create main message
+    const mainMessage = document.createElement('p');
+    mainMessage.style.cssText =
+      'font-size: 18px; opacity: 0.9; margin: 0 0 24px 0;';
+    mainMessage.textContent = t('customDomainBlockMessage', displayDomain);
+    contentDiv.appendChild(mainMessage);
+
+    // Create settings hint
+    const settingsHint = document.createElement('p');
+    settingsHint.style.cssText = 'font-size: 14px; opacity: 0.6; margin: 0;';
+    settingsHint.textContent = t('customDomainBlockHint');
+    contentDiv.appendChild(settingsHint);
+
+    overlay.appendChild(contentDiv);
 
     document.documentElement.appendChild(overlay);
 
     // Log the block (using youtube as placeholder platform)
     void this.logBlock(document.body, 'hide');
-  }
-
-  /**
-   * Escape HTML to prevent XSS
-   */
-  private escapeHtml(text: string): string {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
   }
 }
 

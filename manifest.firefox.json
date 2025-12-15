@@ -1,0 +1,79 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "0.1.1",
+  "default_locale": "en",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "shortshield@adabana-saki.github.io",
+      "strict_min_version": "112.0",
+      "data_collection_permissions": {
+        "required": []
+      }
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_popup": "src/popup/index.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    },
+    "default_title": "__MSG_extensionName__"
+  },
+  "options_ui": {
+    "page": "src/options/index.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "scripts": ["src/background/index.ts"],
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/*",
+        "*://*.tiktok.com/*",
+        "*://*.instagram.com/*",
+        "*://*.twitter.com/*",
+        "*://*.x.com/*",
+        "*://*.facebook.com/*",
+        "*://*.linkedin.com/*",
+        "*://*.threads.net/*",
+        "*://*.snapchat.com/*",
+        "*://*.reddit.com/*"
+      ],
+      "js": ["src/content/index.ts"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["storage", "activeTab", "alarms", "notifications"],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "*://*.tiktok.com/*",
+    "*://*.instagram.com/*",
+    "*://*.twitter.com/*",
+    "*://*.x.com/*",
+    "*://*.facebook.com/*",
+    "*://*.linkedin.com/*",
+    "*://*.threads.net/*",
+    "*://*.snapchat.com/*",
+    "*://*.reddit.com/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

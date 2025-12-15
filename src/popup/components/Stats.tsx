@@ -18,6 +18,9 @@ const PLATFORM_NAMES: Record<Platform, string> = {
   threads: 'Threads',
   snapchat: 'Snapchat',
   reddit: 'Reddit',
+  discord: 'Discord',
+  pinterest: 'Pinterest',
+  twitch: 'Twitch',
 };
 
 interface StatsProps {

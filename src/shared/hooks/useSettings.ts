@@ -89,6 +89,7 @@ export function useSettings(): UseSettingsResult {
     async (update: SettingsUpdate): Promise<void> => {
       try {
         setError(null);
+        console.log('[useSettings] Sending UPDATE_SETTINGS:', update);
 
         const response = await browser.runtime.sendMessage(
           createMessage<UpdateSettingsMessage>({
@@ -96,6 +97,8 @@ export function useSettings(): UseSettingsResult {
             payload: update,
           })
         );
+
+        console.log('[useSettings] Received response:', response);
 
         if (
           response !== null &&
@@ -112,12 +115,17 @@ export function useSettings(): UseSettingsResult {
             typedResponse.success === true &&
             typedResponse.data !== undefined
           ) {
+            console.log('[useSettings] Settings updated successfully, onboardingCompleted:', typedResponse.data.onboardingCompleted);
             setSettings(typedResponse.data);
           } else {
+            console.error('[useSettings] Update failed:', typedResponse.error);
             setError(typedResponse.error ?? 'Failed to update settings');
           }
+        } else {
+          console.error('[useSettings] Invalid response format:', response);
         }
       } catch (err) {
+        console.error('[useSettings] Error:', err);
         setError(String(err));
       }
     },

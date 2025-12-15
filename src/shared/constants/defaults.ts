@@ -49,6 +49,9 @@ export const DEFAULT_PLATFORM_SETTINGS: PlatformSettings = {
   threads: false,
   snapchat: false,
   reddit: false,
+  discord: false,
+  pinterest: false,
+  twitch: false,
 } as const;
 
 /**
@@ -69,6 +72,9 @@ export const DEFAULT_STATS: BlockingStats = {
     threads: 0,
     snapchat: 0,
     reddit: 0,
+    discord: 0,
+    pinterest: 0,
+    twitch: 0,
   },
 } as const;
 
@@ -169,6 +175,8 @@ export const DEFAULT_TIME_LIMITS: TimeLimitsSettings = {
     { platform: 'twitter', dailyLimitMinutes: 30, enabled: false },
     { platform: 'facebook', dailyLimitMinutes: 30, enabled: false },
     { platform: 'reddit', dailyLimitMinutes: 30, enabled: false },
+    { platform: 'discord', dailyLimitMinutes: 60, enabled: false },
+    { platform: 'twitch', dailyLimitMinutes: 60, enabled: false },
   ],
   warningThresholdPercent: 80,
   blockWhenLimitReached: true,
@@ -292,6 +300,7 @@ export const DEFAULT_SETTINGS: Settings = {
   streak: DEFAULT_STREAK,
   challenge: DEFAULT_CHALLENGE,
   lockdown: DEFAULT_LOCKDOWN,
+  onboardingCompleted: false,
   version: SETTINGS_VERSION,
 } as const;
 

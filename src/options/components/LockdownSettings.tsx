@@ -61,6 +61,7 @@ export function LockdownSettings() {
 
   const loadLockdownState = async () => {
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       const response = await browser.runtime.sendMessage({
         type: 'LOCKDOWN_GET_STATE',
       }) as { success: boolean; data?: LockdownState };
@@ -80,6 +81,7 @@ export function LockdownSettings() {
 
   const checkEmergencyBypassStatus = async () => {
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       const response = await browser.runtime.sendMessage({
         type: 'LOCKDOWN_CHECK_EMERGENCY_BYPASS',
       }) as { success: boolean; data?: EmergencyBypassCheckResult };
@@ -139,6 +141,7 @@ export function LockdownSettings() {
     }
 
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       const response = await browser.runtime.sendMessage({
         type: 'LOCKDOWN_SET_PIN',
         payload: {
@@ -170,6 +173,7 @@ export function LockdownSettings() {
     }
 
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       const response = await browser.runtime.sendMessage({
         type: 'LOCKDOWN_ACTIVATE',
         payload: { pin: activatePin },
@@ -196,6 +200,7 @@ export function LockdownSettings() {
     }
 
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       const response = await browser.runtime.sendMessage({
         type: 'LOCKDOWN_DEACTIVATE',
         payload: { pin: deactivatePin },
@@ -217,6 +222,7 @@ export function LockdownSettings() {
 
   const handleRequestEmergencyBypass = async () => {
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       const response = await browser.runtime.sendMessage({
         type: 'LOCKDOWN_REQUEST_EMERGENCY_BYPASS',
       }) as { success: boolean; data?: LockdownState };

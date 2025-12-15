@@ -2,6 +2,7 @@
  * Options page components exports
  */
 
+// Existing components
 export { Whitelist } from './Whitelist';
 export { ExportImport } from './ExportImport';
 export { CustomRules } from './CustomRules';
@@ -15,3 +16,18 @@ export { TimeReports } from './TimeReports';
 export { StreakSettings } from './StreakSettings';
 export { ChallengeSettings } from './ChallengeSettings';
 export { LockdownSettings } from './LockdownSettings';
+
+// Layout components
+export * from './layout';
+
+// Common components
+export * from './common';
+
+// Dashboard components
+export * from './dashboard';
+
+// Section components
+export * from './sections';
+
+// Onboarding components
+export * from './onboarding';

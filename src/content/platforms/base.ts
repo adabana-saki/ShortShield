@@ -67,11 +67,24 @@ export abstract class BasePlatformDetector {
       this.settings.enabled && this.settings.platforms[this.platform];
 
     if (!platformEnabled) {
+      logger.debug('Platform disabled', {
+        platform: this.platform,
+        globalEnabled: this.settings.enabled,
+        platformEnabled: this.settings.platforms[this.platform],
+      });
       return false;
     }
 
     // Check schedule - if schedule is enabled, only block during scheduled times
-    return isScheduleActive(this.settings.schedule);
+    const scheduleActive = isScheduleActive(this.settings.schedule);
+
+    logger.debug('Checking if enabled', {
+      platform: this.platform,
+      scheduleEnabled: this.settings.schedule.enabled,
+      scheduleActive,
+    });
+
+    return scheduleActive;
   }
 
   /**
@@ -307,68 +320,61 @@ export abstract class BasePlatformDetector {
     const displayTitle = blockPage.title || options.title;
     const displayMessage = blockPage.message || options.message;
 
-    // Build quote HTML if enabled
-    let quoteHtml = '';
-    if (blockPage.showMotivationalQuote) {
-      const quote = this.getRandomQuote();
-      quoteHtml = `
-        <p style="
-          font-size: 14px;
-          color: ${mutedColor};
-          font-style: italic;
-          margin: 0 0 24px 0;
-          max-width: 350px;
-        ">"${quote}"</p>
-      `;
-    }
-
-    // Build bypass button HTML if enabled
-    let bypassHtml = '';
+    // Check if bypass button should be shown
     const showBypass =
       options.showBypassOverride !== undefined
         ? options.showBypassOverride
         : blockPage.showBypassButton;
-    if (showBypass && options.onBypassClick) {
-      bypassHtml = `
-        <button id="${options.id}-bypass" style="
-          background: transparent;
-          color: ${mutedColor};
-          border: 1px solid ${mutedColor};
-          padding: 8px 20px;
-          font-size: 14px;
-          font-weight: 400;
-          border-radius: 20px;
-          cursor: pointer;
-          transition: all 0.2s;
-          margin-top: 12px;
-        ">Bypass for 5 minutes</button>
-      `;
+
+    // Create content container
+    const contentDiv = document.createElement('div');
+    contentDiv.style.cssText =
+      'text-align: center; max-width: 400px; padding: 40px;';
+
+    // Create icon
+    const iconDiv = document.createElement('div');
+    iconDiv.style.cssText = 'font-size: 64px; margin-bottom: 20px;';
+    iconDiv.textContent = '🛡️';
+    contentDiv.appendChild(iconDiv);
+
+    // Create title
+    const title = document.createElement('h1');
+    title.style.cssText = `font-size: 28px; margin: 0 0 16px 0; font-weight: 600; color: ${textColor};`;
+    title.textContent = displayTitle;
+    contentDiv.appendChild(title);
+
+    // Create message
+    const messagePara = document.createElement('p');
+    messagePara.style.cssText = `font-size: 16px; color: ${mutedColor}; margin: 0 0 20px 0; line-height: 1.5;`;
+    messagePara.textContent = displayMessage;
+    contentDiv.appendChild(messagePara);
+
+    // Add motivational quote if enabled
+    if (blockPage.showMotivationalQuote) {
+      const quote = this.getRandomQuote();
+      const quotePara = document.createElement('p');
+      quotePara.style.cssText = `font-size: 14px; color: ${mutedColor}; font-style: italic; margin: 0 0 24px 0; max-width: 350px;`;
+      quotePara.textContent = `"${quote}"`;
+      contentDiv.appendChild(quotePara);
     }
 
-    overlay.innerHTML = `
-      <div style="text-align: center; max-width: 400px; padding: 40px;">
-        <div style="font-size: 64px; margin-bottom: 20px;">🛡️</div>
-        <h1 style="font-size: 28px; margin: 0 0 16px 0; font-weight: 600; color: ${textColor};">
-          ${displayTitle}
-        </h1>
-        <p style="font-size: 16px; color: ${mutedColor}; margin: 0 0 20px 0; line-height: 1.5;">
-          ${displayMessage}
-        </p>
-        ${quoteHtml}
-        <button id="${options.id}-primary" style="
-          background: ${primaryColor};
-          color: white;
-          border: none;
-          padding: 12px 32px;
-          font-size: 16px;
-          font-weight: 500;
-          border-radius: 24px;
-          cursor: pointer;
-          transition: filter 0.2s;
-        ">${options.primaryButtonText}</button>
-        ${bypassHtml}
-      </div>
-    `;
+    // Create primary button
+    const primaryButton = document.createElement('button');
+    primaryButton.id = `${options.id}-primary`;
+    primaryButton.style.cssText = `background: ${primaryColor}; color: white; border: none; padding: 12px 32px; font-size: 16px; font-weight: 500; border-radius: 24px; cursor: pointer; transition: filter 0.2s;`;
+    primaryButton.textContent = options.primaryButtonText;
+    contentDiv.appendChild(primaryButton);
+
+    // Add bypass button if enabled
+    if (showBypass && options.onBypassClick) {
+      const bypassButton = document.createElement('button');
+      bypassButton.id = `${options.id}-bypass`;
+      bypassButton.style.cssText = `background: transparent; color: ${mutedColor}; border: 1px solid ${mutedColor}; padding: 8px 20px; font-size: 14px; font-weight: 400; border-radius: 20px; cursor: pointer; transition: all 0.2s; margin-top: 12px;`;
+      bypassButton.textContent = 'Bypass for 5 minutes';
+      contentDiv.appendChild(bypassButton);
+    }
+
+    overlay.appendChild(contentDiv);
 
     // Add event listeners after appending to DOM
     setTimeout(() => {
