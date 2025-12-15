@@ -1238,6 +1238,33 @@
   @apply bg-gray-100 text-gray-600;
 }
 
+/* Dark mode for Platform Summary */
+.dark .platform-summary-title {
+  color: var(--color-text-primary) !important;
+}
+
+.dark .platform-summary-edit {
+  color: var(--color-accent) !important;
+}
+
+.dark .platform-summary-edit:hover {
+  color: var(--color-accent-hover) !important;
+}
+
+.dark .platform-summary-empty {
+  color: var(--color-text-muted) !important;
+}
+
+.dark .platform-badge-active {
+  background-color: rgba(96, 165, 250, 0.2) !important;
+  color: var(--color-accent) !important;
+}
+
+.dark .platform-badge-more {
+  background-color: var(--color-bg-hover) !important;
+  color: var(--color-text-secondary) !important;
+}
+
 /* Schedule Status (Dashboard) */
 .schedule-status-header {
   @apply flex items-center justify-between mb-3;
@@ -1275,9 +1302,41 @@
   @apply text-sm text-gray-600;
 }
 
+/* Dark mode for Schedule Status (Dashboard) */
+.dark .schedule-status-title {
+  color: var(--color-text-primary) !important;
+}
+
+.dark .schedule-status-badge.active {
+  background-color: rgba(52, 211, 153, 0.2) !important;
+  color: var(--color-success) !important;
+}
+
+.dark .schedule-status-badge.inactive {
+  background-color: var(--color-bg-hover) !important;
+  color: var(--color-text-secondary) !important;
+}
+
+.dark .schedule-status-edit {
+  color: var(--color-accent) !important;
+}
+
+.dark .schedule-status-edit:hover {
+  color: var(--color-accent-hover) !important;
+}
+
+.dark .schedule-status-summary {
+  color: var(--color-text-secondary) !important;
+}
+
 /* Quick Actions */
 .quick-actions-title {
   @apply text-base font-semibold text-gray-900 mb-4;
+}
+
+/* Dark mode for Quick Actions */
+.dark .quick-actions-title {
+  color: var(--color-text-primary) !important;
 }
 
 .quick-actions-focus {
@@ -2069,6 +2128,27 @@
   color: var(--color-text-tertiary);
 }
 
+/* Dark mode for status card icons */
+.dark .status-card-default .status-card-icon {
+  background-color: var(--color-bg-hover) !important;
+  color: var(--color-text-secondary) !important;
+}
+
+.dark .status-card-accent .status-card-icon {
+  background-color: rgba(96, 165, 250, 0.2) !important;
+  color: var(--color-accent) !important;
+}
+
+.dark .status-card-success .status-card-icon {
+  background-color: rgba(52, 211, 153, 0.2) !important;
+  color: var(--color-success) !important;
+}
+
+.dark .status-card-warning .status-card-icon {
+  background-color: rgba(251, 191, 36, 0.2) !important;
+  color: var(--color-warning) !important;
+}
+
 .dark .dashboard-card {
   background-color: var(--color-bg-primary);
   border-color: var(--color-border-primary);
@@ -2829,4 +2909,365 @@
 /* Section description */
 .dark .section-description {
   color: var(--color-text-tertiary) !important;
+}
+
+/* ===================================
+   Dark Mode - Additional Overrides
+   =================================== */
+
+/* All heading tags */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: var(--color-text-primary) !important;
+}
+
+/* All paragraph and label text */
+.dark p,
+.dark label,
+.dark span {
+  color: inherit;
+}
+
+/* Form elements */
+.dark input,
+.dark textarea,
+.dark select {
+  color: var(--color-text-primary) !important;
+  background-color: var(--color-bg-secondary) !important;
+  border-color: var(--color-border-primary) !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: var(--color-text-muted) !important;
+}
+
+/* Options header */
+.dark .options-header,
+.dark .options-header h1 {
+  color: var(--color-text-primary) !important;
+  border-color: var(--color-border-primary) !important;
+}
+
+/* Options tabs */
+.dark .options-tabs {
+  border-color: var(--color-border-primary) !important;
+}
+
+.dark .options-tab {
+  color: var(--color-text-secondary) !important;
+}
+
+.dark .options-tab:hover {
+  color: var(--color-text-primary) !important;
+}
+
+.dark .options-tab.active {
+  color: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+}
+
+/* Options section */
+.dark .options-section,
+.dark .options-section h2 {
+  color: var(--color-text-primary) !important;
+  background-color: var(--color-bg-primary) !important;
+}
+
+/* Platform toggle */
+.dark .platform-toggle span {
+  color: var(--color-text-primary) !important;
+}
+
+/* Stats display */
+.dark .stat-value {
+  color: var(--color-text-primary) !important;
+}
+
+.dark .stat-label {
+  color: var(--color-text-secondary) !important;
+}
+
+/* Whitelist and custom rules */
+.dark .whitelist-platform-tabs button {
+  color: var(--color-text-secondary) !important;
+}
+
+.dark .whitelist-platform-tabs button.active {
+  color: var(--color-text-primary) !important;
+  background-color: var(--color-bg-tertiary) !important;
+}
+
+/* Log entries */
+.dark .log-platform {
+  color: var(--color-text-primary) !important;
+}
+
+.dark .log-url {
+  color: var(--color-text-secondary) !important;
+}
+
+/* Block page customization */
+.dark .color-option-label {
+  color: var(--color-text-primary) !important;
+}
+
+/* Focus mode */
+.dark .focus-duration-label {
+  color: var(--color-text-primary) !important;
+}
+
+/* Pomodoro */
+.dark .pomodoro-settings-item label {
+  color: var(--color-text-primary) !important;
+}
+
+/* Time limits */
+.dark .time-limit-platform-name {
+  color: var(--color-text-primary) !important;
+}
+
+.dark .time-limit-usage {
+  color: var(--color-text-secondary) !important;
+}
+
+/* Challenge mode */
+.dark .challenge-info-text {
+  color: var(--color-text-secondary) !important;
+}
+
+/* Lockdown mode */
+.dark .lockdown-info-item {
+  color: var(--color-text-secondary) !important;
+}
+
+/* All remaining text in settings */
+.dark .settings-layout,
+.dark .main-content {
+  color: var(--color-text-primary);
+}
+
+/* Force text color on any element with dark text classes */
+.dark [class*="text-gray"],
+.dark [class*="text-slate"],
+.dark [class*="text-zinc"],
+.dark [class*="text-neutral"],
+.dark [class*="text-stone"] {
+  color: var(--color-text-primary) !important;
+}
+
+/* But allow colored text to remain */
+.dark .text-blue-600,
+.dark .text-green-600,
+.dark .text-red-600,
+.dark .text-yellow-600,
+.dark .text-primary-600 {
+  color: inherit !important;
+}
+
+.dark [class*="text-blue-"],
+.dark [class*="text-green-"],
+.dark [class*="text-red-"],
+.dark [class*="text-yellow-"] {
+  color: inherit !important;
+}
+
+/* ===================================
+   Custom Domains Help Section
+   =================================== */
+
+.custom-domains-help {
+  margin-bottom: 16px;
+}
+
+.help-details {
+  background-color: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.help-summary {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+}
+
+.help-summary:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.help-summary::before {
+  content: '▶';
+  font-size: 10px;
+  transition: transform 0.2s ease;
+}
+
+.help-details[open] .help-summary::before {
+  transform: rotate(90deg);
+}
+
+.help-content {
+  padding: 0 16px 16px;
+  border-top: 1px solid var(--color-border-primary);
+}
+
+.help-intro {
+  margin: 12px 0;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.help-examples {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.help-example {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 8px 12px;
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 6px;
+}
+
+.help-example code {
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent);
+  background-color: var(--color-accent-light);
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.help-example span {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.help-tip {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background-color: var(--color-accent-light);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 6px 6px 0;
+  color: var(--color-accent-text);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Dark mode for help section */
+.dark .help-details {
+  background-color: var(--color-bg-secondary);
+}
+
+.dark .help-example {
+  background-color: var(--color-bg-tertiary);
+}
+
+.dark .help-example code {
+  color: var(--color-accent);
+  background-color: rgba(96, 165, 250, 0.15);
+}
+
+.dark .help-tip {
+  background-color: rgba(96, 165, 250, 0.1);
+  color: var(--color-accent);
+}
+
+/* ===================================
+   Language Settings
+   =================================== */
+
+.language-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.language-selector {
+  margin-top: 12px;
+}
+
+.language-select {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 16px;
+  font-size: 14px;
+  border: 1px solid var(--color-border-primary);
+  border-radius: 8px;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.language-select:hover {
+  border-color: var(--color-accent);
+}
+
+.language-select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-light);
+}
+
+.language-detected {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.language-detected strong {
+  color: var(--color-accent);
+}
+
+.language-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 8px;
+}
+
+.language-note svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+.language-note p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* Dark mode for language settings */
+.dark .language-select {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-primary);
+}
+
+.dark .language-note {
+  background-color: var(--color-bg-secondary);
 }

@@ -12,6 +12,8 @@ const PLATFORM_NAMES: Record<Platform, string> = {
   tiktok: 'TikTok',
   instagram: 'Instagram',
   youtube_full: 'YouTube (Full)',
+  instagram_full: 'Instagram (Full)',
+  tiktok_full: 'TikTok (Full)',
   twitter: 'X (Twitter)',
   facebook: 'Facebook',
   linkedin: 'LinkedIn',

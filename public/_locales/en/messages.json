@@ -79,6 +79,50 @@
     "message": "YouTube (All)",
     "description": "Full YouTube blocking platform name"
   },
+  "platformYouTubeFull": {
+    "message": "YouTube (Full Site)",
+    "description": "Full YouTube site blocking option"
+  },
+  "platformYouTubeFullDescription": {
+    "message": "Block all of YouTube, not just Shorts",
+    "description": "Description for full YouTube blocking"
+  },
+  "platformInstagramFull": {
+    "message": "Instagram (Full Site)",
+    "description": "Full Instagram site blocking option"
+  },
+  "platformInstagramFullDescription": {
+    "message": "Block all of Instagram, not just Reels",
+    "description": "Description for full Instagram blocking"
+  },
+  "platformTikTokFull": {
+    "message": "TikTok (Full Site)",
+    "description": "Full TikTok site blocking option"
+  },
+  "platformTikTokFullDescription": {
+    "message": "Block all of TikTok entirely",
+    "description": "Description for full TikTok blocking"
+  },
+  "shortVideoSection": {
+    "message": "Short Video Blocking",
+    "description": "Section title for short video platform blocking"
+  },
+  "fullSiteBlockingSection": {
+    "message": "Full Site Blocking",
+    "description": "Section title for full site blocking options"
+  },
+  "platformYouTubeDescription": {
+    "message": "Block YouTube Shorts only",
+    "description": "Description for YouTube Shorts blocking"
+  },
+  "platformTikTokDescription": {
+    "message": "Block TikTok videos",
+    "description": "Description for TikTok blocking"
+  },
+  "platformInstagramDescription": {
+    "message": "Block Instagram Reels only",
+    "description": "Description for Instagram Reels blocking"
+  },
   "popupSectionShortVideo": {
     "message": "Short Video Platforms",
     "description": "Section title for short video platforms"
@@ -556,6 +600,34 @@
   "customDomainsErrorFailed": {
     "message": "Failed to add domain",
     "description": "Error when adding domain fails"
+  },
+  "customDomainsHelpTitle": {
+    "message": "How to use (click to expand)",
+    "description": "Help section title for custom domains"
+  },
+  "customDomainsHelpIntro": {
+    "message": "You can block specific websites or use wildcards (*) to block multiple related sites:",
+    "description": "Help section introduction"
+  },
+  "customDomainsExampleExact": {
+    "message": "Blocks only example.com",
+    "description": "Exact domain example description"
+  },
+  "customDomainsExampleSubdomain": {
+    "message": "Blocks all subdomains (e.g., blog.example.com, shop.example.com)",
+    "description": "Subdomain wildcard example description"
+  },
+  "customDomainsExampleContains": {
+    "message": "Blocks any domain containing 'game' (e.g., games.com, mygame.net)",
+    "description": "Contains wildcard example description"
+  },
+  "customDomainsExampleStartsWith": {
+    "message": "Blocks domains starting with 'news' (e.g., news.com, newsfeed.org)",
+    "description": "Starts with wildcard example description"
+  },
+  "customDomainsHelpTip": {
+    "message": "Tip: URLs are automatically cleaned - you can paste full URLs and ShortShield will extract the domain.",
+    "description": "Help tip about URL handling"
   },
   "optionsTabCustomDomains": {
     "message": "Custom Domains",
@@ -1535,6 +1607,54 @@
     "message": "Dashboard",
     "description": "Dashboard page title"
   },
+  "dashboardSubtitle": {
+    "message": "Monitor your focus progress",
+    "description": "Dashboard subtitle"
+  },
+  "dashboardEdit": {
+    "message": "Edit",
+    "description": "Dashboard edit button"
+  },
+  "dashboardActivePlatforms": {
+    "message": "Active Platforms",
+    "description": "Dashboard active platforms section title"
+  },
+  "dashboardNoPlatforms": {
+    "message": "No platforms enabled",
+    "description": "Dashboard no platforms message"
+  },
+  "dashboardMore": {
+    "message": "more",
+    "description": "Dashboard more platforms text"
+  },
+  "dashboardQuickActions": {
+    "message": "Quick Actions",
+    "description": "Dashboard quick actions section title"
+  },
+  "dashboardStartFocus": {
+    "message": "Start Focus",
+    "description": "Dashboard start focus button"
+  },
+  "dashboardFocusDisabledHint": {
+    "message": "Enable Focus Mode in settings to use quick focus",
+    "description": "Dashboard focus disabled hint"
+  },
+  "streakBest": {
+    "message": "Best",
+    "description": "Best streak label"
+  },
+  "scheduleActive": {
+    "message": "Active",
+    "description": "Schedule is currently active"
+  },
+  "scheduleInactive": {
+    "message": "Inactive",
+    "description": "Schedule is currently inactive"
+  },
+  "scheduleDisabled": {
+    "message": "Schedule disabled",
+    "description": "Schedule feature is disabled"
+  },
   "sidebarDashboard": {
     "message": "Dashboard",
     "description": "Sidebar: Dashboard"
@@ -1790,5 +1910,25 @@
   "popupStreakLabel": {
     "message": "day streak",
     "description": "Popup: streak label"
+  },
+  "optionsTabLanguage": {
+    "message": "Language",
+    "description": "Tab name for language settings"
+  },
+  "languageLabel": {
+    "message": "Display Language",
+    "description": "Label for language selector"
+  },
+  "languageDescription": {
+    "message": "Choose the language for the ShortShield interface",
+    "description": "Description for language settings"
+  },
+  "languageDetected": {
+    "message": "Detected language",
+    "description": "Label for auto-detected language"
+  },
+  "languageReloadNote": {
+    "message": "The page will reload after changing the language to apply the new setting.",
+    "description": "Note about page reload after language change"
   }
 }

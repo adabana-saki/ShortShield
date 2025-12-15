@@ -15,8 +15,10 @@ import {
   DISCORD_CONFIG,
   PINTEREST_CONFIG,
   TWITCH_CONFIG,
+  DEFAULT_BLOCK_PAGE,
 } from '@/shared/constants';
 import { createLogger } from '@/shared/utils/logger';
+import { showBlockPage } from '../blockPage';
 
 const logger = createLogger('sns');
 
@@ -42,6 +44,7 @@ export class SNSDetector extends BasePlatformDetector {
   readonly platform: Platform;
   private readonly snsPlatform: SNSPlatform;
   private readonly hosts: readonly string[];
+  private hasBlocked = false;
 
   constructor(snsPlatform: SNSPlatform) {
     super();
@@ -73,8 +76,8 @@ export class SNSDetector extends BasePlatformDetector {
    * Block the entire page content
    */
   private blockEntirePage(): void {
-    // Check if overlay already exists
-    if (document.getElementById('shortshield-sns-overlay')) {
+    // Only log the block once per page load
+    if (this.hasBlocked) {
       return;
     }
 
@@ -83,69 +86,13 @@ export class SNSDetector extends BasePlatformDetector {
       hostname: window.location.hostname,
     });
 
-    // Hide the body content
-    document.body.style.setProperty('visibility', 'hidden', 'important');
-    document.body.style.setProperty('overflow', 'hidden', 'important');
-
-    // Create blocking overlay
-    const overlay = document.createElement('div');
-    overlay.id = 'shortshield-sns-overlay';
-    overlay.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 2147483647;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: white;
-      visibility: visible !important;
-    `;
-
     const platformName = this.getPlatformDisplayName();
+    const blockPageSettings = this.settings?.blockPage ?? DEFAULT_BLOCK_PAGE;
 
-    // Create content container
-    const contentDiv = document.createElement('div');
-    contentDiv.style.cssText =
-      'text-align: center; max-width: 400px; padding: 40px;';
+    showBlockPage(blockPageSettings, platformName, 'shortshield-sns-overlay');
 
-    // Create icon
-    const iconDiv = document.createElement('div');
-    iconDiv.style.cssText = 'font-size: 72px; margin-bottom: 24px;';
-    iconDiv.textContent = '🛡️';
-    contentDiv.appendChild(iconDiv);
-
-    // Create title
-    const title = document.createElement('h1');
-    title.style.cssText =
-      'font-size: 28px; font-weight: 600; margin: 0 0 12px 0;';
-    title.textContent = 'ShortShield Active';
-    contentDiv.appendChild(title);
-
-    // Create main message
-    const mainMessage = document.createElement('p');
-    mainMessage.style.cssText =
-      'font-size: 18px; opacity: 0.9; margin: 0 0 24px 0;';
-    mainMessage.textContent = `${platformName} is blocked to help you stay focused.`;
-    contentDiv.appendChild(mainMessage);
-
-    // Create settings hint
-    const settingsHint = document.createElement('p');
-    settingsHint.style.cssText = 'font-size: 14px; opacity: 0.6; margin: 0;';
-    settingsHint.textContent =
-      'You can disable this in the ShortShield settings.';
-    contentDiv.appendChild(settingsHint);
-
-    overlay.appendChild(contentDiv);
-
-    document.documentElement.appendChild(overlay);
-
-    // Log the block
+    // Log the block only once
+    this.hasBlocked = true;
     void this.logBlock(document.body, 'hide');
   }
 

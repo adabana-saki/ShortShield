@@ -19,7 +19,7 @@ export type ShortVideoPlatform = 'youtube' | 'tiktok' | 'instagram';
 /**
  * Full site blocking platforms
  */
-export type FullSitePlatform = 'youtube_full';
+export type FullSitePlatform = 'youtube_full' | 'instagram_full' | 'tiktok_full';
 
 /**
  * Major SNS platforms for quick-block
@@ -54,6 +54,8 @@ export interface ShortVideoPlatformSettings {
  */
 export interface FullSitePlatformSettings {
   readonly youtube_full: boolean;
+  readonly instagram_full: boolean;
+  readonly tiktok_full: boolean;
 }
 
 /**
@@ -112,6 +114,21 @@ export interface BlockingStats {
 export type PopupView = 'platforms' | 'schedule' | 'stats' | 'focus';
 
 /**
+ * Supported languages
+ */
+export type SupportedLanguage =
+  | 'auto'
+  | 'en'
+  | 'ja'
+  | 'de'
+  | 'es'
+  | 'fr'
+  | 'ko'
+  | 'pt_BR'
+  | 'zh_CN'
+  | 'zh_TW';
+
+/**
  * User preferences
  */
 export interface UserPreferences {
@@ -119,6 +136,7 @@ export interface UserPreferences {
   readonly showNotifications: boolean;
   readonly redirectShortsToRegular: boolean;
   readonly popupDefaultView: PopupView;
+  readonly language: SupportedLanguage;
 }
 
 /**

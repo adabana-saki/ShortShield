@@ -2,25 +2,73 @@
  * React hook for i18n functionality
  */
 
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import browser from 'webextension-polyfill';
 import {
   t,
   formatNumber,
   formatDate,
   formatRelativeTime,
-  getUILanguage,
+  setLanguage,
+  initializeTranslations,
+  getEffectiveLocale,
+  isTranslationsReady,
+  reloadTranslations,
 } from '@/shared/utils/i18n';
+import { STORAGE_KEYS } from '@/shared/constants';
+import type { Settings, SupportedLanguage } from '@/shared/types';
 
 /**
  * Hook for i18n functionality in React components
  */
 export function useI18n() {
-  const locale = useMemo(() => getUILanguage(), []);
+  const [isReady, setIsReady] = useState(isTranslationsReady());
+  const [locale, setLocale] = useState(getEffectiveLocale());
+  const [, forceUpdate] = useState(0);
+
+  // Initialize translations on mount
+  useEffect(() => {
+    let isMounted = true;
+
+    const init = async () => {
+      // Get language from storage first
+      try {
+        const result = await browser.storage.local.get(STORAGE_KEYS.SETTINGS);
+        const settings = result[STORAGE_KEYS.SETTINGS] as Settings | undefined;
+        const savedLanguage = settings?.preferences?.language as SupportedLanguage | undefined;
+
+        if (savedLanguage && savedLanguage !== 'auto') {
+          // Use saved language - need to reload translations for this language
+          await reloadTranslations(savedLanguage);
+        } else {
+          // Use auto (browser) language
+          setLanguage('auto');
+          await initializeTranslations();
+        }
+      } catch {
+        // If storage fails, just initialize with default
+        await initializeTranslations();
+      }
+
+      if (isMounted) {
+        setIsReady(true);
+        setLocale(getEffectiveLocale());
+        forceUpdate((n) => n + 1);
+      }
+    };
+
+    void init();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const translate = useCallback(
     (key: string, substitutions?: string | string[]) => {
       return t(key, substitutions);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
@@ -54,5 +102,7 @@ export function useI18n() {
     formatDate: date,
     /** Format relative time */
     formatRelativeTime: relativeTime,
+    /** Whether translations are ready */
+    isReady,
   };
 }

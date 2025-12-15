@@ -42,6 +42,8 @@ export const DEFAULT_PLATFORM_SETTINGS: PlatformSettings = {
   instagram: true,
   // Full site blocking - disabled by default
   youtube_full: false,
+  instagram_full: false,
+  tiktok_full: false,
   // SNS platforms - disabled by default
   twitter: false,
   facebook: false,
@@ -66,6 +68,8 @@ export const DEFAULT_STATS: BlockingStats = {
     tiktok: 0,
     instagram: 0,
     youtube_full: 0,
+    instagram_full: 0,
+    tiktok_full: 0,
     twitter: 0,
     facebook: 0,
     linkedin: 0,
@@ -86,6 +90,7 @@ export const DEFAULT_PREFERENCES: UserPreferences = {
   showNotifications: false,
   redirectShortsToRegular: false,
   popupDefaultView: 'schedule',
+  language: 'auto',
 } as const;
 
 /**

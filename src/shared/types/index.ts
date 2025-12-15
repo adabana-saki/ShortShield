@@ -49,6 +49,7 @@ export type {
   BlockingStats,
   UserPreferences,
   PopupView,
+  SupportedLanguage,
   Settings,
   SettingsUpdate,
 } from './settings';

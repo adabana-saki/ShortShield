@@ -20,7 +20,7 @@ import { FocusLauncher } from './components/FocusLauncher';
 import { ScheduleBadge } from './components/ScheduleBadge';
 
 export function App() {
-  const { t } = useI18n();
+  const { t, isReady: i18nReady } = useI18n();
   const { settings, isLoading, error, toggleEnabled, togglePlatform, refreshSettings } =
     useSettings();
 
@@ -31,9 +31,10 @@ export function App() {
   const fetchFocusState = useCallback(async () => {
     try {
       const message = createMessage({ type: 'FOCUS_GET_STATE' as const });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
-      if (response.success && response.data) {
-        setFocusState(response.data);
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState } | undefined;
+      if (response?.success === true && response.data !== undefined) {
+        const data: FocusModeState = response.data;
+        setFocusState(data);
       }
     } catch {
       // Ignore errors
@@ -43,9 +44,10 @@ export function App() {
   const fetchPomodoroState = useCallback(async () => {
     try {
       const message = createMessage({ type: 'POMODORO_GET_STATE' as const });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
-      if (response.success && response.data) {
-        setPomodoroState(response.data);
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState } | undefined;
+      if (response?.success === true && response.data !== undefined) {
+        const data: PomodoroState = response.data;
+        setPomodoroState(data);
       }
     } catch {
       // Ignore errors
@@ -55,9 +57,10 @@ export function App() {
   const fetchStreakData = useCallback(async () => {
     try {
       const message = createMessage({ type: 'STREAK_GET_DATA' as const });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: StreakData };
-      if (response.success && response.data) {
-        setStreakData(response.data);
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: StreakData } | undefined;
+      if (response?.success === true && response.data !== undefined) {
+        const data: StreakData = response.data;
+        setStreakData(data);
       }
     } catch {
       // Ignore errors
@@ -88,9 +91,10 @@ export function App() {
   const handleCancelFocus = async () => {
     try {
       const message = createMessage({ type: 'FOCUS_CANCEL' as const });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
-      if (response.success && response.data) {
-        setFocusState(response.data);
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState } | undefined;
+      if (response?.success === true && response.data !== undefined) {
+        const data: FocusModeState = response.data;
+        setFocusState(data);
       }
     } catch {
       // Ignore errors
@@ -99,16 +103,18 @@ export function App() {
 
   const handlePomodoroAction = async (action: 'pause' | 'resume' | 'skip' | 'stop') => {
     try {
-      const typeMap = {
-        pause: 'POMODORO_PAUSE' as const,
-        resume: 'POMODORO_RESUME' as const,
-        skip: 'POMODORO_SKIP' as const,
-        stop: 'POMODORO_STOP' as const,
+      const typeMap: Record<'pause' | 'resume' | 'skip' | 'stop', 'POMODORO_PAUSE' | 'POMODORO_RESUME' | 'POMODORO_SKIP' | 'POMODORO_STOP'> = {
+        pause: 'POMODORO_PAUSE',
+        resume: 'POMODORO_RESUME',
+        skip: 'POMODORO_SKIP',
+        stop: 'POMODORO_STOP',
       };
+      // eslint-disable-next-line security/detect-object-injection
       const message = createMessage({ type: typeMap[action] });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
-      if (response.success && response.data) {
-        setPomodoroState(response.data);
+      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState } | undefined;
+      if (response?.success === true && response.data !== undefined) {
+        const data: PomodoroState = response.data;
+        setPomodoroState(data);
       }
     } catch {
       // Ignore errors
@@ -120,7 +126,7 @@ export function App() {
   };
 
   // Loading state
-  if (isLoading) {
+  if (isLoading || !i18nReady) {
     return (
       <div className="popup-container">
         <div className="popup-loading">

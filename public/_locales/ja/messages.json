@@ -79,6 +79,50 @@
     "message": "YouTube (全体)",
     "description": "YouTube全体ブロックのプラットフォーム名"
   },
+  "platformYouTubeFull": {
+    "message": "YouTube (サイト全体)",
+    "description": "YouTube全体ブロックオプション"
+  },
+  "platformYouTubeFullDescription": {
+    "message": "ショートだけでなくYouTube全体をブロック",
+    "description": "YouTube全体ブロックの説明"
+  },
+  "platformInstagramFull": {
+    "message": "Instagram (サイト全体)",
+    "description": "Instagram全体ブロックオプション"
+  },
+  "platformInstagramFullDescription": {
+    "message": "リールだけでなくInstagram全体をブロック",
+    "description": "Instagram全体ブロックの説明"
+  },
+  "platformTikTokFull": {
+    "message": "TikTok (サイト全体)",
+    "description": "TikTok全体ブロックオプション"
+  },
+  "platformTikTokFullDescription": {
+    "message": "TikTok全体をブロック",
+    "description": "TikTok全体ブロックの説明"
+  },
+  "shortVideoSection": {
+    "message": "短尺動画ブロック",
+    "description": "短尺動画プラットフォームブロックのセクションタイトル"
+  },
+  "fullSiteBlockingSection": {
+    "message": "サイト全体ブロック",
+    "description": "サイト全体ブロックのセクションタイトル"
+  },
+  "platformYouTubeDescription": {
+    "message": "YouTubeショートのみをブロック",
+    "description": "YouTubeショートブロックの説明"
+  },
+  "platformTikTokDescription": {
+    "message": "TikTok動画をブロック",
+    "description": "TikTokブロックの説明"
+  },
+  "platformInstagramDescription": {
+    "message": "Instagramリールのみをブロック",
+    "description": "Instagramリールブロックの説明"
+  },
   "popupSectionShortVideo": {
     "message": "短尺動画プラットフォーム",
     "description": "短尺動画プラットフォームのセクションタイトル"
@@ -556,6 +600,34 @@
   "customDomainsErrorFailed": {
     "message": "ドメインの追加に失敗しました",
     "description": "Error when adding domain fails"
+  },
+  "customDomainsHelpTitle": {
+    "message": "使い方（クリックで展開）",
+    "description": "Help section title for custom domains"
+  },
+  "customDomainsHelpIntro": {
+    "message": "特定のサイトをブロックしたり、ワイルドカード（*）を使って複数の関連サイトをまとめてブロックできます：",
+    "description": "Help section introduction"
+  },
+  "customDomainsExampleExact": {
+    "message": "example.comのみをブロック",
+    "description": "Exact domain example description"
+  },
+  "customDomainsExampleSubdomain": {
+    "message": "すべてのサブドメインをブロック（例：blog.example.com、shop.example.com）",
+    "description": "Subdomain wildcard example description"
+  },
+  "customDomainsExampleContains": {
+    "message": "'game'を含むドメインをブロック（例：games.com、mygame.net）",
+    "description": "Contains wildcard example description"
+  },
+  "customDomainsExampleStartsWith": {
+    "message": "'news'で始まるドメインをブロック（例：news.com、newsfeed.org）",
+    "description": "Starts with wildcard example description"
+  },
+  "customDomainsHelpTip": {
+    "message": "ヒント：URLは自動的にクリーンアップされます。完全なURLを貼り付けても、ShortShieldがドメインを自動抽出します。",
+    "description": "Help tip about URL handling"
   },
   "optionsTabCustomDomains": {
     "message": "カスタムドメイン",
@@ -1535,6 +1607,54 @@
     "message": "ダッシュボード",
     "description": "Dashboard page title"
   },
+  "dashboardSubtitle": {
+    "message": "集中の進捗をモニター",
+    "description": "Dashboard subtitle"
+  },
+  "dashboardEdit": {
+    "message": "編集",
+    "description": "Dashboard edit button"
+  },
+  "dashboardActivePlatforms": {
+    "message": "有効なプラットフォーム",
+    "description": "Dashboard active platforms section title"
+  },
+  "dashboardNoPlatforms": {
+    "message": "有効なプラットフォームがありません",
+    "description": "Dashboard no platforms message"
+  },
+  "dashboardMore": {
+    "message": "その他",
+    "description": "Dashboard more platforms text"
+  },
+  "dashboardQuickActions": {
+    "message": "クイックアクション",
+    "description": "Dashboard quick actions section title"
+  },
+  "dashboardStartFocus": {
+    "message": "フォーカス開始",
+    "description": "Dashboard start focus button"
+  },
+  "dashboardFocusDisabledHint": {
+    "message": "クイックフォーカスを使用するには設定でフォーカスモードを有効にしてください",
+    "description": "Dashboard focus disabled hint"
+  },
+  "streakBest": {
+    "message": "最高記録",
+    "description": "Best streak label"
+  },
+  "scheduleActive": {
+    "message": "アクティブ",
+    "description": "Schedule is currently active"
+  },
+  "scheduleInactive": {
+    "message": "非アクティブ",
+    "description": "Schedule is currently inactive"
+  },
+  "scheduleDisabled": {
+    "message": "スケジュール無効",
+    "description": "Schedule feature is disabled"
+  },
   "sidebarDashboard": {
     "message": "ダッシュボード",
     "description": "Sidebar: Dashboard"
@@ -1790,5 +1910,25 @@
   "popupStreakLabel": {
     "message": "日連続",
     "description": "Popup: streak label"
+  },
+  "optionsTabLanguage": {
+    "message": "言語",
+    "description": "Tab name for language settings"
+  },
+  "languageLabel": {
+    "message": "表示言語",
+    "description": "Label for language selector"
+  },
+  "languageDescription": {
+    "message": "ShortShieldのインターフェース言語を選択します",
+    "description": "Description for language settings"
+  },
+  "languageDetected": {
+    "message": "検出された言語",
+    "description": "Label for auto-detected language"
+  },
+  "languageReloadNote": {
+    "message": "言語を変更すると、新しい設定を適用するためにページが再読み込みされます。",
+    "description": "Note about page reload after language change"
   }
 }

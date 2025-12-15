@@ -38,6 +38,8 @@ function CustomRuleItem({ rule, onToggle, onRemove }: CustomRuleItemProps) {
   const platformLabels: Record<Platform, string> = {
     youtube: t('popupPlatformYouTube'),
     youtube_full: t('popupPlatformYouTubeFull'),
+    instagram_full: t('platformInstagramFull'),
+    tiktok_full: t('platformTikTokFull'),
     tiktok: t('popupPlatformTikTok'),
     instagram: t('popupPlatformInstagram'),
     twitter: t('popupPlatformTwitter'),

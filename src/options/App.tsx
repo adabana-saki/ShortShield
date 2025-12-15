@@ -18,7 +18,7 @@ import {
 import { OnboardingWizard } from './components/onboarding';
 
 export function App() {
-  const { t } = useI18n();
+  const { t, isReady: i18nReady } = useI18n();
   const { settings, isLoading, error, togglePlatform, toggleEnabled, refreshSettings, updateSettings } =
     useSettings();
 
@@ -71,7 +71,7 @@ export function App() {
     void toggleEnabled();
   };
 
-  if (isLoading) {
+  if (isLoading || !i18nReady) {
     return (
       <div className="options-loading">
         <div className="loading-spinner" />
@@ -147,7 +147,7 @@ export function App() {
       case 'advanced':
         return (
           <AdvancedSection
-            subSection={(activeSubSection as 'challenge' | 'lockdown' | 'appearance' | 'backup') ?? 'challenge'}
+            subSection={(activeSubSection as 'challenge' | 'lockdown' | 'appearance' | 'language' | 'backup') ?? 'challenge'}
           />
         );
 

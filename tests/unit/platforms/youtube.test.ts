@@ -29,6 +29,8 @@ describe('YouTubeDetector', () => {
       platforms: {
         youtube: true,
         youtube_full: false,
+        instagram_full: false,
+        tiktok_full: false,
         tiktok: true,
         instagram: true,
         twitter: false,

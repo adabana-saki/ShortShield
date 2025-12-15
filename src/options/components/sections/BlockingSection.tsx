@@ -90,9 +90,9 @@ export function BlockingSection({
         }
       />
 
-      {/* All Platforms */}
+      {/* Short Video Platforms */}
       <div className="settings-group">
-        <h3 className="settings-group-title">{t('popupSectionSNS')}</h3>
+        <h3 className="settings-group-title">{t('shortVideoSection')}</h3>
         <div className="settings-group-content">
           <ToggleRow
             label={t('popupPlatformYouTube')}
@@ -112,6 +112,38 @@ export function BlockingSection({
             checked={settings.platforms.instagram}
             onChange={() => onTogglePlatform('instagram')}
           />
+        </div>
+      </div>
+
+      {/* Full Site Blocking */}
+      <div className="settings-group">
+        <h3 className="settings-group-title">{t('fullSiteBlockingSection')}</h3>
+        <div className="settings-group-content">
+          <ToggleRow
+            label={t('platformYouTubeFull')}
+            description={t('platformYouTubeFullDescription')}
+            checked={settings.platforms.youtube_full}
+            onChange={() => onTogglePlatform('youtube_full')}
+          />
+          <ToggleRow
+            label={t('platformInstagramFull')}
+            description={t('platformInstagramFullDescription')}
+            checked={settings.platforms.instagram_full}
+            onChange={() => onTogglePlatform('instagram_full')}
+          />
+          <ToggleRow
+            label={t('platformTikTokFull')}
+            description={t('platformTikTokFullDescription')}
+            checked={settings.platforms.tiktok_full}
+            onChange={() => onTogglePlatform('tiktok_full')}
+          />
+        </div>
+      </div>
+
+      {/* SNS Platforms */}
+      <div className="settings-group">
+        <h3 className="settings-group-title">{t('popupSectionSNS')}</h3>
+        <div className="settings-group-content">
           <ToggleRow
             label={t('popupPlatformTwitter')}
             checked={settings.platforms.twitter}

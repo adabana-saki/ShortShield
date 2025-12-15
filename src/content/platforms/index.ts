@@ -8,6 +8,7 @@ import { YouTubeDetector } from './youtube';
 import { TikTokDetector } from './tiktok';
 import { InstagramDetector } from './instagram';
 import { createSNSDetectors } from './sns';
+import { createFullSiteBlockers } from './fullsite';
 import { CustomDomainDetector, createCustomDomainDetector } from './custom';
 import { createLogger } from '@/shared/utils/logger';
 import type { CustomBlockedDomain } from '@/shared/types';
@@ -20,9 +21,16 @@ const logger = createLogger('platforms');
 const customDomainDetector = createCustomDomainDetector();
 
 /**
+ * Full site blockers (checked first, higher priority)
+ */
+const fullSiteBlockers = createFullSiteBlockers();
+
+/**
  * All available platform detectors
  */
 const detectors: BasePlatformDetector[] = [
+  // Full site blockers (checked first - higher priority than short video detectors)
+  ...fullSiteBlockers,
   // Short video platforms
   new YouTubeDetector(),
   new TikTokDetector(),
@@ -90,5 +98,6 @@ export { YouTubeDetector } from './youtube';
 export { TikTokDetector } from './tiktok';
 export { InstagramDetector } from './instagram';
 export { SNSDetector, createSNSDetectors } from './sns';
+export { FullSiteBlocker, createFullSiteBlockers } from './fullsite';
 export { CustomDomainDetector, createCustomDomainDetector } from './custom';
 export { BasePlatformDetector } from './base';

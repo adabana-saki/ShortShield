@@ -29,35 +29,13 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "*://*.youtube.com/*",
-        "*://*.tiktok.com/*",
-        "*://*.instagram.com/*",
-        "*://*.twitter.com/*",
-        "*://*.x.com/*",
-        "*://*.facebook.com/*",
-        "*://*.linkedin.com/*",
-        "*://*.threads.net/*",
-        "*://*.snapchat.com/*",
-        "*://*.reddit.com/*"
-      ],
+      "matches": ["<all_urls>"],
       "js": ["src/content/index.ts"],
       "run_at": "document_idle"
     }
   ],
   "permissions": ["storage", "activeTab", "alarms", "notifications"],
-  "host_permissions": [
-    "*://*.youtube.com/*",
-    "*://*.tiktok.com/*",
-    "*://*.instagram.com/*",
-    "*://*.twitter.com/*",
-    "*://*.x.com/*",
-    "*://*.facebook.com/*",
-    "*://*.linkedin.com/*",
-    "*://*.threads.net/*",
-    "*://*.snapchat.com/*",
-    "*://*.reddit.com/*"
-  ],
+  "host_permissions": ["<all_urls>"],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
   },

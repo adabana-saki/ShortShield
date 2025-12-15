@@ -27,6 +27,7 @@ export type SubSectionId =
   | 'challenge'
   | 'lockdown'
   | 'appearance'
+  | 'language'
   | 'backup';
 
 interface SidebarProps {
@@ -326,6 +327,12 @@ export function Sidebar({
             label={t('optionsTabAppearance')}
             active={activeSubSection === 'appearance'}
             onClick={() => onSectionChange('advanced', 'appearance')}
+            nested
+          />
+          <SidebarItem
+            label={t('optionsTabLanguage')}
+            active={activeSubSection === 'language'}
+            onClick={() => onSectionChange('advanced', 'language')}
             nested
           />
           <SidebarItem

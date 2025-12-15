@@ -1,5 +1,5 @@
 /**
- * Advanced settings section - Challenge, Lockdown, Appearance, Backup
+ * Advanced settings section - Challenge, Lockdown, Appearance, Language, Backup
  */
 
 import { useI18n } from '@/shared/hooks/useI18n';
@@ -7,9 +7,10 @@ import { SectionHeader } from '../common/SectionHeader';
 import { ChallengeSettings } from '../ChallengeSettings';
 import { LockdownSettings } from '../LockdownSettings';
 import { BlockPageCustomizer } from '../BlockPageCustomizer';
+import { LanguageSettings } from '../LanguageSettings';
 import { ExportImport } from '../ExportImport';
 
-type AdvancedSubSection = 'challenge' | 'lockdown' | 'appearance' | 'backup';
+type AdvancedSubSection = 'challenge' | 'lockdown' | 'appearance' | 'language' | 'backup';
 
 interface AdvancedSectionProps {
   subSection: AdvancedSubSection;
@@ -67,6 +68,30 @@ export function AdvancedSection({ subSection }: AdvancedSectionProps) {
           }
         />
         <BlockPageCustomizer />
+      </div>
+    );
+  }
+
+  if (subSection === 'language') {
+    return (
+      <div className="settings-section">
+        <SectionHeader
+          title={t('optionsTabLanguage')}
+          description={t('languageDescription')}
+          icon={
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg>
+          }
+        />
+        <LanguageSettings />
       </div>
     );
   }

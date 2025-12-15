@@ -296,6 +296,8 @@ export const PLATFORM_CONFIGS: Readonly<Record<Platform, PlatformRules>> = {
   instagram: INSTAGRAM_CONFIG,
   // Full site blockers (uses same config as parent platform)
   youtube_full: YOUTUBE_CONFIG,
+  instagram_full: INSTAGRAM_CONFIG,
+  tiktok_full: TIKTOK_CONFIG,
   // SNS platforms
   twitter: TWITTER_CONFIG,
   facebook: FACEBOOK_CONFIG,

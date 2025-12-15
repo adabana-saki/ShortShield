@@ -16,9 +16,17 @@ function generateDomainId(): CustomDomainId {
 }
 
 /**
- * Validate domain format
+ * Validate domain format (supports wildcards)
  */
 function isValidDomain(domain: string): boolean {
+  // Allow wildcard patterns
+  if (domain.includes('*')) {
+    // Wildcard pattern validation
+    // Allow patterns like: *.example.com, *example*, example*
+    const wildcardPattern = /^[\w*.-]+$/i;
+    return domain.length > 0 && domain.length <= 253 && wildcardPattern.test(domain);
+  }
+
   // Basic domain validation - allows domains like example.com, sub.example.com
   const domainPattern =
     // eslint-disable-next-line security/detect-unsafe-regex -- validated pattern
@@ -130,6 +138,35 @@ export function CustomDomains() {
     <div className="custom-domains">
       <h2>{t('customDomainsTitle')}</h2>
       <p className="section-description">{t('customDomainsDescription')}</p>
+
+      {/* Help section with examples */}
+      <div className="custom-domains-help">
+        <details className="help-details">
+          <summary className="help-summary">{t('customDomainsHelpTitle')}</summary>
+          <div className="help-content">
+            <p className="help-intro">{t('customDomainsHelpIntro')}</p>
+            <div className="help-examples">
+              <div className="help-example">
+                <code>example.com</code>
+                <span>{t('customDomainsExampleExact')}</span>
+              </div>
+              <div className="help-example">
+                <code>*.example.com</code>
+                <span>{t('customDomainsExampleSubdomain')}</span>
+              </div>
+              <div className="help-example">
+                <code>*game*</code>
+                <span>{t('customDomainsExampleContains')}</span>
+              </div>
+              <div className="help-example">
+                <code>news.*</code>
+                <span>{t('customDomainsExampleStartsWith')}</span>
+              </div>
+            </div>
+            <p className="help-tip">{t('customDomainsHelpTip')}</p>
+          </div>
+        </details>
+      </div>
 
       {/* Add domain form */}
       <div className="add-domain-form">
