@@ -2722,5 +2722,111 @@
 }
 
 .dark .theme-btn:not(.active) {
-  @apply text-gray-400 hover:text-gray-200;
+  color: var(--color-text-muted);
+}
+
+.dark .theme-btn:not(.active):hover {
+  color: var(--color-text-secondary);
+}
+
+/* ===================================
+   Dark Mode - Force Override Tailwind
+   =================================== */
+
+/* Override Tailwind text colors in dark mode */
+.dark .text-gray-900,
+.dark .text-gray-800,
+.dark .text-gray-700 {
+  color: var(--color-text-primary) !important;
+}
+
+.dark .text-gray-600,
+.dark .text-gray-500 {
+  color: var(--color-text-secondary) !important;
+}
+
+.dark .text-gray-400 {
+  color: var(--color-text-muted) !important;
+}
+
+/* Override Tailwind background colors */
+.dark .bg-white {
+  background-color: var(--color-bg-primary) !important;
+}
+
+.dark .bg-gray-50,
+.dark .bg-gray-100 {
+  background-color: var(--color-bg-tertiary) !important;
+}
+
+.dark .bg-gray-200 {
+  background-color: var(--color-bg-hover) !important;
+}
+
+/* Override Tailwind border colors */
+.dark .border-gray-100,
+.dark .border-gray-200 {
+  border-color: var(--color-border-primary) !important;
+}
+
+.dark .border-gray-300 {
+  border-color: var(--color-border-secondary) !important;
+}
+
+/* Force toggle row styles */
+.dark .toggle-row-label {
+  color: var(--color-text-primary) !important;
+}
+
+.dark .toggle-row-description {
+  color: var(--color-text-tertiary) !important;
+}
+
+/* Force section header styles */
+.dark .section-header-title {
+  color: var(--color-text-primary) !important;
+}
+
+.dark .section-header-description {
+  color: var(--color-text-tertiary) !important;
+}
+
+/* Force settings group title */
+.dark .settings-group-title {
+  color: var(--color-text-primary) !important;
+  border-color: var(--color-border-primary) !important;
+}
+
+/* Force settings section background */
+.dark .settings-section {
+  background-color: var(--color-bg-primary) !important;
+  border-color: var(--color-border-primary) !important;
+}
+
+/* Schedule section */
+.dark .schedule-days h3,
+.dark .schedule-time-ranges h3 {
+  color: var(--color-text-primary) !important;
+}
+
+.dark .schedule-toggle .platform-toggle span {
+  color: var(--color-text-primary) !important;
+}
+
+.dark .day-checkbox span {
+  color: var(--color-text-primary) !important;
+}
+
+.dark .time-input-group span {
+  color: var(--color-text-secondary) !important;
+}
+
+/* Input label */
+.dark .input-label .label-text {
+  color: var(--color-text-primary) !important;
+}
+
+/* Section description */
+.dark .section-description {
+  color: var(--color-text-tertiary) !important;
 }
