@@ -115,19 +115,6 @@ export function BlockingSection({
         </div>
       </div>
 
-      {/* Full Site Blocking */}
-      <div className="settings-group">
-        <h3 className="settings-group-title">{t('popupSectionFullSite')}</h3>
-        <div className="settings-group-content">
-          <ToggleRow
-            label={t('popupPlatformYouTubeFull')}
-            description={t('platformYouTubeFullDescription')}
-            checked={settings.platforms.youtube_full}
-            onChange={() => onTogglePlatform('youtube_full')}
-          />
-        </div>
-      </div>
-
       {/* SNS Platforms */}
       <div className="settings-group">
         <h3 className="settings-group-title">{t('popupSectionSNS')}</h3>
