@@ -55,11 +55,16 @@ export class FullSiteBlocker extends BasePlatformDetector {
   }
 
   /**
-   * Override isEnabled to check global, platform-specific settings, and schedule
+   * Override isEnabled to check global, platform-specific settings, schedule, and Pomodoro breaks
    */
   override isEnabled(): boolean {
     if (this.settings === null) {
       return false; // Default to disabled if settings not loaded
+    }
+
+    // Check if in Pomodoro break - unblock during breaks
+    if (this.isInPomodoroBreak()) {
+      return false;
     }
 
     // Check if global and platform-specific settings are enabled

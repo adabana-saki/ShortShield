@@ -37,12 +37,17 @@ export class CustomDomainDetector extends BasePlatformDetector {
   }
 
   /**
-   * Override isEnabled to check global enabled state and schedule
+   * Override isEnabled to check global enabled state, schedule, and Pomodoro breaks
    * Custom domains should work independently of platform-specific settings
    */
   override isEnabled(): boolean {
     if (this.settings === null) {
       return true; // Default to enabled if settings not loaded
+    }
+
+    // Check if in Pomodoro break - unblock during breaks
+    if (this.isInPomodoroBreak()) {
+      return false;
     }
 
     // For custom domains, check global enabled state

@@ -8,11 +8,13 @@ import {
   getDetectorForHostname,
   setCustomDomains,
   getCustomDomainDetector,
+  getAllDetectors,
 } from './platforms';
 import { createManagedObserver } from './observer';
 import { createLogger } from '@/shared/utils/logger';
 import { createMessage } from '@/shared/types';
-import type { Settings } from '@/shared/types';
+import { STORAGE_KEYS } from '@/shared/constants';
+import type { Settings, PomodoroState } from '@/shared/types';
 
 const logger = createLogger('content');
 
@@ -60,6 +62,33 @@ async function getSettingsSafely(): Promise<Settings | null> {
 }
 
 /**
+ * Get Pomodoro state from storage
+ */
+async function getPomodoroStateSafely(): Promise<PomodoroState | null> {
+  try {
+    const result = await browser.storage.local.get(STORAGE_KEYS.POMODORO_STATE);
+    const state = result[STORAGE_KEYS.POMODORO_STATE] as PomodoroState | undefined;
+    return state ?? null;
+  } catch (error) {
+    logger.warn('Failed to get Pomodoro state', { error: String(error) });
+    return null;
+  }
+}
+
+/**
+ * Update Pomodoro state on all detectors
+ */
+function updatePomodoroStateOnDetectors(state: PomodoroState | null): void {
+  const allDetectors = getAllDetectors();
+  for (const detector of allDetectors) {
+    detector.setPomodoroState(state);
+  }
+  // Also update custom domain detector
+  const customDetector = getCustomDomainDetector();
+  customDetector.setPomodoroState(state);
+}
+
+/**
  * Initialize the content script
  */
 async function initialize(): Promise<void> {
@@ -83,6 +112,10 @@ async function initialize(): Promise<void> {
     const customDetector = getCustomDomainDetector();
     customDetector.setSettings(settings);
   }
+
+  // Get Pomodoro state and update all detectors
+  const pomodoroState = await getPomodoroStateSafely();
+  updatePomodoroStateOnDetectors(pomodoroState);
 
   // Get detector for this hostname (now includes custom domain check)
   const detector = getDetectorForHostname(hostname);
@@ -116,10 +149,14 @@ async function initialize(): Promise<void> {
   // Start observing for new content
   observer.observe(document.body);
 
-  // Listen for settings changes
+  // Listen for settings and Pomodoro state changes
   browser.storage.onChanged.addListener((changes, areaName) => {
-    if (areaName === 'local' && changes.shortshield_settings) {
-      const newSettings = changes.shortshield_settings.newValue as
+    if (areaName !== 'local') return;
+
+    // Handle settings changes
+    const settingsChange = changes[STORAGE_KEYS.SETTINGS];
+    if (settingsChange !== undefined) {
+      const newSettings = settingsChange.newValue as
         | Settings
         | undefined;
       if (newSettings !== undefined) {
@@ -135,6 +172,34 @@ async function initialize(): Promise<void> {
         // Re-scan if still enabled
         if (detector.isEnabled()) {
           detector.scan(document.body);
+        }
+      }
+    }
+
+    // Handle Pomodoro state changes
+    const pomodoroChange = changes[STORAGE_KEYS.POMODORO_STATE];
+    if (pomodoroChange !== undefined) {
+      const newPomodoroState = pomodoroChange.newValue as
+        | PomodoroState
+        | undefined;
+      updatePomodoroStateOnDetectors(newPomodoroState ?? null);
+
+      logger.debug('Pomodoro state updated', {
+        mode: newPomodoroState?.mode,
+        isRunning: newPomodoroState?.isRunning,
+      });
+
+      // If entering break, could remove block overlays
+      // If exiting break, re-scan to apply blocks
+      if (newPomodoroState?.isRunning === true) {
+        if (newPomodoroState.mode === 'break' || newPomodoroState.mode === 'longBreak') {
+          // In break - blocks should be removed (page reload recommended)
+          logger.info('Pomodoro break started - blocking disabled');
+        } else if (newPomodoroState.mode === 'work') {
+          // Work session - re-scan to apply blocks
+          if (detector.isEnabled()) {
+            detector.scan(document.body);
+          }
         }
       }
     }

@@ -10,6 +10,7 @@ import type {
   BlockingAction,
   LogBlockMessage,
   BlockPageSettings,
+  PomodoroState,
 } from '@/shared/types';
 import { createMessage } from '@/shared/types';
 import { createLogger } from '@/shared/utils/logger';
@@ -37,6 +38,9 @@ export abstract class BasePlatformDetector {
   /** Current settings */
   protected settings: Settings | null = null;
 
+  /** Current Pomodoro state */
+  protected pomodoroState: PomodoroState | null = null;
+
   /**
    * Check if this detector supports the given hostname
    */
@@ -55,11 +59,43 @@ export abstract class BasePlatformDetector {
   }
 
   /**
+   * Update Pomodoro state
+   */
+  setPomodoroState(state: PomodoroState | null): void {
+    this.pomodoroState = state;
+  }
+
+  /**
+   * Check if currently in a Pomodoro break (content should be unblocked)
+   */
+  protected isInPomodoroBreak(): boolean {
+    if (this.pomodoroState === null) {
+      return false;
+    }
+
+    // If Pomodoro is running and in break mode, unblock content
+    if (this.pomodoroState.isRunning) {
+      return this.pomodoroState.mode === 'break' || this.pomodoroState.mode === 'longBreak';
+    }
+
+    return false;
+  }
+
+  /**
    * Check if the platform is enabled in settings
    */
   isEnabled(): boolean {
     if (this.settings === null) {
       return true; // Default to enabled if settings not loaded
+    }
+
+    // Check if in Pomodoro break - unblock during breaks
+    if (this.isInPomodoroBreak()) {
+      logger.debug('Pomodoro break active, unblocking', {
+        platform: this.platform,
+        pomodoroMode: this.pomodoroState?.mode,
+      });
+      return false;
     }
 
     // Check global enabled and platform-specific enabled
