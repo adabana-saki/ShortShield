@@ -1127,6 +1127,18 @@
     "message": "Twitch",
     "description": "Twitch platform name"
   },
+  "platformLinkedIn": {
+    "message": "LinkedIn",
+    "description": "LinkedIn platform name"
+  },
+  "platformThreads": {
+    "message": "Threads",
+    "description": "Threads platform name"
+  },
+  "platformSnapchat": {
+    "message": "Snapchat",
+    "description": "Snapchat platform name"
+  },
   "hours": {
     "message": "時間",
     "description": "Hours unit"

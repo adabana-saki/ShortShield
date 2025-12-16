@@ -13,6 +13,7 @@ import {
 } from '@/shared/constants';
 import { createLogger } from '@/shared/utils/logger';
 import { showBlockPage } from '../blockPage';
+import { isScheduleActive } from '@/shared/utils/schedule';
 
 const logger = createLogger('fullsite');
 
@@ -54,16 +55,22 @@ export class FullSiteBlocker extends BasePlatformDetector {
   }
 
   /**
-   * Override isEnabled to check both global and platform-specific settings
+   * Override isEnabled to check global, platform-specific settings, and schedule
    */
   override isEnabled(): boolean {
     if (this.settings === null) {
       return false; // Default to disabled if settings not loaded
     }
 
-    // Check if the specific full site platform is enabled
+    // Check if global and platform-specific settings are enabled
+    // eslint-disable-next-line security/detect-object-injection
     const platformEnabled = this.settings.platforms[this.fullSitePlatform];
-    return this.settings.enabled && platformEnabled;
+    if (!this.settings.enabled || !platformEnabled) {
+      return false;
+    }
+
+    // Check schedule - if schedule is enabled, only block during scheduled times
+    return isScheduleActive(this.settings.schedule);
   }
 
   /**

@@ -39,6 +39,9 @@ export function LanguageSettings() {
       },
     });
 
+    // Wait a bit for the throttled storage write to complete
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
     // Reload translations for the new language
     await reloadTranslations(language);
 

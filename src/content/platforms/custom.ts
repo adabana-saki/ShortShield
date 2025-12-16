@@ -8,6 +8,7 @@ import type { Platform, CustomBlockedDomain } from '@/shared/types';
 import { DEFAULT_BLOCK_PAGE } from '@/shared/constants';
 import { createLogger } from '@/shared/utils/logger';
 import { showBlockPage } from '../blockPage';
+import { isScheduleActive } from '@/shared/utils/schedule';
 
 const logger = createLogger('custom-domain');
 
@@ -36,7 +37,7 @@ export class CustomDomainDetector extends BasePlatformDetector {
   }
 
   /**
-   * Override isEnabled to check global enabled state only
+   * Override isEnabled to check global enabled state and schedule
    * Custom domains should work independently of platform-specific settings
    */
   override isEnabled(): boolean {
@@ -44,9 +45,13 @@ export class CustomDomainDetector extends BasePlatformDetector {
       return true; // Default to enabled if settings not loaded
     }
 
-    // For custom domains, only check global enabled state
-    // Don't check platform-specific settings
-    return this.settings.enabled;
+    // For custom domains, check global enabled state
+    if (!this.settings.enabled) {
+      return false;
+    }
+
+    // Check schedule - if schedule is enabled, only block during scheduled times
+    return isScheduleActive(this.settings.schedule);
   }
 
   /**

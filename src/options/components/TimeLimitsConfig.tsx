@@ -7,14 +7,26 @@ import { useSettings } from '@/shared/hooks/useSettings';
 import { useI18n } from '@/shared/hooks/useI18n';
 import type { Platform, SiteTimeLimit } from '@/shared/types';
 
-/** Platform display configuration */
+/** Platform display configuration - all platforms */
 const PLATFORM_CONFIG: { platform: Platform; labelKey: string }[] = [
+  // Short video platforms
   { platform: 'youtube', labelKey: 'platformYouTube' },
   { platform: 'tiktok', labelKey: 'platformTikTok' },
   { platform: 'instagram', labelKey: 'platformInstagram' },
+  // Full site platforms
+  { platform: 'youtube_full', labelKey: 'platformYouTubeFull' },
+  { platform: 'instagram_full', labelKey: 'platformInstagramFull' },
+  { platform: 'tiktok_full', labelKey: 'platformTikTokFull' },
+  // SNS platforms
   { platform: 'twitter', labelKey: 'platformTwitter' },
   { platform: 'facebook', labelKey: 'platformFacebook' },
   { platform: 'reddit', labelKey: 'platformReddit' },
+  { platform: 'linkedin', labelKey: 'platformLinkedIn' },
+  { platform: 'threads', labelKey: 'platformThreads' },
+  { platform: 'snapchat', labelKey: 'platformSnapchat' },
+  { platform: 'discord', labelKey: 'platformDiscord' },
+  { platform: 'pinterest', labelKey: 'platformPinterest' },
+  { platform: 'twitch', labelKey: 'platformTwitch' },
 ];
 
 /** Available time limit options in minutes */

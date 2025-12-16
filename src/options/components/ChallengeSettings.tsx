@@ -150,41 +150,6 @@ export function ChallengeSettings() {
                 </label>
                 <p className="setting-description">{t('challengeCooldownDescription')}</p>
               </div>
-
-              {/* Challenge type info */}
-              <div className="challenge-info">
-                <h3>{t('challengeTypesInfo')}</h3>
-                <ul>
-                  <li>
-                    <strong>{t('challengeTypeMath')}:</strong> {t('challengeTypeMathInfo')}
-                  </li>
-                  <li>
-                    <strong>{t('challengeTypeTyping')}:</strong> {t('challengeTypeTypingInfo')}
-                  </li>
-                  <li>
-                    <strong>{t('challengeTypePattern')}:</strong> {t('challengeTypePatternInfo')}
-                  </li>
-                </ul>
-              </div>
-
-              {/* Difficulty info */}
-              <div className="challenge-info">
-                <h3>{t('challengeDifficultyInfo')}</h3>
-                <ul>
-                  <li>
-                    <strong>{t('challengeDifficultyEasy')}:</strong>{' '}
-                    {t('challengeDifficultyEasyInfo')}
-                  </li>
-                  <li>
-                    <strong>{t('challengeDifficultyMedium')}:</strong>{' '}
-                    {t('challengeDifficultyMediumInfo')}
-                  </li>
-                  <li>
-                    <strong>{t('challengeDifficultyHard')}:</strong>{' '}
-                    {t('challengeDifficultyHardInfo')}
-                  </li>
-                </ul>
-              </div>
             </>
           )}
         </>
