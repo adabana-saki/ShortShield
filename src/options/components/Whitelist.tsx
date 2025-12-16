@@ -115,7 +115,8 @@ export function Whitelist() {
     }
 
     // Check for duplicates
-    const exists = settings.whitelist.some(
+    const currentWhitelist = settings.whitelist ?? [];
+    const exists = currentWhitelist.some(
       (entry) =>
         entry.value === sanitized &&
         entry.platform === platform &&
@@ -142,7 +143,7 @@ export function Whitelist() {
     } finally {
       setIsAdding(false);
     }
-  }, [newEntry, entryType, platform, settings.whitelist, addToWhitelist, t]);
+  }, [newEntry, entryType, platform, settings, addToWhitelist, t]);
 
   const handleRemove = useCallback(
     async (id: string) => {
@@ -165,8 +166,11 @@ export function Whitelist() {
     [handleAdd, isAdding]
   );
 
+  // Get whitelist with fallback to empty array
+  const whitelist = settings.whitelist ?? [];
+
   // Filter whitelist by platform
-  const filteredWhitelist = settings.whitelist.filter(
+  const filteredWhitelist = whitelist.filter(
     (entry) => entry.platform === platform
   );
 
