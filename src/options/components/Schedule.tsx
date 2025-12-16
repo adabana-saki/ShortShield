@@ -2,7 +2,7 @@
  * Schedule configuration component for time-based blocking
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useI18n } from '@/shared/hooks/useI18n';
 import { useSettings } from '@/shared/hooks/useSettings';
 import type { DayOfWeek, TimeRange } from '@/shared/types';
@@ -43,7 +43,12 @@ export function Schedule() {
   const { settings, updateSettings } = useSettings();
   const [isActive, setIsActive] = useState(false);
 
-  const schedule = settings.schedule;
+  const schedule = useMemo(
+    () =>
+      settings.schedule ?? { enabled: false, activeDays: [], timeRanges: [] },
+    [settings.schedule]
+  );
+  const timeRanges = schedule.timeRanges ?? [];
 
   // Update active status every minute
   useEffect(() => {
@@ -93,13 +98,13 @@ export function Schedule() {
 
     await updateSettings({
       schedule: {
-        timeRanges: [...schedule.timeRanges, newRange],
+        timeRanges: [...timeRanges, newRange],
       },
     });
   };
 
   const handleRemoveTimeRange = async (index: number) => {
-    const newRanges = schedule.timeRanges.filter((_, i) => i !== index);
+    const newRanges = timeRanges.filter((_, i) => i !== index);
     await updateSettings({
       schedule: {
         timeRanges: newRanges,
@@ -113,7 +118,7 @@ export function Schedule() {
     timeStr: string
   ) => {
     const { hour, minute } = parseTime(timeStr);
-    const newRanges = schedule.timeRanges.map((range, i) => {
+    const newRanges = timeRanges.map((range, i) => {
       if (i !== index) {
         return range;
       }
@@ -197,7 +202,7 @@ export function Schedule() {
           <div className="schedule-time-ranges">
             <h3>{t('scheduleTimeRanges')}</h3>
             <div className="time-ranges-list">
-              {schedule.timeRanges.map((range, index) => (
+              {timeRanges.map((range, index) => (
                 <div key={index} className="time-range-item">
                   <label className="time-input-group">
                     <span>{t('scheduleFrom')}</span>
@@ -225,7 +230,7 @@ export function Schedule() {
                       className="time-input"
                     />
                   </label>
-                  {schedule.timeRanges.length > 1 && (
+                  {timeRanges.length > 1 && (
                     <button
                       onClick={() => void handleRemoveTimeRange(index)}
                       className="remove-time-range-button"

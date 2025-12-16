@@ -24,7 +24,9 @@ function isValidDomain(domain: string): boolean {
     // Wildcard pattern validation
     // Allow patterns like: *.example.com, *example*, example*
     const wildcardPattern = /^[\w*.-]+$/i;
-    return domain.length > 0 && domain.length <= 253 && wildcardPattern.test(domain);
+    return (
+      domain.length > 0 && domain.length <= 253 && wildcardPattern.test(domain)
+    );
   }
 
   // Basic domain validation - allows domains like example.com, sub.example.com
@@ -65,7 +67,7 @@ export function CustomDomains() {
   const [isAdding, setIsAdding] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const customDomains = settings.customDomains;
+  const customDomains = settings.customDomains ?? [];
 
   const handleAddDomain = async () => {
     const normalizedDomain = normalizeDomain(domainInput);
@@ -142,7 +144,9 @@ export function CustomDomains() {
       {/* Help section with examples */}
       <div className="custom-domains-help">
         <details className="help-details">
-          <summary className="help-summary">{t('customDomainsHelpTitle')}</summary>
+          <summary className="help-summary">
+            {t('customDomainsHelpTitle')}
+          </summary>
           <div className="help-content">
             <p className="help-intro">{t('customDomainsHelpIntro')}</p>
             <div className="help-examples">

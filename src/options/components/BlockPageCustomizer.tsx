@@ -3,7 +3,7 @@
  * Allows users to customize the appearance of block overlays
  */
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import { useSettings } from '@/shared/hooks/useSettings';
 import { useI18n } from '@/shared/hooks/useI18n';
 import type { BlockPageTheme } from '@/shared/types';
@@ -50,7 +50,19 @@ export function BlockPageCustomizer() {
   const [localTitle, setLocalTitle] = useState('');
   const [localMessage, setLocalMessage] = useState('');
 
-  const { blockPage } = settings;
+  const blockPage = settings.blockPage ?? {
+    theme: 'system' as const,
+    showMotivationalQuote: true,
+    showBypassButton: true,
+    title: '',
+    message: '',
+    primaryColor: '#3b82f6',
+    customQuotes: [],
+  };
+  const customQuotes = useMemo(
+    () => blockPage.customQuotes ?? [],
+    [blockPage.customQuotes]
+  );
 
   // Sync local state with settings when they change
   useEffect(() => {
@@ -58,49 +70,43 @@ export function BlockPageCustomizer() {
     setLocalMessage(blockPage.message);
   }, [blockPage.title, blockPage.message]);
 
-  const handleTitleBlur = useCallback(
-    async () => {
-      const sanitized = sanitizeInput(localTitle);
-      if (sanitized === blockPage.title) {
-        return; // No change
-      }
-      setError(null);
-      try {
-        setIsUpdating(true);
-        await updateSettings({
-          blockPage: { title: sanitized },
-        });
-      } catch (err) {
-        logger.error('Failed to update title', { error: err });
-        setError(t('blockPageErrorUpdate'));
-      } finally {
-        setIsUpdating(false);
-      }
-    },
-    [localTitle, blockPage.title, updateSettings, t]
-  );
+  const handleTitleBlur = useCallback(async () => {
+    const sanitized = sanitizeInput(localTitle);
+    if (sanitized === blockPage.title) {
+      return; // No change
+    }
+    setError(null);
+    try {
+      setIsUpdating(true);
+      await updateSettings({
+        blockPage: { title: sanitized },
+      });
+    } catch (err) {
+      logger.error('Failed to update title', { error: err });
+      setError(t('blockPageErrorUpdate'));
+    } finally {
+      setIsUpdating(false);
+    }
+  }, [localTitle, blockPage.title, updateSettings, t]);
 
-  const handleMessageBlur = useCallback(
-    async () => {
-      const sanitized = sanitizeInput(localMessage);
-      if (sanitized === blockPage.message) {
-        return; // No change
-      }
-      setError(null);
-      try {
-        setIsUpdating(true);
-        await updateSettings({
-          blockPage: { message: sanitized },
-        });
-      } catch (err) {
-        logger.error('Failed to update message', { error: err });
-        setError(t('blockPageErrorUpdate'));
-      } finally {
-        setIsUpdating(false);
-      }
-    },
-    [localMessage, blockPage.message, updateSettings, t]
-  );
+  const handleMessageBlur = useCallback(async () => {
+    const sanitized = sanitizeInput(localMessage);
+    if (sanitized === blockPage.message) {
+      return; // No change
+    }
+    setError(null);
+    try {
+      setIsUpdating(true);
+      await updateSettings({
+        blockPage: { message: sanitized },
+      });
+    } catch (err) {
+      logger.error('Failed to update message', { error: err });
+      setError(t('blockPageErrorUpdate'));
+    } finally {
+      setIsUpdating(false);
+    }
+  }, [localMessage, blockPage.message, updateSettings, t]);
 
   const handleThemeChange = useCallback(
     async (theme: BlockPageTheme) => {
@@ -173,7 +179,7 @@ export function BlockPageCustomizer() {
       return;
     }
 
-    if (blockPage.customQuotes.includes(sanitized)) {
+    if (customQuotes.includes(sanitized)) {
       setError(t('blockPageErrorDuplicateQuote'));
       return;
     }
@@ -183,7 +189,7 @@ export function BlockPageCustomizer() {
       setIsUpdating(true);
       await updateSettings({
         blockPage: {
-          customQuotes: [...blockPage.customQuotes, sanitized],
+          customQuotes: [...customQuotes, sanitized],
         },
       });
       setNewQuote('');
@@ -194,14 +200,14 @@ export function BlockPageCustomizer() {
     } finally {
       setIsUpdating(false);
     }
-  }, [newQuote, blockPage.customQuotes, updateSettings, t]);
+  }, [newQuote, customQuotes, updateSettings, t]);
 
   const handleRemoveQuote = useCallback(
     async (index: number) => {
       setError(null);
       try {
         setIsUpdating(true);
-        const newQuotes = blockPage.customQuotes.filter((_, i) => i !== index);
+        const newQuotes = customQuotes.filter((_, i) => i !== index);
         await updateSettings({
           blockPage: { customQuotes: newQuotes },
         });
@@ -213,7 +219,7 @@ export function BlockPageCustomizer() {
         setIsUpdating(false);
       }
     },
-    [blockPage.customQuotes, updateSettings, t]
+    [customQuotes, updateSettings, t]
   );
 
   const handleKeyDown = useCallback(
@@ -321,14 +327,18 @@ export function BlockPageCustomizer() {
           />
           <span>{t('blockPageShowQuotes')}</span>
         </label>
-        <p className="toggle-description">{t('blockPageShowQuotesDescription')}</p>
+        <p className="toggle-description">
+          {t('blockPageShowQuotesDescription')}
+        </p>
       </div>
 
       {/* Custom Quotes */}
       {blockPage.showMotivationalQuote && (
         <div className="block-page-section">
           <h3>{t('blockPageCustomQuotes')}</h3>
-          <p className="subsection-description">{t('blockPageCustomQuotesDescription')}</p>
+          <p className="subsection-description">
+            {t('blockPageCustomQuotesDescription')}
+          </p>
 
           <div className="quote-form">
             <input
@@ -351,10 +361,10 @@ export function BlockPageCustomizer() {
           </div>
 
           <div className="quote-list">
-            {blockPage.customQuotes.length === 0 ? (
+            {customQuotes.length === 0 ? (
               <p className="quote-empty">{t('blockPageNoCustomQuotes')}</p>
             ) : (
-              blockPage.customQuotes.map((quote, index) => (
+              customQuotes.map((quote, index) => (
                 <div key={index} className="quote-item">
                   <span className="quote-text">{quote}</span>
                   <button
@@ -383,7 +393,9 @@ export function BlockPageCustomizer() {
           />
           <span>{t('blockPageShowBypass')}</span>
         </label>
-        <p className="toggle-description">{t('blockPageShowBypassDescription')}</p>
+        <p className="toggle-description">
+          {t('blockPageShowBypassDescription')}
+        </p>
       </div>
 
       {/* Preview */}
@@ -391,10 +403,15 @@ export function BlockPageCustomizer() {
         <h3>{t('blockPagePreview')}</h3>
         <div
           className={`block-page-preview ${blockPage.theme === 'dark' ? 'dark' : blockPage.theme === 'light' ? 'light' : ''}`}
-          style={{ '--preview-color': blockPage.primaryColor } as React.CSSProperties}
+          style={
+            { '--preview-color': blockPage.primaryColor } as React.CSSProperties
+          }
         >
           <div className="preview-content">
-            <div className="preview-icon" style={{ color: blockPage.primaryColor }}>
+            <div
+              className="preview-icon"
+              style={{ color: blockPage.primaryColor }}
+            >
               🛡️
             </div>
             <h4 className="preview-title">
@@ -405,13 +422,16 @@ export function BlockPageCustomizer() {
             </p>
             {blockPage.showMotivationalQuote && (
               <p className="preview-quote">
-                "{blockPage.customQuotes[0] || t('blockPageDefaultQuote')}"
+                &ldquo;{customQuotes[0] ?? t('blockPageDefaultQuote')}&rdquo;
               </p>
             )}
             {blockPage.showBypassButton && (
               <button
                 className="preview-bypass-button"
-                style={{ borderColor: blockPage.primaryColor, color: blockPage.primaryColor }}
+                style={{
+                  borderColor: blockPage.primaryColor,
+                  color: blockPage.primaryColor,
+                }}
               >
                 {t('blockPageBypassButton')}
               </button>
