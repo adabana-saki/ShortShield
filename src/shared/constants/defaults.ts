@@ -24,6 +24,12 @@ import type {
   LockdownSettings,
   LockdownState,
 } from '@/shared/types';
+import type {
+  CommitmentLockSettings,
+  CommitmentLockState,
+  UnlockHistory,
+  PremiumState,
+} from '@/shared/types/commitmentLock';
 
 /**
  * Current settings schema version
@@ -287,6 +293,129 @@ export const DEFAULT_LOCKDOWN_STATE: LockdownState = {
 } as const;
 
 /**
+ * Default Commitment Lock settings
+ */
+export const DEFAULT_COMMITMENT_LOCK: CommitmentLockSettings = {
+  enabled: false, // Disabled by default, user must opt-in
+  level: 1, // Start with moderate friction
+
+  // Level 1+ settings
+  confirmationWaitSeconds: 30, // 30 seconds wait
+  cooldownAfterUnlockMinutes: 5, // 5 minutes cooldown after unlock
+  requireIntentionStatement: true, // Require intention by default
+  intentionMinLength: 20, // Minimum 20 characters
+
+  // Level 2+ settings
+  challengeCount: 3, // 3 challenges to solve
+  challengesMustBeConsecutive: true, // Must solve all without errors
+  escalatingCooldown: true, // Cooldown increases with failures
+  dailyAttemptWarningThreshold: 3, // Warn after 3 attempts per day
+
+  // Level 3 (Premium) settings
+  timeLockEnabled: false, // Time lock disabled by default
+  timeLockHours: 24, // 24 hours default time lock
+  weeklyUnlockLimit: 1, // 1 unlock per week (7 days)
+  scheduleRestriction: false, // No schedule restriction by default
+  allowedUnlockHours: undefined, // No specific hours
+  nuclearModeEnabled: false, // Nuclear mode disabled by default
+} as const;
+
+/**
+ * Default Commitment Lock state (no activity)
+ */
+export const DEFAULT_COMMITMENT_LOCK_STATE: CommitmentLockState = {
+  lastUnlockAt: null,
+  lastAttemptAt: null,
+  todayAttempts: 0,
+  todaySuccesses: 0,
+  weekAttempts: 0,
+  weekSuccesses: 0,
+  weeklyUnlocksRemaining: 1,
+  currentCooldownEndsAt: null,
+  timeLockEndsAt: null,
+  consecutiveFailures: 0,
+  lastDailyResetDate: new Date().toISOString().split('T')[0] ?? '',
+  lastWeeklyResetDate: getMonday(new Date()).toISOString().split('T')[0] ?? '',
+  inProgressChallenge: null,
+} as const;
+
+/**
+ * Default unlock history
+ */
+export const DEFAULT_UNLOCK_HISTORY: UnlockHistory = {
+  attempts: [],
+  lastCleanupDate: new Date().toISOString().split('T')[0] ?? '',
+  maxAttempts: 1000, // Keep last 1000 attempts
+} as const;
+
+/**
+ * Default premium state (not subscribed)
+ */
+export const DEFAULT_PREMIUM_STATE: PremiumState = {
+  isPremium: false,
+  subscriptionType: 'none',
+  expiresAt: null,
+  features: [],
+} as const;
+
+/**
+ * Escalating cooldown multipliers for failed unlock attempts
+ * Cooldown = base * multiplier[consecutiveFailures]
+ */
+export const COMMITMENT_LOCK_COOLDOWN_ESCALATION = {
+  /** Base cooldown in minutes */
+  baseMinutes: 5,
+  /** Multipliers for consecutive failures (5, 10, 20, 40, 80 minutes) */
+  multipliers: [1, 2, 4, 8, 16] as const,
+  /** Maximum multiplier index */
+  maxMultiplierIndex: 4,
+} as const;
+
+/**
+ * Commitment Lock limits
+ */
+export const COMMITMENT_LOCK_LIMITS = {
+  /** Minimum wait time in seconds */
+  MIN_WAIT_SECONDS: 30,
+  /** Maximum wait time in seconds */
+  MAX_WAIT_SECONDS: 300,
+  /** Minimum cooldown in minutes */
+  MIN_COOLDOWN_MINUTES: 5,
+  /** Maximum cooldown in minutes */
+  MAX_COOLDOWN_MINUTES: 60,
+  /** Minimum intention length */
+  MIN_INTENTION_LENGTH: 10,
+  /** Maximum intention length */
+  MAX_INTENTION_LENGTH: 100,
+  /** Minimum challenges */
+  MIN_CHALLENGES: 1,
+  /** Maximum challenges */
+  MAX_CHALLENGES: 5,
+  /** Minimum time lock hours */
+  MIN_TIME_LOCK_HOURS: 1,
+  /** Maximum time lock hours (1 week) */
+  MAX_TIME_LOCK_HOURS: 168,
+  /** Minimum weekly unlock limit */
+  MIN_WEEKLY_UNLOCKS: 1,
+  /** Maximum weekly unlock limit */
+  MAX_WEEKLY_UNLOCKS: 3,
+  /** Days between emergency unlocks (Level 3) */
+  EMERGENCY_UNLOCK_INTERVAL_DAYS: 7,
+} as const;
+
+/**
+ * Helper function to get Monday of the week
+ */
+function getMonday(date: Date): Date {
+  const d = new Date(date);
+  const day = d.getDay();
+  const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+  d.setDate(diff);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
+/**
  * Default settings
  */
 export const DEFAULT_SETTINGS: Settings = {
@@ -305,6 +434,7 @@ export const DEFAULT_SETTINGS: Settings = {
   streak: DEFAULT_STREAK,
   challenge: DEFAULT_CHALLENGE,
   lockdown: DEFAULT_LOCKDOWN,
+  commitmentLock: DEFAULT_COMMITMENT_LOCK,
   onboardingCompleted: false,
   version: SETTINGS_VERSION,
 } as const;

@@ -28,8 +28,8 @@ export function Dashboard({ settings, onToggleEnabled, onNavigate }: DashboardPr
   const fetchFocusState = useCallback(async () => {
     try {
       const message = createMessage({ type: 'FOCUS_GET_STATE' as const });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: FocusModeState; error?: string };
+      if (response.success === true && response.data != null) {
         setFocusState(response.data);
       }
     } catch {
@@ -40,8 +40,8 @@ export function Dashboard({ settings, onToggleEnabled, onNavigate }: DashboardPr
   const fetchStreakData = useCallback(async () => {
     try {
       const message = createMessage({ type: 'STREAK_GET_DATA' as const });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: StreakData };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: StreakData; error?: string };
+      if (response.success === true && response.data != null) {
         setStreakData(response.data);
       }
     } catch {

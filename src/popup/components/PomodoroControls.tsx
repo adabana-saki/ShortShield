@@ -29,8 +29,8 @@ export function PomodoroControls({
         type: 'POMODORO_START',
         payload: { mode },
       });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: PomodoroState; error?: string };
+      if (response.success === true && response.data != null) {
         onStateChange(response.data);
       }
     } catch {
@@ -46,8 +46,8 @@ export function PomodoroControls({
       const message = createMessage({
         type: 'POMODORO_PAUSE' as const,
       });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: PomodoroState; error?: string };
+      if (response.success === true && response.data != null) {
         onStateChange(response.data);
       }
     } catch {
@@ -63,8 +63,8 @@ export function PomodoroControls({
       const message = createMessage({
         type: 'POMODORO_RESUME' as const,
       });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: PomodoroState; error?: string };
+      if (response.success === true && response.data != null) {
         onStateChange(response.data);
       }
     } catch {
@@ -80,8 +80,8 @@ export function PomodoroControls({
       const message = createMessage({
         type: 'POMODORO_STOP' as const,
       });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: PomodoroState; error?: string };
+      if (response.success === true && response.data != null) {
         onStateChange(response.data);
       }
     } catch {
@@ -97,8 +97,8 @@ export function PomodoroControls({
       const message = createMessage({
         type: 'POMODORO_SKIP' as const,
       });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: PomodoroState; error?: string };
+      if (response.success === true && response.data != null) {
         onStateChange(response.data);
       }
     } catch {

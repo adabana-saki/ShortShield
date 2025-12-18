@@ -84,8 +84,8 @@ export function FocusCountdown({ focusState, onStateChange }: FocusCountdownProp
       const message = createMessage({
         type: 'FOCUS_GET_STATE' as const,
       });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: FocusModeState; error?: string };
+      if (response.success === true && response.data != null) {
         onStateChange(response.data);
       }
     } catch {
@@ -100,8 +100,8 @@ export function FocusCountdown({ focusState, onStateChange }: FocusCountdownProp
         type: 'FOCUS_EXTEND',
         payload: { additionalMinutes: minutes },
       });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: FocusModeState; error?: string };
+      if (response.success === true && response.data != null) {
         onStateChange(response.data);
       }
     } catch {

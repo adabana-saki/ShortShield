@@ -65,7 +65,10 @@ export class YouTubeDetector extends BasePlatformDetector {
   scan(root: HTMLElement): void {
     // Check full site blocking first (higher priority)
     if (this.isFullSiteBlockingEnabled()) {
-      this.blockFullSite();
+      // Check if current page is whitelisted before blocking full site
+      if (!this.isCurrentPageWhitelisted()) {
+        this.blockFullSite();
+      }
       return;
     }
 
@@ -75,6 +78,12 @@ export class YouTubeDetector extends BasePlatformDetector {
 
     // Check if on a Shorts URL
     if (this.isOnShortsPage()) {
+      // Check if current shorts video is whitelisted
+      if (this.isCurrentPageWhitelisted()) {
+        logger.debug('Current page is whitelisted, skipping block');
+        return;
+      }
+
       // If redirect preference is enabled, redirect
       if (this.settings?.preferences?.redirectShortsToRegular === true) {
         this.handleRedirect();
@@ -103,6 +112,109 @@ export class YouTubeDetector extends BasePlatformDetector {
    */
   private isOnShortsPage(): boolean {
     return window.location.pathname.startsWith('/shorts/');
+  }
+
+  /**
+   * Check if current page URL is whitelisted
+   */
+  private isCurrentPageWhitelisted(): boolean {
+    if (!this.settings) {
+      return false;
+    }
+
+    const currentUrl = window.location.href;
+    const pathname = window.location.pathname;
+
+    for (const entry of this.settings.whitelist) {
+      if (entry.platform !== this.platform) {
+        continue;
+      }
+
+      switch (entry.type) {
+        case 'url': {
+          // Check if the URL matches (with or without query params)
+          if (currentUrl === entry.value || currentUrl.startsWith(entry.value + '?')) {
+            logger.debug('URL whitelisted', { url: currentUrl, entry: entry.value });
+            return true;
+          }
+
+          // For shorts, also check video ID
+          if (pathname.startsWith('/shorts/')) {
+            const videoId = pathname.split('/shorts/')[1]?.split('?')[0];
+            if (videoId && entry.value.includes(videoId)) {
+              logger.debug('Video ID whitelisted', { videoId, entry: entry.value });
+              return true;
+            }
+          }
+
+          // For regular videos, check video ID in query param
+          if (pathname === '/watch') {
+            const urlParams = new URLSearchParams(window.location.search);
+            const videoId = urlParams.get('v');
+            if (videoId && entry.value.includes(videoId)) {
+              logger.debug('Video ID whitelisted', { videoId, entry: entry.value });
+              return true;
+            }
+          }
+          break;
+        }
+
+        case 'channel': {
+          // Check if current page belongs to whitelisted channel
+          // This requires checking the page's channel info
+          if (this.isCurrentPageFromChannel(entry.value)) {
+            logger.debug('Channel whitelisted', { channel: entry.value });
+            return true;
+          }
+          break;
+        }
+
+        case 'domain':
+          // Domain-based whitelist (not typically used for YouTube)
+          break;
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * Check if current page belongs to a specific channel
+   */
+  private isCurrentPageFromChannel(channelId: string): boolean {
+    // Check channel link in page
+    const channelLinks = document.querySelectorAll<HTMLAnchorElement>(
+      'a[href*="/channel/"], a[href*="/@"], ytd-channel-name a, #owner a, .ytd-video-owner-renderer a'
+    );
+
+    for (const link of channelLinks) {
+      const href = link.href;
+      if (!href) continue;
+
+      try {
+        const url = new URL(href);
+
+        // Check channel ID format
+        if (url.pathname.startsWith('/channel/')) {
+          const id = url.pathname.split('/channel/')[1]?.split('/')[0];
+          if (id === channelId) {
+            return true;
+          }
+        }
+
+        // Check @handle format
+        if (url.pathname.startsWith('/@')) {
+          const handle = url.pathname.split('/@')[1]?.split('/')[0];
+          if (`@${handle ?? ''}` === channelId || handle === channelId) {
+            return true;
+          }
+        }
+      } catch {
+        // Invalid URL
+      }
+    }
+
+    return false;
   }
 
   /**

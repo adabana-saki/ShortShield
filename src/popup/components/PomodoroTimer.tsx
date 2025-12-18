@@ -93,8 +93,8 @@ export function PomodoroTimer({ pomodoroState, onStateChange }: PomodoroTimerPro
       const message = createMessage({
         type: 'POMODORO_GET_STATE' as const,
       });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: PomodoroState; error?: string };
+      if (response.success === true && response.data != null) {
         onStateChange(response.data);
       }
     } catch {

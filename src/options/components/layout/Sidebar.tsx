@@ -26,6 +26,7 @@ export type SubSectionId =
   | 'streak'
   | 'challenge'
   | 'lockdown'
+  | 'commitmentLock'
   | 'appearance'
   | 'language'
   | 'backup';
@@ -321,6 +322,12 @@ export function Sidebar({
             label={t('lockdownTitle')}
             active={activeSubSection === 'lockdown'}
             onClick={() => onSectionChange('advanced', 'lockdown')}
+            nested
+          />
+          <SidebarItem
+            label={t('commitmentLockTitle')}
+            active={activeSubSection === 'commitmentLock'}
+            onClick={() => onSectionChange('advanced', 'commitmentLock')}
             nested
           />
           <SidebarItem

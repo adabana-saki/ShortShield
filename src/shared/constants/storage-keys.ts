@@ -27,6 +27,12 @@ export const STORAGE_KEYS = {
   CHALLENGE_STATE: 'shortshield_challenge_state',
   /** Lockdown mode state key */
   LOCKDOWN_STATE: 'shortshield_lockdown_state',
+  /** Commitment Lock state key */
+  COMMITMENT_LOCK_STATE: 'shortshield_commitment_lock_state',
+  /** Commitment Lock unlock history key */
+  COMMITMENT_LOCK_HISTORY: 'shortshield_commitment_lock_history',
+  /** Premium subscription state key */
+  PREMIUM_STATE: 'shortshield_premium_state',
 } as const;
 
 /**

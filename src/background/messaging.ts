@@ -43,6 +43,19 @@ import type {
   LockdownGetStateResponse,
   LockdownRequestEmergencyBypassResponse,
   LockdownCheckEmergencyBypassResponse,
+  CommitmentLockGetStateResponse,
+  CommitmentLockCheckUnlockResponse,
+  CommitmentLockStartUnlockResponse,
+  CommitmentLockSubmitIntentionResponse,
+  CommitmentLockRequestChallengeResponse,
+  CommitmentLockSubmitChallengeResponse,
+  CommitmentLockConfirmUnlockResponse,
+  CommitmentLockCancelUnlockResponse,
+  CommitmentLockGetHistoryResponse,
+  CommitmentLockGetStatsResponse,
+  CommitmentLockResetStateResponse,
+  PremiumGetStateResponse,
+  PremiumCheckFeatureResponse,
   WhitelistEntry,
   WhitelistId,
 } from '@/shared/types';
@@ -81,6 +94,21 @@ import {
   requestEmergencyBypass,
   checkEmergencyBypass,
 } from './timers';
+import {
+  getCommitmentLockState,
+  checkUnlockAllowed,
+  startUnlockFlow,
+  submitIntention,
+  requestUnlockChallenge,
+  submitChallengeAnswer as submitCommitmentLockChallenge,
+  confirmUnlock,
+  cancelUnlockFlow,
+  getUnlockHistory,
+  getUnlockStats,
+  resetCommitmentLockState,
+  getPremiumState,
+  checkPremiumFeature,
+} from './commitmentLock';
 
 const logger = createLogger('messaging');
 
@@ -673,6 +701,222 @@ async function handleLockdownCheckEmergencyBypass(): Promise<LockdownCheckEmerge
 }
 
 /**
+ * Handle COMMITMENT_LOCK_GET_STATE message
+ */
+async function handleCommitmentLockGetState(): Promise<CommitmentLockGetStateResponse> {
+  try {
+    const state = await getCommitmentLockState();
+    return { success: true, data: state };
+  } catch (error) {
+    logger.error('Failed to get commitment lock state', { error: String(error) });
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
+ * Handle COMMITMENT_LOCK_CHECK_UNLOCK message
+ */
+async function handleCommitmentLockCheckUnlock(): Promise<CommitmentLockCheckUnlockResponse> {
+  try {
+    const result = await checkUnlockAllowed();
+    return { success: true, data: result };
+  } catch (error) {
+    logger.error('Failed to check unlock', { error: String(error) });
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
+ * Handle COMMITMENT_LOCK_START_UNLOCK message
+ */
+async function handleCommitmentLockStartUnlock(): Promise<CommitmentLockStartUnlockResponse> {
+  try {
+    const result = await startUnlockFlow();
+    return {
+      success: result.success,
+      data: {
+        step: 'waiting',
+        waitSecondsRemaining: result.waitSecondsRemaining,
+        state: result.state,
+      },
+      error: result.error,
+    };
+  } catch (error) {
+    logger.error('Failed to start unlock', { error: String(error) });
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
+ * Handle COMMITMENT_LOCK_SUBMIT_INTENTION message
+ */
+async function handleCommitmentLockSubmitIntention(
+  message: Extract<Message, { type: 'COMMITMENT_LOCK_SUBMIT_INTENTION' }>
+): Promise<CommitmentLockSubmitIntentionResponse> {
+  try {
+    const result = await submitIntention(message.payload.intention);
+    const state = await getCommitmentLockState();
+    return {
+      success: result.success,
+      data: {
+        step: result.success ? 'challenges' : 'intention',
+        waitSecondsRemaining: 0,
+        state,
+      },
+      error: result.error,
+    };
+  } catch (error) {
+    logger.error('Failed to submit intention', { error: String(error) });
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
+ * Handle COMMITMENT_LOCK_REQUEST_CHALLENGE message
+ */
+async function handleCommitmentLockRequestChallenge(): Promise<CommitmentLockRequestChallengeResponse> {
+  try {
+    const result = await requestUnlockChallenge();
+    if (result.success && result.challenge) {
+      return { success: true, data: result.challenge };
+    }
+    return { success: false, error: result.error || 'Failed to get challenge' };
+  } catch (error) {
+    logger.error('Failed to request challenge', { error: String(error) });
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
+ * Handle COMMITMENT_LOCK_SUBMIT_CHALLENGE message
+ */
+async function handleCommitmentLockSubmitChallenge(
+  message: Extract<Message, { type: 'COMMITMENT_LOCK_SUBMIT_CHALLENGE' }>
+): Promise<CommitmentLockSubmitChallengeResponse> {
+  try {
+    const result = await submitCommitmentLockChallenge(message.payload.answer);
+    return {
+      success: result.success,
+      data: {
+        correct: result.correct,
+        challengesRemaining: result.challengesRemaining,
+        allCompleted: result.allCompleted,
+        nextChallenge: result.nextChallenge,
+        state: result.state,
+      },
+      error: result.error,
+    };
+  } catch (error) {
+    logger.error('Failed to submit challenge', { error: String(error) });
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
+ * Handle COMMITMENT_LOCK_CONFIRM_UNLOCK message
+ */
+async function handleCommitmentLockConfirmUnlock(): Promise<CommitmentLockConfirmUnlockResponse> {
+  try {
+    const result = await confirmUnlock();
+    return {
+      success: result.success,
+      data: result.state,
+      error: result.error,
+    };
+  } catch (error) {
+    logger.error('Failed to confirm unlock', { error: String(error) });
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
+ * Handle COMMITMENT_LOCK_CANCEL_UNLOCK message
+ */
+async function handleCommitmentLockCancelUnlock(): Promise<CommitmentLockCancelUnlockResponse> {
+  try {
+    const result = await cancelUnlockFlow();
+    return { success: true, data: result.state };
+  } catch (error) {
+    logger.error('Failed to cancel unlock', { error: String(error) });
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
+ * Handle COMMITMENT_LOCK_GET_HISTORY message
+ */
+async function handleCommitmentLockGetHistory(): Promise<CommitmentLockGetHistoryResponse> {
+  try {
+    const history = await getUnlockHistory();
+    return { success: true, data: history };
+  } catch (error) {
+    logger.error('Failed to get unlock history', { error: String(error) });
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
+ * Handle COMMITMENT_LOCK_GET_STATS message
+ */
+async function handleCommitmentLockGetStats(): Promise<CommitmentLockGetStatsResponse> {
+  try {
+    const stats = await getUnlockStats();
+    return { success: true, data: stats };
+  } catch (error) {
+    logger.error('Failed to get unlock stats', { error: String(error) });
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
+ * Handle COMMITMENT_LOCK_RESET_STATE message
+ */
+async function handleCommitmentLockResetState(): Promise<CommitmentLockResetStateResponse> {
+  try {
+    const state = await resetCommitmentLockState();
+    return { success: true, data: state };
+  } catch (error) {
+    logger.error('Failed to reset commitment lock state', { error: String(error) });
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
+ * Handle PREMIUM_GET_STATE message
+ */
+async function handlePremiumGetState(): Promise<PremiumGetStateResponse> {
+  try {
+    const state = await getPremiumState();
+    return { success: true, data: state };
+  } catch (error) {
+    logger.error('Failed to get premium state', { error: String(error) });
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
+ * Handle PREMIUM_CHECK_FEATURE message
+ */
+async function handlePremiumCheckFeature(
+  message: Extract<Message, { type: 'PREMIUM_CHECK_FEATURE' }>
+): Promise<PremiumCheckFeatureResponse> {
+  try {
+    const result = await checkPremiumFeature(message.payload.feature);
+    return {
+      success: true,
+      data: {
+        feature: message.payload.feature,
+        available: result.available,
+        reason: result.reason,
+      },
+    };
+  } catch (error) {
+    logger.error('Failed to check premium feature', { error: String(error) });
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
  * Main message handler
  */
 async function handleMessage(
@@ -837,6 +1081,56 @@ async function handleMessage(
 
     case 'LOCKDOWN_CHECK_EMERGENCY_BYPASS':
       return handleLockdownCheckEmergencyBypass();
+
+    // Commitment Lock messages
+    case 'COMMITMENT_LOCK_GET_STATE':
+      return handleCommitmentLockGetState();
+
+    case 'COMMITMENT_LOCK_CHECK_UNLOCK':
+      return handleCommitmentLockCheckUnlock();
+
+    case 'COMMITMENT_LOCK_START_UNLOCK':
+      return handleCommitmentLockStartUnlock();
+
+    case 'COMMITMENT_LOCK_SUBMIT_INTENTION':
+      if (isMessageType(message, 'COMMITMENT_LOCK_SUBMIT_INTENTION')) {
+        return handleCommitmentLockSubmitIntention(message);
+      }
+      break;
+
+    case 'COMMITMENT_LOCK_REQUEST_CHALLENGE':
+      return handleCommitmentLockRequestChallenge();
+
+    case 'COMMITMENT_LOCK_SUBMIT_CHALLENGE':
+      if (isMessageType(message, 'COMMITMENT_LOCK_SUBMIT_CHALLENGE')) {
+        return handleCommitmentLockSubmitChallenge(message);
+      }
+      break;
+
+    case 'COMMITMENT_LOCK_CONFIRM_UNLOCK':
+      return handleCommitmentLockConfirmUnlock();
+
+    case 'COMMITMENT_LOCK_CANCEL_UNLOCK':
+      return handleCommitmentLockCancelUnlock();
+
+    case 'COMMITMENT_LOCK_GET_HISTORY':
+      return handleCommitmentLockGetHistory();
+
+    case 'COMMITMENT_LOCK_GET_STATS':
+      return handleCommitmentLockGetStats();
+
+    case 'COMMITMENT_LOCK_RESET_STATE':
+      return handleCommitmentLockResetState();
+
+    // Premium messages
+    case 'PREMIUM_GET_STATE':
+      return handlePremiumGetState();
+
+    case 'PREMIUM_CHECK_FEATURE':
+      if (isMessageType(message, 'PREMIUM_CHECK_FEATURE')) {
+        return handlePremiumCheckFeature(message);
+      }
+      break;
   }
 
   return { success: false, error: 'Unknown message type' };

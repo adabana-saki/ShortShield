@@ -18,10 +18,11 @@ import { CompactStats } from './components/CompactStats';
 import { PlatformGrid } from './components/PlatformGrid';
 import { FocusLauncher } from './components/FocusLauncher';
 import { ScheduleBadge } from './components/ScheduleBadge';
+import { BlockSiteButton } from './components/BlockSiteButton';
 
 export function App() {
   const { t, isReady: i18nReady } = useI18n();
-  const { settings, isLoading, error, toggleEnabled, togglePlatform, refreshSettings } =
+  const { settings, isLoading, error, toggleEnabled, togglePlatform, refreshSettings, updateSettings } =
     useSettings();
 
   const [focusState, setFocusState] = useState<FocusModeState>(DEFAULT_FOCUS_STATE);
@@ -31,10 +32,9 @@ export function App() {
   const fetchFocusState = useCallback(async () => {
     try {
       const message = createMessage({ type: 'FOCUS_GET_STATE' as const });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState } | undefined;
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: FocusModeState } | undefined;
       if (response?.success === true && response.data !== undefined) {
-        const data: FocusModeState = response.data;
-        setFocusState(data);
+        setFocusState(response.data);
       }
     } catch {
       // Ignore errors
@@ -44,10 +44,9 @@ export function App() {
   const fetchPomodoroState = useCallback(async () => {
     try {
       const message = createMessage({ type: 'POMODORO_GET_STATE' as const });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState } | undefined;
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: PomodoroState } | undefined;
       if (response?.success === true && response.data !== undefined) {
-        const data: PomodoroState = response.data;
-        setPomodoroState(data);
+        setPomodoroState(response.data);
       }
     } catch {
       // Ignore errors
@@ -57,10 +56,9 @@ export function App() {
   const fetchStreakData = useCallback(async () => {
     try {
       const message = createMessage({ type: 'STREAK_GET_DATA' as const });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: StreakData } | undefined;
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: StreakData } | undefined;
       if (response?.success === true && response.data !== undefined) {
-        const data: StreakData = response.data;
-        setStreakData(data);
+        setStreakData(response.data);
       }
     } catch {
       // Ignore errors
@@ -91,10 +89,9 @@ export function App() {
   const handleCancelFocus = async () => {
     try {
       const message = createMessage({ type: 'FOCUS_CANCEL' as const });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState } | undefined;
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: FocusModeState } | undefined;
       if (response?.success === true && response.data !== undefined) {
-        const data: FocusModeState = response.data;
-        setFocusState(data);
+        setFocusState(response.data);
       }
     } catch {
       // Ignore errors
@@ -111,10 +108,9 @@ export function App() {
       };
       // eslint-disable-next-line security/detect-object-injection
       const message = createMessage({ type: typeMap[action] });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState } | undefined;
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: PomodoroState } | undefined;
       if (response?.success === true && response.data !== undefined) {
-        const data: PomodoroState = response.data;
-        setPomodoroState(data);
+        setPomodoroState(response.data);
       }
     } catch {
       // Ignore errors
@@ -123,6 +119,10 @@ export function App() {
 
   const openOptions = () => {
     void browser.runtime.openOptionsPage();
+  };
+
+  const handleCustomDomainsChange = (domains: typeof settings.customDomains extends readonly (infer T)[] ? T[] : never) => {
+    void updateSettings({ customDomains: domains });
   };
 
   // Loading state
@@ -203,6 +203,12 @@ export function App() {
 
         {/* Schedule Badge */}
         <ScheduleBadge schedule={settings.schedule} />
+
+        {/* Block Current Site */}
+        <BlockSiteButton
+          customDomains={settings.customDomains}
+          onDomainsChange={handleCustomDomainsChange}
+        />
 
         {/* Focus Launcher */}
         {!hasActiveTimer && (

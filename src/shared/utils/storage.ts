@@ -52,6 +52,10 @@ export async function getSettings(): Promise<Settings> {
         ...DEFAULT_SETTINGS.schedule,
         ...(stored.schedule ?? {}),
       },
+      commitmentLock: {
+        ...DEFAULT_SETTINGS.commitmentLock,
+        ...(stored.commitmentLock ?? {}),
+      },
     };
   } catch (error) {
     logger.error('Failed to read settings', { error: String(error) });
@@ -122,6 +126,9 @@ export async function updateSettings(
     lockdown: update.lockdown
       ? { ...current.lockdown, ...update.lockdown }
       : current.lockdown,
+    commitmentLock: update.commitmentLock
+      ? { ...current.commitmentLock, ...update.commitmentLock }
+      : current.commitmentLock,
     onboardingCompleted:
       update.onboardingCompleted ?? current.onboardingCompleted,
     version: current.version,

@@ -183,6 +183,18 @@
     "message": "設定",
     "description": "オプションページを開くボタンテキスト"
   },
+  "blockThisSite": {
+    "message": "このサイトをブロック",
+    "description": "現在のウェブサイトをブロックするボタン"
+  },
+  "unblockThisSite": {
+    "message": "ブロック解除",
+    "description": "現在のウェブサイトのブロックを解除するボタン"
+  },
+  "blockedFromPopup": {
+    "message": "ポップアップからブロック",
+    "description": "ポップアップ経由でブロックされたドメインの説明"
+  },
   "optionsTitle": {
     "message": "ShortShield 設定",
     "description": "オプションページのタイトル"
@@ -1596,6 +1608,418 @@
   "lockdownInfoItem3": {
     "message": "覚えやすいが、衝動的に推測されにくいPINを選んでください",
     "description": "Third info item about lockdown"
+  },
+  "commitmentLockTitle": {
+    "message": "コミットメントロック",
+    "description": "Title for commitment lock feature"
+  },
+  "commitmentLockDescription": {
+    "message": "衝動的な解除を防ぐための摩擦を追加",
+    "description": "Description for commitment lock feature"
+  },
+  "commitmentLockEnabled": {
+    "message": "コミットメントロックを有効化",
+    "description": "Label for enabling commitment lock"
+  },
+  "commitmentLockEnabledDescription": {
+    "message": "ブロック解除前に追加のステップを要求",
+    "description": "Description for commitment lock toggle"
+  },
+  "commitmentLockLevel": {
+    "message": "摩擦レベル",
+    "description": "Label for friction level selection"
+  },
+  "commitmentLockLevelDescription": {
+    "message": "高いレベルほど解除が難しくなります",
+    "description": "Description for friction level"
+  },
+  "commitmentLockLevel1": {
+    "message": "レベル1：標準",
+    "description": "Level 1 option"
+  },
+  "commitmentLockLevel1Description": {
+    "message": "待機時間＋意図の入力",
+    "description": "Level 1 description"
+  },
+  "commitmentLockLevel2": {
+    "message": "レベル2：強",
+    "description": "Level 2 option"
+  },
+  "commitmentLockLevel2Description": {
+    "message": "チャレンジ＋段階的クールダウン",
+    "description": "Level 2 description"
+  },
+  "commitmentLockLevel3": {
+    "message": "レベル3：最強",
+    "description": "Level 3 option"
+  },
+  "commitmentLockLevel3Description": {
+    "message": "時間ロック＋週間制限",
+    "description": "Level 3 description"
+  },
+  "commitmentLockPremiumBadge": {
+    "message": "プレミアム",
+    "description": "Premium badge text"
+  },
+  "commitmentLockWaitTime": {
+    "message": "待機時間",
+    "description": "Label for wait time setting"
+  },
+  "commitmentLockWaitTimeDescription": {
+    "message": "続行前に待機する秒数",
+    "description": "Description for wait time"
+  },
+  "commitmentLockCooldown": {
+    "message": "解除後のクールダウン",
+    "description": "Label for cooldown setting"
+  },
+  "commitmentLockCooldownDescription": {
+    "message": "次の解除試行までの分数",
+    "description": "Description for cooldown"
+  },
+  "commitmentLockIntention": {
+    "message": "意図の入力を必須にする",
+    "description": "Label for intention toggle"
+  },
+  "commitmentLockIntentionDescription": {
+    "message": "なぜ解除したいのか説明が必要",
+    "description": "Description for intention requirement"
+  },
+  "commitmentLockIntentionMinLength": {
+    "message": "意図の最小文字数",
+    "description": "Label for intention min length"
+  },
+  "commitmentLockIntentionMinLengthDescription": {
+    "message": "必要な最小文字数",
+    "description": "Description for intention min length"
+  },
+  "commitmentLockChallenges": {
+    "message": "チャレンジ要件",
+    "description": "Label for challenge settings"
+  },
+  "commitmentLockChallengesDescription": {
+    "message": "意図を証明するために問題を解く",
+    "description": "Description for challenges"
+  },
+  "commitmentLockChallengeCount": {
+    "message": "チャレンジ数",
+    "description": "Label for challenge count"
+  },
+  "commitmentLockChallengeCountDescription": {
+    "message": "完了するチャレンジの数",
+    "description": "Description for challenge count"
+  },
+  "commitmentLockConsecutive": {
+    "message": "連続正解が必要",
+    "description": "Label for consecutive toggle"
+  },
+  "commitmentLockConsecutiveDescription": {
+    "message": "1つでも間違えると最初からやり直し",
+    "description": "Description for consecutive requirement"
+  },
+  "commitmentLockEscalating": {
+    "message": "段階的クールダウン",
+    "description": "Label for escalating cooldown"
+  },
+  "commitmentLockEscalatingDescription": {
+    "message": "失敗するとクールダウンが長くなる",
+    "description": "Description for escalating cooldown"
+  },
+  "commitmentLockTimeLock": {
+    "message": "時間ロック",
+    "description": "Label for time lock feature"
+  },
+  "commitmentLockTimeLockDescription": {
+    "message": "一定期間設定をロック",
+    "description": "Description for time lock"
+  },
+  "commitmentLockTimeLockHours": {
+    "message": "ロック時間（時間）",
+    "description": "Label for time lock duration"
+  },
+  "commitmentLockTimeLockHoursDescription": {
+    "message": "解除可能になるまでの時間",
+    "description": "Description for time lock duration"
+  },
+  "commitmentLockWeeklyLimit": {
+    "message": "週間解除制限",
+    "description": "Label for weekly limit"
+  },
+  "commitmentLockWeeklyLimitDescription": {
+    "message": "1週間の最大解除回数",
+    "description": "Description for weekly limit"
+  },
+  "commitmentLockNuclear": {
+    "message": "核オプション",
+    "description": "Label for nuclear mode"
+  },
+  "commitmentLockNuclearDescription": {
+    "message": "解除機能を完全に無効化",
+    "description": "Description for nuclear mode"
+  },
+  "commitmentLockPremiumRequired": {
+    "message": "レベル3にはプレミアムが必要です",
+    "description": "Message about premium requirement"
+  },
+  "commitmentLockIntentionTooShort": {
+    "message": "意図は$1文字以上必要です",
+    "description": "Error when intention is too short",
+    "placeholders": {
+      "1": {
+        "content": "$1",
+        "example": "20"
+      }
+    }
+  },
+  "commitmentLockManyAttempts": {
+    "message": "本日$1回解除を試みました",
+    "description": "Warning about many unlock attempts",
+    "placeholders": {
+      "1": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "commitmentLockExplanation": {
+    "message": "レベル$1の保護が有効です。全てのステップを完了して解除してください。",
+    "description": "Explanation of commitment lock level",
+    "placeholders": {
+      "1": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "commitmentLockChallengeProgress": {
+    "message": "チャレンジ $1 / $2",
+    "description": "Challenge progress indicator",
+    "placeholders": {
+      "1": {
+        "content": "$1",
+        "example": "2"
+      },
+      "2": {
+        "content": "$2",
+        "example": "3"
+      }
+    }
+  },
+  "commitmentLockCooldownStarted": {
+    "message": "$1分間のクールダウンが開始されました",
+    "description": "Message when cooldown starts",
+    "placeholders": {
+      "1": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "commitmentLockAreYouSure": {
+    "message": "本当に解除しますか？",
+    "description": "Confirmation question"
+  },
+  "commitmentLockNotAllowed": {
+    "message": "現在解除は許可されていません",
+    "description": "Generic not allowed message"
+  },
+  "commitmentLockUnlockSuccess": {
+    "message": "解除に成功しました！",
+    "description": "Success message"
+  },
+  "commitmentLockUnlockFailed": {
+    "message": "解除に失敗しました",
+    "description": "Failure message"
+  },
+  "commitmentLockWaitingTitle": {
+    "message": "お待ちください...",
+    "description": "Title during waiting period"
+  },
+  "commitmentLockWaitingSeconds": {
+    "message": "残り$1秒",
+    "description": "Countdown during waiting",
+    "placeholders": {
+      "1": {
+        "content": "$1",
+        "example": "30"
+      }
+    }
+  },
+  "commitmentLockIntentionLabel": {
+    "message": "なぜ解除が必要ですか？",
+    "description": "Label for intention input"
+  },
+  "commitmentLockIntentionPlaceholder": {
+    "message": "解除する理由を入力してください...",
+    "description": "Placeholder for intention input"
+  },
+  "commitmentLockFinalConfirm": {
+    "message": "最終確認：解除を続行しますか？",
+    "description": "Final confirmation message"
+  },
+  "commitmentLockProceed": {
+    "message": "続行",
+    "description": "Proceed button text"
+  },
+  "commitmentLockError_cooldown_active": {
+    "message": "クールダウン中です",
+    "description": "Error: cooldown active"
+  },
+  "commitmentLockError_time_lock_active": {
+    "message": "時間ロック中です",
+    "description": "Error: time lock active"
+  },
+  "commitmentLockError_weekly_limit_reached": {
+    "message": "週間解除制限に達しました",
+    "description": "Error: weekly limit reached"
+  },
+  "commitmentLockError_challenge_failed": {
+    "message": "チャレンジに失敗しました",
+    "description": "Error: challenge failed"
+  },
+  "commitmentLockError_nuclear_mode": {
+    "message": "核オプションが有効です - 解除は無効化されています",
+    "description": "Error: nuclear mode"
+  },
+  "commitmentLockTodayAttempts": {
+    "message": "本日の試行回数",
+    "description": "Label for today's attempts"
+  },
+  "commitmentLockWeeklyUnlocks": {
+    "message": "週間残り解除回数",
+    "description": "Label for weekly unlocks remaining"
+  },
+  "commitmentLockWeeklyUnlocksRemaining": {
+    "message": "週間残り解除回数",
+    "description": "Label for weekly unlocks remaining in state display"
+  },
+  "commitmentLockCooldownActive": {
+    "message": "クールダウン中",
+    "description": "Message when cooldown is active"
+  },
+  "commitmentLockScheduleRestriction": {
+    "message": "解除時間帯を制限",
+    "description": "Label for schedule restriction toggle"
+  },
+  "commitmentLockScheduleRestrictionDescription": {
+    "message": "特定の時間帯のみ解除を許可",
+    "description": "Description for schedule restriction"
+  },
+  "commitmentLockAllowedHours": {
+    "message": "許可時間帯",
+    "description": "Label for allowed hours setting"
+  },
+  "commitmentLockNuclearConfirm": {
+    "message": "警告：核オプションを有効にすると、ブロックされたサイトの解除が完全に不可能になります。これは簡単に元に戻せません。本当によろしいですか？",
+    "description": "Confirmation dialog for nuclear mode"
+  },
+  "commitmentLockNuclearWarning": {
+    "message": "核オプションが有効です。解除は完全に無効化されています！",
+    "description": "Warning when nuclear mode is enabled"
+  },
+  "commitmentLockLevelTitle": {
+    "message": "保護レベル",
+    "description": "Title for level selection section"
+  },
+  "commitmentLockLevel1Name": {
+    "message": "標準",
+    "description": "Level 1 name"
+  },
+  "commitmentLockLevel2Name": {
+    "message": "強",
+    "description": "Level 2 name"
+  },
+  "commitmentLockLevel3Name": {
+    "message": "最強",
+    "description": "Level 3 name"
+  },
+  "commitmentLockBasicSettings": {
+    "message": "基本設定",
+    "description": "Title for basic settings section"
+  },
+  "commitmentLockChallengeSettings": {
+    "message": "チャレンジ設定",
+    "description": "Title for challenge settings section"
+  },
+  "commitmentLockPremiumSettings": {
+    "message": "プレミアム設定",
+    "description": "Title for premium settings section"
+  },
+  "commitmentLockRequireIntention": {
+    "message": "意図の入力を必須にする",
+    "description": "Label for intention requirement toggle"
+  },
+  "commitmentLockRequireIntentionDescription": {
+    "message": "なぜ解除したいのか説明が必要",
+    "description": "Description for intention requirement"
+  },
+  "commitmentLockTimeLockDuration": {
+    "message": "ロック期間",
+    "description": "Label for time lock duration"
+  },
+  "commitmentLockTimeLockDurationDescription": {
+    "message": "再び解除可能になるまでの時間",
+    "description": "Description for time lock duration"
+  },
+  "commitmentLockInfoTitle": {
+    "message": "仕組み",
+    "description": "Title for info section"
+  },
+  "commitmentLockInfo1": {
+    "message": "高いレベルほど衝動的な解除を防ぐ摩擦が増加します",
+    "description": "Info item 1"
+  },
+  "commitmentLockInfo2": {
+    "message": "段階的クールダウンで繰り返しの試行がより困難になります",
+    "description": "Info item 2"
+  },
+  "commitmentLockInfo3": {
+    "message": "レベル3プレミアム機能で最大限の自己制御を実現",
+    "description": "Info item 3"
+  },
+  "commitmentLockError_outside_allowed_hours": {
+    "message": "許可された時間帯にのみ解除可能です",
+    "description": "Error: outside allowed hours"
+  },
+  "upgradeToPremium": {
+    "message": "プレミアムにアップグレード",
+    "description": "Button text for premium upgrade"
+  },
+  "seconds": {
+    "message": "秒",
+    "description": "Unit: seconds"
+  },
+  "minutes": {
+    "message": "分",
+    "description": "Unit: minutes"
+  },
+  "hours": {
+    "message": "時間",
+    "description": "Unit: hours"
+  },
+  "characters": {
+    "message": "文字",
+    "description": "Unit: characters"
+  },
+  "questions": {
+    "message": "問",
+    "description": "Unit: questions"
+  },
+  "timesPerWeek": {
+    "message": "回/週",
+    "description": "Unit: times per week"
+  },
+  "dismiss": {
+    "message": "閉じる",
+    "description": "Dismiss button"
+  },
+  "loading": {
+    "message": "読み込み中...",
+    "description": "Loading message"
+  },
+  "goBack": {
+    "message": "戻る",
+    "description": "Go back button text"
   },
   "customDomainBlockTitle": {
     "message": "ShortShield 実行中",

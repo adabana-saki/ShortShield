@@ -47,8 +47,8 @@ export function TimeReports() {
         type: 'TIME_GET_HISTORY',
         payload: { days: selectedDays },
       });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: TimeTrackingState };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: TimeTrackingState; error?: string };
+      if (response.success === true && response.data != null) {
         setHistory(response.data);
       }
     } catch (error) {
@@ -88,7 +88,7 @@ export function TimeReports() {
       const message = createMessage<TimeClearHistoryMessage>({
         type: 'TIME_CLEAR_HISTORY',
       });
-      await browser.runtime.sendMessage(message);
+      (await browser.runtime.sendMessage(message)) as { success: boolean; data?: TimeTrackingState; error?: string };
       await fetchHistory();
     } catch (error) {
       console.error('Failed to clear history:', error);

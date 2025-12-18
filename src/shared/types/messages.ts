@@ -17,6 +17,11 @@ import type {
   ChallengeData,
   ChallengeState,
   LockdownState,
+  CommitmentLockState,
+  UnlockCheckResult,
+  UnlockHistory,
+  CommitmentLockStats,
+  PremiumState,
 } from './settings';
 import type { Platform } from './settings';
 
@@ -67,6 +72,21 @@ export const MESSAGE_TYPES = [
   'LOCKDOWN_GET_STATE',
   'LOCKDOWN_REQUEST_EMERGENCY_BYPASS',
   'LOCKDOWN_CHECK_EMERGENCY_BYPASS',
+  // Commitment Lock messages
+  'COMMITMENT_LOCK_GET_STATE',
+  'COMMITMENT_LOCK_CHECK_UNLOCK',
+  'COMMITMENT_LOCK_START_UNLOCK',
+  'COMMITMENT_LOCK_SUBMIT_INTENTION',
+  'COMMITMENT_LOCK_REQUEST_CHALLENGE',
+  'COMMITMENT_LOCK_SUBMIT_CHALLENGE',
+  'COMMITMENT_LOCK_CONFIRM_UNLOCK',
+  'COMMITMENT_LOCK_CANCEL_UNLOCK',
+  'COMMITMENT_LOCK_GET_HISTORY',
+  'COMMITMENT_LOCK_GET_STATS',
+  'COMMITMENT_LOCK_RESET_STATE',
+  // Premium messages
+  'PREMIUM_GET_STATE',
+  'PREMIUM_CHECK_FEATURE',
 ] as const;
 
 export type MessageType = (typeof MESSAGE_TYPES)[number];
@@ -387,6 +407,109 @@ export interface LockdownCheckEmergencyBypassMessage extends BaseMessage<'LOCKDO
 }
 
 /**
+ * COMMITMENT_LOCK_GET_STATE message to get current Commitment Lock state
+ */
+export interface CommitmentLockGetStateMessage extends BaseMessage<'COMMITMENT_LOCK_GET_STATE'> {
+  readonly type: 'COMMITMENT_LOCK_GET_STATE';
+}
+
+/**
+ * COMMITMENT_LOCK_CHECK_UNLOCK message to check if unlock is allowed
+ */
+export interface CommitmentLockCheckUnlockMessage extends BaseMessage<'COMMITMENT_LOCK_CHECK_UNLOCK'> {
+  readonly type: 'COMMITMENT_LOCK_CHECK_UNLOCK';
+}
+
+/**
+ * COMMITMENT_LOCK_START_UNLOCK message to begin the unlock flow
+ */
+export interface CommitmentLockStartUnlockMessage extends BaseMessage<'COMMITMENT_LOCK_START_UNLOCK'> {
+  readonly type: 'COMMITMENT_LOCK_START_UNLOCK';
+}
+
+/**
+ * COMMITMENT_LOCK_SUBMIT_INTENTION message to submit intention statement
+ */
+export interface CommitmentLockSubmitIntentionMessage extends BaseMessage<'COMMITMENT_LOCK_SUBMIT_INTENTION'> {
+  readonly type: 'COMMITMENT_LOCK_SUBMIT_INTENTION';
+  readonly payload: {
+    readonly intention: string;
+  };
+}
+
+/**
+ * COMMITMENT_LOCK_REQUEST_CHALLENGE message to request a challenge
+ */
+export interface CommitmentLockRequestChallengeMessage extends BaseMessage<'COMMITMENT_LOCK_REQUEST_CHALLENGE'> {
+  readonly type: 'COMMITMENT_LOCK_REQUEST_CHALLENGE';
+}
+
+/**
+ * COMMITMENT_LOCK_SUBMIT_CHALLENGE message to submit challenge answer
+ */
+export interface CommitmentLockSubmitChallengeMessage extends BaseMessage<'COMMITMENT_LOCK_SUBMIT_CHALLENGE'> {
+  readonly type: 'COMMITMENT_LOCK_SUBMIT_CHALLENGE';
+  readonly payload: {
+    readonly answer: string;
+  };
+}
+
+/**
+ * COMMITMENT_LOCK_CONFIRM_UNLOCK message to complete the unlock
+ */
+export interface CommitmentLockConfirmUnlockMessage extends BaseMessage<'COMMITMENT_LOCK_CONFIRM_UNLOCK'> {
+  readonly type: 'COMMITMENT_LOCK_CONFIRM_UNLOCK';
+}
+
+/**
+ * COMMITMENT_LOCK_CANCEL_UNLOCK message to cancel the unlock flow
+ */
+export interface CommitmentLockCancelUnlockMessage extends BaseMessage<'COMMITMENT_LOCK_CANCEL_UNLOCK'> {
+  readonly type: 'COMMITMENT_LOCK_CANCEL_UNLOCK';
+}
+
+/**
+ * COMMITMENT_LOCK_GET_HISTORY message to get unlock history
+ */
+export interface CommitmentLockGetHistoryMessage extends BaseMessage<'COMMITMENT_LOCK_GET_HISTORY'> {
+  readonly type: 'COMMITMENT_LOCK_GET_HISTORY';
+  readonly payload?: {
+    readonly limit?: number;
+  };
+}
+
+/**
+ * COMMITMENT_LOCK_GET_STATS message to get unlock statistics
+ */
+export interface CommitmentLockGetStatsMessage extends BaseMessage<'COMMITMENT_LOCK_GET_STATS'> {
+  readonly type: 'COMMITMENT_LOCK_GET_STATS';
+}
+
+/**
+ * COMMITMENT_LOCK_RESET_STATE message to reset Commitment Lock state
+ */
+export interface CommitmentLockResetStateMessage extends BaseMessage<'COMMITMENT_LOCK_RESET_STATE'> {
+  readonly type: 'COMMITMENT_LOCK_RESET_STATE';
+}
+
+/**
+ * PREMIUM_GET_STATE message to get premium subscription state
+ */
+export interface PremiumGetStateMessage extends BaseMessage<'PREMIUM_GET_STATE'> {
+  readonly type: 'PREMIUM_GET_STATE';
+}
+
+/**
+ * PREMIUM_CHECK_FEATURE message to check if a premium feature is available
+ */
+export interface PremiumCheckFeatureMessage extends BaseMessage<'PREMIUM_CHECK_FEATURE'> {
+  readonly type: 'PREMIUM_CHECK_FEATURE';
+  readonly payload: {
+    readonly feature: string;
+  };
+}
+
+/**
  * Union type for all messages
  */
 export type Message =
@@ -425,7 +548,20 @@ export type Message =
   | LockdownDeactivateMessage
   | LockdownGetStateMessage
   | LockdownRequestEmergencyBypassMessage
-  | LockdownCheckEmergencyBypassMessage;
+  | LockdownCheckEmergencyBypassMessage
+  | CommitmentLockGetStateMessage
+  | CommitmentLockCheckUnlockMessage
+  | CommitmentLockStartUnlockMessage
+  | CommitmentLockSubmitIntentionMessage
+  | CommitmentLockRequestChallengeMessage
+  | CommitmentLockSubmitChallengeMessage
+  | CommitmentLockConfirmUnlockMessage
+  | CommitmentLockCancelUnlockMessage
+  | CommitmentLockGetHistoryMessage
+  | CommitmentLockGetStatsMessage
+  | CommitmentLockResetStateMessage
+  | PremiumGetStateMessage
+  | PremiumCheckFeatureMessage;
 
 /**
  * Response structure
@@ -516,6 +652,58 @@ export type LockdownDeactivateResponse = MessageResponse<LockdownState>;
 export type LockdownGetStateResponse = MessageResponse<LockdownState>;
 export type LockdownRequestEmergencyBypassResponse = MessageResponse<LockdownState>;
 export type LockdownCheckEmergencyBypassResponse = MessageResponse<EmergencyBypassCheckResult>;
+
+/**
+ * Commitment Lock unlock flow result
+ */
+export interface CommitmentLockUnlockFlowResult {
+  readonly step: string;
+  readonly waitSecondsRemaining: number;
+  readonly challengeProgress?: {
+    readonly current: number;
+    readonly total: number;
+    readonly correctCount: number;
+  };
+  readonly currentChallenge?: ChallengeData;
+  readonly state: CommitmentLockState;
+}
+
+/**
+ * Commitment Lock challenge result
+ */
+export interface CommitmentLockChallengeResult {
+  readonly correct: boolean;
+  readonly challengesRemaining: number;
+  readonly allCompleted: boolean;
+  readonly nextChallenge?: ChallengeData;
+  readonly state: CommitmentLockState;
+}
+
+/**
+ * Premium feature check result
+ */
+export interface PremiumFeatureCheckResult {
+  readonly feature: string;
+  readonly available: boolean;
+  readonly reason?: string;
+}
+
+// Commitment Lock response types
+export type CommitmentLockGetStateResponse = MessageResponse<CommitmentLockState>;
+export type CommitmentLockCheckUnlockResponse = MessageResponse<UnlockCheckResult>;
+export type CommitmentLockStartUnlockResponse = MessageResponse<CommitmentLockUnlockFlowResult>;
+export type CommitmentLockSubmitIntentionResponse = MessageResponse<CommitmentLockUnlockFlowResult>;
+export type CommitmentLockRequestChallengeResponse = MessageResponse<ChallengeData>;
+export type CommitmentLockSubmitChallengeResponse = MessageResponse<CommitmentLockChallengeResult>;
+export type CommitmentLockConfirmUnlockResponse = MessageResponse<CommitmentLockState>;
+export type CommitmentLockCancelUnlockResponse = MessageResponse<CommitmentLockState>;
+export type CommitmentLockGetHistoryResponse = MessageResponse<UnlockHistory>;
+export type CommitmentLockGetStatsResponse = MessageResponse<CommitmentLockStats>;
+export type CommitmentLockResetStateResponse = MessageResponse<CommitmentLockState>;
+
+// Premium response types
+export type PremiumGetStateResponse = MessageResponse<PremiumState>;
+export type PremiumCheckFeatureResponse = MessageResponse<PremiumFeatureCheckResult>;
 
 /**
  * Type guard for Message validation

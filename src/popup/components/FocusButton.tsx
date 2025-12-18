@@ -32,14 +32,14 @@ export function FocusButton({ focusState, onStateChange, disabled }: FocusButton
         payload: { duration: selectedDuration },
       });
 
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState; error?: string };
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: FocusModeState; error?: string };
 
-      if (response.success && response.data) {
+      if (response.success === true && response.data != null) {
         onStateChange(response.data);
       } else {
         setError(response.error ?? 'Failed to start focus mode');
       }
-    } catch (err) {
+    } catch {
       setError('Failed to communicate with extension');
     } finally {
       setIsLoading(false);
@@ -55,14 +55,14 @@ export function FocusButton({ focusState, onStateChange, disabled }: FocusButton
         type: 'FOCUS_CANCEL' as const,
       });
 
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState; error?: string };
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: FocusModeState; error?: string };
 
-      if (response.success && response.data) {
+      if (response.success === true && response.data != null) {
         onStateChange(response.data);
       } else {
         setError(response.error ?? 'Failed to cancel focus mode');
       }
-    } catch (err) {
+    } catch {
       setError('Failed to communicate with extension');
     } finally {
       setIsLoading(false);

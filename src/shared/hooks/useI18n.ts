@@ -16,7 +16,7 @@ import {
   reloadTranslations,
 } from '@/shared/utils/i18n';
 import { STORAGE_KEYS } from '@/shared/constants';
-import type { Settings, SupportedLanguage } from '@/shared/types';
+import type { Settings } from '@/shared/types';
 
 /**
  * Hook for i18n functionality in React components
@@ -35,7 +35,7 @@ export function useI18n() {
       try {
         const result = await browser.storage.local.get(STORAGE_KEYS.SETTINGS);
         const settings = result[STORAGE_KEYS.SETTINGS] as Settings | undefined;
-        const savedLanguage = settings?.preferences?.language as SupportedLanguage | undefined;
+        const savedLanguage = settings?.preferences?.language;
 
         if (savedLanguage && savedLanguage !== 'auto') {
           // Use saved language - need to reload translations for this language

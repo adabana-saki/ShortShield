@@ -52,6 +52,19 @@ export type {
   SupportedLanguage,
   Settings,
   SettingsUpdate,
+  // CommitmentLock types (re-exported from settings.ts)
+  CommitmentLockSettings,
+  CommitmentLockState,
+  CommitmentLockLevel,
+  UnlockAttempt,
+  UnlockHistory,
+  UnlockCheckResult,
+  UnlockFlowStep,
+  UnlockFlowState,
+  UnlockFailureReason,
+  PremiumState,
+  PremiumFeature,
+  CommitmentLockStats,
 } from './settings';
 
 export {
@@ -117,6 +130,21 @@ export type {
   LockdownGetStateMessage,
   LockdownRequestEmergencyBypassMessage,
   LockdownCheckEmergencyBypassMessage,
+  // Commitment Lock messages
+  CommitmentLockGetStateMessage,
+  CommitmentLockCheckUnlockMessage,
+  CommitmentLockStartUnlockMessage,
+  CommitmentLockSubmitIntentionMessage,
+  CommitmentLockRequestChallengeMessage,
+  CommitmentLockSubmitChallengeMessage,
+  CommitmentLockConfirmUnlockMessage,
+  CommitmentLockCancelUnlockMessage,
+  CommitmentLockGetHistoryMessage,
+  CommitmentLockGetStatsMessage,
+  CommitmentLockResetStateMessage,
+  // Premium messages
+  PremiumGetStateMessage,
+  PremiumCheckFeatureMessage,
   MessageResponse,
   GetSettingsResponse,
   UpdateSettingsResponse,
@@ -158,6 +186,24 @@ export type {
   LockdownGetStateResponse,
   LockdownRequestEmergencyBypassResponse,
   LockdownCheckEmergencyBypassResponse,
+  // Commitment Lock responses
+  CommitmentLockUnlockFlowResult,
+  CommitmentLockChallengeResult,
+  PremiumFeatureCheckResult,
+  CommitmentLockGetStateResponse,
+  CommitmentLockCheckUnlockResponse,
+  CommitmentLockStartUnlockResponse,
+  CommitmentLockSubmitIntentionResponse,
+  CommitmentLockRequestChallengeResponse,
+  CommitmentLockSubmitChallengeResponse,
+  CommitmentLockConfirmUnlockResponse,
+  CommitmentLockCancelUnlockResponse,
+  CommitmentLockGetHistoryResponse,
+  CommitmentLockGetStatsResponse,
+  CommitmentLockResetStateResponse,
+  // Premium responses
+  PremiumGetStateResponse,
+  PremiumCheckFeatureResponse,
 } from './messages';
 
 export {

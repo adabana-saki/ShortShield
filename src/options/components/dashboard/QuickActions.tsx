@@ -32,8 +32,8 @@ export function QuickActions({
         type: 'FOCUS_START',
         payload: { duration: selectedDuration },
       });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: FocusModeState; error?: string };
+      if (response.success === true && response.data != null) {
         onFocusStateChange(response.data);
       }
     } catch {
@@ -51,8 +51,8 @@ export function QuickActions({
       const message = createMessage<FocusCancelMessage>({
         type: 'FOCUS_CANCEL',
       });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: FocusModeState; error?: string };
+      if (response.success === true && response.data != null) {
         onFocusStateChange(response.data);
       }
     } catch {

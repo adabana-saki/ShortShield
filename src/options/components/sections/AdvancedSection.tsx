@@ -6,11 +6,12 @@ import { useI18n } from '@/shared/hooks/useI18n';
 import { SectionHeader } from '../common/SectionHeader';
 import { ChallengeSettings } from '../ChallengeSettings';
 import { LockdownSettings } from '../LockdownSettings';
+import { CommitmentLockSettings } from '../CommitmentLockSettings';
 import { BlockPageCustomizer } from '../BlockPageCustomizer';
 import { LanguageSettings } from '../LanguageSettings';
 import { ExportImport } from '../ExportImport';
 
-type AdvancedSubSection = 'challenge' | 'lockdown' | 'appearance' | 'language' | 'backup';
+type AdvancedSubSection = 'challenge' | 'lockdown' | 'commitmentLock' | 'appearance' | 'language' | 'backup';
 
 interface AdvancedSectionProps {
   subSection: AdvancedSubSection;
@@ -38,6 +39,30 @@ export function AdvancedSection({ subSection }: AdvancedSectionProps) {
           }
         />
         <LockdownSettings />
+      </div>
+    );
+  }
+
+  if (subSection === 'commitmentLock') {
+    return (
+      <div className="settings-section">
+        <SectionHeader
+          title={t('commitmentLockTitle')}
+          description={t('commitmentLockDescription')}
+          icon={
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <rect x="9" y="9" width="6" height="8" rx="1" />
+              <path d="M10 9V6a2 2 0 0 1 4 0v3" />
+            </svg>
+          }
+        />
+        <CommitmentLockSettings />
       </div>
     );
   }

@@ -944,3 +944,29 @@
 .focus-launcher-hint {
   @apply text-xs text-gray-400 text-center;
 }
+
+/* Block Site Button */
+.block-site-section {
+  @apply px-4 py-3 border-t border-gray-100 flex items-center gap-3;
+}
+
+.block-site-btn {
+  @apply flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg transition-colors;
+  @apply bg-gray-100 text-gray-700 hover:bg-gray-200;
+}
+
+.block-site-btn.blocked {
+  @apply bg-red-50 text-red-600 hover:bg-red-100;
+}
+
+.block-site-btn:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.block-site-btn svg {
+  @apply w-4 h-4;
+}
+
+.block-site-domain {
+  @apply text-xs text-gray-500 truncate flex-1;
+}

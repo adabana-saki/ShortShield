@@ -151,7 +151,7 @@ async function initialize(): Promise<void> {
 
   // Listen for settings and Pomodoro state changes
   browser.storage.onChanged.addListener((changes, areaName) => {
-    if (areaName !== 'local') return;
+    if (areaName !== 'local') {return;}
 
     // Handle settings changes
     const settingsChange = changes[STORAGE_KEYS.SETTINGS];

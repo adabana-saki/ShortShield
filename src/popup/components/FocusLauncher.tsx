@@ -43,8 +43,8 @@ export function FocusLauncher({
         type: 'FOCUS_START',
         payload: { duration: selectedDuration },
       });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: FocusModeState };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: FocusModeState; error?: string };
+      if (response.success === true && response.data != null) {
         onFocusStateChange(response.data);
       }
     } catch {
@@ -63,8 +63,8 @@ export function FocusLauncher({
         type: 'POMODORO_START',
         payload: { mode: 'work' },
       });
-      const response = await browser.runtime.sendMessage(message) as { success: boolean; data?: PomodoroState };
-      if (response.success && response.data) {
+      const response = (await browser.runtime.sendMessage(message)) as { success: boolean; data?: PomodoroState; error?: string };
+      if (response.success === true && response.data != null) {
         onPomodoroStateChange(response.data);
       }
     } catch {

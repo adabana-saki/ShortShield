@@ -390,6 +390,25 @@ export interface LockdownState {
   readonly emergencyBypassRequestedAt: number | null; // Unix timestamp when emergency bypass was requested
 }
 
+// Re-export CommitmentLock types for convenience
+export type {
+  CommitmentLockSettings,
+  CommitmentLockState,
+  CommitmentLockLevel,
+  UnlockAttempt,
+  UnlockHistory,
+  UnlockCheckResult,
+  UnlockFlowStep,
+  UnlockFlowState,
+  UnlockFailureReason,
+  PremiumState,
+  PremiumFeature,
+  CommitmentLockStats,
+} from './commitmentLock';
+
+// Import CommitmentLockSettings for use in Settings interface
+import type { CommitmentLockSettings } from './commitmentLock';
+
 /**
  * Main settings interface
  */
@@ -409,6 +428,7 @@ export interface Settings {
   readonly streak: StreakSettings;
   readonly challenge: ChallengeSettings;
   readonly lockdown: LockdownSettings;
+  readonly commitmentLock: CommitmentLockSettings;
   readonly onboardingCompleted: boolean; // Whether user has completed initial setup
   readonly version: number; // Schema version for migrations
 }
@@ -432,6 +452,7 @@ export type SettingsUpdate = Partial<{
   streak: Partial<StreakSettings>;
   challenge: Partial<ChallengeSettings>;
   lockdown: Partial<LockdownSettings>;
+  commitmentLock: Partial<CommitmentLockSettings>;
   onboardingCompleted: boolean;
 }>;
 
