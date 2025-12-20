@@ -2366,5 +2366,73 @@
   "languageReloadNote": {
     "message": "The page will reload after changing the language to apply the new setting.",
     "description": "Note about page reload after language change"
+  },
+  "termsOfServiceTitle": {
+    "message": "Terms of Service",
+    "description": "Title for terms of service page"
+  },
+  "privacyPolicyTitle": {
+    "message": "Privacy Policy",
+    "description": "Title for privacy policy page"
+  },
+  "commercialTransactionTitle": {
+    "message": "Commercial Transaction Disclosure",
+    "description": "Title for commercial transaction law page"
+  },
+  "lastUpdated": {
+    "message": "Last updated",
+    "description": "Label for last updated date"
+  },
+  "legalSidebarTitle": {
+    "message": "Legal",
+    "description": "Sidebar section title for legal pages"
+  },
+  "premiumSidebarTitle": {
+    "message": "Premium",
+    "description": "Sidebar section title for premium"
+  },
+  "upgradeToPremium": {
+    "message": "Upgrade to Premium",
+    "description": "Button text to upgrade to premium"
+  },
+  "premiumFeatures": {
+    "message": "Premium Features",
+    "description": "Title for premium features section"
+  },
+  "premiumMonthly": {
+    "message": "Monthly",
+    "description": "Monthly subscription label"
+  },
+  "premiumYearly": {
+    "message": "Yearly",
+    "description": "Yearly subscription label"
+  },
+  "premiumSavings": {
+    "message": "Save 2 months",
+    "description": "Savings text for yearly plan"
+  },
+  "autoRenewalWarning": {
+    "message": "This subscription will automatically renew",
+    "description": "Auto-renewal warning message"
+  },
+  "cancelAnytime": {
+    "message": "Cancel anytime",
+    "description": "Cancel anytime text"
+  },
+  "subscriptionManagement": {
+    "message": "Subscription Management",
+    "description": "Title for subscription management"
+  },
+  "currentPlan": {
+    "message": "Current Plan",
+    "description": "Label for current plan"
+  },
+  "nextBillingDate": {
+    "message": "Next billing date",
+    "description": "Label for next billing date"
+  },
+  "cancelSubscription": {
+    "message": "Cancel Subscription",
+    "description": "Button to cancel subscription"
   }
 }

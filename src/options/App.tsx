@@ -5,8 +5,16 @@
 import { useState } from 'react';
 import { useSettings } from '@/shared/hooks/useSettings';
 import { useI18n } from '@/shared/hooks/useI18n';
-import type { Platform, PlatformSettings, ScheduleConfig } from '@/shared/types';
-import { SettingsLayout, type SectionId, type SubSectionId } from './components/layout';
+import type {
+  Platform,
+  PlatformSettings,
+  ScheduleConfig,
+} from '@/shared/types';
+import {
+  SettingsLayout,
+  type SectionId,
+  type SubSectionId,
+} from './components/layout';
 import { Dashboard } from './components/dashboard';
 import {
   BlockingSection,
@@ -16,14 +24,28 @@ import {
   AdvancedSection,
 } from './components/sections';
 import { OnboardingWizard } from './components/onboarding';
+import {
+  TermsOfService,
+  PrivacyPolicy,
+  CommercialTransaction,
+} from './components/legal';
 
 export function App() {
   const { t, isReady: i18nReady } = useI18n();
-  const { settings, isLoading, error, togglePlatform, toggleEnabled, refreshSettings, updateSettings } =
-    useSettings();
+  const {
+    settings,
+    isLoading,
+    error,
+    togglePlatform,
+    toggleEnabled,
+    refreshSettings,
+    updateSettings,
+  } = useSettings();
 
   const [activeSection, setActiveSection] = useState<SectionId>('dashboard');
-  const [activeSubSection, setActiveSubSection] = useState<SubSectionId | null>(null);
+  const [activeSubSection, setActiveSubSection] = useState<SubSectionId | null>(
+    null
+  );
   const [advancedExpanded, setAdvancedExpanded] = useState(false);
 
   // Onboarding completion handler
@@ -31,7 +53,10 @@ export function App() {
     platforms: Partial<PlatformSettings>;
     schedule?: Partial<ScheduleConfig>;
   }) => {
-    console.log('[App] handleOnboardingComplete called with:', onboardingSettings);
+    console.log(
+      '[App] handleOnboardingComplete called with:',
+      onboardingSettings
+    );
     updateSettings({
       platforms: {
         ...settings.platforms,
@@ -53,13 +78,20 @@ export function App() {
       });
   };
 
-  const handleSectionChange = (section: SectionId, subSection?: SubSectionId) => {
+  const handleSectionChange = (
+    section: SectionId,
+    subSection?: SubSectionId
+  ) => {
     setActiveSection(section);
     setActiveSubSection(subSection ?? null);
 
     // Auto-expand advanced section when navigating to it
     if (section === 'advanced' && !advancedExpanded) {
       setAdvancedExpanded(true);
+    }
+    // Auto-expand legal section when navigating to it
+    if (section === 'legal') {
+      // Legal section uses hasSubmenu, auto-expands itself
     }
   };
 
@@ -84,7 +116,12 @@ export function App() {
     return (
       <div className="options-error">
         <div className="error-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="8" x2="12" y2="12" />
             <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -122,7 +159,12 @@ export function App() {
         return (
           <BlockingSection
             settings={settings}
-            subSection={(activeSubSection as 'platforms' | 'customDomains' | 'whitelist') ?? 'platforms'}
+            subSection={
+              (activeSubSection as
+                | 'platforms'
+                | 'customDomains'
+                | 'whitelist') ?? 'platforms'
+            }
             onTogglePlatform={handleTogglePlatform}
           />
         );
@@ -130,14 +172,20 @@ export function App() {
       case 'schedule':
         return (
           <ScheduleSection
-            subSection={(activeSubSection as 'scheduleConfig' | 'timeLimits') ?? 'scheduleConfig'}
+            subSection={
+              (activeSubSection as 'scheduleConfig' | 'timeLimits') ??
+              'scheduleConfig'
+            }
           />
         );
 
       case 'productivity':
         return (
           <ProductivitySection
-            subSection={(activeSubSection as 'focusMode' | 'pomodoro' | 'streak') ?? 'focusMode'}
+            subSection={
+              (activeSubSection as 'focusMode' | 'pomodoro' | 'streak') ??
+              'focusMode'
+            }
           />
         );
 
@@ -147,9 +195,28 @@ export function App() {
       case 'advanced':
         return (
           <AdvancedSection
-            subSection={(activeSubSection as 'challenge' | 'lockdown' | 'appearance' | 'language' | 'backup') ?? 'challenge'}
+            subSection={
+              (activeSubSection as
+                | 'challenge'
+                | 'lockdown'
+                | 'commitmentLock'
+                | 'appearance'
+                | 'language'
+                | 'backup') ?? 'challenge'
+            }
           />
         );
+
+      case 'legal':
+        switch (activeSubSection) {
+          case 'privacyPolicy':
+            return <PrivacyPolicy />;
+          case 'commercialTransaction':
+            return <CommercialTransaction />;
+          case 'termsOfService':
+          default:
+            return <TermsOfService />;
+        }
 
       default:
         return (
