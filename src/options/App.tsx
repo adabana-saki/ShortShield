@@ -29,6 +29,7 @@ import {
   PrivacyPolicy,
   CommercialTransaction,
 } from './components/legal';
+import { SubscriptionManager } from './components/premium';
 
 export function App() {
   const { t, isReady: i18nReady } = useI18n();
@@ -206,6 +207,9 @@ export function App() {
             }
           />
         );
+
+      case 'premium':
+        return <SubscriptionManager />;
 
       case 'legal':
         switch (activeSubSection) {

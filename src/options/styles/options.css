@@ -2833,10 +2833,6 @@
   color: var(--color-text-secondary) !important;
 }
 
-.dark .text-gray-400 {
-  color: var(--color-text-muted) !important;
-}
-
 /* Override Tailwind background colors */
 .dark .bg-white {
   background-color: var(--color-bg-primary) !important;
@@ -4142,4 +4138,703 @@
 .third-party-item p {
   margin: 4px 0;
   font-size: 14px;
+}
+
+/* ==========================================
+   Premium / Subscription Styles
+   ========================================== */
+
+/* Purchase Flow */
+.purchase-flow {
+  @apply max-w-2xl mx-auto p-6;
+}
+
+.purchase-header {
+  @apply text-center mb-8;
+}
+
+.purchase-header h2 {
+  @apply text-2xl font-bold text-gray-900 mb-2;
+}
+
+.dark .purchase-header h2 {
+  @apply text-white;
+}
+
+.purchase-header p {
+  @apply text-gray-600;
+}
+
+.dark .purchase-header p {
+  @apply text-gray-400;
+}
+
+/* Premium Features List */
+.premium-features-list {
+  @apply grid grid-cols-2 gap-3 mb-8;
+}
+
+.feature-item {
+  @apply flex items-center gap-2 text-sm text-gray-700;
+}
+
+.dark .feature-item {
+  @apply text-gray-300;
+}
+
+.feature-item svg {
+  @apply w-5 h-5 text-green-500 flex-shrink-0;
+}
+
+/* Pricing Cards */
+.pricing-cards {
+  @apply grid grid-cols-2 gap-4 mb-4;
+}
+
+.pricing-card {
+  @apply relative flex flex-col items-center p-6 border-2 border-gray-200 rounded-xl cursor-pointer transition-all;
+  @apply hover:border-blue-300;
+}
+
+.dark .pricing-card {
+  @apply border-gray-700 hover:border-blue-600;
+}
+
+.pricing-card.selected {
+  @apply border-blue-500 bg-blue-50;
+}
+
+.dark .pricing-card.selected {
+  @apply border-blue-500 bg-blue-900/20;
+}
+
+.pricing-card.recommended {
+  @apply border-blue-500;
+}
+
+.pricing-badge {
+  @apply absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-blue-500 text-white text-xs font-medium rounded-full;
+}
+
+.pricing-plan-name {
+  @apply text-sm font-medium text-gray-600 mb-2;
+}
+
+.dark .pricing-plan-name {
+  @apply text-gray-400;
+}
+
+.pricing-amount {
+  @apply flex items-baseline gap-1 mb-1;
+}
+
+.pricing-currency {
+  @apply text-lg font-medium text-gray-700;
+}
+
+.dark .pricing-currency {
+  @apply text-gray-300;
+}
+
+.pricing-value {
+  @apply text-3xl font-bold text-gray-900;
+}
+
+.dark .pricing-value {
+  @apply text-white;
+}
+
+.pricing-interval {
+  @apply text-sm text-gray-500;
+}
+
+.pricing-original {
+  @apply mb-1;
+}
+
+.pricing-strike {
+  @apply text-sm text-gray-400 line-through;
+}
+
+.pricing-savings {
+  @apply text-sm font-medium text-green-600;
+}
+
+.dark .pricing-savings {
+  @apply text-green-400;
+}
+
+.pricing-tax {
+  @apply text-xs text-gray-400 mt-2;
+}
+
+.pricing-radio {
+  @apply w-5 h-5 border-2 border-gray-300 rounded-full mt-4 flex items-center justify-center;
+}
+
+.dark .pricing-radio {
+  @apply border-gray-600;
+}
+
+.pricing-radio.checked {
+  @apply border-blue-500;
+}
+
+.pricing-radio-inner {
+  @apply w-3 h-3 rounded-full bg-transparent;
+}
+
+.pricing-radio.checked .pricing-radio-inner {
+  @apply bg-blue-500;
+}
+
+.pricing-monthly-equivalent {
+  @apply text-center text-sm text-gray-500 mb-6;
+}
+
+/* Auto-renewal Notice */
+.auto-renewal-notice {
+  @apply flex gap-4 p-4 bg-amber-50 border border-amber-200 rounded-lg mb-6;
+}
+
+.dark .auto-renewal-notice {
+  @apply bg-amber-900/20 border-amber-800;
+}
+
+.notice-icon {
+  @apply flex-shrink-0;
+}
+
+.notice-icon svg {
+  @apply w-6 h-6 text-amber-500;
+}
+
+.notice-content h4 {
+  @apply text-sm font-semibold text-amber-800 mb-2;
+}
+
+.dark .notice-content h4 {
+  @apply text-amber-300;
+}
+
+.notice-content p {
+  @apply text-sm text-amber-700 mb-2;
+}
+
+.dark .notice-content p {
+  @apply text-amber-400;
+}
+
+.notice-content ul {
+  @apply text-sm text-amber-700 space-y-1;
+}
+
+.dark .notice-content ul {
+  @apply text-amber-400;
+}
+
+.notice-content li {
+  @apply flex items-center gap-1;
+}
+
+/* Agreement Checkboxes */
+.purchase-agreements {
+  @apply space-y-3 mb-6;
+}
+
+.agreement-checkbox {
+  @apply flex items-start gap-3 cursor-pointer;
+}
+
+.agreement-checkbox input[type='checkbox'] {
+  @apply sr-only;
+}
+
+.checkbox-custom {
+  @apply flex-shrink-0 w-5 h-5 border-2 border-gray-300 rounded transition-colors;
+  @apply flex items-center justify-center;
+}
+
+.dark .checkbox-custom {
+  @apply border-gray-600;
+}
+
+.agreement-checkbox input:checked + .checkbox-custom {
+  @apply bg-blue-500 border-blue-500;
+}
+
+.agreement-checkbox input:checked + .checkbox-custom::after {
+  content: '';
+  @apply block w-2.5 h-1.5 border-l-2 border-b-2 border-white -rotate-45 -translate-y-0.5;
+}
+
+.checkbox-label {
+  @apply text-sm text-gray-700 leading-tight;
+}
+
+.dark .checkbox-label {
+  @apply text-gray-300;
+}
+
+.checkbox-label a {
+  @apply text-blue-600 underline;
+}
+
+.dark .checkbox-label a {
+  @apply text-blue-400;
+}
+
+/* Refund Note */
+.refund-note {
+  @apply text-center text-xs text-gray-500 mb-6;
+}
+
+.refund-note a {
+  @apply text-blue-600 underline;
+}
+
+.dark .refund-note a {
+  @apply text-blue-400;
+}
+
+/* Purchase Actions */
+.purchase-actions {
+  @apply flex gap-3 justify-center;
+}
+
+.btn-purchase {
+  @apply px-8;
+}
+
+.btn-purchase:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* Confirm Step */
+.purchase-confirm-details {
+  @apply bg-gray-50 rounded-lg p-4 mb-6;
+}
+
+.dark .purchase-confirm-details {
+  @apply bg-gray-800;
+}
+
+.confirm-row {
+  @apply flex justify-between py-2 border-b border-gray-200 last:border-0;
+}
+
+.dark .confirm-row {
+  @apply border-gray-700;
+}
+
+.confirm-label {
+  @apply text-sm text-gray-600;
+}
+
+.dark .confirm-label {
+  @apply text-gray-400;
+}
+
+.confirm-value {
+  @apply text-sm font-medium text-gray-900;
+}
+
+.dark .confirm-value {
+  @apply text-white;
+}
+
+.purchase-warning-box {
+  @apply flex gap-3 p-4 bg-amber-50 border border-amber-200 rounded-lg mb-6;
+}
+
+.dark .purchase-warning-box {
+  @apply bg-amber-900/20 border-amber-800;
+}
+
+.warning-icon svg {
+  @apply w-5 h-5 text-amber-500;
+}
+
+.warning-content p {
+  @apply text-sm text-amber-700;
+}
+
+.dark .warning-content p {
+  @apply text-amber-400;
+}
+
+/* Success / Error / Processing States */
+.purchase-success,
+.purchase-error {
+  @apply text-center py-12;
+}
+
+.success-icon svg {
+  @apply w-16 h-16 text-green-500 mx-auto mb-4;
+}
+
+.error-icon svg {
+  @apply w-16 h-16 text-red-500 mx-auto mb-4;
+}
+
+.purchase-success h2,
+.purchase-error h2 {
+  @apply text-xl font-bold text-gray-900 mb-2;
+}
+
+.dark .purchase-success h2,
+.dark .purchase-error h2 {
+  @apply text-white;
+}
+
+.purchase-success p,
+.purchase-error p {
+  @apply text-gray-600 mb-6;
+}
+
+.dark .purchase-success p,
+.dark .purchase-error p {
+  @apply text-gray-400;
+}
+
+.purchase-processing {
+  @apply text-center py-12;
+}
+
+.processing-spinner {
+  @apply w-12 h-12 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin mx-auto mb-4;
+}
+
+.dark .processing-spinner {
+  @apply border-gray-700 border-t-blue-500;
+}
+
+/* Subscription Manager */
+.subscription-manager {
+  @apply max-w-2xl mx-auto;
+}
+
+.subscription-header {
+  @apply mb-6;
+}
+
+.subscription-header h2 {
+  @apply text-xl font-bold text-gray-900 mb-1;
+}
+
+.dark .subscription-header h2 {
+  @apply text-white;
+}
+
+.subscription-header p {
+  @apply text-gray-600;
+}
+
+.dark .subscription-header p {
+  @apply text-gray-400;
+}
+
+/* Subscription Promo */
+.subscription-promo {
+  @apply flex items-center gap-4 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl mb-6;
+}
+
+.dark .subscription-promo {
+  @apply from-blue-900/20 to-purple-900/20;
+}
+
+.promo-icon svg {
+  @apply w-10 h-10 text-yellow-500;
+}
+
+.promo-content h3 {
+  @apply font-semibold text-gray-900;
+}
+
+.dark .promo-content h3 {
+  @apply text-white;
+}
+
+.promo-content p {
+  @apply text-sm text-gray-600;
+}
+
+.dark .promo-content p {
+  @apply text-gray-400;
+}
+
+/* Free vs Premium Comparison */
+.free-vs-premium {
+  @apply border border-gray-200 rounded-xl overflow-hidden mb-6;
+}
+
+.dark .free-vs-premium {
+  @apply border-gray-700;
+}
+
+.comparison-header {
+  @apply grid grid-cols-3 bg-gray-100 font-medium text-sm;
+}
+
+.dark .comparison-header {
+  @apply bg-gray-800;
+}
+
+.comparison-header > div {
+  @apply p-3 text-center text-gray-700;
+}
+
+.dark .comparison-header > div {
+  @apply text-gray-300;
+}
+
+.comparison-header .comparison-feature {
+  @apply text-left;
+}
+
+.comparison-row {
+  @apply grid grid-cols-3 border-t border-gray-200;
+}
+
+.dark .comparison-row {
+  @apply border-gray-700;
+}
+
+.comparison-row > div {
+  @apply p-3 text-center text-sm;
+}
+
+.comparison-row .comparison-feature {
+  @apply text-left text-gray-700;
+}
+
+.dark .comparison-row .comparison-feature {
+  @apply text-gray-300;
+}
+
+.comparison-row .check {
+  @apply text-green-500 font-bold;
+}
+
+.comparison-row .dash {
+  @apply text-gray-400;
+}
+
+.comparison-row .limit {
+  @apply text-gray-600;
+}
+
+.dark .comparison-row .limit {
+  @apply text-gray-400;
+}
+
+.comparison-row .unlimited {
+  @apply text-blue-600 font-medium;
+}
+
+.dark .comparison-row .unlimited {
+  @apply text-blue-400;
+}
+
+/* Subscription CTA */
+.subscription-cta {
+  @apply flex items-center justify-between p-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl;
+}
+
+.cta-price {
+  @apply flex items-baseline gap-1 text-white;
+}
+
+.cta-from {
+  @apply text-sm opacity-80;
+}
+
+.cta-amount {
+  @apply text-2xl font-bold;
+}
+
+.cta-interval {
+  @apply text-sm opacity-80;
+}
+
+.btn-upgrade {
+  @apply bg-white text-blue-600 hover:bg-gray-100;
+}
+
+/* Status Card */
+.subscription-status-card {
+  @apply p-6 rounded-xl mb-6;
+}
+
+.subscription-status-card.active {
+  @apply bg-green-50 border border-green-200;
+}
+
+.dark .subscription-status-card.active {
+  @apply bg-green-900/20 border-green-800;
+}
+
+.subscription-status-card.cancelled {
+  @apply bg-amber-50 border border-amber-200;
+}
+
+.dark .subscription-status-card.cancelled {
+  @apply bg-amber-900/20 border-amber-800;
+}
+
+.subscription-status-card.expired {
+  @apply bg-gray-100 border border-gray-200;
+}
+
+.dark .subscription-status-card.expired {
+  @apply bg-gray-800 border-gray-700;
+}
+
+.status-badge {
+  @apply mb-3;
+}
+
+.badge-active {
+  @apply inline-block px-3 py-1 bg-green-500 text-white text-xs font-medium rounded-full;
+}
+
+.badge-cancelled {
+  @apply inline-block px-3 py-1 bg-amber-500 text-white text-xs font-medium rounded-full;
+}
+
+.badge-expired {
+  @apply inline-block px-3 py-1 bg-gray-500 text-white text-xs font-medium rounded-full;
+}
+
+.status-plan h3 {
+  @apply text-lg font-semibold text-gray-900;
+}
+
+.dark .status-plan h3 {
+  @apply text-white;
+}
+
+.status-price {
+  @apply text-gray-600;
+}
+
+.dark .status-price {
+  @apply text-gray-400;
+}
+
+/* Subscription Details */
+.subscription-details {
+  @apply bg-gray-50 rounded-lg p-4 mb-6;
+}
+
+.dark .subscription-details {
+  @apply bg-gray-800;
+}
+
+.detail-row {
+  @apply flex justify-between py-2 border-b border-gray-200 last:border-0;
+}
+
+.dark .detail-row {
+  @apply border-gray-700;
+}
+
+.detail-label {
+  @apply text-sm text-gray-600;
+}
+
+.dark .detail-label {
+  @apply text-gray-400;
+}
+
+.detail-value {
+  @apply text-sm font-medium text-gray-900;
+}
+
+.dark .detail-value {
+  @apply text-white;
+}
+
+/* Subscription Actions */
+.subscription-actions {
+  @apply flex gap-3 mb-6;
+}
+
+.btn-danger-outline {
+  @apply px-4 py-2 border border-red-300 text-red-600 rounded-lg hover:bg-red-50 transition-colors;
+}
+
+.dark .btn-danger-outline {
+  @apply border-red-700 text-red-400 hover:bg-red-900/20;
+}
+
+.btn-danger {
+  @apply px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors;
+}
+
+/* Modal */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/50 flex items-center justify-center z-50;
+}
+
+.modal-dialog {
+  @apply bg-white rounded-xl p-6 max-w-md mx-4 shadow-xl;
+}
+
+.dark .modal-dialog {
+  @apply bg-gray-800;
+}
+
+.modal-dialog h3 {
+  @apply text-lg font-semibold text-gray-900 mb-3;
+}
+
+.dark .modal-dialog h3 {
+  @apply text-white;
+}
+
+.modal-dialog p {
+  @apply text-gray-600 mb-6;
+}
+
+.dark .modal-dialog p {
+  @apply text-gray-400;
+}
+
+.modal-actions {
+  @apply flex gap-3 justify-end;
+}
+
+/* Subscription Links */
+.subscription-links {
+  @apply text-center text-sm text-gray-500;
+}
+
+.subscription-links a {
+  @apply text-blue-600 hover:underline;
+}
+
+.dark .subscription-links a {
+  @apply text-blue-400;
+}
+
+.link-separator {
+  @apply mx-2;
+}
+
+/* Reactivate Section */
+.subscription-reactivate {
+  @apply text-center p-6 bg-gray-50 rounded-xl;
+}
+
+.dark .subscription-reactivate {
+  @apply bg-gray-800;
+}
+
+.subscription-reactivate p {
+  @apply text-gray-600 mb-4;
+}
+
+.dark .subscription-reactivate p {
+  @apply text-gray-400;
 }
