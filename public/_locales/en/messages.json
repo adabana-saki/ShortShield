@@ -207,34 +207,6 @@
     "message": "Choose which platforms to block",
     "description": "Description for platform settings section"
   },
-  "optionsWhitelistTitle": {
-    "message": "Whitelist",
-    "description": "Section title for whitelist"
-  },
-  "optionsWhitelistDescription": {
-    "message": "Channels, URLs, or domains you don't want to block",
-    "description": "Description for whitelist section"
-  },
-  "optionsWhitelistAdd": {
-    "message": "Add to Whitelist",
-    "description": "Button text to add whitelist entry"
-  },
-  "optionsWhitelistEmpty": {
-    "message": "No whitelist entries yet",
-    "description": "Message when whitelist is empty"
-  },
-  "optionsWhitelistTypeChannel": {
-    "message": "Channel",
-    "description": "Whitelist type: Channel"
-  },
-  "optionsWhitelistTypeUrl": {
-    "message": "URL",
-    "description": "Whitelist type: URL"
-  },
-  "optionsWhitelistTypeDomain": {
-    "message": "Domain",
-    "description": "Whitelist type: Domain"
-  },
   "optionsPreferencesTitle": {
     "message": "Preferences",
     "description": "Section title for preferences"
@@ -341,10 +313,6 @@
     "message": "Platforms",
     "description": "Tab name for platforms settings"
   },
-  "optionsTabWhitelist": {
-    "message": "Whitelist",
-    "description": "Tab name for whitelist management"
-  },
   "optionsTabLogs": {
     "message": "History",
     "description": "Tab name for block history"
@@ -356,66 +324,6 @@
   "optionsStatsTitle": {
     "message": "Statistics",
     "description": "Section title for statistics"
-  },
-  "whitelistTitle": {
-    "message": "Whitelist Management",
-    "description": "Whitelist section title"
-  },
-  "whitelistDescription": {
-    "message": "Add channels or videos you want to allow. Whitelisted content will not be blocked.",
-    "description": "Whitelist section description"
-  },
-  "whitelistTypeChannel": {
-    "message": "Channel",
-    "description": "Channel whitelist type"
-  },
-  "whitelistTypeVideo": {
-    "message": "Video/URL",
-    "description": "Video/URL whitelist type"
-  },
-  "whitelistPlaceholderChannel": {
-    "message": "Enter channel name or ID (e.g., @username)",
-    "description": "Placeholder for channel input"
-  },
-  "whitelistPlaceholderUrl": {
-    "message": "Enter video URL",
-    "description": "Placeholder for URL input"
-  },
-  "whitelistAdd": {
-    "message": "Add",
-    "description": "Add button text"
-  },
-  "whitelistAdding": {
-    "message": "Adding...",
-    "description": "Adding in progress"
-  },
-  "whitelistRemove": {
-    "message": "Remove",
-    "description": "Remove button aria label"
-  },
-  "whitelistEmpty": {
-    "message": "No whitelisted items for this platform",
-    "description": "Empty whitelist message"
-  },
-  "whitelistErrorEmpty": {
-    "message": "Please enter a value",
-    "description": "Error for empty input"
-  },
-  "whitelistErrorInvalidChannel": {
-    "message": "Please enter a valid channel ID",
-    "description": "Error for invalid channel"
-  },
-  "whitelistErrorInvalidUrl": {
-    "message": "Please enter a valid URL",
-    "description": "Error for invalid URL"
-  },
-  "whitelistErrorDuplicate": {
-    "message": "This item is already whitelisted",
-    "description": "Error for duplicate entry"
-  },
-  "whitelistErrorFailed": {
-    "message": "Failed to add to whitelist",
-    "description": "Error when adding fails"
   },
   "exportImportTitle": {
     "message": "Backup & Restore",
@@ -1013,7 +921,7 @@
   },
   "minutes": {
     "message": "min",
-    "description": "Minutes abbreviation"
+    "description": "Unit: minutes"
   },
   "pomodoroWork": {
     "message": "Work",
@@ -1153,7 +1061,7 @@
   },
   "hours": {
     "message": "hours",
-    "description": "Hours unit"
+    "description": "Unit: hours"
   },
   "hoursShort": {
     "message": "h",
@@ -1169,7 +1077,7 @@
   },
   "loading": {
     "message": "Loading...",
-    "description": "Loading indicator text"
+    "description": "Loading message"
   },
   "optionsTabReports": {
     "message": "Reports",
@@ -1983,19 +1891,11 @@
   },
   "upgradeToPremium": {
     "message": "Upgrade to Premium",
-    "description": "Button text for premium upgrade"
+    "description": "Button text to upgrade to premium"
   },
   "seconds": {
     "message": "seconds",
     "description": "Unit: seconds"
-  },
-  "minutes": {
-    "message": "min",
-    "description": "Unit: minutes"
-  },
-  "hours": {
-    "message": "hours",
-    "description": "Unit: hours"
   },
   "characters": {
     "message": "characters",
@@ -2012,10 +1912,6 @@
   "dismiss": {
     "message": "Dismiss",
     "description": "Dismiss button"
-  },
-  "loading": {
-    "message": "Loading...",
-    "description": "Loading message"
   },
   "goBack": {
     "message": "Go Back",
@@ -2053,11 +1949,11 @@
   },
   "dashboardActivePlatforms": {
     "message": "Active Platforms",
-    "description": "Dashboard active platforms section title"
+    "description": "Dashboard: active platforms section"
   },
   "dashboardNoPlatforms": {
-    "message": "No platforms enabled",
-    "description": "Dashboard no platforms message"
+    "message": "No platforms selected",
+    "description": "Dashboard: no platforms message"
   },
   "dashboardMore": {
     "message": "more",
@@ -2065,11 +1961,11 @@
   },
   "dashboardQuickActions": {
     "message": "Quick Actions",
-    "description": "Dashboard quick actions section title"
+    "description": "Dashboard: quick actions section"
   },
   "dashboardStartFocus": {
     "message": "Start Focus",
-    "description": "Dashboard start focus button"
+    "description": "Dashboard: start focus button"
   },
   "dashboardFocusDisabledHint": {
     "message": "Enable Focus Mode in settings to use quick focus",
@@ -2122,10 +2018,6 @@
   "sidebarCustomDomains": {
     "message": "Custom Domains",
     "description": "Sidebar submenu: Custom Domains"
-  },
-  "sidebarWhitelist": {
-    "message": "Whitelist",
-    "description": "Sidebar submenu: Whitelist"
   },
   "sidebarScheduleConfig": {
     "message": "Time Schedule",
@@ -2183,25 +2075,9 @@
     "message": "Streak",
     "description": "Dashboard stat: streak"
   },
-  "dashboardActivePlatforms": {
-    "message": "Active Platforms",
-    "description": "Dashboard: active platforms section"
-  },
-  "dashboardNoPlatforms": {
-    "message": "No platforms selected",
-    "description": "Dashboard: no platforms message"
-  },
   "dashboardManagePlatforms": {
     "message": "Manage Platforms",
     "description": "Dashboard: manage platforms link"
-  },
-  "dashboardQuickActions": {
-    "message": "Quick Actions",
-    "description": "Dashboard: quick actions section"
-  },
-  "dashboardStartFocus": {
-    "message": "Start Focus",
-    "description": "Dashboard: start focus button"
   },
   "retry": {
     "message": "Retry",
@@ -2390,10 +2266,6 @@
   "premiumSidebarTitle": {
     "message": "Premium",
     "description": "Sidebar section title for premium"
-  },
-  "upgradeToPremium": {
-    "message": "Upgrade to Premium",
-    "description": "Button text to upgrade to premium"
   },
   "premiumFeatures": {
     "message": "Premium Features",

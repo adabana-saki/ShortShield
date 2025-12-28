@@ -155,11 +155,6 @@ export class InstagramDetector extends BasePlatformDetector {
       return;
     }
 
-    // Check whitelist
-    if (this.isWhitelisted(element)) {
-      return;
-    }
-
     // Find the parent article or container to hide
     const target = this.findHideTarget(element);
 
@@ -220,10 +215,6 @@ export class InstagramDetector extends BasePlatformDetector {
       );
 
       if (reelLink !== null && article.dataset.shortshieldHidden !== 'true') {
-        if (this.isWhitelisted(article)) {
-          continue;
-        }
-
         // Reel link found - apply action
         this.applyAction(article, 'hide');
         void this.logBlock(article, 'hide');
@@ -281,31 +272,5 @@ export class InstagramDetector extends BasePlatformDetector {
     }
 
     return super.extractUrl(element);
-  }
-
-  /**
-   * Check if element matches a user account
-   */
-  protected override matchesChannel(
-    element: HTMLElement,
-    channelId: string
-  ): boolean {
-    // Try to find username link
-    const userLink = element.querySelector<HTMLAnchorElement>(
-      'a[href^="/"][href$="/"]'
-    );
-
-    if (userLink === null || userLink.href === '') {
-      return false;
-    }
-
-    try {
-      const url = new URL(userLink.href);
-      const username = url.pathname.replace(/\//g, '');
-
-      return username === channelId || `@${username}` === channelId;
-    } catch {
-      return false;
-    }
   }
 }

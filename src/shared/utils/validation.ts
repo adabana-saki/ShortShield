@@ -5,7 +5,7 @@
  */
 
 import { LIMITS } from '@/shared/constants';
-import type { Platform, WhitelistType } from '@/shared/types';
+import type { Platform } from '@/shared/types';
 
 /**
  * Validate and sanitize user text input
@@ -85,14 +85,6 @@ export function isValidPlatform(value: string): value is Platform {
 }
 
 /**
- * Validate whitelist type
- */
-export function isValidWhitelistType(value: string): value is WhitelistType {
-  const validTypes: WhitelistType[] = ['channel', 'url', 'domain'];
-  return validTypes.includes(value as WhitelistType);
-}
-
-/**
  * Validate CSS selector
  * Security: Prevents overly complex or malicious selectors
  */
@@ -157,27 +149,6 @@ export function isValidRegexPattern(pattern: string): boolean {
 }
 
 /**
- * Validate whitelist entry value based on type
- */
-export function isValidWhitelistValue(
-  value: string,
-  type: WhitelistType
-): boolean {
-  const sanitized = sanitizeTextInput(value, 500);
-
-  switch (type) {
-    case 'url':
-      return isValidUrlFormat(sanitized);
-    case 'domain':
-      return isValidDomain(sanitized);
-    case 'channel':
-      return isValidChannelId(sanitized);
-    default:
-      return false;
-  }
-}
-
-/**
  * Validate import file size
  */
 export function isValidImportSize(size: number): boolean {
@@ -205,44 +176,6 @@ export function safeJsonParse<T>(str: string): T | null {
   } catch {
     return null;
   }
-}
-
-/**
- * Validate and sanitize whitelist entry input
- */
-export function validateWhitelistInput(input: {
-  type: string;
-  value: string;
-  platform: string;
-}): {
-  valid: boolean;
-  error?: string;
-  sanitized?: { type: WhitelistType; value: string; platform: Platform };
-} {
-  // Validate type
-  if (!isValidWhitelistType(input.type)) {
-    return { valid: false, error: 'Invalid whitelist type' };
-  }
-
-  // Validate platform
-  if (!isValidPlatform(input.platform)) {
-    return { valid: false, error: 'Invalid platform' };
-  }
-
-  // Sanitize and validate value
-  const sanitizedValue = sanitizeTextInput(input.value);
-  if (!isValidWhitelistValue(sanitizedValue, input.type)) {
-    return { valid: false, error: `Invalid ${input.type} format` };
-  }
-
-  return {
-    valid: true,
-    sanitized: {
-      type: input.type,
-      value: sanitizedValue,
-      platform: input.platform,
-    },
-  };
 }
 
 /**
@@ -384,19 +317,6 @@ export function validateSettings(data: unknown): ValidationResult {
       }
       if (typeof value !== 'boolean') {
         return { isValid: false, error: `Platform ${key} must be a boolean` };
-      }
-    }
-  }
-
-  // Validate whitelist
-  if ('whitelist' in settings) {
-    if (!Array.isArray(settings.whitelist)) {
-      return { isValid: false, error: 'whitelist must be an array' };
-    }
-
-    for (const entry of settings.whitelist) {
-      if (typeof entry !== 'object' || entry === null) {
-        return { isValid: false, error: 'whitelist entries must be objects' };
       }
     }
   }

@@ -207,34 +207,6 @@
     "message": "ブロックするプラットフォームを選択",
     "description": "プラットフォーム設定セクションの説明"
   },
-  "optionsWhitelistTitle": {
-    "message": "ホワイトリスト",
-    "description": "ホワイトリストのセクションタイトル"
-  },
-  "optionsWhitelistDescription": {
-    "message": "ブロックしないチャンネル、URL、ドメイン",
-    "description": "ホワイトリストセクションの説明"
-  },
-  "optionsWhitelistAdd": {
-    "message": "ホワイトリストに追加",
-    "description": "ホワイトリストエントリを追加するボタンテキスト"
-  },
-  "optionsWhitelistEmpty": {
-    "message": "ホワイトリストは空です",
-    "description": "ホワイトリストが空の時のメッセージ"
-  },
-  "optionsWhitelistTypeChannel": {
-    "message": "チャンネル",
-    "description": "ホワイトリストタイプ: チャンネル"
-  },
-  "optionsWhitelistTypeUrl": {
-    "message": "URL",
-    "description": "ホワイトリストタイプ: URL"
-  },
-  "optionsWhitelistTypeDomain": {
-    "message": "ドメイン",
-    "description": "ホワイトリストタイプ: ドメイン"
-  },
   "optionsPreferencesTitle": {
     "message": "環境設定",
     "description": "環境設定のセクションタイトル"
@@ -341,10 +313,6 @@
     "message": "プラットフォーム",
     "description": "プラットフォーム設定のタブ名"
   },
-  "optionsTabWhitelist": {
-    "message": "ホワイトリスト",
-    "description": "ホワイトリスト管理のタブ名"
-  },
   "optionsTabLogs": {
     "message": "履歴",
     "description": "ブロック履歴のタブ名"
@@ -356,66 +324,6 @@
   "optionsStatsTitle": {
     "message": "統計情報",
     "description": "統計情報のセクションタイトル"
-  },
-  "whitelistTitle": {
-    "message": "ホワイトリスト管理",
-    "description": "ホワイトリストセクションのタイトル"
-  },
-  "whitelistDescription": {
-    "message": "許可するチャンネルや動画を追加します。ホワイトリストに登録されたコンテンツはブロックされません。",
-    "description": "ホワイトリストセクションの説明"
-  },
-  "whitelistTypeChannel": {
-    "message": "チャンネル",
-    "description": "チャンネルホワイトリストタイプ"
-  },
-  "whitelistTypeVideo": {
-    "message": "動画/URL",
-    "description": "動画/URLホワイトリストタイプ"
-  },
-  "whitelistPlaceholderChannel": {
-    "message": "チャンネル名またはID（例: @username）を入力",
-    "description": "チャンネル入力のプレースホルダー"
-  },
-  "whitelistPlaceholderUrl": {
-    "message": "動画のURLを入力",
-    "description": "URL入力のプレースホルダー"
-  },
-  "whitelistAdd": {
-    "message": "追加",
-    "description": "追加ボタンテキスト"
-  },
-  "whitelistAdding": {
-    "message": "追加中...",
-    "description": "追加処理中"
-  },
-  "whitelistRemove": {
-    "message": "削除",
-    "description": "削除ボタンのaria-label"
-  },
-  "whitelistEmpty": {
-    "message": "このプラットフォームにホワイトリストはありません",
-    "description": "ホワイトリストが空のメッセージ"
-  },
-  "whitelistErrorEmpty": {
-    "message": "値を入力してください",
-    "description": "空入力エラー"
-  },
-  "whitelistErrorInvalidChannel": {
-    "message": "有効なチャンネルIDを入力してください",
-    "description": "無効なチャンネルエラー"
-  },
-  "whitelistErrorInvalidUrl": {
-    "message": "有効なURLを入力してください",
-    "description": "無効なURLエラー"
-  },
-  "whitelistErrorDuplicate": {
-    "message": "このアイテムは既にホワイトリストに登録されています",
-    "description": "重複エントリエラー"
-  },
-  "whitelistErrorFailed": {
-    "message": "ホワイトリストへの追加に失敗しました",
-    "description": "追加失敗エラー"
   },
   "exportImportTitle": {
     "message": "バックアップと復元",
@@ -1013,7 +921,7 @@
   },
   "minutes": {
     "message": "分",
-    "description": "Minutes abbreviation"
+    "description": "Unit: minutes"
   },
   "pomodoroWork": {
     "message": "作業",
@@ -1153,7 +1061,7 @@
   },
   "hours": {
     "message": "時間",
-    "description": "Hours unit"
+    "description": "Unit: hours"
   },
   "hoursShort": {
     "message": "時間",
@@ -1169,7 +1077,7 @@
   },
   "loading": {
     "message": "読み込み中...",
-    "description": "Loading indicator text"
+    "description": "Loading message"
   },
   "optionsTabReports": {
     "message": "レポート",
@@ -1989,14 +1897,6 @@
     "message": "秒",
     "description": "Unit: seconds"
   },
-  "minutes": {
-    "message": "分",
-    "description": "Unit: minutes"
-  },
-  "hours": {
-    "message": "時間",
-    "description": "Unit: hours"
-  },
   "characters": {
     "message": "文字",
     "description": "Unit: characters"
@@ -2012,10 +1912,6 @@
   "dismiss": {
     "message": "閉じる",
     "description": "Dismiss button"
-  },
-  "loading": {
-    "message": "読み込み中...",
-    "description": "Loading message"
   },
   "goBack": {
     "message": "戻る",
@@ -2053,11 +1949,11 @@
   },
   "dashboardActivePlatforms": {
     "message": "有効なプラットフォーム",
-    "description": "Dashboard active platforms section title"
+    "description": "Dashboard: active platforms section"
   },
   "dashboardNoPlatforms": {
-    "message": "有効なプラットフォームがありません",
-    "description": "Dashboard no platforms message"
+    "message": "プラットフォームが選択されていません",
+    "description": "Dashboard: no platforms message"
   },
   "dashboardMore": {
     "message": "その他",
@@ -2065,11 +1961,11 @@
   },
   "dashboardQuickActions": {
     "message": "クイックアクション",
-    "description": "Dashboard quick actions section title"
+    "description": "Dashboard: quick actions section"
   },
   "dashboardStartFocus": {
     "message": "フォーカス開始",
-    "description": "Dashboard start focus button"
+    "description": "Dashboard: start focus button"
   },
   "dashboardFocusDisabledHint": {
     "message": "クイックフォーカスを使用するには設定でフォーカスモードを有効にしてください",
@@ -2122,10 +2018,6 @@
   "sidebarCustomDomains": {
     "message": "カスタムドメイン",
     "description": "Sidebar submenu: Custom Domains"
-  },
-  "sidebarWhitelist": {
-    "message": "ホワイトリスト",
-    "description": "Sidebar submenu: Whitelist"
   },
   "sidebarScheduleConfig": {
     "message": "時間スケジュール",
@@ -2183,25 +2075,9 @@
     "message": "ストリーク",
     "description": "Dashboard stat: streak"
   },
-  "dashboardActivePlatforms": {
-    "message": "有効なプラットフォーム",
-    "description": "Dashboard: active platforms section"
-  },
-  "dashboardNoPlatforms": {
-    "message": "プラットフォームが選択されていません",
-    "description": "Dashboard: no platforms message"
-  },
   "dashboardManagePlatforms": {
     "message": "プラットフォームを管理",
     "description": "Dashboard: manage platforms link"
-  },
-  "dashboardQuickActions": {
-    "message": "クイックアクション",
-    "description": "Dashboard: quick actions section"
-  },
-  "dashboardStartFocus": {
-    "message": "フォーカス開始",
-    "description": "Dashboard: start focus button"
   },
   "retry": {
     "message": "再試行",

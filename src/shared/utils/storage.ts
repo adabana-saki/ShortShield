@@ -97,7 +97,6 @@ export async function updateSettings(
       ...current.stats,
       ...(update.stats ?? {}),
     },
-    whitelist: update.whitelist ?? current.whitelist,
     customDomains: update.customDomains ?? current.customDomains,
     schedule: update.schedule
       ? { ...current.schedule, ...update.schedule }

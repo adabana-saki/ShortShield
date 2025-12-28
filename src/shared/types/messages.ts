@@ -6,7 +6,6 @@
 import type {
   Settings,
   SettingsUpdate,
-  WhitelistEntry,
   FocusDuration,
   FocusModeState,
   PomodoroState,
@@ -33,8 +32,6 @@ export const MESSAGE_TYPES = [
   'UPDATE_SETTINGS',
   'GET_STATS',
   'LOG_BLOCK',
-  'WHITELIST_ADD',
-  'WHITELIST_REMOVE',
   'PING',
   // Focus mode messages
   'FOCUS_START',
@@ -134,24 +131,6 @@ export interface LogBlockMessage extends BaseMessage<'LOG_BLOCK'> {
       readonly tagName: string;
       readonly className?: string;
     };
-  };
-}
-
-/**
- * WHITELIST_ADD message
- */
-export interface WhitelistAddMessage extends BaseMessage<'WHITELIST_ADD'> {
-  readonly type: 'WHITELIST_ADD';
-  readonly payload: Omit<WhitelistEntry, 'id' | 'createdAt'>;
-}
-
-/**
- * WHITELIST_REMOVE message
- */
-export interface WhitelistRemoveMessage extends BaseMessage<'WHITELIST_REMOVE'> {
-  readonly type: 'WHITELIST_REMOVE';
-  readonly payload: {
-    readonly id: string;
   };
 }
 
@@ -517,8 +496,6 @@ export type Message =
   | UpdateSettingsMessage
   | GetStatsMessage
   | LogBlockMessage
-  | WhitelistAddMessage
-  | WhitelistRemoveMessage
   | PingMessage
   | FocusStartMessage
   | FocusCancelMessage
@@ -579,8 +556,6 @@ export type GetSettingsResponse = MessageResponse<Settings>;
 export type UpdateSettingsResponse = MessageResponse<Settings>;
 export type GetStatsResponse = MessageResponse<Settings['stats']>;
 export type LogBlockResponse = MessageResponse<void>;
-export type WhitelistAddResponse = MessageResponse<WhitelistEntry>;
-export type WhitelistRemoveResponse = MessageResponse<void>;
 export type PingResponse = MessageResponse<{ readonly pong: true }>;
 export type FocusStartResponse = MessageResponse<FocusModeState>;
 export type FocusCancelResponse = MessageResponse<FocusModeState>;
@@ -646,12 +621,15 @@ export interface EmergencyBypassCheckResult {
 }
 
 export type LockdownSetPinResponse = MessageResponse<void>;
-export type LockdownVerifyPinResponse = MessageResponse<LockdownVerifyPinResult>;
+export type LockdownVerifyPinResponse =
+  MessageResponse<LockdownVerifyPinResult>;
 export type LockdownActivateResponse = MessageResponse<LockdownState>;
 export type LockdownDeactivateResponse = MessageResponse<LockdownState>;
 export type LockdownGetStateResponse = MessageResponse<LockdownState>;
-export type LockdownRequestEmergencyBypassResponse = MessageResponse<LockdownState>;
-export type LockdownCheckEmergencyBypassResponse = MessageResponse<EmergencyBypassCheckResult>;
+export type LockdownRequestEmergencyBypassResponse =
+  MessageResponse<LockdownState>;
+export type LockdownCheckEmergencyBypassResponse =
+  MessageResponse<EmergencyBypassCheckResult>;
 
 /**
  * Commitment Lock unlock flow result
@@ -689,21 +667,32 @@ export interface PremiumFeatureCheckResult {
 }
 
 // Commitment Lock response types
-export type CommitmentLockGetStateResponse = MessageResponse<CommitmentLockState>;
-export type CommitmentLockCheckUnlockResponse = MessageResponse<UnlockCheckResult>;
-export type CommitmentLockStartUnlockResponse = MessageResponse<CommitmentLockUnlockFlowResult>;
-export type CommitmentLockSubmitIntentionResponse = MessageResponse<CommitmentLockUnlockFlowResult>;
-export type CommitmentLockRequestChallengeResponse = MessageResponse<ChallengeData>;
-export type CommitmentLockSubmitChallengeResponse = MessageResponse<CommitmentLockChallengeResult>;
-export type CommitmentLockConfirmUnlockResponse = MessageResponse<CommitmentLockState>;
-export type CommitmentLockCancelUnlockResponse = MessageResponse<CommitmentLockState>;
+export type CommitmentLockGetStateResponse =
+  MessageResponse<CommitmentLockState>;
+export type CommitmentLockCheckUnlockResponse =
+  MessageResponse<UnlockCheckResult>;
+export type CommitmentLockStartUnlockResponse =
+  MessageResponse<CommitmentLockUnlockFlowResult>;
+export type CommitmentLockSubmitIntentionResponse =
+  MessageResponse<CommitmentLockUnlockFlowResult>;
+export type CommitmentLockRequestChallengeResponse =
+  MessageResponse<ChallengeData>;
+export type CommitmentLockSubmitChallengeResponse =
+  MessageResponse<CommitmentLockChallengeResult>;
+export type CommitmentLockConfirmUnlockResponse =
+  MessageResponse<CommitmentLockState>;
+export type CommitmentLockCancelUnlockResponse =
+  MessageResponse<CommitmentLockState>;
 export type CommitmentLockGetHistoryResponse = MessageResponse<UnlockHistory>;
-export type CommitmentLockGetStatsResponse = MessageResponse<CommitmentLockStats>;
-export type CommitmentLockResetStateResponse = MessageResponse<CommitmentLockState>;
+export type CommitmentLockGetStatsResponse =
+  MessageResponse<CommitmentLockStats>;
+export type CommitmentLockResetStateResponse =
+  MessageResponse<CommitmentLockState>;
 
 // Premium response types
 export type PremiumGetStateResponse = MessageResponse<PremiumState>;
-export type PremiumCheckFeatureResponse = MessageResponse<PremiumFeatureCheckResult>;
+export type PremiumCheckFeatureResponse =
+  MessageResponse<PremiumFeatureCheckResult>;
 
 /**
  * Type guard for Message validation

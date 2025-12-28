@@ -139,34 +139,6 @@
     "message": "Escolha quais plataformas bloquear",
     "description": "Description for platform settings section"
   },
-  "optionsWhitelistTitle": {
-    "message": "Lista Branca",
-    "description": "Section title for whitelist"
-  },
-  "optionsWhitelistDescription": {
-    "message": "Canais, URLs ou domínios que você não quer bloquear",
-    "description": "Description for whitelist section"
-  },
-  "optionsWhitelistAdd": {
-    "message": "Adicionar à Lista Branca",
-    "description": "Button text to add whitelist entry"
-  },
-  "optionsWhitelistEmpty": {
-    "message": "Nenhuma entrada na lista branca",
-    "description": "Message when whitelist is empty"
-  },
-  "optionsWhitelistTypeChannel": {
-    "message": "Canal",
-    "description": "Whitelist type: Channel"
-  },
-  "optionsWhitelistTypeUrl": {
-    "message": "URL",
-    "description": "Whitelist type: URL"
-  },
-  "optionsWhitelistTypeDomain": {
-    "message": "Domínio",
-    "description": "Whitelist type: Domain"
-  },
   "optionsPreferencesTitle": {
     "message": "Preferências",
     "description": "Section title for preferences"
@@ -273,10 +245,6 @@
     "message": "Plataformas",
     "description": "Tab name for platforms settings"
   },
-  "optionsTabWhitelist": {
-    "message": "Lista Branca",
-    "description": "Tab name for whitelist management"
-  },
   "optionsTabLogs": {
     "message": "Histórico",
     "description": "Tab name for block history"
@@ -288,66 +256,6 @@
   "optionsStatsTitle": {
     "message": "Estatísticas",
     "description": "Section title for statistics"
-  },
-  "whitelistTitle": {
-    "message": "Gerenciamento de Lista Branca",
-    "description": "Whitelist section title"
-  },
-  "whitelistDescription": {
-    "message": "Adicione canais ou vídeos que você quer permitir. Conteúdo na lista branca não será bloqueado.",
-    "description": "Whitelist section description"
-  },
-  "whitelistTypeChannel": {
-    "message": "Canal",
-    "description": "Channel whitelist type"
-  },
-  "whitelistTypeVideo": {
-    "message": "Vídeo/URL",
-    "description": "Video/URL whitelist type"
-  },
-  "whitelistPlaceholderChannel": {
-    "message": "Digite nome ou ID do canal (ex: @usuario)",
-    "description": "Placeholder for channel input"
-  },
-  "whitelistPlaceholderUrl": {
-    "message": "Digite URL do vídeo",
-    "description": "Placeholder for URL input"
-  },
-  "whitelistAdd": {
-    "message": "Adicionar",
-    "description": "Add button text"
-  },
-  "whitelistAdding": {
-    "message": "Adicionando...",
-    "description": "Adding in progress"
-  },
-  "whitelistRemove": {
-    "message": "Remover",
-    "description": "Remove button aria label"
-  },
-  "whitelistEmpty": {
-    "message": "Nenhum item na lista branca para esta plataforma",
-    "description": "Empty whitelist message"
-  },
-  "whitelistErrorEmpty": {
-    "message": "Por favor digite um valor",
-    "description": "Error for empty input"
-  },
-  "whitelistErrorInvalidChannel": {
-    "message": "Por favor digite um ID de canal válido",
-    "description": "Error for invalid channel"
-  },
-  "whitelistErrorInvalidUrl": {
-    "message": "Por favor digite uma URL válida",
-    "description": "Error for invalid URL"
-  },
-  "whitelistErrorDuplicate": {
-    "message": "Este item já está na lista branca",
-    "description": "Error for duplicate entry"
-  },
-  "whitelistErrorFailed": {
-    "message": "Falha ao adicionar à lista branca",
-    "description": "Error when adding fails"
   },
   "exportImportTitle": {
     "message": "Backup e Restauração",

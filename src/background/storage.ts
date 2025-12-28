@@ -4,14 +4,9 @@
  */
 
 import browser from 'webextension-polyfill';
-import type {
-  Settings,
-  SettingsUpdate,
-  WhitelistEntry,
-  WhitelistId,
-} from '@/shared/types';
+import type { Settings, SettingsUpdate } from '@/shared/types';
 import { isValidSettings } from '@/shared/types';
-import { STORAGE_KEYS, DEFAULT_SETTINGS, LIMITS } from '@/shared/constants';
+import { STORAGE_KEYS, DEFAULT_SETTINGS } from '@/shared/constants';
 import { createLogger } from '@/shared/utils/logger';
 
 const logger = createLogger('background-storage');
@@ -86,9 +81,15 @@ export async function updateSettings(
   update: SettingsUpdate
 ): Promise<Settings> {
   console.log('[storage] updateSettings called with:', update);
-  console.log('[storage] onboardingCompleted in update:', update.onboardingCompleted);
+  console.log(
+    '[storage] onboardingCompleted in update:',
+    update.onboardingCompleted
+  );
   const current = await getSettings();
-  console.log('[storage] current onboardingCompleted:', current.onboardingCompleted);
+  console.log(
+    '[storage] current onboardingCompleted:',
+    current.onboardingCompleted
+  );
 
   const updated: Settings = {
     ...current,
@@ -105,7 +106,6 @@ export async function updateSettings(
       ...current.stats,
       ...(update.stats ?? {}),
     },
-    whitelist: update.whitelist ?? current.whitelist,
     customDomains: update.customDomains ?? current.customDomains,
     schedule: update.schedule
       ? { ...current.schedule, ...update.schedule }
@@ -134,11 +134,15 @@ export async function updateSettings(
     lockdown: update.lockdown
       ? { ...current.lockdown, ...update.lockdown }
       : current.lockdown,
-    onboardingCompleted: update.onboardingCompleted ?? current.onboardingCompleted,
+    onboardingCompleted:
+      update.onboardingCompleted ?? current.onboardingCompleted,
     version: current.version,
   };
 
-  console.log('[storage] updated onboardingCompleted:', updated.onboardingCompleted);
+  console.log(
+    '[storage] updated onboardingCompleted:',
+    updated.onboardingCompleted
+  );
   await saveSettings(updated);
   console.log('[storage] Settings saved');
   return updated;
@@ -165,54 +169,6 @@ export async function incrementBlockCount(platform: string): Promise<Settings> {
   };
 
   await saveSettings(updated);
-  return updated;
-}
-
-/**
- * Add whitelist entry
- */
-export async function addWhitelistEntry(
-  entry: Omit<WhitelistEntry, 'id' | 'createdAt'>
-): Promise<Settings> {
-  const settings = await getSettings();
-
-  // Check limit
-  if (settings.whitelist.length >= LIMITS.MAX_WHITELIST_ENTRIES) {
-    throw new Error('Whitelist limit reached');
-  }
-
-  const newEntry: WhitelistEntry = {
-    ...entry,
-    id: `wl_${Date.now()}_${Math.random().toString(36).slice(2, 9)}` as WhitelistId,
-    createdAt: Date.now(),
-  };
-
-  const updated: Settings = {
-    ...settings,
-    whitelist: [...settings.whitelist, newEntry],
-  };
-
-  await saveSettings(updated);
-  logger.info('Whitelist entry added', {
-    platform: entry.platform,
-    type: entry.type,
-  });
-  return updated;
-}
-
-/**
- * Remove whitelist entry
- */
-export async function removeWhitelistEntry(id: string): Promise<Settings> {
-  const settings = await getSettings();
-
-  const updated: Settings = {
-    ...settings,
-    whitelist: settings.whitelist.filter((entry) => entry.id !== id),
-  };
-
-  await saveSettings(updated);
-  logger.info('Whitelist entry removed', { id });
   return updated;
 }
 

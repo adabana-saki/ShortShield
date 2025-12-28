@@ -1,5 +1,5 @@
 /**
- * Blocking settings section - Platforms, Custom Domains, Whitelist
+ * Blocking settings section - Platforms, Custom Domains
  */
 
 import { useI18n } from '@/shared/hooks/useI18n';
@@ -7,9 +7,8 @@ import type { Settings, Platform } from '@/shared/types';
 import { SectionHeader } from '../common/SectionHeader';
 import { ToggleRow } from '../common/ToggleRow';
 import { CustomDomains } from '../CustomDomains';
-import { Whitelist } from '../Whitelist';
 
-type BlockingSubSection = 'platforms' | 'customDomains' | 'whitelist';
+type BlockingSubSection = 'platforms' | 'customDomains';
 
 interface BlockingSectionProps {
   settings: Settings;
@@ -44,29 +43,6 @@ export function BlockingSection({
           }
         />
         <CustomDomains />
-      </div>
-    );
-  }
-
-  if (subSection === 'whitelist') {
-    return (
-      <div className="settings-section">
-        <SectionHeader
-          title={t('optionsTabWhitelist')}
-          description={t('whitelistDescription')}
-          icon={
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-              <polyline points="22 4 12 14.01 9 11.01" />
-            </svg>
-          }
-        />
-        <Whitelist />
       </div>
     );
   }

@@ -161,10 +161,7 @@ export function App() {
           <BlockingSection
             settings={settings}
             subSection={
-              (activeSubSection as
-                | 'platforms'
-                | 'customDomains'
-                | 'whitelist') ?? 'platforms'
+              (activeSubSection as 'platforms' | 'customDomains') ?? 'platforms'
             }
             onTogglePlatform={handleTogglePlatform}
           />

@@ -75,7 +75,10 @@ export abstract class BasePlatformDetector {
 
     // If Pomodoro is running and in break mode, unblock content
     if (this.pomodoroState.isRunning) {
-      return this.pomodoroState.mode === 'break' || this.pomodoroState.mode === 'longBreak';
+      return (
+        this.pomodoroState.mode === 'break' ||
+        this.pomodoroState.mode === 'longBreak'
+      );
     }
 
     return false;
@@ -124,54 +127,6 @@ export abstract class BasePlatformDetector {
   }
 
   /**
-   * Check if a URL/channel is whitelisted
-   */
-  protected isWhitelisted(element: HTMLElement): boolean {
-    if (!this.settings) {
-      return false;
-    }
-
-    // Get relevant URL from element
-    const url = this.extractUrl(element);
-    if (url === null || url === '') {
-      return false;
-    }
-
-    for (const entry of this.settings.whitelist) {
-      if (entry.platform !== this.platform) {
-        continue;
-      }
-
-      switch (entry.type) {
-        case 'url':
-          if (url === entry.value) {
-            return true;
-          }
-          break;
-
-        case 'domain':
-          try {
-            const parsed = new URL(url);
-            if (parsed.hostname === entry.value) {
-              return true;
-            }
-          } catch {
-            // Invalid URL
-          }
-          break;
-
-        case 'channel':
-          if (this.matchesChannel(element, entry.value)) {
-            return true;
-          }
-          break;
-      }
-    }
-
-    return false;
-  }
-
-  /**
    * Extract URL from element (override in subclass)
    */
   protected extractUrl(element: HTMLElement): string | null {
@@ -180,13 +135,6 @@ export abstract class BasePlatformDetector {
       element.querySelector<HTMLAnchorElement>('a[href]') ??
       element.closest<HTMLAnchorElement>('a[href]');
     return link?.href ?? null;
-  }
-
-  /**
-   * Check if element matches a channel (override in subclass)
-   */
-  protected matchesChannel(_element: HTMLElement, _channelId: string): boolean {
-    return false;
   }
 
   /**
@@ -328,7 +276,9 @@ export abstract class BasePlatformDetector {
       this.settings?.blockPage ?? DEFAULT_BLOCK_PAGE;
 
     const isDark = this.isDarkMode();
-    const bgColor = isDark ? 'rgba(0, 0, 0, 0.95)' : 'rgba(255, 255, 255, 0.98)';
+    const bgColor = isDark
+      ? 'rgba(0, 0, 0, 0.95)'
+      : 'rgba(255, 255, 255, 0.98)';
     const textColor = isDark ? '#ffffff' : '#1f2937';
     const mutedColor = isDark ? '#9ca3af' : '#6b7280';
     const primaryColor = blockPage.primaryColor || '#3b82f6';

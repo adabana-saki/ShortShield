@@ -139,34 +139,6 @@
     "message": "选择要拦截的平台",
     "description": "Description for platform settings section"
   },
-  "optionsWhitelistTitle": {
-    "message": "白名单",
-    "description": "Section title for whitelist"
-  },
-  "optionsWhitelistDescription": {
-    "message": "不想拦截的频道、网址或域名",
-    "description": "Description for whitelist section"
-  },
-  "optionsWhitelistAdd": {
-    "message": "添加到白名单",
-    "description": "Button text to add whitelist entry"
-  },
-  "optionsWhitelistEmpty": {
-    "message": "暂无白名单",
-    "description": "Message when whitelist is empty"
-  },
-  "optionsWhitelistTypeChannel": {
-    "message": "频道",
-    "description": "Whitelist type: Channel"
-  },
-  "optionsWhitelistTypeUrl": {
-    "message": "网址",
-    "description": "Whitelist type: URL"
-  },
-  "optionsWhitelistTypeDomain": {
-    "message": "域名",
-    "description": "Whitelist type: Domain"
-  },
   "optionsPreferencesTitle": {
     "message": "偏好设置",
     "description": "Section title for preferences"
@@ -273,10 +245,6 @@
     "message": "平台",
     "description": "Tab name for platforms settings"
   },
-  "optionsTabWhitelist": {
-    "message": "白名单",
-    "description": "Tab name for whitelist management"
-  },
   "optionsTabLogs": {
     "message": "历史",
     "description": "Tab name for block history"
@@ -288,66 +256,6 @@
   "optionsStatsTitle": {
     "message": "统计",
     "description": "Section title for statistics"
-  },
-  "whitelistTitle": {
-    "message": "白名单管理",
-    "description": "Whitelist section title"
-  },
-  "whitelistDescription": {
-    "message": "添加您想允许的频道或视频。白名单内容不会被拦截。",
-    "description": "Whitelist section description"
-  },
-  "whitelistTypeChannel": {
-    "message": "频道",
-    "description": "Channel whitelist type"
-  },
-  "whitelistTypeVideo": {
-    "message": "视频/网址",
-    "description": "Video/URL whitelist type"
-  },
-  "whitelistPlaceholderChannel": {
-    "message": "输入频道名称或ID（如 @username）",
-    "description": "Placeholder for channel input"
-  },
-  "whitelistPlaceholderUrl": {
-    "message": "输入视频网址",
-    "description": "Placeholder for URL input"
-  },
-  "whitelistAdd": {
-    "message": "添加",
-    "description": "Add button text"
-  },
-  "whitelistAdding": {
-    "message": "添加中...",
-    "description": "Adding in progress"
-  },
-  "whitelistRemove": {
-    "message": "移除",
-    "description": "Remove button aria label"
-  },
-  "whitelistEmpty": {
-    "message": "该平台暂无白名单项目",
-    "description": "Empty whitelist message"
-  },
-  "whitelistErrorEmpty": {
-    "message": "请输入内容",
-    "description": "Error for empty input"
-  },
-  "whitelistErrorInvalidChannel": {
-    "message": "请输入有效的频道ID",
-    "description": "Error for invalid channel"
-  },
-  "whitelistErrorInvalidUrl": {
-    "message": "请输入有效的网址",
-    "description": "Error for invalid URL"
-  },
-  "whitelistErrorDuplicate": {
-    "message": "该项目已在白名单中",
-    "description": "Error for duplicate entry"
-  },
-  "whitelistErrorFailed": {
-    "message": "添加到白名单失败",
-    "description": "Error when adding fails"
   },
   "exportImportTitle": {
     "message": "备份与恢复",

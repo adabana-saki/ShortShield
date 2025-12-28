@@ -421,7 +421,6 @@ function getMonday(date: Date): Date {
 export const DEFAULT_SETTINGS: Settings = {
   enabled: true,
   platforms: DEFAULT_PLATFORM_SETTINGS,
-  whitelist: [],
   customDomains: [],
   schedule: DEFAULT_SCHEDULE,
   stats: DEFAULT_STATS,
@@ -443,8 +442,6 @@ export const DEFAULT_SETTINGS: Settings = {
  * Maximum limits for safety
  */
 export const LIMITS = {
-  /** Maximum whitelist entries */
-  MAX_WHITELIST_ENTRIES: 500,
   /** Maximum custom rules */
   MAX_CUSTOM_RULES: 100,
   /** Maximum custom blocked domains */

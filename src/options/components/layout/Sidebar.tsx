@@ -20,7 +20,6 @@ export type SectionId =
 export type SubSectionId =
   | 'platforms'
   | 'customDomains'
-  | 'whitelist'
   | 'scheduleConfig'
   | 'timeLimits'
   | 'focusMode'
@@ -196,12 +195,6 @@ export function Sidebar({
               label: t('optionsTabCustomDomains'),
               active: activeSubSection === 'customDomains',
               onClick: () => onSectionChange('blocking', 'customDomains'),
-            },
-            {
-              id: 'whitelist',
-              label: t('optionsTabWhitelist'),
-              active: activeSubSection === 'whitelist',
-              onClick: () => onSectionChange('blocking', 'whitelist'),
             },
           ]}
           expanded={activeSection === 'blocking'}

@@ -9,10 +9,8 @@ import {
   isValidDomain,
   isValidChannelId,
   isValidPlatform,
-  isValidWhitelistType,
   isValidSelector,
   isValidRegexPattern,
-  isValidWhitelistValue,
   isValidImportSize,
   isValidJson,
   safeJsonParse,
@@ -116,19 +114,6 @@ describe('isValidPlatform', () => {
   });
 });
 
-describe('isValidWhitelistType', () => {
-  it('should accept valid whitelist types', () => {
-    expect(isValidWhitelistType('channel')).toBe(true);
-    expect(isValidWhitelistType('url')).toBe(true);
-    expect(isValidWhitelistType('domain')).toBe(true);
-  });
-
-  it('should reject invalid whitelist types', () => {
-    expect(isValidWhitelistType('video')).toBe(false);
-    expect(isValidWhitelistType('')).toBe(false);
-  });
-});
-
 describe('isValidSelector', () => {
   it('should accept valid CSS selectors', () => {
     expect(isValidSelector('div')).toBe(true);
@@ -174,25 +159,6 @@ describe('isValidRegexPattern', () => {
   it('should reject patterns that are too long', () => {
     const longPattern = 'a'.repeat(600);
     expect(isValidRegexPattern(longPattern)).toBe(false);
-  });
-});
-
-describe('isValidWhitelistValue', () => {
-  it('should validate URL type', () => {
-    expect(isValidWhitelistValue('https://youtube.com/shorts/abc', 'url')).toBe(
-      true
-    );
-    expect(isValidWhitelistValue('not-a-url', 'url')).toBe(false);
-  });
-
-  it('should validate domain type', () => {
-    expect(isValidWhitelistValue('youtube.com', 'domain')).toBe(true);
-    expect(isValidWhitelistValue('not a domain', 'domain')).toBe(false);
-  });
-
-  it('should validate channel type', () => {
-    expect(isValidWhitelistValue('@channelname', 'channel')).toBe(true);
-    expect(isValidWhitelistValue('invalid', 'channel')).toBe(false);
   });
 });
 

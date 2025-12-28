@@ -6,7 +6,6 @@
 export type {
   ChannelId,
   VideoId,
-  WhitelistId,
   CustomDomainId,
   ShortVideoPlatform,
   FullSitePlatform,
@@ -16,8 +15,6 @@ export type {
   FullSitePlatformSettings,
   SNSPlatformSettings,
   PlatformSettings,
-  WhitelistType,
-  WhitelistEntry,
   CustomBlockedDomain,
   DayOfWeek,
   TimeRange,
@@ -67,11 +64,7 @@ export type {
   CommitmentLockStats,
 } from './settings';
 
-export {
-  isValidSettings,
-  isValidWhitelistEntry,
-  isValidCustomBlockedDomain,
-} from './settings';
+export { isValidSettings, isValidCustomBlockedDomain } from './settings';
 
 // Rules types
 export type {
@@ -98,8 +91,6 @@ export type {
   UpdateSettingsMessage,
   GetStatsMessage,
   LogBlockMessage,
-  WhitelistAddMessage,
-  WhitelistRemoveMessage,
   PingMessage,
   FocusStartMessage,
   FocusCancelMessage,
@@ -150,8 +141,6 @@ export type {
   UpdateSettingsResponse,
   GetStatsResponse,
   LogBlockResponse,
-  WhitelistAddResponse,
-  WhitelistRemoveResponse,
   PingResponse,
   FocusStartResponse,
   FocusCancelResponse,

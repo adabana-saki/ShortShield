@@ -11,8 +11,6 @@ import type {
   UpdateSettingsResponse,
   GetStatsResponse,
   LogBlockResponse,
-  WhitelistAddResponse,
-  WhitelistRemoveResponse,
   PingResponse,
   FocusStartResponse,
   FocusCancelResponse,
@@ -56,13 +54,10 @@ import type {
   CommitmentLockResetStateResponse,
   PremiumGetStateResponse,
   PremiumCheckFeatureResponse,
-  WhitelistEntry,
-  WhitelistId,
 } from '@/shared/types';
 import { isValidMessage, isMessageType } from '@/shared/types';
 import { getSettings, updateSettings } from '@/shared/utils';
 import { createLogger } from '@/shared/utils/logger';
-import { validateWhitelistInput } from '@/shared/utils/validation';
 import {
   getFocusState,
   startFocusMode,
@@ -127,13 +122,6 @@ function isValidSender(sender: browser.Runtime.MessageSender): boolean {
   }
 
   return true;
-}
-
-/**
- * Generate unique ID
- */
-function generateId(): string {
-  return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 }
 
 /**
@@ -207,85 +195,6 @@ async function handleLogBlock(
   } catch (error) {
     logger.error('Failed to log block', { error: String(error) });
     return { success: false, error: 'Failed to log block' };
-  }
-}
-
-/**
- * Handle WHITELIST_ADD message
- */
-async function handleWhitelistAdd(
-  message: Extract<Message, { type: 'WHITELIST_ADD' }>
-): Promise<WhitelistAddResponse> {
-  try {
-    // Validate input
-    const validation = validateWhitelistInput({
-      type: message.payload.type,
-      value: message.payload.value,
-      platform: message.payload.platform,
-    });
-
-    if (!validation.valid || !validation.sanitized) {
-      return { success: false, error: validation.error ?? 'Invalid input' };
-    }
-
-    const settings = await getSettings();
-
-    // Check for duplicates
-    const exists = settings.whitelist.some(
-      (entry) =>
-        entry.type === validation.sanitized?.type &&
-        entry.value === validation.sanitized?.value &&
-        entry.platform === validation.sanitized?.platform
-    );
-
-    if (exists) {
-      return { success: false, error: 'Entry already exists' };
-    }
-
-    const newEntry: WhitelistEntry = {
-      id: generateId() as WhitelistId,
-      type: validation.sanitized.type,
-      value: validation.sanitized.value,
-      platform: validation.sanitized.platform,
-      createdAt: Date.now(),
-      description: message.payload.description,
-    };
-
-    await updateSettings({
-      whitelist: [...settings.whitelist, newEntry] as WhitelistEntry[],
-    } as unknown as Parameters<typeof updateSettings>[0]);
-
-    return { success: true, data: newEntry };
-  } catch (error) {
-    logger.error('Failed to add whitelist entry', { error: String(error) });
-    return { success: false, error: 'Failed to add whitelist entry' };
-  }
-}
-
-/**
- * Handle WHITELIST_REMOVE message
- */
-async function handleWhitelistRemove(
-  message: Extract<Message, { type: 'WHITELIST_REMOVE' }>
-): Promise<WhitelistRemoveResponse> {
-  try {
-    const settings = await getSettings();
-    const filtered = settings.whitelist.filter(
-      (entry) => entry.id !== message.payload.id
-    );
-
-    if (filtered.length === settings.whitelist.length) {
-      return { success: false, error: 'Entry not found' };
-    }
-
-    await updateSettings({
-      whitelist: filtered,
-    });
-
-    return { success: true };
-  } catch (error) {
-    logger.error('Failed to remove whitelist entry', { error: String(error) });
-    return { success: false, error: 'Failed to remove whitelist entry' };
   }
 }
 
@@ -682,7 +591,9 @@ async function handleLockdownRequestEmergencyBypass(): Promise<LockdownRequestEm
     const state = await requestEmergencyBypass();
     return { success: true, data: state };
   } catch (error) {
-    logger.error('Failed to request emergency bypass', { error: String(error) });
+    logger.error('Failed to request emergency bypass', {
+      error: String(error),
+    });
     return { success: false, error: String(error) };
   }
 }
@@ -708,7 +619,9 @@ async function handleCommitmentLockGetState(): Promise<CommitmentLockGetStateRes
     const state = await getCommitmentLockState();
     return { success: true, data: state };
   } catch (error) {
-    logger.error('Failed to get commitment lock state', { error: String(error) });
+    logger.error('Failed to get commitment lock state', {
+      error: String(error),
+    });
     return { success: false, error: String(error) };
   }
 }
@@ -876,7 +789,9 @@ async function handleCommitmentLockResetState(): Promise<CommitmentLockResetStat
     const state = await resetCommitmentLockState();
     return { success: true, data: state };
   } catch (error) {
-    logger.error('Failed to reset commitment lock state', { error: String(error) });
+    logger.error('Failed to reset commitment lock state', {
+      error: String(error),
+    });
     return { success: false, error: String(error) };
   }
 }
@@ -941,18 +856,6 @@ async function handleMessage(
     case 'LOG_BLOCK':
       if (isMessageType(message, 'LOG_BLOCK')) {
         return handleLogBlock(message);
-      }
-      break;
-
-    case 'WHITELIST_ADD':
-      if (isMessageType(message, 'WHITELIST_ADD')) {
-        return handleWhitelistAdd(message);
-      }
-      break;
-
-    case 'WHITELIST_REMOVE':
-      if (isMessageType(message, 'WHITELIST_REMOVE')) {
-        return handleWhitelistRemove(message);
       }
       break;
 

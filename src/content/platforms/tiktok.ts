@@ -188,11 +188,6 @@ export class TikTokDetector extends BasePlatformDetector {
       return;
     }
 
-    // Check whitelist
-    if (this.isWhitelisted(element)) {
-      return;
-    }
-
     // Apply action
     this.applyAction(element, 'hide');
 
@@ -216,10 +211,6 @@ export class TikTokDetector extends BasePlatformDetector {
       const parent = this.findParentContainer(link);
 
       if (parent && parent.dataset.shortshieldHidden !== 'true') {
-        if (this.isWhitelisted(link)) {
-          continue;
-        }
-
         this.applyAction(parent, 'hide');
         void this.logBlock(link, 'hide');
       }
@@ -282,29 +273,5 @@ export class TikTokDetector extends BasePlatformDetector {
     }
 
     return super.extractUrl(element);
-  }
-
-  /**
-   * Check if element matches a channel/user
-   */
-  protected override matchesChannel(
-    element: HTMLElement,
-    channelId: string
-  ): boolean {
-    // Try to find user link
-    const userLink = element.querySelector<HTMLAnchorElement>('a[href*="/@"]');
-
-    if (userLink === null || userLink.href === '') {
-      return false;
-    }
-
-    try {
-      const url = new URL(userLink.href);
-      const username = url.pathname.split('/@')[1]?.split('/')[0];
-
-      return `@${username ?? ''}` === channelId || username === channelId;
-    } catch {
-      return false;
-    }
   }
 }

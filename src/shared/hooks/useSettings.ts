@@ -8,19 +8,10 @@ import browser from 'webextension-polyfill';
 import type {
   Settings,
   SettingsUpdate,
-  Platform,
   UpdateSettingsMessage,
-  WhitelistAddMessage,
-  WhitelistRemoveMessage,
 } from '@/shared/types';
 import { createMessage } from '@/shared/types';
 import { DEFAULT_SETTINGS } from '@/shared/constants';
-
-interface WhitelistAddParams {
-  platform: Platform;
-  type: 'channel' | 'url' | 'domain';
-  value: string;
-}
 
 interface UseSettingsResult {
   settings: Settings;
@@ -30,8 +21,6 @@ interface UseSettingsResult {
   toggleEnabled: () => Promise<void>;
   togglePlatform: (platform: keyof Settings['platforms']) => Promise<void>;
   refreshSettings: () => Promise<void>;
-  addToWhitelist: (params: WhitelistAddParams) => Promise<void>;
-  removeFromWhitelist: (id: string) => Promise<void>;
   importSettings: (data: Partial<Settings>) => Promise<void>;
 }
 
@@ -115,7 +104,10 @@ export function useSettings(): UseSettingsResult {
             typedResponse.success === true &&
             typedResponse.data !== undefined
           ) {
-            console.log('[useSettings] Settings updated successfully, onboardingCompleted:', typedResponse.data.onboardingCompleted);
+            console.log(
+              '[useSettings] Settings updated successfully, onboardingCompleted:',
+              typedResponse.data.onboardingCompleted
+            );
             setSettings(typedResponse.data);
           } else {
             console.error('[useSettings] Update failed:', typedResponse.error);
@@ -161,93 +153,6 @@ export function useSettings(): UseSettingsResult {
   }, [fetchSettings]);
 
   /**
-   * Add entry to whitelist
-   */
-  const addToWhitelist = useCallback(
-    async (params: WhitelistAddParams): Promise<void> => {
-      try {
-        setError(null);
-
-        const response = await browser.runtime.sendMessage(
-          createMessage<WhitelistAddMessage>({
-            type: 'WHITELIST_ADD',
-            payload: params,
-          })
-        );
-
-        if (
-          response !== null &&
-          response !== undefined &&
-          typeof response === 'object' &&
-          'success' in response
-        ) {
-          const typedResponse = response as {
-            success: boolean;
-            data?: Settings;
-            error?: string;
-          };
-          if (
-            typedResponse.success === true &&
-            typedResponse.data !== undefined
-          ) {
-            setSettings(typedResponse.data);
-          } else {
-            throw new Error(
-              typedResponse.error ?? 'Failed to add to whitelist'
-            );
-          }
-        }
-      } catch (err) {
-        setError(String(err));
-        throw err;
-      }
-    },
-    []
-  );
-
-  /**
-   * Remove entry from whitelist
-   */
-  const removeFromWhitelist = useCallback(async (id: string): Promise<void> => {
-    try {
-      setError(null);
-
-      const response = await browser.runtime.sendMessage(
-        createMessage<WhitelistRemoveMessage>({
-          type: 'WHITELIST_REMOVE',
-          payload: { id },
-        })
-      );
-
-      if (
-        response !== null &&
-        response !== undefined &&
-        typeof response === 'object' &&
-        'success' in response
-      ) {
-        const typedResponse = response as {
-          success: boolean;
-          data?: Settings;
-          error?: string;
-        };
-        if (
-          typedResponse.success === true &&
-          typedResponse.data !== undefined
-        ) {
-          setSettings(typedResponse.data);
-        } else {
-          throw new Error(
-            typedResponse.error ?? 'Failed to remove from whitelist'
-          );
-        }
-      }
-    } catch (err) {
-      setError(String(err));
-      throw err;
-    }
-  }, []);
-
-  /**
    * Import settings from backup
    */
   const importSettings = useCallback(
@@ -261,11 +166,6 @@ export function useSettings(): UseSettingsResult {
           platforms: data.platforms ?? settings.platforms,
           preferences: data.preferences ?? settings.preferences,
         };
-
-        // Handle whitelist separately if provided
-        if (data.whitelist) {
-          mergedSettings.whitelist = data.whitelist;
-        }
 
         const response = await browser.runtime.sendMessage(
           createMessage<UpdateSettingsMessage>({
@@ -338,8 +238,6 @@ export function useSettings(): UseSettingsResult {
     toggleEnabled,
     togglePlatform,
     refreshSettings,
-    addToWhitelist,
-    removeFromWhitelist,
     importSettings,
   };
 }

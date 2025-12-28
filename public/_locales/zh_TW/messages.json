@@ -139,34 +139,6 @@
     "message": "選擇要封鎖的平台",
     "description": "Description for platform settings section"
   },
-  "optionsWhitelistTitle": {
-    "message": "白名單",
-    "description": "Section title for whitelist"
-  },
-  "optionsWhitelistDescription": {
-    "message": "不想封鎖的頻道、網址或網域",
-    "description": "Description for whitelist section"
-  },
-  "optionsWhitelistAdd": {
-    "message": "新增至白名單",
-    "description": "Button text to add whitelist entry"
-  },
-  "optionsWhitelistEmpty": {
-    "message": "尚無白名單項目",
-    "description": "Message when whitelist is empty"
-  },
-  "optionsWhitelistTypeChannel": {
-    "message": "頻道",
-    "description": "Whitelist type: Channel"
-  },
-  "optionsWhitelistTypeUrl": {
-    "message": "網址",
-    "description": "Whitelist type: URL"
-  },
-  "optionsWhitelistTypeDomain": {
-    "message": "網域",
-    "description": "Whitelist type: Domain"
-  },
   "optionsPreferencesTitle": {
     "message": "偏好設定",
     "description": "Section title for preferences"
@@ -273,10 +245,6 @@
     "message": "平台",
     "description": "Tab name for platforms settings"
   },
-  "optionsTabWhitelist": {
-    "message": "白名單",
-    "description": "Tab name for whitelist management"
-  },
   "optionsTabLogs": {
     "message": "記錄",
     "description": "Tab name for block history"
@@ -288,66 +256,6 @@
   "optionsStatsTitle": {
     "message": "統計",
     "description": "Section title for statistics"
-  },
-  "whitelistTitle": {
-    "message": "白名單管理",
-    "description": "Whitelist section title"
-  },
-  "whitelistDescription": {
-    "message": "新增您想允許的頻道或影片。白名單內容不會被封鎖。",
-    "description": "Whitelist section description"
-  },
-  "whitelistTypeChannel": {
-    "message": "頻道",
-    "description": "Channel whitelist type"
-  },
-  "whitelistTypeVideo": {
-    "message": "影片/網址",
-    "description": "Video/URL whitelist type"
-  },
-  "whitelistPlaceholderChannel": {
-    "message": "輸入頻道名稱或ID（如 @username）",
-    "description": "Placeholder for channel input"
-  },
-  "whitelistPlaceholderUrl": {
-    "message": "輸入影片網址",
-    "description": "Placeholder for URL input"
-  },
-  "whitelistAdd": {
-    "message": "新增",
-    "description": "Add button text"
-  },
-  "whitelistAdding": {
-    "message": "新增中...",
-    "description": "Adding in progress"
-  },
-  "whitelistRemove": {
-    "message": "移除",
-    "description": "Remove button aria label"
-  },
-  "whitelistEmpty": {
-    "message": "該平台尚無白名單項目",
-    "description": "Empty whitelist message"
-  },
-  "whitelistErrorEmpty": {
-    "message": "請輸入內容",
-    "description": "Error for empty input"
-  },
-  "whitelistErrorInvalidChannel": {
-    "message": "請輸入有效的頻道ID",
-    "description": "Error for invalid channel"
-  },
-  "whitelistErrorInvalidUrl": {
-    "message": "請輸入有效的網址",
-    "description": "Error for invalid URL"
-  },
-  "whitelistErrorDuplicate": {
-    "message": "該項目已在白名單中",
-    "description": "Error for duplicate entry"
-  },
-  "whitelistErrorFailed": {
-    "message": "新增至白名單失敗",
-    "description": "Error when adding fails"
   },
   "exportImportTitle": {
     "message": "備份與還原",

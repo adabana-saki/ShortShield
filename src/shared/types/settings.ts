@@ -8,7 +8,6 @@
  */
 export type ChannelId = string & { readonly __brand: 'ChannelId' };
 export type VideoId = string & { readonly __brand: 'VideoId' };
-export type WhitelistId = string & { readonly __brand: 'WhitelistId' };
 export type CustomDomainId = string & { readonly __brand: 'CustomDomainId' };
 
 /**
@@ -19,7 +18,10 @@ export type ShortVideoPlatform = 'youtube' | 'tiktok' | 'instagram';
 /**
  * Full site blocking platforms
  */
-export type FullSitePlatform = 'youtube_full' | 'instagram_full' | 'tiktok_full';
+export type FullSitePlatform =
+  | 'youtube_full'
+  | 'instagram_full'
+  | 'tiktok_full';
 
 /**
  * Major SNS platforms for quick-block
@@ -77,26 +79,10 @@ export interface SNSPlatformSettings {
  * Platform-specific settings (all platforms)
  */
 export interface PlatformSettings
-  extends ShortVideoPlatformSettings,
+  extends
+    ShortVideoPlatformSettings,
     FullSitePlatformSettings,
     SNSPlatformSettings {}
-
-/**
- * Whitelist entry types
- */
-export type WhitelistType = 'channel' | 'url' | 'domain';
-
-/**
- * Individual whitelist entry
- */
-export interface WhitelistEntry {
-  readonly id: WhitelistId;
-  readonly type: WhitelistType;
-  readonly value: string;
-  readonly platform: Platform;
-  readonly createdAt: number;
-  readonly description?: string;
-}
 
 /**
  * Blocking statistics
@@ -415,7 +401,6 @@ import type { CommitmentLockSettings } from './commitmentLock';
 export interface Settings {
   readonly enabled: boolean;
   readonly platforms: PlatformSettings;
-  readonly whitelist: readonly WhitelistEntry[];
   readonly customDomains: readonly CustomBlockedDomain[];
   readonly schedule: ScheduleConfig;
   readonly stats: BlockingStats;
@@ -440,7 +425,6 @@ export type SettingsUpdate = Partial<{
   enabled: boolean;
   platforms: Partial<PlatformSettings>;
   preferences: Partial<UserPreferences>;
-  whitelist: readonly WhitelistEntry[];
   customDomains: readonly CustomBlockedDomain[];
   schedule: Partial<ScheduleConfig>;
   stats: Partial<BlockingStats>; // Internal use only for stat resets
@@ -471,42 +455,6 @@ export function isValidSettings(value: unknown): value is Settings {
     typeof obj.platforms === 'object' &&
     obj.platforms !== null &&
     typeof obj.version === 'number'
-  );
-}
-
-/**
- * Type guard for WhitelistEntry validation
- */
-export function isValidWhitelistEntry(value: unknown): value is WhitelistEntry {
-  if (typeof value !== 'object' || value === null) {
-    return false;
-  }
-
-  const obj = value as Record<string, unknown>;
-  const validTypes: WhitelistType[] = ['channel', 'url', 'domain'];
-  const validPlatforms: Platform[] = [
-    'youtube',
-    'tiktok',
-    'instagram',
-    'twitter',
-    'facebook',
-    'linkedin',
-    'threads',
-    'snapchat',
-    'reddit',
-    'discord',
-    'pinterest',
-    'twitch',
-  ];
-
-  return (
-    typeof obj.id === 'string' &&
-    typeof obj.type === 'string' &&
-    validTypes.includes(obj.type as WhitelistType) &&
-    typeof obj.value === 'string' &&
-    typeof obj.platform === 'string' &&
-    validPlatforms.includes(obj.platform as Platform) &&
-    typeof obj.createdAt === 'number'
   );
 }
 

@@ -25,7 +25,6 @@ function createExportData(settings: Settings): Partial<Settings> {
   return {
     enabled: settings.enabled,
     platforms: { ...settings.platforms },
-    whitelist: [...settings.whitelist],
     preferences: { ...settings.preferences },
     version: settings.version,
     // Note: stats are intentionally excluded from export

@@ -3,7 +3,6 @@
  */
 
 // Existing components
-export { Whitelist } from './Whitelist';
 export { ExportImport } from './ExportImport';
 export { CustomRules } from './CustomRules';
 export { CustomDomains } from './CustomDomains';
